@@ -16,12 +16,13 @@ namespace TCPSocketCl
     public partial class Form1 : Form
     {
         public static bool flag = true;
-        public static Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        public static int ip1 = 0;
-        public static int ip2 = 0;
+        public static bool clickFlag = false;
+        public static int ip1 = 192;
+        public static int ip2 = 168;
         public static int ip3 = 0;
-        public static int ip4 = 0;
-        public static int port = 0;
+        public static int ip4 = 180;
+        public static int port = 5000;
+        public static SocketClass socketClass = null;
         public Form1()
         {
             InitializeComponent();
@@ -30,25 +31,11 @@ namespace TCPSocketCl
         
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            // (1) 소켓 객체 생성
-            Tboxvalue();
-            // (2) 서버 연결
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("192.168.0.180"), 5000);
-            sock.Connect(ep);
-            string cmd = string.Empty;
-            byte[] receiverBuff = new byte[1024];
-            StringBuilder sb = new StringBuilder();
-            while (flag)
-            {
-                int n = sock.Receive(receiverBuff);
-                string strHex = BitConverter.ToString(receiverBuff);
-                richTextBox1.Text = strHex;
-                //Thread.Sleep(1000);
-            }
-            sock.Close();
-            flag = true;
-        }
+            SocketClass socketClass = new SocketClass(flag, ip1, ip2, ip3, ip4, port);
+            socketClass.ThreadStart();
+            
 
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -56,7 +43,7 @@ namespace TCPSocketCl
 
         private void btn_disconnect_Click(object sender, EventArgs e)
         {
-            flag = false;
+            socketClass.DisConnect();
         }
 
         private void Tboxvalue()
