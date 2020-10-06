@@ -76,7 +76,7 @@ namespace TCPSocketCl
                 Log("Not Vaild IP or PORT");
                 return;
             }
-            Log("========= IP:"+IP+" Connect 완료 =========");
+            Log("========= IP: "+IP+", PORT: "+PORT+" Connect 완료 =========");
             TboxClear();
             ts = new ThreadStart(Connect);
             thread = new Thread(ts);
@@ -88,22 +88,23 @@ namespace TCPSocketCl
 
         public void Connect()
         {
-            byte[] receiverBuff = new byte[1024];
+            byte[] receiverBuff = new byte[32];
             conn = true;
             try
             {
                 while (flag)
                 {
-                int n = sock.Receive(receiverBuff);
-                strHex = BitConverter.ToString(receiverBuff);
-                if (!InvokeRequired) {
-                    ReceiveText();
-                    ListboxFocus();}
-                else
-                {
-                    this.Invoke(new TextDelegate(ReceiveText));
-                    this.Invoke(new TextDelegate(ListboxFocus));
-                }
+                    int n = sock.Receive(receiverBuff);
+                    //int resize = BitConverter.ToInt32(receiverBuff, 0);
+                    strHex = BitConverter.ToString(receiverBuff);
+                    if (!InvokeRequired) {
+                         ReceiveText();
+                         ListboxFocus();}
+                    else
+                    {
+                        this.Invoke(new TextDelegate(ReceiveText));
+                        this.Invoke(new TextDelegate(ListboxFocus));
+                    }
                     Thread.Sleep(10);
                 }
                 thread.Interrupt();
@@ -117,10 +118,9 @@ namespace TCPSocketCl
             {
                 sock.Shutdown(SocketShutdown.Both);
                 sock.Close();
-                ListboxFocus();
+                this.Invoke(new TextDelegate(ListboxFocus));
                 flag = true;
                 conn = false;
-
             }
         }
         private void btn_disconnect_Click(object sender, EventArgs e)
