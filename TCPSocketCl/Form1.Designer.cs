@@ -54,6 +54,7 @@
             this.textBox_IP1.Name = "textBox_IP1";
             this.textBox_IP1.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP1.TabIndex = 0;
+            this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP1_KeyPress);
             // 
             // label1
             // 
@@ -81,6 +82,7 @@
             this.textBox_Port.Name = "textBox_Port";
             this.textBox_Port.Size = new System.Drawing.Size(123, 21);
             this.textBox_Port.TabIndex = 4;
+            this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Port_KeyPress);
             // 
             // textBox_IP2
             // 
@@ -88,6 +90,7 @@
             this.textBox_IP2.Name = "textBox_IP2";
             this.textBox_IP2.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP2.TabIndex = 1;
+            this.textBox_IP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP2_KeyPress);
             // 
             // textBox_IP3
             // 
@@ -95,6 +98,7 @@
             this.textBox_IP3.Name = "textBox_IP3";
             this.textBox_IP3.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP3.TabIndex = 2;
+            this.textBox_IP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP3_KeyPress);
             // 
             // textBox_IP4
             // 
@@ -102,6 +106,7 @@
             this.textBox_IP4.Name = "textBox_IP4";
             this.textBox_IP4.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP4.TabIndex = 3;
+            this.textBox_IP4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP4_KeyPress);
             // 
             // label3
             // 
