@@ -44,13 +44,15 @@
             this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.임시ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btn_textClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
             // 
-            this.textBox_IP1.Location = new System.Drawing.Point(206, 54);
+            this.textBox_IP1.Location = new System.Drawing.Point(86, 40);
+            this.textBox_IP1.MaxLength = 3;
             this.textBox_IP1.Name = "textBox_IP1";
             this.textBox_IP1.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP1.TabIndex = 0;
@@ -60,7 +62,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(145, 56);
+            this.label1.Location = new System.Drawing.Point(25, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 4;
@@ -70,7 +72,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(145, 105);
+            this.label2.Location = new System.Drawing.Point(25, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 5;
@@ -78,7 +80,8 @@
             // 
             // textBox_Port
             // 
-            this.textBox_Port.Location = new System.Drawing.Point(205, 103);
+            this.textBox_Port.Location = new System.Drawing.Point(85, 89);
+            this.textBox_Port.MaxLength = 5;
             this.textBox_Port.Name = "textBox_Port";
             this.textBox_Port.Size = new System.Drawing.Size(123, 21);
             this.textBox_Port.TabIndex = 4;
@@ -86,7 +89,8 @@
             // 
             // textBox_IP2
             // 
-            this.textBox_IP2.Location = new System.Drawing.Point(238, 54);
+            this.textBox_IP2.Location = new System.Drawing.Point(118, 40);
+            this.textBox_IP2.MaxLength = 3;
             this.textBox_IP2.Name = "textBox_IP2";
             this.textBox_IP2.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP2.TabIndex = 1;
@@ -94,7 +98,8 @@
             // 
             // textBox_IP3
             // 
-            this.textBox_IP3.Location = new System.Drawing.Point(270, 54);
+            this.textBox_IP3.Location = new System.Drawing.Point(150, 40);
+            this.textBox_IP3.MaxLength = 3;
             this.textBox_IP3.Name = "textBox_IP3";
             this.textBox_IP3.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP3.TabIndex = 2;
@@ -102,7 +107,8 @@
             // 
             // textBox_IP4
             // 
-            this.textBox_IP4.Location = new System.Drawing.Point(302, 54);
+            this.textBox_IP4.Location = new System.Drawing.Point(182, 40);
+            this.textBox_IP4.MaxLength = 3;
             this.textBox_IP4.Name = "textBox_IP4";
             this.textBox_IP4.Size = new System.Drawing.Size(26, 21);
             this.textBox_IP4.TabIndex = 3;
@@ -112,7 +118,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(232, 61);
+            this.label3.Location = new System.Drawing.Point(112, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(9, 12);
             this.label3.TabIndex = 10;
@@ -122,7 +128,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(264, 61);
+            this.label4.Location = new System.Drawing.Point(144, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(9, 12);
             this.label4.TabIndex = 11;
@@ -132,7 +138,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(296, 61);
+            this.label5.Location = new System.Drawing.Point(176, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(9, 12);
             this.label5.TabIndex = 12;
@@ -140,9 +146,10 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.Location = new System.Drawing.Point(148, 154);
+            this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_connect.Location = new System.Drawing.Point(28, 128);
             this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(84, 23);
+            this.btn_connect.Size = new System.Drawing.Size(180, 26);
             this.btn_connect.TabIndex = 13;
             this.btn_connect.Text = "Connect";
             this.btn_connect.UseVisualStyleBackColor = true;
@@ -150,9 +157,10 @@
             // 
             // btn_disconnect
             // 
-            this.btn_disconnect.Location = new System.Drawing.Point(238, 154);
+            this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_disconnect.Location = new System.Drawing.Point(28, 160);
             this.btn_disconnect.Name = "btn_disconnect";
-            this.btn_disconnect.Size = new System.Drawing.Size(90, 23);
+            this.btn_disconnect.Size = new System.Drawing.Size(180, 26);
             this.btn_disconnect.TabIndex = 14;
             this.btn_disconnect.Text = "Disconnect";
             this.btn_disconnect.UseVisualStyleBackColor = true;
@@ -165,7 +173,7 @@
             this.파일ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -192,20 +200,37 @@
             this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.끝내기ToolStripMenuItem.Text = "끝내기";
             // 
-            // richTextBox1
+            // listBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 189);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(460, 350);
-            this.richTextBox1.TabIndex = 16;
-            this.richTextBox1.Text = "";
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.ItemHeight = 12;
+            this.listBox1.Location = new System.Drawing.Point(12, 191);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(960, 340);
+            this.listBox1.TabIndex = 17;
+            // 
+            // btn_textClear
+            // 
+            this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_textClear.Location = new System.Drawing.Point(888, 162);
+            this.btn_textClear.Name = "btn_textClear";
+            this.btn_textClear.Size = new System.Drawing.Size(84, 23);
+            this.btn_textClear.TabIndex = 18;
+            this.btn_textClear.Text = "Text Clear";
+            this.btn_textClear.UseVisualStyleBackColor = true;
+            this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 561);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btn_textClear);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_disconnect);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.textBox_IP4);
@@ -246,8 +271,9 @@
         private System.Windows.Forms.Button btn_disconnect;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
-        public System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.ToolStripMenuItem 임시ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 끝내기ToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btn_textClear;
     }
 }
