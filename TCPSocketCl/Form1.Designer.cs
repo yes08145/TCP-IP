@@ -46,6 +46,8 @@
             this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btn_textClear = new System.Windows.Forms.Button();
+            this.listBox_quick = new System.Windows.Forms.ListBox();
+            this.btn_quick = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,7 +193,7 @@
             // 
             this.임시ToolStripMenuItem.Name = "임시ToolStripMenuItem";
             this.임시ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.임시ToolStripMenuItem.Text = "임시";
+            this.임시ToolStripMenuItem.Text = "퀵 메뉴 추가";
             // 
             // 끝내기ToolStripMenuItem
             // 
@@ -224,11 +226,35 @@
             this.btn_textClear.UseVisualStyleBackColor = true;
             this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
             // 
+            // listBox_quick
+            // 
+            this.listBox_quick.DisplayMember = "dd";
+            this.listBox_quick.FormattingEnabled = true;
+            this.listBox_quick.ItemHeight = 12;
+            this.listBox_quick.Location = new System.Drawing.Point(527, 37);
+            this.listBox_quick.Name = "listBox_quick";
+            this.listBox_quick.Size = new System.Drawing.Size(200, 112);
+            this.listBox_quick.TabIndex = 19;
+            this.listBox_quick.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_quick_MouseClick);
+            // 
+            // btn_quick
+            // 
+            this.btn_quick.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_quick.Location = new System.Drawing.Point(527, 159);
+            this.btn_quick.Name = "btn_quick";
+            this.btn_quick.Size = new System.Drawing.Size(200, 26);
+            this.btn_quick.TabIndex = 20;
+            this.btn_quick.Text = "Select IP/PORT";
+            this.btn_quick.UseVisualStyleBackColor = true;
+            this.btn_quick.Click += new System.EventHandler(this.btn_quick_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.btn_quick);
+            this.Controls.Add(this.listBox_quick);
             this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_disconnect);
@@ -275,5 +301,7 @@
         private System.Windows.Forms.ToolStripMenuItem 끝내기ToolStripMenuItem;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btn_textClear;
+        private System.Windows.Forms.ListBox listBox_quick;
+        private System.Windows.Forms.Button btn_quick;
     }
 }

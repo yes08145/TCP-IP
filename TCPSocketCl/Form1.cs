@@ -23,11 +23,17 @@ namespace TCPSocketCl
         private static int IP3 = 0;
         private static int IP4 = 0;
         private static int PORT = 5000;
+        private static string IP = string.Empty;
+        private static string q_ip1 = string.Empty;
+        private static string q_ip2 = string.Empty;
+        private static string q_ip3 = string.Empty;
+        private static string q_ip4 = string.Empty;
+        private static string q_port = string.Empty;
         private static string strHex = string.Empty;
         ThreadStart ts = null;
         Thread thread = null;
-
-        private Thread receiveThread;
+        //private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
+        //private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
         private static Socket sock = null;
         public delegate void TextDelegate();
@@ -58,11 +64,12 @@ namespace TCPSocketCl
         private void Form1_Load(object sender, EventArgs e)
         {
             Log("Program Start");
+            Log2("192.168.0.180:5000");
         }
         private void ThreadStart()
         {
             // (2) 서버 연결
-            string IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4; // 192.168.0.180
+            IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4; // 192.168.0.180
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), PORT);
             Log("Connect 시도중");
             try
@@ -81,14 +88,11 @@ namespace TCPSocketCl
             ts = new ThreadStart(Connect);
             thread = new Thread(ts);
             thread.Start();
-            //receiveThread = new Thread(new ThreadStart(Connect));
-            //receiveThread.IsBackground = true;
-            //receiveThread.Start();
         }
 
         public void Connect()
         {
-            byte[] receiverBuff = new byte[32];
+            byte[] receiverBuff = new byte[16];
             conn = true;
             try
             {
@@ -108,7 +112,9 @@ namespace TCPSocketCl
                     Thread.Sleep(10);
                 }
                 thread.Interrupt();
-                Log("======= Connect 종료 =======");
+                //sock.Shutdown(SocketShutdown.Both);
+                //sock.Close();
+                //Log("======= Connect 종료 =======");
             }
             catch
             {
@@ -118,7 +124,8 @@ namespace TCPSocketCl
             {
                 sock.Shutdown(SocketShutdown.Both);
                 sock.Close();
-                this.Invoke(new TextDelegate(ListboxFocus));
+                this.Invoke(new LogDelegate(Log), "======= Connect 종료 =======");
+                this.Invoke(new TextDelegate(ListboxFocus)); 
                 flag = true;
                 conn = false;
             }
@@ -142,9 +149,17 @@ namespace TCPSocketCl
         }
         public void Log(string msg)
         {
-            listBox1.Items.Add(string.Format(
+            SocketClass sc = new SocketClass();
+            string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
+            listBox1.Items.Add(return_msg);
+            sc.LogFile(return_msg);
+            
+        }
+        public void Log2(string msg)
+        {
+            listBox_quick.Items.Add(string.Format(
 
-            "[{0}] {1}", DateTime.Now.ToString(), msg
+            "{0}", msg
 
             ));
         }
@@ -214,6 +229,36 @@ namespace TCPSocketCl
         private void btn_textClear_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+        }
+
+        private void listBox_quick_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(listBox_quick.SelectedItem != null)
+            {
+                q_ip1 = listBox_quick.SelectedItem.ToString().Split('.')[0];
+                q_ip2 = listBox_quick.SelectedItem.ToString().Split('.')[1];
+                q_ip3 = listBox_quick.SelectedItem.ToString().Split('.')[2];
+                q_ip4 = listBox_quick.SelectedItem.ToString().Split('.')[3].Split(':')[0];
+                q_port = listBox_quick.SelectedItem.ToString().Split(':')[1];
+            }
+        }
+
+        private void btn_quick_Click(object sender, EventArgs e)
+        {
+            if (listBox_quick.SelectedItem != null)
+            {
+                textBox_IP1.Text = q_ip1;
+                textBox_IP2.Text = q_ip2;
+                textBox_IP3.Text = q_ip3;
+                textBox_IP4.Text = q_ip4;
+                textBox_Port.Text = q_port;
+                listBox_quick.SelectedItem = null;
+            }
+            else
+            {
+                MessageBox.Show("선택된 IP가 없습니다.");
+                //MessageBox.Show(filePath);
+            }
         }
     }
 }
