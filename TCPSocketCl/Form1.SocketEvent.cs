@@ -49,13 +49,13 @@ namespace TCPSocketCl
                     strHex = BitConverter.ToString(receiverBuff);
                     if (!InvokeRequired)
                     {
-                        ReceiveText();
+                        Log(strHex);
                         ListboxFocus();
                     }
                     else
                     {
-                        this.Invoke(new TextDelegate(ReceiveText));
-                        this.Invoke(new TextDelegate(ListboxFocus));
+                        this.Invoke(new LogDelegate(Log), strHex);
+                        this.Invoke(new FocusDelegate(ListboxFocus));
                     }
                     Thread.Sleep(10);
                 }
@@ -73,7 +73,7 @@ namespace TCPSocketCl
                 sock.Shutdown(SocketShutdown.Both);
                 sock.Close();
                 this.Invoke(new LogDelegate(Log), "======= Connect 종료 =======");
-                this.Invoke(new TextDelegate(ListboxFocus));
+                this.Invoke(new FocusDelegate(ListboxFocus));
                 flag = true;
                 conn = false;
             }

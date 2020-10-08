@@ -37,7 +37,7 @@ namespace TCPSocketCl
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
         private static Socket sock = null;
-        public delegate void TextDelegate();
+        public delegate void FocusDelegate();
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
 
