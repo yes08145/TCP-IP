@@ -18,7 +18,7 @@ namespace TCPSocketCl
         public byte sensor_ID;
         public byte ch_setting;
         public byte data;
-        public byte check_sum;
+        public byte[] check_sum = new byte[2];
         public byte eof = 0x03;
         public byte response_channel;
     }

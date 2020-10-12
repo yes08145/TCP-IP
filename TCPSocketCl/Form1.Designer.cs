@@ -52,6 +52,17 @@
             this.textbox_Aoutput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.button_AIRequest = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button_AOSetting = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox_Ainput = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -254,22 +265,24 @@
             // 
             // textbox_Aoutput
             // 
-            this.textbox_Aoutput.Location = new System.Drawing.Point(364, 38);
+            this.textbox_Aoutput.Location = new System.Drawing.Point(365, 38);
             this.textbox_Aoutput.MaxLength = 5;
             this.textbox_Aoutput.Name = "textbox_Aoutput";
-            this.textbox_Aoutput.Size = new System.Drawing.Size(53, 21);
+            this.textbox_Aoutput.Size = new System.Drawing.Size(20, 21);
             this.textbox_Aoutput.TabIndex = 21;
+            this.textbox_Aoutput.Text = "4";
+            this.textbox_Aoutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Aoutput_KeyPress);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.Location = new System.Drawing.Point(423, 35);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 26);
+            this.button1.Size = new System.Drawing.Size(47, 26);
             this.button1.TabIndex = 22;
-            this.button1.Text = "Send";
+            this.button1.Text = "ch 0";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label6
             // 
@@ -281,11 +294,137 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "전류출력 :";
             // 
+            // button_AIRequest
+            // 
+            this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_AIRequest.Location = new System.Drawing.Point(389, 107);
+            this.button_AIRequest.Name = "button_AIRequest";
+            this.button_AIRequest.Size = new System.Drawing.Size(129, 26);
+            this.button_AIRequest.TabIndex = 26;
+            this.button_AIRequest.Text = "전류 입력 값 요청";
+            this.button_AIRequest.UseVisualStyleBackColor = true;
+            this.button_AIRequest.Click += new System.EventHandler(this.Button_AIRequest_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(386, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "mA";
+            // 
+            // button_AOSetting
+            // 
+            this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_AOSetting.Location = new System.Drawing.Point(305, 65);
+            this.button_AOSetting.Name = "button_AOSetting";
+            this.button_AOSetting.Size = new System.Drawing.Size(197, 26);
+            this.button_AOSetting.TabIndex = 29;
+            this.button_AOSetting.Text = "전류 출력 설정";
+            this.button_AOSetting.UseVisualStyleBackColor = true;
+            this.button_AOSetting.Click += new System.EventHandler(this.ButtonOSetting_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Location = new System.Drawing.Point(474, 35);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(47, 26);
+            this.button2.TabIndex = 30;
+            this.button2.Text = "ch 1";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(285, 107);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(47, 26);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "ch 0";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button4.Location = new System.Drawing.Point(336, 107);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 26);
+            this.button4.TabIndex = 32;
+            this.button4.Text = "ch 1";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(285, 143);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "전류입력 :";
+            // 
+            // textBox_Ainput
+            // 
+            this.textBox_Ainput.Location = new System.Drawing.Point(365, 135);
+            this.textBox_Ainput.MaxLength = 5;
+            this.textBox_Ainput.Name = "textBox_Ainput";
+            this.textBox_Ainput.Size = new System.Drawing.Size(20, 21);
+            this.textBox_Ainput.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(386, 143);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "mA";
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button5.Location = new System.Drawing.Point(423, 136);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(47, 26);
+            this.button5.TabIndex = 36;
+            this.button5.Text = "ch 0";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button6.Location = new System.Drawing.Point(474, 136);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(47, 26);
+            this.button6.TabIndex = 37;
+            this.button6.Text = "ch 1";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.textBox_Ainput);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button_AOSetting);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button_AIRequest);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textbox_Aoutput);
@@ -343,5 +482,16 @@
         private System.Windows.Forms.TextBox textbox_Aoutput;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button_AIRequest;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_AOSetting;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox_Ainput;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
