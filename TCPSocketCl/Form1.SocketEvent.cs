@@ -12,6 +12,7 @@ namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
+        PacketData pd = new PacketData();
         private void ThreadStart()
         {
             // (2) 서버 연결
@@ -47,17 +48,22 @@ namespace TCPSocketCl
                     int n = sock.Receive(receiverBuff);
                     //int resize = BitConverter.ToInt32(receiverBuff, 0);
                     strHex = BitConverter.ToString(receiverBuff);
+                    
+                    //
                     if (!InvokeRequired)
                     {
                         Log(strHex);
+                        Log(pd.Sof);
                         ListboxFocus();
+                        
                     }
                     else
                     {
                         this.Invoke(new LogDelegate(Log), strHex);
+                        this.Invoke(new LogDelegate(Log), pd.Sof);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
-                    Thread.Sleep(10);
+                    //Thread.Sleep(10);
                 }
                 thread.Interrupt();
                 //sock.Shutdown(SocketShutdown.Both);
@@ -77,6 +83,16 @@ namespace TCPSocketCl
                 flag = true;
                 conn = false;
             }
+        }
+        
+        public void Request_AInput()
+        {
+
+        }
+        public void Response_Aoutput()
+        {
+            //PacketData pd = new PacketData();
+            string packet = pd.Sof+"-"+pd.U_sys_Device_ID;
         }
     }
 }

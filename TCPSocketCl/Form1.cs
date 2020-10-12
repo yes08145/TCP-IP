@@ -83,14 +83,14 @@ namespace TCPSocketCl
         //}
         private void ListboxFocus()
         {
-            listBox1.SelectedIndex = listBox1.Items.Count - 1;
+            listbox1.SelectedIndex = listbox1.Items.Count - 1;
         }
 
         public void Log(string msg)
         {
             //SocketClass sc = new SocketClass();
             string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
-            listBox1.Items.Add(return_msg);
+            listbox1.Items.Add(return_msg);
             //......
             //sc.LogFile(return_msg);       
             DirectoryInfo di = new DirectoryInfo(DirPath);
@@ -131,5 +131,9 @@ namespace TCPSocketCl
             ));
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
