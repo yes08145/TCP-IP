@@ -49,6 +49,8 @@ namespace TCPSocketCl
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            RTUP rtup = new RTUP();
+            Console.WriteLine(rtup.usys_device_ID+" "+rtup.usys_device_ID.GetType());
             Log("Socket Client Program Start");
             Log2("192.168.0.180:5000");
         }

@@ -44,6 +44,7 @@ namespace TCPSocketCl
             {
                 while (flag)
                 {
+                    sock.Send()
                     int n = sock.Receive(receiverBuff);
                     //int resize = BitConverter.ToInt32(receiverBuff, 0);
                     strHex = BitConverter.ToString(receiverBuff);
@@ -59,24 +60,48 @@ namespace TCPSocketCl
                     }
                     Thread.Sleep(10);
                 }
-                thread.Interrupt();
+                thread.Abort();
                 //sock.Shutdown(SocketShutdown.Both);
                 //sock.Close();
                 //Log("======= Connect 종료 =======");
             }
-            catch
+            catch(Exception e)
             {
-
+                throw e;
             }
             finally
             {
                 sock.Shutdown(SocketShutdown.Both);
                 sock.Close();
-                this.Invoke(new LogDelegate(Log), "======= Connect 종료 =======");
-                this.Invoke(new FocusDelegate(ListboxFocus));
+                Log("======= Connect 종료 =======");
+                ListboxFocus();
                 flag = true;
                 conn = false;
             }
+        }
+
+        public void Send()
+        {
+            RTUP rtup = new RTUP();
+            rtup.usys_device_ID = 0x74;
+            rtup.length = 0x09;
+            rtup.sensor_ID = 0x01;
+            //0 or 1 장비 선택
+            rtup.ch_setting = 0x00;
+            // 4~20mA
+            rtup.data = 0x04;
+            //checksum
+            int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting + rtup.data;
+            rtup.check_sum = (byte)checkSum;
+            byte[] msg = new byte[9];
+            msg[0] = rtup.sof;
+            msg[1] = rtup.usys_device_ID;
+            msg[2] = rtup.length;
+            msg[3] = rtup.sensor_ID;
+            msg[4] = rtup.ch_setting;
+            msg[5] = rtup.data;
+            msg[6] = rtup.check_sum;
+            msg[7] = rtup.eof;
         }
     }
 }

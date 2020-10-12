@@ -69,7 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SocketClass.cs" />
+    <Compile Include="RTUP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
