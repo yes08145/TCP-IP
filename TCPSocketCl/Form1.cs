@@ -24,6 +24,9 @@ namespace TCPSocketCl
         private static int IP3 = 0;
         private static int IP4 = 0;
         private static int PORT = 5000;
+        private static int data = 0;
+        private static int ch = 0;
+        private static int sensorID = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
         private static string q_ip2 = string.Empty;
@@ -31,6 +34,7 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
+        private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 출력 응답", "전류 입력 값 요청", "전류 입력 값 응답" };
         ThreadStart ts = null;
         Thread thread = null;
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
@@ -49,8 +53,6 @@ namespace TCPSocketCl
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            RTUP rtup = new RTUP();
-            Console.WriteLine(rtup.usys_device_ID+" "+rtup.usys_device_ID.GetType());
             Log("Socket Client Program Start");
             Log2("192.168.0.180:5000");
         }
@@ -66,19 +68,24 @@ namespace TCPSocketCl
                 MessageBox.Show("IP 또는 PORT 번호를 입력해주세요.");
                 return;
             }
-            ThreadStart();
-            //socketClass.Connect();
+            SocketConnect();
         }
         
         private void btn_disconnect_Click(object sender, EventArgs e)
         {
-            if (conn == false)
+            if (!conn)
             {
                 MessageBox.Show("Connect된 서버가 없습니다.");
                 return;
             }
-            flag = false;
+            thread.Abort();
+            sock.Shutdown(SocketShutdown.Both);
+            sock.Close();
+            Log("======= Connect 종료 =======");
+            ListboxFocus();
+            conn = false;
         }
+       
         //public void DisConnect()
         //{
         //    flag = false;
@@ -133,9 +140,43 @@ namespace TCPSocketCl
             ));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-
+            ch = 0;
         }
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            ch = 1;
+        }
+        private void ButtonOSetting_Click(object sender, EventArgs e)
+        {
+            sensorID = 1;
+            data = Convert.ToInt32(textbox_Aoutput.Text);
+            flag = false;
+            if (!conn)
+            {
+                ThreadStart();
+            }
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            ch = 0;
+        }
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            ch = 1;
+        }
+        private void Button_AIRequest_Click(object sender, EventArgs e)
+        {
+            sensorID = 2;
+            flag = false;
+            
+            if (!conn)
+            {
+                ThreadStart();
+            }
+        }
+
     }
 }
