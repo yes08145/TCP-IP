@@ -45,10 +45,13 @@
             this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.임시ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listbox1 = new System.Windows.Forms.ListBox();
             this.btn_textClear = new System.Windows.Forms.Button();
             this.listBox_quick = new System.Windows.Forms.ListBox();
             this.btn_quick = new System.Windows.Forms.Button();
+            this.textbox_Aoutput = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,18 +206,18 @@
             this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.끝내기ToolStripMenuItem.Text = "끝내기";
             // 
-            // listBox1
+            // listbox1
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(12, 191);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(960, 340);
-            this.listBox1.TabIndex = 17;
+            this.listbox1.FormattingEnabled = true;
+            this.listbox1.HorizontalScrollbar = true;
+            this.listbox1.ItemHeight = 12;
+            this.listbox1.Location = new System.Drawing.Point(12, 191);
+            this.listbox1.Name = "listbox1";
+            this.listbox1.Size = new System.Drawing.Size(960, 340);
+            this.listbox1.TabIndex = 17;
             // 
             // btn_textClear
             // 
@@ -249,15 +252,47 @@
             this.btn_quick.UseVisualStyleBackColor = true;
             this.btn_quick.Click += new System.EventHandler(this.btn_quick_Click);
             // 
+            // textbox_Aoutput
+            // 
+            this.textbox_Aoutput.Location = new System.Drawing.Point(364, 38);
+            this.textbox_Aoutput.MaxLength = 5;
+            this.textbox_Aoutput.Name = "textbox_Aoutput";
+            this.textbox_Aoutput.Size = new System.Drawing.Size(53, 21);
+            this.textbox_Aoutput.TabIndex = 21;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(423, 35);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(61, 26);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(285, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "전류출력 :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textbox_Aoutput);
             this.Controls.Add(this.btn_quick);
             this.Controls.Add(this.listBox_quick);
             this.Controls.Add(this.btn_textClear);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listbox1);
             this.Controls.Add(this.btn_disconnect);
             this.Controls.Add(this.btn_connect);
             this.Controls.Add(this.textBox_IP4);
@@ -301,9 +336,12 @@
         private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 임시ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 끝내기ToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listbox1;
         private System.Windows.Forms.Button btn_textClear;
         private System.Windows.Forms.ListBox listBox_quick;
         private System.Windows.Forms.Button btn_quick;
+        private System.Windows.Forms.TextBox textbox_Aoutput;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label6;
     }
 }

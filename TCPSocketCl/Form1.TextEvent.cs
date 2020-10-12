@@ -73,7 +73,7 @@ namespace TCPSocketCl
         //text Clear
         private void btn_textClear_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            listbox1.Items.Clear();
         }
 
         private void listBox_quick_MouseClick(object sender, MouseEventArgs e)
