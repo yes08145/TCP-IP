@@ -77,34 +77,40 @@ namespace TCPSocketCl
                             this.Invoke(new LogDelegate(Log), strHex);
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
-                        RTUP rttt = new RTUP();
                         int n = sock.Receive(receiverBuff);
+                        int dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
+                        String hex_cksum = String.Format("{0:x2}", dec_cksum);
                         //int resize = BitConverter.ToInt32(receiverBuff, 0);
                         strHex = BitConverter.ToString(receiverBuff);
                         string strHexSplit = string.Empty;
                         string log_result = string.Empty;
                         int p_length = Convert.ToInt32(strHex.Split('-')[2], 16);
-                        //strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                        strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
 
-                        if (strHex.Split('-')[p_length - 1] == "03")
-                        {
-                            strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                        log_result = JudgeAction(strHexSplit);
+                        //if (strHex.Split('-')[0] == "02" && strHex.Split[p_length - 1] == "03")
+                        //{
+                        //    strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                        //}
+                        //else
+                        //{
+                        //    StartFrame or EndFrame error
+                        //    continue;
+                        //}
+                        
+
+                        // 들어온 값을 검증
+                        log_result = JudgeAction(strHexSplit, hex_cksum);
+
                         if (!InvokeRequired)
                         {
-                            Log(logMsg[sensorID]);
-                            Log(strHex);
+                            Log(log_result);
+                            Log(strHexSplit);
                             ListboxFocus();
                         }
                         else
                         {
-                            this.Invoke(new LogDelegate(Log), logMsg[sensorID]);
-                            this.Invoke(new LogDelegate(Log), strHex);
+                            this.Invoke(new LogDelegate(Log), log_result);
+                            this.Invoke(new LogDelegate(Log), strHexSplit);
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
 
@@ -197,51 +203,45 @@ namespace TCPSocketCl
             }
             return msg;
         }
-        public string JudgeAction(string txt)
+
+        public string JudgeAction(string txt, string hex_cksum)
         {
             RTUP rtup = new RTUP();
             string log = string.Empty;
+            rtup.usys_device_ID = Convert.ToByte(txt.Split('-')[1]);
             rtup.length = Convert.ToByte(txt.Split('-')[2]);
             rtup.sensor_ID = Convert.ToByte(txt.Split('-')[3]);
-
-            string ck_sum = string.Empty;
-
-            ck_sum = txt.Split('-')[0] + txt.Split('-')[1] + txt.Split('-')[2] + txt.Split('-')[3] + txt.Split('-')[4];
-            if (txt.Split('-')[4] == "00")
+            rtup.response_channel = Convert.ToByte(txt.Split('-')[4]);
+            string start_cksum = string.Empty;
+            string last_cksum = string.Empty;
+            if (hex_cksum.Length >= 3)
             {
+                start_cksum = hex_cksum.Substring(0, hex_cksum.Length - 2);
+                last_cksum = hex_cksum.Substring(hex_cksum.Length - 2);
+                if (start_cksum.Length == 1)
+                {
+                    start_cksum = "0" + start_cksum;
+                }
+            }
+            else
+            {
+                start_cksum = "00";
+                last_cksum = hex_cksum;
+                if (last_cksum.Length == 1)
+                {
+                    last_cksum = "0" + last_cksum;
+                }
+            }
+            if (start_cksum.ToUpper() == txt.Split('-')[rtup.length-3] && last_cksum.ToUpper() == txt.Split('-')[rtup.length-2])
+            {
+                log = "Device"+device_judge[74-rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 "+logMsg[rtup.sensor_ID];
+                
+            }
+            //로그를 띄워주자 (체크섬 오류)
+            else log = "CheckSum 오류";
 
-            }
-            if (rtup.sensor_ID == 01) // 전류 출력
-            {
-                ck_sum = txt.Split('-')[0] + txt.Split('-')[1] + txt.Split('-')[2] + txt.Split('-')[3] + txt.Split('-')[4];
-                rtup.check_sum = Encoding.UTF8.GetBytes(ck_sum);
-                log = Aoutput(txt, rtup.check_sum);
-            }
-            else if (rtup.sensor_ID == 02) //전류 입력{
-            {
-                ck_sum = txt.Split('-')[0] + txt.Split('-')[1] + txt.Split('-')[2] + txt.Split('-')[3] + txt.Split('-')[4] + txt.Split('-')[5];
-                rtup.check_sum = Encoding.UTF8.GetBytes(ck_sum);
-                Ainput(txt);
-            }
             return log;
         }
 
-        public string Aoutput(string txt, byte[] ck_sum)
-        {
-            string ch_name = string.Empty;
-            string log = string.Empty;
-            if (txt.Split('-')[4] == "00")
-            {
-
-                ch_name = "00";
-            }
-            else ch_name = "01";
-
-            return ch_name;
-        }
-        public void Ainput(string txt)
-        {
-
-        }
     }
 }
