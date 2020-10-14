@@ -34,7 +34,7 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
-        private static string recvHex = string.Empty;
+        private static string[] device_judge = new string[2];
         private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
         ThreadStart ts = null;
         Thread thread = null;
@@ -58,6 +58,8 @@ namespace TCPSocketCl
             Log("Socket Client Program Start");
             Log2("192.168.0.180:5000");
             Log2("192.168.0.244:5000");
+            Log2("192.168.0.31:4265");
+            device_judge[0] = "RTU";
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
