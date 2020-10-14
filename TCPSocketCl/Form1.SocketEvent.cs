@@ -21,7 +21,9 @@ namespace TCPSocketCl
             try
             {
                 sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                sock.ReceiveTimeout = 30000;
                 sock.Connect(ep);
+                conn = true;
             }
             catch
             {
@@ -32,93 +34,80 @@ namespace TCPSocketCl
             Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
             TboxClear();
         }
-        private void ThreadStart()
+        private void ThreadStart(SocketDelegate socketDelegate)
         {
-            ts = new ThreadStart(Connect);
+            ts = new ThreadStart(socketDelegate);
             thread = new Thread(ts);
             thread.Start();
         }
-
-        public void Connect()
+        public void Send()
         {
-            byte[] receiverBuff = new byte[1024];
-            conn = true;
             try
             {
-                while (true)
+                byte[] sendBuff = MakeMsg();
+                sock.Send(sendBuff);
+                strHex = BitConverter.ToString(sendBuff);
+                if (!InvokeRequired)
                 {
-                    if (!flag)
-                    {
-                        int logN = 0;
-                        if(sensorID == 1)
-                        {
-                            logN = sensorID;
-                        }
-                        else if(sensorID == 2)
-                        {
-                            logN = sensorID+1;
-                        }
-                        else
-                        {
-                            throw new Exception("잘못된 요청명령");
-                        }
-                        byte[] sendBuff = MakeMsg();
-                        sock.Send(sendBuff);
-                        strHex = BitConverter.ToString(sendBuff);
-                        if (!InvokeRequired)
-                        {
-                            Log(logMsg[sensorID-1]);
-                            Log(strHex);
-                            ListboxFocus();
-                        }
-                        else
-                        {
-                            this.Invoke(new LogDelegate(Log), logMsg[sensorID - 1]);
-                            this.Invoke(new LogDelegate(Log), strHex);
-                            this.Invoke(new FocusDelegate(ListboxFocus));
-                        }
-                        RTUP rttt = new RTUP();
-                        int n = sock.Receive(receiverBuff);
-                        //int resize = BitConverter.ToInt32(receiverBuff, 0);
-                        strHex = BitConverter.ToString(receiverBuff);
-                        string strHexSplit = string.Empty;
-                        string log_result = string.Empty;
-                        int p_length = Convert.ToInt32(strHex.Split('-')[2], 16);
-                        //strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
-
-                        if (strHex.Split('-')[p_length - 1] == "03")
-                        {
-                            strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                        log_result = JudgeAction(strHexSplit);
-                        if (!InvokeRequired)
-                        {
-                            Log(logMsg[sensorID]);
-                            Log(strHex);
-                            ListboxFocus();
-                        }
-                        else
-                        {
-                            this.Invoke(new LogDelegate(Log), logMsg[sensorID]);
-                            this.Invoke(new LogDelegate(Log), strHex);
-                            this.Invoke(new FocusDelegate(ListboxFocus));
-                        }
-
-                        flag = true;
-                    }
+                    Log(logMsg[sensorID - 1]);
+                    Log(strHex);
+                    ListboxFocus();
                 }
-
-                //sock.Shutdown(SocketShutdown.Both);
-                //sock.Close();
-                //Log("======= Connect 종료 =======");
+                else
+                {
+                    this.Invoke(new LogDelegate(Log), logMsg[sensorID - 1]);
+                    this.Invoke(new LogDelegate(Log), strHex);
+                    this.Invoke(new FocusDelegate(ListboxFocus));
+                }
             }
             catch(Exception e)
             {
                 throw e;
+            }
+        }
+        public void Recv()
+        {
+            byte[] receiverBuff = new byte[1024];
+            try
+            {
+                while (conn)
+                {
+                    RTUP rttt = new RTUP();
+                    int n = sock.Receive(receiverBuff);
+                    //int resize = BitConverter.ToInt32(receiverBuff, 0);
+                    recvHex = BitConverter.ToString(receiverBuff);
+                    string strHexSplit = string.Empty;
+                    string log_result = string.Empty;
+                    int p_length = Convert.ToInt32(recvHex.Split('-')[2], 16);
+                    //strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
+
+                    if (recvHex.Split('-')[p_length - 1] == "03")
+                    {
+                        strHexSplit = recvHex.Substring(0, (p_length * 2) + (p_length - 1));
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                    log_result = JudgeAction(strHexSplit);
+                    if (!InvokeRequired)
+                    {
+                        Log(logMsg[sensorID + 1]);
+                        Log(strHexSplit);
+                        ListboxFocus();
+                    }
+                    else
+                    {
+                        this.Invoke(new LogDelegate(Log), logMsg[sensorID + 1]);
+                        this.Invoke(new LogDelegate(Log), strHexSplit);
+                        this.Invoke(new FocusDelegate(ListboxFocus));
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+            catch (Exception e)
+            {
+                btn_disconnect.PerformClick();
             }
         }
 
