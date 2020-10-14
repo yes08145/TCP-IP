@@ -36,8 +36,7 @@ namespace TCPSocketCl
         private static string strHex = string.Empty;
         private static string r_strHex = string.Empty;
         private static string[] device_judge = new string[2];
-        
-        private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 출력 응답", "전류 입력 값 요청", "전류 입력 값 응답" };
+        private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
         ThreadStart ts = null;
         Thread thread = null;
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
@@ -45,6 +44,7 @@ namespace TCPSocketCl
         // (1) 소켓 객체 생성
         private static Socket sock = null;
         public delegate void FocusDelegate();
+        public delegate void SocketDelegate();
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
 
@@ -58,6 +58,7 @@ namespace TCPSocketCl
         {
             Log("Socket Client Program Start");
             Log2("192.168.0.180:5000");
+            Log2("192.168.0.244:5000");
             Log2("192.168.0.31:4265");
             device_judge[0] = "RTU";
         }
@@ -83,12 +84,11 @@ namespace TCPSocketCl
                 MessageBox.Show("Connect된 서버가 없습니다.");
                 return;
             }
-            thread.Abort();
+            conn = false;
             sock.Shutdown(SocketShutdown.Both);
             sock.Close();
             Log("======= Connect 종료 =======");
             ListboxFocus();
-            conn = false;
         }
        
         //public void DisConnect()
@@ -157,10 +157,10 @@ namespace TCPSocketCl
         {
             sensorID = 1;
             data = Convert.ToInt32(textbox_Aoutput.Text);
-            flag = false;
-            if (!conn)
+            if (conn)
             {
-                ThreadStart();
+                ThreadStart(Send);
+                ThreadStart(Recv);
             }
         }
 
@@ -177,9 +177,10 @@ namespace TCPSocketCl
             sensorID = 2;
             flag = false;
             
-            if (!conn)
+            if (conn)
             {
-                ThreadStart();
+                ThreadStart(Send);
+                ThreadStart(Recv);
             }
         }
 
