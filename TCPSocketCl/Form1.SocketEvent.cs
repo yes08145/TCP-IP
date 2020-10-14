@@ -81,11 +81,11 @@ namespace TCPSocketCl
                         int dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
                         String hex_cksum = String.Format("{0:x2}", dec_cksum);
                         //int resize = BitConverter.ToInt32(receiverBuff, 0);
-                        strHex = BitConverter.ToString(receiverBuff);
+                        r_strHex = BitConverter.ToString(receiverBuff);
                         string strHexSplit = string.Empty;
                         string log_result = string.Empty;
-                        int p_length = Convert.ToInt32(strHex.Split('-')[2], 16);
-                        strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                        int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
+                        strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
 
                         //if (strHex.Split('-')[0] == "02" && strHex.Split[p_length - 1] == "03")
                         //{

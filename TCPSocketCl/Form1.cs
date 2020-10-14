@@ -34,6 +34,7 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
+        private static string r_strHex = string.Empty;
         private static string[] device_judge = new string[2];
         
         private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 출력 응답", "전류 입력 값 요청", "전류 입력 값 응답" };
