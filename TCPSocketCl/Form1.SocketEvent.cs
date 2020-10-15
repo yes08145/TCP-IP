@@ -30,7 +30,7 @@ namespace TCPSocketCl
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    sock.ReceiveTimeout = 30000;
+                    //sock.ReceiveTimeout = 30000;
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock,IP,PORT,true));
                     Log2(IP+":"+PORT);
@@ -50,6 +50,53 @@ namespace TCPSocketCl
                     MessageBox.Show(e.Message);
                 }
                 return;
+            }
+        }
+        private void SocketDisconnect()
+        {
+            try
+            {
+                foreach (SocketInfo usedSockInfo in socketInfo)
+                {
+                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    {
+                        SocketDisconnect(usedSockInfo);
+                        return;
+                    }
+                }
+                MessageBox.Show("Connect중인 서버가 없습니다.");
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show("Disconnect할 서버를 선택해주십시오.");
+            }
+        }
+        private void SocketDisconnect(object obj)
+        {
+            try
+            {
+                if (obj.GetType() != typeof(SocketInfo))
+                {
+                    throw new Exception("Send(object obj): obj 타입이 SocketInfo가 아님");
+                }
+                else
+                {
+                    SocketInfo throwSockInfo = (SocketInfo)obj;
+                    if (throwSockInfo.conn)
+                    {
+                        throwSockInfo.conn = false;
+                        throwSockInfo.sock.Shutdown(SocketShutdown.Both);
+                        throwSockInfo.sock.Close();
+                        listBox_quick.Items.Remove(throwSockInfo.IP + ":" + throwSockInfo.PORT);
+                        this.Text = "SocketClient===State===(Disconnected)";
+                        Log("======= Connect 종료 =======");
+                        ListboxFocus();
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+
             }
         }
         private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate)
@@ -163,7 +210,7 @@ namespace TCPSocketCl
                     SocketInfo socketInfo = (SocketInfo)obj;
                     if (socketInfo.conn)
                     {
-                        this.Invoke(new FocusDelegate(btn_disconnect.PerformClick));
+                        this.Invoke(new SocketDelegate(SocketDisconnect), socketInfo);
                         this.Invoke(new Action(() => { MessageBox.Show(this, "대기시간이 초과되어 연결을 종료합니다."); }));
                     }
                     

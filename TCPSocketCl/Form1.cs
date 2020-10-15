@@ -81,23 +81,7 @@ namespace TCPSocketCl
 
         private void btn_disconnect_Click(object sender, EventArgs e)
         {
-            foreach(SocketInfo usedSockInfo in socketInfo)
-            {
-                if(usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
-                {
-                    if (usedSockInfo.conn)
-                    {
-                        usedSockInfo.conn = false;
-                        usedSockInfo.sock.Shutdown(SocketShutdown.Both);
-                        usedSockInfo.sock.Close();
-                        this.Text = "SocketClient===State===(Disconnected)";
-                        Log("======= Connect 종료 =======");
-                        ListboxFocus();
-                        return;
-                    }
-                }
-            }
-            MessageBox.Show("Connect중인 서버가 없습니다.");
+            SocketDisconnect();
         }
         private void ListboxFocus()
         {
@@ -162,41 +146,56 @@ namespace TCPSocketCl
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 1;
-            data = Convert.ToInt32(comboBox1.Text);
-            foreach(SocketInfo usedSockInfo in socketInfo)
+            try
             {
-                if(usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
+                data = Convert.ToInt32(comboBox1.Text);
+                foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.conn)
+                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
                     {
-                        StartThread(usedSockInfo,Send);
+                        if (usedSockInfo.conn)
+                        {
+                            StartThread(usedSockInfo, Send);
+                        }
                     }
                 }
             }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+           
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            elecout_ch = 0;
+            aout_ch = 0;
         }
         private void Button4_Click(object sender, EventArgs e)
         {
-            elecout_ch = 1;
+            aout_ch = 1;
         }
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
-
-            foreach (SocketInfo usedSockInfo in socketInfo)
+            try
             {
-                if (usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
+                foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.conn)
+                    if (usedSockInfo.IP+":"+usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
                     {
-                        StartThread(usedSockInfo, Send);
+                        if (usedSockInfo.conn)
+                        {
+                            StartThread(usedSockInfo, Send);
+                        }
                     }
                 }
             }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+            
         }
         private void Button_State(System.Windows.Forms.Button button, int state)
         {
