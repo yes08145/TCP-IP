@@ -25,8 +25,8 @@ namespace TCPSocketCl
         private static int IP4 = 0;
         private static int PORT = 5000;
         private static int data = 0;
-        private static int elecout_ch = 0;
-        private static int elecin_ch = 0;
+        private static int aout_ch = 0;
+        private static int ain_ch = 0;
         private static int sensorID = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
@@ -37,6 +37,7 @@ namespace TCPSocketCl
         private static string strHex = string.Empty;
         private static string r_strHex = string.Empty;
         private static string[] device_judge = new string[2];
+        private static string[] mA_list = new string[17] {"4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20" };
         private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
         ThreadStart ts = null;
         Thread thread = null;
@@ -64,6 +65,7 @@ namespace TCPSocketCl
             device_judge[0] = "RTU";
             device_judge[1] = "SmartPoE";
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -76,14 +78,20 @@ namespace TCPSocketCl
                     return;
                 }
                 TboxValue();
+                SocketConnect();
             }
-            catch
+            catch(FormatException ex)
             {
                 MessageBox.Show("IP 또는 PORT 번호를 입력해주세요.");
                 return;
             }
-            int sv_conn = SocketConnect();
-            if (sv_conn == 0) return;
+            catch(SocketException ex2)
+            {
+                Log("======Connect Fail======");
+                MessageBox.Show("서버에 연결할 수 없습니다.");
+                return;
+            }
+            //if (sv_conn == 0) return;
             ThreadStart(Recv);
             this.Text = "SocketClient===State===(Connected)";
         }
@@ -129,7 +137,7 @@ namespace TCPSocketCl
                 {
                     using (StreamWriter sw = new StreamWriter(filePath))
                     {
-                        sw.WriteLine(msg);
+                        sw.WriteLine(return_msg);
                         sw.Close();
                     }
                 }
@@ -137,7 +145,7 @@ namespace TCPSocketCl
                 {
                     using (StreamWriter sw = File.AppendText(filePath))
                     {
-                        sw.WriteLine(msg);
+                        sw.WriteLine(return_msg);
                         sw.Close();
                     }
                 }
@@ -159,40 +167,37 @@ namespace TCPSocketCl
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            elecout_ch = 0;
+            aout_ch = 0;
             Button_State(button1,1);
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            elecout_ch = 1;
+            aout_ch = 1;
             Button_State(button2,1);
         }
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 1;
-            data = Convert.ToInt32(textbox_Aoutput.Text);
+            data = Convert.ToInt32(comboBox1.Text);
             if (conn)
             {
                 ThreadStart(Send);
             }
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            elecout_ch = 0;
-        }
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            elecout_ch = 1;
+            else
+            {
+                MessageBox.Show("Connect된 서버가 없습니다.");
+            }
         }
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
-            flag = false;
-            
             if (conn)
             {
                 ThreadStart(Send);
+            }
+            else
+            {
+                MessageBox.Show("Connect된 서버가 없습니다.");
             }
         }
         private void Button_State(System.Windows.Forms.Button button, int state)
@@ -219,13 +224,13 @@ namespace TCPSocketCl
 
         private void button5_Click(object sender, EventArgs e)
         {
-            elecin_ch = 0;
+            ain_ch = 0;
             Button_State(button5,2);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            elecin_ch = 1;
+            ain_ch = 1;
             Button_State(button6,2);
         }
 
@@ -254,6 +259,11 @@ namespace TCPSocketCl
             Rectangle recTab = e.Bounds;
             recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
             e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,29 +12,21 @@ namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
-        private int SocketConnect()
+        private void SocketConnect()
         {
             // (2) 서버 연결
             IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4; // 192.168.0.180
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), PORT);
             Log("Connect 시도중");
-            try
-            {
-                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.ReceiveTimeout = 30000;
-                sock.Connect(ep);
-                conn = true;
-            }
-            catch(Exception e)
-            {
-                Log("======Connect Fail======");
-                MessageBox.Show("서버에 연결할 수 없습니다.");
-                return 0;
-            }
+            //try/catch로 묶을수 있음
+            sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            sock.ReceiveTimeout = 30000;
+            sock.Connect(ep);
+            conn = true;
             Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
             ListboxFocus();
             TboxClear();
-            return 1;
+            return;
         }
         private void ThreadStart(SocketDelegate socketDelegate)
         {
@@ -75,9 +67,11 @@ namespace TCPSocketCl
                 {
                     byte[] receiverBuff = new byte[16];
                     int n = sock.Receive(receiverBuff);
-                    int dec_cksum = 0;
-                    string strHexSplit = string.Empty;
                     string log_result = string.Empty;
+
+                    int dec_cksum = 0;
+                    string strHexSplit = string.Empty; // ReturnCksum();
+                    
                     r_strHex = BitConverter.ToString(receiverBuff);
                     int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
                     if (r_strHex.Split('-')[3] == "1")
@@ -135,12 +129,13 @@ namespace TCPSocketCl
             rtup.usys_device_ID = 0x74;
             rtup.sensor_ID = (byte)sensorID;
             //0 or 1 장비 선택
-            rtup.ch_setting = (byte)elecout_ch;
+            
             try
             {
                 if (sensorID == 1)
                 {
                     // 4~20mA
+                    rtup.ch_setting = (byte)aout_ch;
                     rtup.data = (byte)data;
                     rtup.length = 0x09;
                     //checksum
@@ -169,6 +164,7 @@ namespace TCPSocketCl
                 }
                 else if (sensorID == 2)
                 {
+                    rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting;
                     if (checkSum > 255)
@@ -242,9 +238,7 @@ namespace TCPSocketCl
                 else
                 {
                     log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 1];
-                }
-                
-                
+                }         
             }
             //로그를 띄워주자 (체크섬 오류)
             else log = "CheckSum 오류";
