@@ -41,10 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btn_connect = new System.Windows.Forms.Button();
             this.btn_disconnect = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.파일ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.임시ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.끝내기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listbox1 = new System.Windows.Forms.ListBox();
             this.btn_textClear = new System.Windows.Forms.Button();
             this.listBox_quick = new System.Windows.Forms.ListBox();
@@ -63,12 +59,16 @@
             this.label9 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
             // 
-            this.textBox_IP1.Location = new System.Drawing.Point(86, 40);
+            this.textBox_IP1.Location = new System.Drawing.Point(87, 30);
             this.textBox_IP1.MaxLength = 3;
             this.textBox_IP1.Name = "textBox_IP1";
             this.textBox_IP1.Size = new System.Drawing.Size(26, 21);
@@ -79,7 +79,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(25, 42);
+            this.label1.Location = new System.Drawing.Point(26, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(25, 91);
+            this.label2.Location = new System.Drawing.Point(26, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // textBox_Port
             // 
-            this.textBox_Port.Location = new System.Drawing.Point(85, 89);
+            this.textBox_Port.Location = new System.Drawing.Point(86, 66);
             this.textBox_Port.MaxLength = 5;
             this.textBox_Port.Name = "textBox_Port";
             this.textBox_Port.Size = new System.Drawing.Size(123, 21);
@@ -106,7 +106,7 @@
             // 
             // textBox_IP2
             // 
-            this.textBox_IP2.Location = new System.Drawing.Point(118, 40);
+            this.textBox_IP2.Location = new System.Drawing.Point(119, 30);
             this.textBox_IP2.MaxLength = 3;
             this.textBox_IP2.Name = "textBox_IP2";
             this.textBox_IP2.Size = new System.Drawing.Size(26, 21);
@@ -115,7 +115,7 @@
             // 
             // textBox_IP3
             // 
-            this.textBox_IP3.Location = new System.Drawing.Point(150, 40);
+            this.textBox_IP3.Location = new System.Drawing.Point(151, 30);
             this.textBox_IP3.MaxLength = 3;
             this.textBox_IP3.Name = "textBox_IP3";
             this.textBox_IP3.Size = new System.Drawing.Size(26, 21);
@@ -124,7 +124,7 @@
             // 
             // textBox_IP4
             // 
-            this.textBox_IP4.Location = new System.Drawing.Point(182, 40);
+            this.textBox_IP4.Location = new System.Drawing.Point(183, 30);
             this.textBox_IP4.MaxLength = 3;
             this.textBox_IP4.Name = "textBox_IP4";
             this.textBox_IP4.Size = new System.Drawing.Size(26, 21);
@@ -135,7 +135,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(112, 47);
+            this.label3.Location = new System.Drawing.Point(113, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(9, 12);
             this.label3.TabIndex = 10;
@@ -145,7 +145,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(144, 47);
+            this.label4.Location = new System.Drawing.Point(145, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(9, 12);
             this.label4.TabIndex = 11;
@@ -155,7 +155,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(176, 47);
+            this.label5.Location = new System.Drawing.Point(177, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(9, 12);
             this.label5.TabIndex = 12;
@@ -164,7 +164,7 @@
             // btn_connect
             // 
             this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_connect.Location = new System.Drawing.Point(28, 128);
+            this.btn_connect.Location = new System.Drawing.Point(29, 118);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(180, 26);
             this.btn_connect.TabIndex = 13;
@@ -175,7 +175,7 @@
             // btn_disconnect
             // 
             this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_disconnect.Location = new System.Drawing.Point(28, 160);
+            this.btn_disconnect.Location = new System.Drawing.Point(29, 150);
             this.btn_disconnect.Name = "btn_disconnect";
             this.btn_disconnect.Size = new System.Drawing.Size(180, 26);
             this.btn_disconnect.TabIndex = 14;
@@ -183,57 +183,24 @@
             this.btn_disconnect.UseVisualStyleBackColor = true;
             this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.파일ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(984, 24);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 파일ToolStripMenuItem
-            // 
-            this.파일ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.임시ToolStripMenuItem,
-            this.끝내기ToolStripMenuItem});
-            this.파일ToolStripMenuItem.Name = "파일ToolStripMenuItem";
-            this.파일ToolStripMenuItem.ShortcutKeyDisplayString = "F4";
-            this.파일ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.파일ToolStripMenuItem.Text = "파일";
-            // 
-            // 임시ToolStripMenuItem
-            // 
-            this.임시ToolStripMenuItem.Name = "임시ToolStripMenuItem";
-            this.임시ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.임시ToolStripMenuItem.Text = "퀵 메뉴 추가";
-            // 
-            // 끝내기ToolStripMenuItem
-            // 
-            this.끝내기ToolStripMenuItem.Name = "끝내기ToolStripMenuItem";
-            this.끝내기ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.끝내기ToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
-            this.끝내기ToolStripMenuItem.Text = "끝내기";
-            // 
             // listbox1
             // 
             this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listbox1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.listbox1.FormattingEnabled = true;
             this.listbox1.HorizontalScrollbar = true;
-            this.listbox1.ItemHeight = 12;
+            this.listbox1.ItemHeight = 15;
             this.listbox1.Location = new System.Drawing.Point(12, 191);
             this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(960, 340);
+            this.listbox1.Size = new System.Drawing.Size(880, 334);
             this.listbox1.TabIndex = 17;
             // 
             // btn_textClear
             // 
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_textClear.Location = new System.Drawing.Point(888, 162);
+            this.btn_textClear.Location = new System.Drawing.Point(808, 162);
             this.btn_textClear.Name = "btn_textClear";
             this.btn_textClear.Size = new System.Drawing.Size(84, 23);
             this.btn_textClear.TabIndex = 18;
@@ -246,7 +213,7 @@
             this.listBox_quick.DisplayMember = "dd";
             this.listBox_quick.FormattingEnabled = true;
             this.listBox_quick.ItemHeight = 12;
-            this.listBox_quick.Location = new System.Drawing.Point(527, 37);
+            this.listBox_quick.Location = new System.Drawing.Point(236, 28);
             this.listBox_quick.Name = "listBox_quick";
             this.listBox_quick.Size = new System.Drawing.Size(200, 112);
             this.listBox_quick.TabIndex = 19;
@@ -255,7 +222,7 @@
             // btn_quick
             // 
             this.btn_quick.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_quick.Location = new System.Drawing.Point(527, 159);
+            this.btn_quick.Location = new System.Drawing.Point(236, 150);
             this.btn_quick.Name = "btn_quick";
             this.btn_quick.Size = new System.Drawing.Size(200, 26);
             this.btn_quick.TabIndex = 20;
@@ -265,7 +232,7 @@
             // 
             // textbox_Aoutput
             // 
-            this.textbox_Aoutput.Location = new System.Drawing.Point(365, 38);
+            this.textbox_Aoutput.Location = new System.Drawing.Point(98, 14);
             this.textbox_Aoutput.MaxLength = 5;
             this.textbox_Aoutput.Name = "textbox_Aoutput";
             this.textbox_Aoutput.Size = new System.Drawing.Size(20, 21);
@@ -275,20 +242,24 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.AliceBlue;
+            this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(423, 35);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(156, 11);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(47, 26);
-            this.button1.TabIndex = 22;
+            this.button1.TabIndex = 21;
+            this.button1.TabStop = false;
             this.button1.Text = "ch 0";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(285, 42);
+            this.label6.Location = new System.Drawing.Point(18, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 23;
@@ -297,10 +268,10 @@
             // button_AIRequest
             // 
             this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AIRequest.Location = new System.Drawing.Point(389, 107);
+            this.button_AIRequest.Location = new System.Drawing.Point(122, 83);
             this.button_AIRequest.Name = "button_AIRequest";
             this.button_AIRequest.Size = new System.Drawing.Size(129, 26);
-            this.button_AIRequest.TabIndex = 26;
+            this.button_AIRequest.TabIndex = 37;
             this.button_AIRequest.Text = "전류 입력 값 요청";
             this.button_AIRequest.UseVisualStyleBackColor = true;
             this.button_AIRequest.Click += new System.EventHandler(this.Button_AIRequest_Click);
@@ -309,7 +280,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(386, 42);
+            this.label7.Location = new System.Drawing.Point(119, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
             this.label7.TabIndex = 28;
@@ -318,10 +289,10 @@
             // button_AOSetting
             // 
             this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AOSetting.Location = new System.Drawing.Point(305, 65);
+            this.button_AOSetting.Location = new System.Drawing.Point(38, 41);
             this.button_AOSetting.Name = "button_AOSetting";
             this.button_AOSetting.Size = new System.Drawing.Size(197, 26);
-            this.button_AOSetting.TabIndex = 29;
+            this.button_AOSetting.TabIndex = 0;
             this.button_AOSetting.Text = "전류 출력 설정";
             this.button_AOSetting.UseVisualStyleBackColor = true;
             this.button_AOSetting.Click += new System.EventHandler(this.ButtonOSetting_Click);
@@ -329,10 +300,11 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(474, 35);
+            this.button2.Location = new System.Drawing.Point(207, 11);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 26);
-            this.button2.TabIndex = 30;
+            this.button2.TabIndex = 21;
+            this.button2.TabStop = false;
             this.button2.Text = "ch 1";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
@@ -341,7 +313,7 @@
             // 
             this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(285, 107);
+            this.button3.Location = new System.Drawing.Point(18, 83);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(47, 26);
             this.button3.TabIndex = 31;
@@ -353,7 +325,7 @@
             // 
             this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(336, 107);
+            this.button4.Location = new System.Drawing.Point(69, 83);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(47, 26);
             this.button4.TabIndex = 32;
@@ -365,7 +337,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(285, 143);
+            this.label8.Location = new System.Drawing.Point(18, 119);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 13);
             this.label8.TabIndex = 33;
@@ -373,7 +345,7 @@
             // 
             // textBox_Ainput
             // 
-            this.textBox_Ainput.Location = new System.Drawing.Point(365, 135);
+            this.textBox_Ainput.Location = new System.Drawing.Point(98, 111);
             this.textBox_Ainput.MaxLength = 5;
             this.textBox_Ainput.Name = "textBox_Ainput";
             this.textBox_Ainput.Size = new System.Drawing.Size(20, 21);
@@ -383,7 +355,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(386, 143);
+            this.label9.Location = new System.Drawing.Point(119, 119);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 13);
             this.label9.TabIndex = 35;
@@ -391,43 +363,80 @@
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.AliceBlue;
+            this.button5.Enabled = false;
             this.button5.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(423, 136);
+            this.button5.Location = new System.Drawing.Point(156, 112);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(47, 26);
             this.button5.TabIndex = 36;
             this.button5.Text = "ch 0";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button6.Location = new System.Drawing.Point(474, 136);
+            this.button6.Location = new System.Drawing.Point(207, 112);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 26);
-            this.button6.TabIndex = 37;
+            this.button6.TabIndex = 36;
             this.button6.Text = "ch 1";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Location = new System.Drawing.Point(457, 10);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(344, 175);
+            this.tabControl.TabIndex = 39;
+            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.button_AIRequest);
+            this.tabPage1.Controls.Add(this.button6);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.textbox_Aoutput);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.button_AOSetting);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.textBox_Ainput);
+            this.tabPage1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(336, 149);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Analog";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(336, 149);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Digital";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 561);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox_Ainput);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button_AOSetting);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.button_AIRequest);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textbox_Aoutput);
+            this.ClientSize = new System.Drawing.Size(904, 561);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btn_quick);
             this.Controls.Add(this.listBox_quick);
             this.Controls.Add(this.btn_textClear);
@@ -444,14 +453,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(920, 600);
             this.Name = "Form1";
-            this.Text = "SocketClient";
+            this.Text = "SocketClient===State===(Disconnected)";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,10 +480,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn_connect;
         private System.Windows.Forms.Button btn_disconnect;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 파일ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 임시ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 끝내기ToolStripMenuItem;
         private System.Windows.Forms.ListBox listbox1;
         private System.Windows.Forms.Button btn_textClear;
         private System.Windows.Forms.ListBox listBox_quick;
@@ -493,5 +498,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }

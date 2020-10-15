@@ -41,13 +41,14 @@ namespace TCPSocketCl
                 }
                 else
                 {
-                    MessageBox.Show("유효한 IP or PORT가 아닙니다.");
+                    Log("======Connect Fail======");
+                    MessageBox.Show("서버에 연결할 수 없습니다.");
                 }
-                Log("Not Vaild IP or PORT");
                 return;
             }
             Log2(IP);
             Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
+            ListboxFocus();
             TboxClear();
         }
         private void StartThread(Socket sock, SocketDelegate socketDelegate)
@@ -91,26 +92,32 @@ namespace TCPSocketCl
         }
         public void Recv()
         {
-            byte[] receiverBuff = new byte[1024];
             try
             {
                 while (conn)
                 {
+                    byte[] receiverBuff = new byte[16];
                     int n = sock.Receive(receiverBuff);
-                    int dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
-                    String hex_cksum = String.Format("{0:x2}", dec_cksum);
-                    //int resize = BitConverter.ToInt32(receiverBuff, 0);
-                    r_strHex = BitConverter.ToString(receiverBuff);
+                    int dec_cksum = 0;
                     string strHexSplit = string.Empty;
                     string log_result = string.Empty;
+                    r_strHex = BitConverter.ToString(receiverBuff);
                     int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
-                    //strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                    if (r_strHex.Split('-')[3] == "1")
+                    {
+                        dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
+                    }
+                    else // (r_strHex.Split('-')[3] == "2"
+                    {
+                        dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
+                    }
+                    String hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
 
                     if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
                     {
                         strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
                     }
-                    else
+                    else 
                     {
                         //StartFrame or EndFrame error
                         continue;
@@ -122,13 +129,13 @@ namespace TCPSocketCl
                     if (!InvokeRequired)
                     {
                         Log(log_result);
-                        Log(strHexSplit);
+                        //Log(strHexSplit);
                         ListboxFocus();
                     }
                     else
                     {
                         this.Invoke(new LogDelegate(Log), log_result);
-                        this.Invoke(new LogDelegate(Log), strHexSplit);
+                        //this.Invoke(new LogDelegate(Log), strHexSplit);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
                     Thread.Sleep(1000);
@@ -136,8 +143,12 @@ namespace TCPSocketCl
             }
             catch (Exception e)
             {
-                if(conn)
+                if (conn)
+                {
                     this.Invoke(new SocketDelegate(btn_disconnect.PerformClick));
+                    this.Invoke(new Action(() => { MessageBox.Show(this, "대기시간이 초과되어 연결을 종료합니다."); }));
+                }
+               
             }
         }
 
@@ -148,7 +159,7 @@ namespace TCPSocketCl
             rtup.usys_device_ID = 0x74;
             rtup.sensor_ID = (byte)sensorID;
             //0 or 1 장비 선택
-            rtup.ch_setting = (byte)ch;
+            rtup.ch_setting = (byte)elecout_ch;
             try
             {
                 if (sensorID == 1)
@@ -225,6 +236,7 @@ namespace TCPSocketCl
             rtup.length = Convert.ToByte(txt.Split('-')[2]);
             rtup.sensor_ID = Convert.ToByte(txt.Split('-')[3]);
             rtup.response_channel = Convert.ToByte(txt.Split('-')[4]);
+            rtup.data = Convert.ToByte(Convert.ToInt32(txt.Split('-')[5],16));
             string start_cksum = string.Empty;
             string last_cksum = string.Empty;
             if (hex_cksum.Length >= 3)
@@ -245,9 +257,17 @@ namespace TCPSocketCl
                     last_cksum = "0" + last_cksum;
                 }
             }
-            if (start_cksum.ToUpper() == txt.Split('-')[rtup.length-3] && last_cksum.ToUpper() == txt.Split('-')[rtup.length-2])
+            if (start_cksum == txt.Split('-')[rtup.length-3] && last_cksum == txt.Split('-')[rtup.length-2])
             {
-                log = "Device"+device_judge[74-rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 "+logMsg[rtup.sensor_ID];
+                if(rtup.sensor_ID == 1)
+                {
+                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 1];
+                }
+                else
+                {
+                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 1];
+                }
+                
                 
             }
             //로그를 띄워주자 (체크섬 오류)

@@ -24,7 +24,8 @@ namespace TCPSocketCl
         private static int IP4 = 0;
         private static int PORT = 5000;
         private static int data = 0;
-        private static int ch = 0;
+        private static int elecout_ch = 0;
+        private static int elecin_ch = 0;
         private static int sensorID = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
@@ -58,12 +59,19 @@ namespace TCPSocketCl
             Log2("192.168.0.244:5000");
             Log2("192.168.0.31:4265");
             device_judge[0] = "RTU";
+            device_judge[1] = "SmartPoE";
+            tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
             try
             {
+                if (conn)
+                {
+                    MessageBox.Show("이미 연결중입니다. Disconnect을 실행해주세요.");
+                    return;
+                }
                 TboxValue();
             }
             catch
@@ -73,6 +81,7 @@ namespace TCPSocketCl
             }
             SocketConnect();
             ThreadStart(Recv);
+            this.Text = "SocketClient===State===(Connected)";
         }
         
         private void btn_disconnect_Click(object sender, EventArgs e)
@@ -85,6 +94,7 @@ namespace TCPSocketCl
             conn = false;
             sock.Shutdown(SocketShutdown.Both);
             sock.Close();
+            this.Text = "SocketClient===State===(Disconnected)";
             Log("======= Connect 종료 =======");
             ListboxFocus();
         }
@@ -140,11 +150,13 @@ namespace TCPSocketCl
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ch = 0;
+            elecout_ch = 0;
+            Button_State(button1,1);
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            ch = 1;
+            elecout_ch = 1;
+            Button_State(button2,1);
         }
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
@@ -164,11 +176,11 @@ namespace TCPSocketCl
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            ch = 0;
+            elecout_ch = 0;
         }
         private void Button4_Click(object sender, EventArgs e)
         {
-            ch = 1;
+            elecout_ch = 1;
         }
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
@@ -179,6 +191,65 @@ namespace TCPSocketCl
                 ThreadStart(Send);
             }
         }
+        private void Button_State(System.Windows.Forms.Button button, int state)
+        {
+            if(state == 1)
+            {
+                button1.Enabled = true;
+                button2.Enabled = true;
+                button1.BackColor = SystemColors.Control;
+                button2.BackColor = SystemColors.Control;
+                this.ActiveControl = button_AOSetting;
+            }
+            else//state ==2
+            {
+                button5.Enabled = true;
+                button6.Enabled = true;
+                button5.BackColor = SystemColors.Control;
+                button6.BackColor = SystemColors.Control;
+                this.ActiveControl = button_AIRequest;
+            }
+            button.Enabled = false;
+            button.BackColor = Color.AliceBlue;
+        }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            elecin_ch = 0;
+            Button_State(button5,2);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            elecin_ch = 1;
+            Button_State(button6,2);
+        }
+
+        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Font fntTab;
+            Brush bshBack;
+            Brush bshFore;
+            if (e.Index == tabControl.SelectedIndex)
+            {
+                fntTab = new Font(e.Font, FontStyle.Bold);
+                bshBack = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, SystemColors.Control, SystemColors.Control, System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal);
+                bshFore = Brushes.Black;
+            }
+            else
+            {
+                fntTab = e.Font;
+                bshBack = new SolidBrush(SystemColors.Control);
+                bshFore = new SolidBrush(Color.Black);
+            }
+            string tabName = this.tabControl.TabPages[e.Index].Text;
+            StringFormat sftTab = new StringFormat(StringFormatFlags.NoClip);        
+            sftTab.Alignment = StringAlignment.Center;
+            sftTab.LineAlignment = StringAlignment.Center;
+            e.Graphics.FillRectangle(bshBack, e.Bounds);
+            Rectangle recTab = e.Bounds;
+            recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
+            e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
+        }
     }
 }
