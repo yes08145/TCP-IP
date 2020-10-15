@@ -24,8 +24,8 @@ namespace TCPSocketCl
         private static int IP4 = 0;
         private static int PORT = 5000;
         private static int data = 0;
-        private static int elecout_ch = 0;
-        private static int elecin_ch = 0;
+        private static int aout_ch = 0;
+        private static int ain_ch = 0;
         private static int sensorID = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
@@ -61,6 +61,7 @@ namespace TCPSocketCl
             device_judge[0] = "RTU";
             device_judge[1] = "SmartPoE";
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
+            comboBox1.SelectedIndex = 0;
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -120,7 +121,7 @@ namespace TCPSocketCl
                 {
                     using (StreamWriter sw = new StreamWriter(filePath))
                     {
-                        sw.WriteLine(msg);
+                        sw.WriteLine(return_msg);
                         sw.Close();
                     }
                 }
@@ -128,7 +129,7 @@ namespace TCPSocketCl
                 {
                     using (StreamWriter sw = File.AppendText(filePath))
                     {
-                        sw.WriteLine(msg);
+                        sw.WriteLine(return_msg);
                         sw.Close();
                     }
                 }
@@ -150,18 +151,18 @@ namespace TCPSocketCl
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            elecout_ch = 0;
+            aout_ch = 0;
             Button_State(button1,1);
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            elecout_ch = 1;
+            aout_ch = 1;
             Button_State(button2,1);
         }
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 1;
-            data = Convert.ToInt32(textbox_Aoutput.Text);
+            data = Convert.ToInt32(comboBox1.Text);
             foreach(SocketInfo usedSockInfo in socketInfo)
             {
                 if(usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
@@ -221,13 +222,13 @@ namespace TCPSocketCl
 
         private void button5_Click(object sender, EventArgs e)
         {
-            elecin_ch = 0;
+            ain_ch = 0;
             Button_State(button5,2);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            elecin_ch = 1;
+            ain_ch = 1;
             Button_State(button6,2);
         }
 

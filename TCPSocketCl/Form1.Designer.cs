@@ -45,25 +45,24 @@
             this.btn_textClear = new System.Windows.Forms.Button();
             this.listBox_quick = new System.Windows.Forms.ListBox();
             this.btn_quick = new System.Windows.Forms.Button();
-            this.textbox_Aoutput = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.button_AIRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.button_AOSetting = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox_Ainput = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
@@ -200,6 +199,7 @@
             // btn_textClear
             // 
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_textClear.Location = new System.Drawing.Point(808, 162);
             this.btn_textClear.Name = "btn_textClear";
             this.btn_textClear.Size = new System.Drawing.Size(84, 23);
@@ -215,7 +215,7 @@
             this.listBox_quick.ItemHeight = 12;
             this.listBox_quick.Location = new System.Drawing.Point(236, 28);
             this.listBox_quick.Name = "listBox_quick";
-            this.listBox_quick.Size = new System.Drawing.Size(200, 112);
+            this.listBox_quick.Size = new System.Drawing.Size(133, 112);
             this.listBox_quick.TabIndex = 19;
             this.listBox_quick.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_quick_MouseClick);
             // 
@@ -224,21 +224,11 @@
             this.btn_quick.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_quick.Location = new System.Drawing.Point(236, 150);
             this.btn_quick.Name = "btn_quick";
-            this.btn_quick.Size = new System.Drawing.Size(200, 26);
+            this.btn_quick.Size = new System.Drawing.Size(133, 26);
             this.btn_quick.TabIndex = 20;
             this.btn_quick.Text = "Select IP/PORT";
             this.btn_quick.UseVisualStyleBackColor = true;
             this.btn_quick.Click += new System.EventHandler(this.btn_quick_Click);
-            // 
-            // textbox_Aoutput
-            // 
-            this.textbox_Aoutput.Location = new System.Drawing.Point(98, 14);
-            this.textbox_Aoutput.MaxLength = 5;
-            this.textbox_Aoutput.Name = "textbox_Aoutput";
-            this.textbox_Aoutput.Size = new System.Drawing.Size(20, 21);
-            this.textbox_Aoutput.TabIndex = 21;
-            this.textbox_Aoutput.Text = "4";
-            this.textbox_Aoutput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Aoutput_KeyPress);
             // 
             // button1
             // 
@@ -246,7 +236,7 @@
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(156, 11);
+            this.button1.Location = new System.Drawing.Point(85, 29);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(47, 26);
             this.button1.TabIndex = 21;
@@ -255,22 +245,12 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(18, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "전류출력 :";
-            // 
             // button_AIRequest
             // 
             this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AIRequest.Location = new System.Drawing.Point(122, 83);
+            this.button_AIRequest.Location = new System.Drawing.Point(27, 61);
             this.button_AIRequest.Name = "button_AIRequest";
-            this.button_AIRequest.Size = new System.Drawing.Size(129, 26);
+            this.button_AIRequest.Size = new System.Drawing.Size(128, 26);
             this.button_AIRequest.TabIndex = 37;
             this.button_AIRequest.Text = "전류 입력 값 요청";
             this.button_AIRequest.UseVisualStyleBackColor = true;
@@ -280,7 +260,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(119, 18);
+            this.label7.Location = new System.Drawing.Point(48, 36);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
             this.label7.TabIndex = 28;
@@ -289,9 +269,9 @@
             // button_AOSetting
             // 
             this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AOSetting.Location = new System.Drawing.Point(38, 41);
+            this.button_AOSetting.Location = new System.Drawing.Point(35, 61);
             this.button_AOSetting.Name = "button_AOSetting";
-            this.button_AOSetting.Size = new System.Drawing.Size(197, 26);
+            this.button_AOSetting.Size = new System.Drawing.Size(128, 26);
             this.button_AOSetting.TabIndex = 0;
             this.button_AOSetting.Text = "전류 출력 설정";
             this.button_AOSetting.UseVisualStyleBackColor = true;
@@ -300,7 +280,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(207, 11);
+            this.button2.Location = new System.Drawing.Point(136, 29);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 26);
             this.button2.TabIndex = 21;
@@ -309,64 +289,12 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(18, 83);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 26);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "ch 0";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Enabled = false;
-            this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(69, 83);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 26);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "ch 1";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(18, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
-            this.label8.TabIndex = 33;
-            this.label8.Text = "전류입력 :";
-            // 
-            // textBox_Ainput
-            // 
-            this.textBox_Ainput.Location = new System.Drawing.Point(98, 111);
-            this.textBox_Ainput.MaxLength = 5;
-            this.textBox_Ainput.Name = "textBox_Ainput";
-            this.textBox_Ainput.Size = new System.Drawing.Size(20, 21);
-            this.textBox_Ainput.TabIndex = 34;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(119, 119);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 13);
-            this.label9.TabIndex = 35;
-            this.label9.Text = "mA";
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.AliceBlue;
             this.button5.Enabled = false;
             this.button5.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(156, 112);
+            this.button5.Location = new System.Drawing.Point(41, 29);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(47, 26);
             this.button5.TabIndex = 36;
@@ -377,7 +305,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button6.Location = new System.Drawing.Point(207, 112);
+            this.button6.Location = new System.Drawing.Point(94, 29);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 26);
             this.button6.TabIndex = 36;
@@ -389,47 +317,101 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(457, 10);
+            this.tabControl.Controls.Add(this.tabPage3);
+            this.tabControl.Location = new System.Drawing.Point(385, 10);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(344, 175);
+            this.tabControl.Size = new System.Drawing.Size(417, 175);
             this.tabControl.TabIndex = 39;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.button_AIRequest);
-            this.tabPage1.Controls.Add(this.button6);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.textbox_Aoutput);
-            this.tabPage1.Controls.Add(this.button2);
-            this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.button_AOSetting);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.textBox_Ainput);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(336, 149);
+            this.tabPage1.Size = new System.Drawing.Size(409, 149);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Analog";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button_AIRequest);
+            this.groupBox2.Controls.Add(this.button5);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(214, 18);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(189, 109);
+            this.groupBox2.TabIndex = 40;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "전류입력";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.button_AOSetting);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(6, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(189, 109);
+            this.groupBox1.TabIndex = 38;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "전류출력";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 33);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(44, 21);
+            this.comboBox1.TabIndex = 40;
             // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(336, 149);
+            this.tabPage2.Size = new System.Drawing.Size(409, 149);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Digital";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(409, 149);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "RSA232";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -460,7 +442,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,22 +468,19 @@
         private System.Windows.Forms.Button btn_textClear;
         private System.Windows.Forms.ListBox listBox_quick;
         private System.Windows.Forms.Button btn_quick;
-        private System.Windows.Forms.TextBox textbox_Aoutput;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_AIRequest;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_AOSetting;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox_Ainput;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

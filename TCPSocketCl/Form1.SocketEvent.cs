@@ -179,12 +179,13 @@ namespace TCPSocketCl
             rtup.usys_device_ID = 0x74;
             rtup.sensor_ID = (byte)sensorID;
             //0 or 1 장비 선택
-            rtup.ch_setting = (byte)elecout_ch;
+            
             try
             {
                 if (sensorID == 1)
                 {
                     // 4~20mA
+                    rtup.ch_setting = (byte)aout_ch;
                     rtup.data = (byte)data;
                     rtup.length = 0x09;
                     //checksum
@@ -213,6 +214,7 @@ namespace TCPSocketCl
                 }
                 else if (sensorID == 2)
                 {
+                    rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting;
                     if (checkSum > 255)
@@ -286,9 +288,7 @@ namespace TCPSocketCl
                 else
                 {
                     log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 1];
-                }
-                
-                
+                }         
             }
             //로그를 띄워주자 (체크섬 오류)
             else log = "CheckSum 오류";
