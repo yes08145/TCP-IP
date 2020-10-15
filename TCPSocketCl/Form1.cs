@@ -16,7 +16,7 @@ namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
-        bool conn = false;
+        //bool conn = false;
         public static bool clickFlag = false;
         private static int IP1 = 0;
         private static int IP2 = 0;
@@ -40,7 +40,7 @@ namespace TCPSocketCl
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
-        private static SocketInfo[] socketInfo = null;
+        private static List<SocketInfo> socketInfo = new List<SocketInfo>();
         public delegate void FocusDelegate();
         public delegate void SocketDelegate(object obj);
         public delegate void LogDelegate(string msg);
@@ -55,9 +55,9 @@ namespace TCPSocketCl
         private void Form1_Load(object sender, EventArgs e)
         {
             Log("Socket Client Program Start");
-            Log2("192.168.0.180:5000");
-            Log2("192.168.0.244:5000");
-            Log2("192.168.0.31:4265");
+            //Log2("192.168.0.180:5000");
+            //Log2("192.168.0.244:5000");
+            //Log2("192.168.0.31:4265");
             device_judge[0] = "RTU";
             device_judge[1] = "SmartPoE";
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
@@ -65,38 +65,38 @@ namespace TCPSocketCl
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (conn)
-                {
-                    MessageBox.Show("이미 연결중입니다. Disconnect을 실행해주세요.");
-                    return;
-                }
-                TboxValue();
-            }
-            catch
-            {
-                MessageBox.Show("IP 또는 PORT 번호를 입력해주세요.");
-                return;
-            }
+            TboxValue();
+            int socketCount = socketInfo.Count;
             SocketConnect();
-            ThreadStart(Recv);
+            ListboxFocus();
+            TboxClear();
+
+            if (socketCount < socketInfo.Count)
+            {
+                StartThread(socketInfo[socketInfo.Count-1], Recv);
+            }
             this.Text = "SocketClient===State===(Connected)";
         }
-        
+
         private void btn_disconnect_Click(object sender, EventArgs e)
         {
-            if (!conn)
+            foreach(SocketInfo usedSockInfo in socketInfo)
             {
-                MessageBox.Show("Connect된 서버가 없습니다.");
-                return;
+                if(usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
+                {
+                    if (usedSockInfo.conn)
+                    {
+                        usedSockInfo.conn = false;
+                        usedSockInfo.sock.Shutdown(SocketShutdown.Both);
+                        usedSockInfo.sock.Close();
+                        this.Text = "SocketClient===State===(Disconnected)";
+                        Log("======= Connect 종료 =======");
+                        ListboxFocus();
+                        return;
+                    }
+                }
             }
-            conn = false;
-            sock.Shutdown(SocketShutdown.Both);
-            sock.Close();
-            this.Text = "SocketClient===State===(Disconnected)";
-            Log("======= Connect 종료 =======");
-            ListboxFocus();
+            MessageBox.Show("Connect중인 서버가 없습니다.");
         }
         private void ListboxFocus()
         {
@@ -168,7 +168,7 @@ namespace TCPSocketCl
                 {
                     if (usedSockInfo.conn)
                     {
-                        StartThread(usedSockInfo.sock,Send);
+                        StartThread(usedSockInfo,Send);
                     }
                 }
             }
@@ -185,10 +185,16 @@ namespace TCPSocketCl
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
-            
-            if (conn)
+
+            foreach (SocketInfo usedSockInfo in socketInfo)
             {
-                ThreadStart(Send);
+                if (usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
+                {
+                    if (usedSockInfo.conn)
+                    {
+                        StartThread(usedSockInfo, Send);
+                    }
+                }
             }
         }
         private void Button_State(System.Windows.Forms.Button button, int state)

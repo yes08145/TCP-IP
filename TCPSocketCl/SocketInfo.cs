@@ -11,6 +11,15 @@ namespace TCPSocketCl
     {
         public Socket sock;
         public string IP;
+        public int PORT;
         public bool conn;
+
+        public SocketInfo(Socket sock,string IP,int PORT,bool conn)
+        {
+            this.sock = sock;
+            this.IP = IP;
+            this.PORT = PORT;
+            this.conn = conn;
+        }
     }
 }

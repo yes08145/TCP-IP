@@ -27,11 +27,21 @@ namespace TCPSocketCl
                         throw new Exception("이미 연결되어있음");
                     }
                 }
-                sockN++;
-                socketInfo[sockN].sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socketInfo[sockN].sock.ReceiveTimeout = 30000;
-                socketInfo[sockN].sock.Connect(ep);
-                socketInfo[sockN].conn = true;
+                try
+                {
+                    Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    sock.ReceiveTimeout = 30000;
+                    sock.Connect(ep);
+                    socketInfo.Add(new SocketInfo(sock,IP,PORT,true));
+                    Log2(IP+":"+PORT);
+                    Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
+                }
+                catch
+                {
+                    Log("======Connect Fail======");
+                    MessageBox.Show("서버에 연결할 수 없습니다.");
+                }
+                
             }
             catch(Exception e)
             {
@@ -39,35 +49,27 @@ namespace TCPSocketCl
                 {
                     MessageBox.Show(e.Message);
                 }
-                else
-                {
-                    Log("======Connect Fail======");
-                    MessageBox.Show("서버에 연결할 수 없습니다.");
-                }
                 return;
             }
-            Log2(IP);
-            Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
-            ListboxFocus();
-            TboxClear();
         }
-        private void StartThread(Socket sock, SocketDelegate socketDelegate)
+        private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate)
         {
             Thread thread = new Thread(new ParameterizedThreadStart(socketDelegate));
-            thread.Start(sock);
+            thread.Start(socketInfo);
         }
         public void Send(object obj)
         {
             try
             {
-                if(obj.GetType() != typeof(Socket))
+                if(obj.GetType() != typeof(SocketInfo))
                 {
-                    throw new Exception("Send(object obj): obj 타입이 Socket이 아님");
+                    throw new Exception("Send(object obj): obj 타입이 SocketInfo가 아님");
                 }
                 else
                 {
                     byte[] sendBuff = MakeMsg();
-                    ((Socket)obj).Send(sendBuff);
+                    SocketInfo socketInfo = (SocketInfo)obj;
+                    socketInfo.sock.Send(sendBuff);
                     strHex = BitConverter.ToString(sendBuff);
                     if (!InvokeRequired)
                     {
@@ -90,63 +92,81 @@ namespace TCPSocketCl
 
             }
         }
-        public void Recv()
+        public void Recv(object obj)
         {
             try
             {
-                while (conn)
+                if (obj.GetType() != typeof(SocketInfo))
                 {
-                    byte[] receiverBuff = new byte[16];
-                    int n = sock.Receive(receiverBuff);
-                    int dec_cksum = 0;
-                    string strHexSplit = string.Empty;
-                    string log_result = string.Empty;
-                    r_strHex = BitConverter.ToString(receiverBuff);
-                    int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
-                    if (r_strHex.Split('-')[3] == "1")
-                    {
-                        dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
-                    }
-                    else // (r_strHex.Split('-')[3] == "2"
-                    {
-                        dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
-                    }
-                    String hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
-
-                    if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
-                    {
-                        strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
-                    }
-                    else 
-                    {
-                        //StartFrame or EndFrame error
-                        continue;
-                    }
-
-                    // 들어온 값을 검증
-                    log_result = JudgeAction(strHexSplit, hex_cksum);
-
-                    if (!InvokeRequired)
-                    {
-                        Log(log_result);
-                        //Log(strHexSplit);
-                        ListboxFocus();
-                    }
-                    else
-                    {
-                        this.Invoke(new LogDelegate(Log), log_result);
-                        //this.Invoke(new LogDelegate(Log), strHexSplit);
-                        this.Invoke(new FocusDelegate(ListboxFocus));
-                    }
-                    Thread.Sleep(1000);
+                    throw new Exception("Recv(object obj): obj 타입이 SocketInfo가 아님");
                 }
+                else
+                {
+                    SocketInfo socketInfo = (SocketInfo)obj;
+                    while (socketInfo.conn)
+                    {
+                        byte[] receiverBuff = new byte[16];
+                        int n = socketInfo.sock.Receive(receiverBuff);
+                        int dec_cksum = 0;
+                        string strHexSplit = string.Empty;
+                        string log_result = string.Empty;
+                        r_strHex = BitConverter.ToString(receiverBuff);
+                        int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
+                        if (r_strHex.Split('-')[3] == "1")
+                        {
+                            dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
+                        }
+                        else // (r_strHex.Split('-')[3] == "2"
+                        {
+                            dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
+                        }
+                        String hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+
+                        if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
+                        {
+                            strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                        }
+                        else
+                        {
+                            //StartFrame or EndFrame error
+                            continue;
+                        }
+
+                        // 들어온 값을 검증
+                        log_result = JudgeAction(strHexSplit, hex_cksum);
+
+                        if (!InvokeRequired)
+                        {
+                            Log(log_result);
+                            //Log(strHexSplit);
+                            ListboxFocus();
+                        }
+                        else
+                        {
+                            this.Invoke(new LogDelegate(Log), log_result);
+                            //this.Invoke(new LogDelegate(Log), strHexSplit);
+                            this.Invoke(new FocusDelegate(ListboxFocus));
+                        }
+                        Thread.Sleep(1000);
+                    }
+                }
+                
             }
             catch (Exception e)
             {
-                if (conn)
+                if (e.Message == "Recv(object obj): obj 타입이 SocketInfo가 아님")
                 {
-                    this.Invoke(new SocketDelegate(btn_disconnect.PerformClick));
-                    this.Invoke(new Action(() => { MessageBox.Show(this, "대기시간이 초과되어 연결을 종료합니다."); }));
+                    
+                }
+                else if (e.GetType().Name == "SocketException")
+                {
+                    SocketInfo socketInfo = (SocketInfo)obj;
+                    if (socketInfo.conn)
+                    {
+                        this.Invoke(new FocusDelegate(btn_disconnect.PerformClick));
+                        this.Invoke(new Action(() => { MessageBox.Show(this, "대기시간이 초과되어 연결을 종료합니다."); }));
+                    }
+                    
                 }
                
             }
