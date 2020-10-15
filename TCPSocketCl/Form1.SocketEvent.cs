@@ -84,10 +84,20 @@ namespace TCPSocketCl
                     SocketInfo throwSockInfo = (SocketInfo)obj;
                     if (throwSockInfo.conn)
                     {
+                        int i = 0;
+                        foreach(SocketInfo removeSockInfo in socketInfo)
+                        {
+                            if(removeSockInfo.IP == throwSockInfo.IP && removeSockInfo.PORT == throwSockInfo.PORT)
+                            {
+                                break;
+                            }
+                            i++;
+                        }
                         throwSockInfo.conn = false;
                         throwSockInfo.sock.Shutdown(SocketShutdown.Both);
                         throwSockInfo.sock.Close();
                         listBox_quick.Items.Remove(throwSockInfo.IP + ":" + throwSockInfo.PORT);
+                        socketInfo.RemoveAt(i);
                         this.Text = "SocketClient===State===(Disconnected)";
                         Log("======= Connect 종료 =======");
                         ListboxFocus();
