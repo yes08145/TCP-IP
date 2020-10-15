@@ -27,7 +27,7 @@ namespace TCPSocketCl
         }
         private void ReceiveText()
         {
-            Log(strHex);
+            Log(r_strHex);
         }
 
         //숫자키만 입력가능

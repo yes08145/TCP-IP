@@ -20,49 +20,73 @@ namespace TCPSocketCl
             Log("Connect 시도중");
             try
             {
-                sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                sock.ReceiveTimeout = 30000;
-                sock.Connect(ep);
-                conn = true;
-            }
-            catch
-            {
-                MessageBox.Show("유효한 IP or PORT가 아닙니다.");
-                Log("Not Vaild IP or PORT");
-                return;
-            }
-            Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
-            TboxClear();
-        }
-        private void ThreadStart(SocketDelegate socketDelegate)
-        {
-            ts = new ThreadStart(socketDelegate);
-            thread = new Thread(ts);
-            thread.Start();
-        }
-        public void Send()
-        {
-            try
-            {
-                byte[] sendBuff = MakeMsg();
-                sock.Send(sendBuff);
-                strHex = BitConverter.ToString(sendBuff);
-                if (!InvokeRequired)
+                foreach(SocketInfo usedSockInfo in socketInfo)
                 {
-                    Log(logMsg[sensorID - 1]);
-                    Log(strHex);
-                    ListboxFocus();
+                    if(usedSockInfo.IP == IP && usedSockInfo.conn)
+                    {
+                        throw new Exception("이미 연결되어있음");
+                    }
                 }
-                else
-                {
-                    this.Invoke(new LogDelegate(Log), logMsg[sensorID - 1]);
-                    this.Invoke(new LogDelegate(Log), strHex);
-                    this.Invoke(new FocusDelegate(ListboxFocus));
-                }
+                sockN++;
+                socketInfo[sockN].sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socketInfo[sockN].sock.ReceiveTimeout = 30000;
+                socketInfo[sockN].sock.Connect(ep);
+                socketInfo[sockN].conn = true;
             }
             catch(Exception e)
             {
-                throw e;
+                if (e.Message == "이미 연결되어있음")
+                {
+                    MessageBox.Show(e.Message);
+                }
+                else
+                {
+                    MessageBox.Show("유효한 IP or PORT가 아닙니다.");
+                }
+                Log("Not Vaild IP or PORT");
+                return;
+            }
+            Log2(IP);
+            Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
+            TboxClear();
+        }
+        private void StartThread(Socket sock, SocketDelegate socketDelegate)
+        {
+            Thread thread = new Thread(new ParameterizedThreadStart(socketDelegate));
+            thread.Start(sock);
+        }
+        public void Send(object obj)
+        {
+            try
+            {
+                if(obj.GetType() != typeof(Socket))
+                {
+                    throw new Exception("Send(object obj): obj 타입이 Socket이 아님");
+                }
+                else
+                {
+                    byte[] sendBuff = MakeMsg();
+                    ((Socket)obj).Send(sendBuff);
+                    strHex = BitConverter.ToString(sendBuff);
+                    if (!InvokeRequired)
+                    {
+                        Log(logMsg[sensorID - 1]);
+                        Log(strHex);
+                        ListboxFocus();
+                    }
+                    else
+                    {
+                        this.Invoke(new LogDelegate(Log), logMsg[sensorID - 1]);
+                        this.Invoke(new LogDelegate(Log), strHex);
+                        this.Invoke(new FocusDelegate(ListboxFocus));
+                    }
+
+                }
+                
+            }
+            catch(Exception e)
+            {
+
             }
         }
         public void Recv()
@@ -72,33 +96,38 @@ namespace TCPSocketCl
             {
                 while (conn)
                 {
-                    RTUP rttt = new RTUP();
                     int n = sock.Receive(receiverBuff);
+                    int dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
+                    String hex_cksum = String.Format("{0:x2}", dec_cksum);
                     //int resize = BitConverter.ToInt32(receiverBuff, 0);
-                    recvHex = BitConverter.ToString(receiverBuff);
+                    r_strHex = BitConverter.ToString(receiverBuff);
                     string strHexSplit = string.Empty;
                     string log_result = string.Empty;
-                    int p_length = Convert.ToInt32(recvHex.Split('-')[2], 16);
-                    //strHexSplit = strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                    int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
+                    //strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
 
-                    if (recvHex.Split('-')[p_length - 1] == "03")
+                    if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
                     {
-                        strHexSplit = recvHex.Substring(0, (p_length * 2) + (p_length - 1));
+                        strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
                     }
                     else
                     {
+                        //StartFrame or EndFrame error
                         continue;
                     }
-                    log_result = JudgeAction(strHexSplit);
+
+                    // 들어온 값을 검증
+                    log_result = JudgeAction(strHexSplit, hex_cksum);
+
                     if (!InvokeRequired)
                     {
-                        Log(logMsg[sensorID + 1]);
+                        Log(log_result);
                         Log(strHexSplit);
                         ListboxFocus();
                     }
                     else
                     {
-                        this.Invoke(new LogDelegate(Log), logMsg[sensorID + 1]);
+                        this.Invoke(new LogDelegate(Log), log_result);
                         this.Invoke(new LogDelegate(Log), strHexSplit);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
@@ -107,7 +136,8 @@ namespace TCPSocketCl
             }
             catch (Exception e)
             {
-                btn_disconnect.PerformClick();
+                if(conn)
+                    this.Invoke(new SocketDelegate(btn_disconnect.PerformClick));
             }
         }
 

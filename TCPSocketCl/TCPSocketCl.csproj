@@ -70,6 +70,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RTUP.cs" />
+    <Compile Include="SocketInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

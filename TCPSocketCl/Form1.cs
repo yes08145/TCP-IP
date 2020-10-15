@@ -16,7 +16,6 @@ namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
-        bool flag = true;
         bool conn = false;
         public static bool clickFlag = false;
         private static int IP1 = 0;
@@ -34,16 +33,15 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
+        private static string r_strHex = string.Empty;
         private static string[] device_judge = new string[2];
         private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
-        ThreadStart ts = null;
-        Thread thread = null;
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
-        private static Socket sock = null;
+        private static SocketInfo[] socketInfo = null;
         public delegate void FocusDelegate();
-        public delegate void SocketDelegate();
+        public delegate void SocketDelegate(object obj);
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
 
@@ -74,6 +72,7 @@ namespace TCPSocketCl
                 return;
             }
             SocketConnect();
+            ThreadStart(Recv);
         }
         
         private void btn_disconnect_Click(object sender, EventArgs e)
@@ -89,11 +88,6 @@ namespace TCPSocketCl
             Log("======= Connect 종료 =======");
             ListboxFocus();
         }
-       
-        //public void DisConnect()
-        //{
-        //    flag = false;
-        //}
         private void ListboxFocus()
         {
             listbox1.SelectedIndex = listbox1.Items.Count - 1;
@@ -156,10 +150,15 @@ namespace TCPSocketCl
         {
             sensorID = 1;
             data = Convert.ToInt32(textbox_Aoutput.Text);
-            if (conn)
+            foreach(SocketInfo usedSockInfo in socketInfo)
             {
-                ThreadStart(Send);
-                ThreadStart(Recv);
+                if(usedSockInfo.IP == listBox_quick.SelectedItem.ToString())
+                {
+                    if (usedSockInfo.conn)
+                    {
+                        StartThread(usedSockInfo.sock,Send);
+                    }
+                }
             }
         }
 
@@ -174,12 +173,10 @@ namespace TCPSocketCl
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
-            flag = false;
             
             if (conn)
             {
                 ThreadStart(Send);
-                ThreadStart(Recv);
             }
         }
 
