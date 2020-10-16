@@ -34,9 +34,10 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
-        private static string r_strHex = string.Empty;
+        private static string strHexSplit = string.Empty;
+        private static string hex_cksum = string.Empty;
         private static string[] device_judge = new string[2];
-        private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
+        private static string[] logMsg = new string[5] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답", "디지털 입력 수신" };
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
@@ -66,17 +67,26 @@ namespace TCPSocketCl
 
         private void btn_connect_Click(object sender, EventArgs e)
         {
-            TboxValue();
+            try
+            {
+                TboxValue();
+            }
+            catch(FormatException ex)
+            {
+                MessageBox.Show("IP, PORT를 입력해주세요");
+                return;
+            }
+            
             int socketCount = socketInfo.Count;
             SocketConnect();
             ListboxFocus();
             TboxClear();
-
+            IP = "IP:"+IP1 + "." + IP2 + "." + IP3 + "." + IP4 +", PORT:"+PORT;
             if (socketCount < socketInfo.Count)
             {
                 StartThread(socketInfo[socketInfo.Count-1], Recv);
             }
-            this.Text = "SocketClient===State===(Connected)";
+            this.Text = "SocketClient===State==="+IP+"(Connected)";
         }
 
         private void btn_disconnect_Click(object sender, EventArgs e)

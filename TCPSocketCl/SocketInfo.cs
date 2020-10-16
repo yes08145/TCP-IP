@@ -13,7 +13,7 @@ namespace TCPSocketCl
         public string IP;
         public int PORT;
         public bool conn;
-
+        public byte[] r_Buff;
         public SocketInfo(Socket sock,string IP,int PORT,bool conn)
         {
             this.sock = sock;

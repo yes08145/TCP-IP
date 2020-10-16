@@ -410,7 +410,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(409, 149);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "RSA232";
+            this.tabPage3.Text = "RS232";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
