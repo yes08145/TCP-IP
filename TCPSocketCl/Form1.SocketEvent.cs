@@ -7,11 +7,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
+        private static string reconnIP = string.Empty;
+        private static int reconnPORT = 5000;
+        private static bool reconn = false;
+        private static Mutex mutex = new Mutex();
         private void SocketConnect()
         {
             // (2) 서버 연결
@@ -30,7 +33,7 @@ namespace TCPSocketCl
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    //sock.ReceiveTimeout = 30000;
+                    sock.ReceiveTimeout = 300000;
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock,IP,PORT,true));
                     Log2(IP+":"+PORT);
@@ -124,10 +127,18 @@ namespace TCPSocketCl
                 }
                 else
                 {
-                    byte[] sendBuff = MakeMsg();
+                    byte[] sendBuff = MakeMsg((SocketInfo)obj);
                     SocketInfo socketInfo = (SocketInfo)obj;
                     socketInfo.sock.Send(sendBuff);
                     strHex = BitConverter.ToString(sendBuff);
+                    //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
+                    //# 이를 해결하기 위한 배열 위치조정
+                    //# 이로인한 sensorID 손상 인지요망
+                    if(sensorID == 4)
+                    {
+                        sensorID = 3;
+                    }
+                    //#
                     if (!InvokeRequired)
                     {
                         Log(logMsg[sensorID - 1]);
@@ -217,25 +228,46 @@ namespace TCPSocketCl
                 }
                 else if (e.GetType().Name == "SocketException")
                 {
-                    SocketInfo socketInfo = (SocketInfo)obj;
-                    if (socketInfo.conn)
+                    SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
+                    //뮤텍스: 공유자원 reconnIP-재접속할 IP, reconnPORT-재접속할 PORT
+                    //Lock
+                    mutex.WaitOne();
+                    reconnIP = disconnectedSocketInfo.IP;
+                    reconnPORT = disconnectedSocketInfo.PORT;
+                    if (disconnectedSocketInfo.conn)
                     {
-                        this.Invoke(new SocketDelegate(SocketDisconnect), socketInfo);
-                        this.Invoke(new Action(() => { MessageBox.Show(this, "대기시간이 초과되어 연결을 종료합니다."); }));
+                        this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
+                        this.Invoke(new Action(() =>
+                        {
+                            if (MessageBox.Show(this, "서버와의 연결이 끊겼습니다.\n다시 접속하시겠습니까?", "Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                reconn = true;
+                            }
+                            else
+                            {
+                                reconn = false;
+                            }
+                        }
+                        ));
                     }
+                    //Unlock
+                    mutex.ReleaseMutex();
                     
                 }
                
             }
         }
 
-        public byte[] MakeMsg()
+        public byte[] MakeMsg(SocketInfo sendSocketInfo)
         {
             byte[] msg;
             RTUP rtup = new RTUP();
             rtup.usys_device_ID = 0x74;
             rtup.sensor_ID = (byte)sensorID;
-            //0 or 1 장비 선택
+            if (true)
+            {
+
+            }
             
             try
             {
@@ -295,6 +327,45 @@ namespace TCPSocketCl
                     msg[6] = rtup.check_sum[1];
                     msg[7] = rtup.eof;
                 }
+                else if(sensorID == 3)
+                {
+                    byte[] recvBuff = sendSocketInfo.r_Buff;
+                    msg = recvBuff;
+                }
+                else if(sensorID == 4)
+                {
+                    // digit 0/1
+                    rtup.ch_setting = (byte)dout_ch;
+                    if(data != 0 && data != 1)
+                    {
+                        throw new FormatException("보내고자하는 Digital Output\t"+data+"은 잘못된 값입니다.");
+                    }
+                    rtup.data = (byte)data;
+                    rtup.length = 0x09;
+                    //checksum
+                    int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting + rtup.data;
+                    if (checkSum > 255)
+                    {
+                        rtup.check_sum[0] = (byte)(checkSum - 255);
+                        rtup.check_sum[1] = 0xFF;
+                    }
+                    else
+                    {
+                        rtup.check_sum[0] = 0x00;
+                        rtup.check_sum[1] = (byte)checkSum;
+                    }
+
+                    msg = new byte[9];
+                    msg[0] = rtup.sof;
+                    msg[1] = rtup.usys_device_ID;
+                    msg[2] = rtup.length;
+                    msg[3] = rtup.sensor_ID;
+                    msg[4] = rtup.ch_setting;
+                    msg[5] = rtup.data;
+                    msg[6] = rtup.check_sum[0];
+                    msg[7] = rtup.check_sum[1];
+                    msg[8] = rtup.eof;
+                }
                 else
                 {
                     throw new Exception("잘못된 요청명령");
@@ -340,11 +411,11 @@ namespace TCPSocketCl
             {
                 if(rtup.sensor_ID == 1)
                 {
-                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 1];
+                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
                 }
                 else
                 {
-                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 1];
+                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 2];
                 }         
             }
             //로그를 띄워주자 (체크섬 오류)

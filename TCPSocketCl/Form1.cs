@@ -26,6 +26,7 @@ namespace TCPSocketCl
         private static int data = 0;
         private static int aout_ch = 0;
         private static int ain_ch = 0;
+        private static int dout_ch = 0;
         private static int sensorID = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
@@ -36,7 +37,7 @@ namespace TCPSocketCl
         private static string strHex = string.Empty;
         private static string r_strHex = string.Empty;
         private static string[] device_judge = new string[2];
-        private static string[] logMsg = new string[4] { "전류 출력 설정", "전류 입력 값 요청", "전류 출력 응답", "전류 입력 값 응답" };
+        private static string[] logMsg = new string[6] { "전류 출력 설정", "전류 입력 값 요청", "디지털 출력 설정", "전류 출력 응답", "전류 입력 값 응답","디지털 입력 응답" };
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
         // (1) 소켓 객체 생성
@@ -166,15 +167,6 @@ namespace TCPSocketCl
             }
            
         }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            aout_ch = 0;
-        }
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            aout_ch = 1;
-        }
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
@@ -197,40 +189,108 @@ namespace TCPSocketCl
             }
             
         }
+        private void Button_DOSetting_Click(object sender, EventArgs e)
+        {
+            sensorID = 4;
+            try
+            {
+                foreach (SocketInfo usedSockInfo in socketInfo)
+                {
+                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    {
+                        if (usedSockInfo.conn)
+                        {
+                            StartThread(usedSockInfo, Send);
+                        }
+                    }
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+        }
         private void Button_State(System.Windows.Forms.Button button, int state)
         {
             if(state == 1)
             {
                 button1.Enabled = true;
                 button2.Enabled = true;
-                button1.BackColor = SystemColors.Control;
-                button2.BackColor = SystemColors.Control;
+                button1.BackColor = System.Drawing.Color.Transparent;
+                button2.BackColor = System.Drawing.Color.Transparent;
                 this.ActiveControl = button_AOSetting;
             }
-            else//state ==2
+            else if(state == 2)
             {
-                button5.Enabled = true;
-                button6.Enabled = true;
-                button5.BackColor = SystemColors.Control;
-                button6.BackColor = SystemColors.Control;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                button3.BackColor = System.Drawing.Color.Transparent;
+                button4.BackColor = System.Drawing.Color.Transparent;
                 this.ActiveControl = button_AIRequest;
+            }
+            else if(state == 3)
+            {
+                button_DO0.Enabled = true;
+                button_DO1.Enabled = true;
+                button_DO2.Enabled = true;
+                button_DO3.Enabled = true;
+                button_DO0.BackColor = System.Drawing.Color.Transparent;
+                button_DO1.BackColor = System.Drawing.Color.Transparent;
+                button_DO2.BackColor = System.Drawing.Color.Transparent;
+                button_DO3.BackColor = System.Drawing.Color.Transparent;
+            }
+            else if(state == 4)
+            {
+                button_On.Enabled = true;
+                button_Off.Enabled = true;
+                button_On.BackColor = System.Drawing.Color.Transparent;
+                button_Off.BackColor = System.Drawing.Color.Transparent;
             }
             button.Enabled = false;
             button.BackColor = Color.AliceBlue;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             ain_ch = 0;
-            Button_State(button5,2);
+            Button_State(button3,2);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
             ain_ch = 1;
-            Button_State(button6,2);
+            Button_State(button4,2);
         }
-
+        private void Button_DO0_Click(object sender, EventArgs e)
+        {
+            dout_ch = 0;
+            Button_State(button_DO0, 3);
+        }
+        private void Button_DO1_Click(object sender, EventArgs e)
+        {
+            dout_ch = 1;
+            Button_State(button_DO1, 3);
+        }
+        private void Button_DO2_Click(object sender, EventArgs e)
+        {
+            dout_ch = 2;
+            Button_State(button_DO2, 3);
+        }
+        private void Button_DO3_Click(object sender, EventArgs e)
+        {
+            dout_ch = 3;
+            Button_State(button_DO3, 3);
+        }
+        private void Button_On_Click(object sender, EventArgs e)
+        {
+            data = 1;
+            Button_State(button_On, 4);
+        }
+        private void Button_Off_Click(object sender, EventArgs e)
+        {
+            data = 0;
+            Button_State(button_Off, 4);
+        }
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Font fntTab;

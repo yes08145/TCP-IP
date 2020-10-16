@@ -50,19 +50,29 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button_AOSetting = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_DOSetting = new System.Windows.Forms.Button();
+            this.button_Off = new System.Windows.Forms.Button();
+            this.button_On = new System.Windows.Forms.Button();
+            this.button_DO0 = new System.Windows.Forms.Button();
+            this.button_DO1 = new System.Windows.Forms.Button();
+            this.button_DO2 = new System.Windows.Forms.Button();
+            this.button_DO3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
@@ -289,29 +299,29 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button5
+            // button3
             // 
-            this.button5.BackColor = System.Drawing.Color.AliceBlue;
-            this.button5.Enabled = false;
-            this.button5.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button5.Location = new System.Drawing.Point(41, 29);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(47, 26);
-            this.button5.TabIndex = 36;
-            this.button5.Text = "ch 0";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button3.BackColor = System.Drawing.Color.AliceBlue;
+            this.button3.Enabled = false;
+            this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(41, 29);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(47, 26);
+            this.button3.TabIndex = 36;
+            this.button3.Text = "ch 0";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
-            // button6
+            // button4
             // 
-            this.button6.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button6.Location = new System.Drawing.Point(94, 29);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(47, 26);
-            this.button6.TabIndex = 36;
-            this.button6.Text = "ch 1";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button4.Location = new System.Drawing.Point(94, 29);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 26);
+            this.button4.TabIndex = 36;
+            this.button4.Text = "ch 1";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // tabControl
             // 
@@ -341,8 +351,8 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.button_AIRequest);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox2.Location = new System.Drawing.Point(214, 18);
             this.groupBox2.Name = "groupBox2";
@@ -396,6 +406,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -403,6 +414,119 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Digital";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button_DOSetting);
+            this.groupBox3.Controls.Add(this.button_Off);
+            this.groupBox3.Controls.Add(this.button_On);
+            this.groupBox3.Controls.Add(this.button_DO0);
+            this.groupBox3.Controls.Add(this.button_DO1);
+            this.groupBox3.Controls.Add(this.button_DO2);
+            this.groupBox3.Controls.Add(this.button_DO3);
+            this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox3.Location = new System.Drawing.Point(6, 18);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(189, 109);
+            this.groupBox3.TabIndex = 39;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "출력설정";
+            // 
+            // button_DOSetting
+            // 
+            this.button_DOSetting.BackColor = System.Drawing.Color.Transparent;
+            this.button_DOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_DOSetting.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_DOSetting.Location = new System.Drawing.Point(29, 75);
+            this.button_DOSetting.Name = "button_DOSetting";
+            this.button_DOSetting.Size = new System.Drawing.Size(128, 26);
+            this.button_DOSetting.TabIndex = 26;
+            this.button_DOSetting.TabStop = false;
+            this.button_DOSetting.Text = "디지털 출력 설정";
+            this.button_DOSetting.UseVisualStyleBackColor = false;
+            this.button_DOSetting.Click += new System.EventHandler(this.Button_DOSetting_Click);
+            // 
+            // button_Off
+            // 
+            this.button_Off.BackColor = System.Drawing.Color.Transparent;
+            this.button_Off.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_Off.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_Off.Location = new System.Drawing.Point(126, 45);
+            this.button_Off.Name = "button_Off";
+            this.button_Off.Size = new System.Drawing.Size(47, 26);
+            this.button_Off.TabIndex = 25;
+            this.button_Off.TabStop = false;
+            this.button_Off.Text = "Off";
+            this.button_Off.UseVisualStyleBackColor = false;
+            this.button_Off.Click += new System.EventHandler(this.Button_Off_Click);
+            // 
+            // button_On
+            // 
+            this.button_On.BackColor = System.Drawing.Color.Transparent;
+            this.button_On.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_On.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_On.Location = new System.Drawing.Point(126, 16);
+            this.button_On.Name = "button_On";
+            this.button_On.Size = new System.Drawing.Size(47, 26);
+            this.button_On.TabIndex = 24;
+            this.button_On.TabStop = false;
+            this.button_On.Text = "On";
+            this.button_On.UseVisualStyleBackColor = false;
+            this.button_On.Click += new System.EventHandler(this.Button_On_Click);
+            // 
+            // button_DO0
+            // 
+            this.button_DO0.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO0.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_DO0.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_DO0.Location = new System.Drawing.Point(22, 16);
+            this.button_DO0.Name = "button_DO0";
+            this.button_DO0.Size = new System.Drawing.Size(23, 55);
+            this.button_DO0.TabIndex = 23;
+            this.button_DO0.TabStop = false;
+            this.button_DO0.Text = "ch 0";
+            this.button_DO0.UseVisualStyleBackColor = false;
+            this.button_DO0.Click += new System.EventHandler(this.Button_DO0_Click);
+            // 
+            // button_DO1
+            // 
+            this.button_DO1.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_DO1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_DO1.Location = new System.Drawing.Point(48, 16);
+            this.button_DO1.Name = "button_DO1";
+            this.button_DO1.Size = new System.Drawing.Size(23, 55);
+            this.button_DO1.TabIndex = 22;
+            this.button_DO1.TabStop = false;
+            this.button_DO1.Text = "ch 1";
+            this.button_DO1.UseVisualStyleBackColor = false;
+            this.button_DO1.Click += new System.EventHandler(this.Button_DO1_Click);
+            // 
+            // button_DO2
+            // 
+            this.button_DO2.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_DO2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button_DO2.Location = new System.Drawing.Point(74, 16);
+            this.button_DO2.Name = "button_DO2";
+            this.button_DO2.Size = new System.Drawing.Size(23, 55);
+            this.button_DO2.TabIndex = 21;
+            this.button_DO2.TabStop = false;
+            this.button_DO2.Text = "ch 2";
+            this.button_DO2.UseVisualStyleBackColor = false;
+            this.button_DO2.Click += new System.EventHandler(this.Button_DO2_Click);
+            // 
+            // button_DO3
+            // 
+            this.button_DO3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_DO3.Location = new System.Drawing.Point(100, 16);
+            this.button_DO3.Name = "button_DO3";
+            this.button_DO3.Size = new System.Drawing.Size(23, 55);
+            this.button_DO3.TabIndex = 21;
+            this.button_DO3.TabStop = false;
+            this.button_DO3.Text = "ch 3";
+            this.button_DO3.UseVisualStyleBackColor = true;
+            this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
             // tabPage3
             // 
@@ -445,6 +569,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,8 +599,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button_AOSetting;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage1;
@@ -482,5 +608,13 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button_DO0;
+        private System.Windows.Forms.Button button_DO1;
+        private System.Windows.Forms.Button button_DO2;
+        private System.Windows.Forms.Button button_DO3;
+        private System.Windows.Forms.Button button_Off;
+        private System.Windows.Forms.Button button_On;
+        private System.Windows.Forms.Button button_DOSetting;
     }
 }
