@@ -25,10 +25,10 @@ namespace TCPSocketCl
             textBox_IP4.Clear();
             textBox_Port.Clear();
         }
-        private void ReceiveText()
-        {
-            Log(r_strHex);
-        }
+        //private void ReceiveText()
+        //{
+        //    Log(r_strHex);
+        //}
 
         //숫자키만 입력가능
         private void textBox_IP1_KeyPress(object sender, KeyPressEventArgs e)

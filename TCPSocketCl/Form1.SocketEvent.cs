@@ -175,56 +175,47 @@ namespace TCPSocketCl
                     {
                         byte[] receiverBuff = new byte[16];
                         int n = socketInfo.sock.Receive(receiverBuff);
-                        int dec_cksum = 0;
-                        string strHexSplit = string.Empty;
+                        hex_cksum = string.Empty;
+                        strHexSplit = string.Empty;
                         string log_result = string.Empty;
-                        r_strHex = BitConverter.ToString(receiverBuff);
-                        int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
-                        if (r_strHex.Split('-')[3] == "1")
-                        {
-                            dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
-                        }
-                        else // (r_strHex.Split('-')[3] == "2"
-                        {
-                            dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
-                        }
-                        String hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
 
-                        if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
+                        int resultSet = SplitAndCksum(receiverBuff);
+                        if (resultSet == 0) continue;
+                        else if (resultSet == 3)
                         {
-                            strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                            if (socketInfo.conn)
+                            {
+                                    socketInfo.r_Buff = receiverBuff;
+                                    StartThread(socketInfo, Send);
+                            }
                         }
-                        else
-                        {
-                            //StartFrame or EndFrame error
-                            continue;
-                        }
-
-                        // 들어온 값을 검증
                         log_result = JudgeAction(strHexSplit, hex_cksum);
+
 
                         if (!InvokeRequired)
                         {
+                            Log("========================================");
                             Log(log_result);
-                            //Log(strHexSplit);
+                            Log(strHexSplit);
                             ListboxFocus();
                         }
                         else
                         {
+                            this.Invoke(new LogDelegate(Log), "========================================");
                             this.Invoke(new LogDelegate(Log), log_result);
-                            //this.Invoke(new LogDelegate(Log), strHexSplit);
+                            this.Invoke(new LogDelegate(Log), strHexSplit);
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
                         Thread.Sleep(1000);
                     }
                 }
-                
+
             }
             catch (Exception e)
             {
                 if (e.Message == "Recv(object obj): obj 타입이 SocketInfo가 아님")
                 {
-                    
+
                 }
                 else if (e.GetType().Name == "SocketException")
                 {
@@ -254,7 +245,7 @@ namespace TCPSocketCl
                     mutex.ReleaseMutex();
                     
                 }
-               
+
             }
         }
 
@@ -264,11 +255,8 @@ namespace TCPSocketCl
             RTUP rtup = new RTUP();
             rtup.usys_device_ID = 0x74;
             rtup.sensor_ID = (byte)sensorID;
-            if (true)
-            {
+            //0 or 1 장비 선택
 
-            }
-            
             try
             {
                 if (sensorID == 1)
@@ -413,15 +401,42 @@ namespace TCPSocketCl
                 {
                     log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
                 }
-                else
+                else if(rtup.sensor_ID == 2)
                 {
                     log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 2];
-                }         
+                }
+                else
+                {
+                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+                }
             }
             //로그를 띄워주자 (체크섬 오류)
             else log = "CheckSum 오류";
 
             return log;
+        }
+
+        private int SplitAndCksum(byte[] receiverBuff)
+        {
+            int resultSet = 0;
+            int dec_cksum = 0;
+            string r_strHex = BitConverter.ToString(receiverBuff);
+            int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
+            if (r_strHex.Split('-')[3] == "1")
+            {
+                dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
+            }
+            else // (r_strHex.Split('-')[3] == "2"
+            {
+                dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
+            }
+            hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+            if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
+            {
+                strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
+                resultSet = Convert.ToInt32(r_strHex.Split('-')[3],16);
+            }
+            return resultSet;
         }
 
     }
