@@ -35,8 +35,8 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
-        private static string strHexSplit = string.Empty;
-        private static string hex_cksum = string.Empty;
+        //private static string strHexSplit = string.Empty;
+        //private static string hex_cksum = string.Empty;
         private static string[] device_judge = new string[2];
         private static string[] logMsg = new string[6] { "전류 출력 설정", "전류 입력 값 요청", "디지털 출력 설정", "전류 출력 응답", "전류 입력 값 응답","디지털 입력 수신" };
         private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
@@ -79,15 +79,16 @@ namespace TCPSocketCl
             }
             
             int socketCount = socketInfo.Count;
-            SocketConnect();
+            IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4;
+            SocketConnect(IP,PORT);
             ListboxFocus();
             TboxClear();
-            IP = "IP:"+IP1 + "." + IP2 + "." + IP3 + "." + IP4 +", PORT:"+PORT;
+            String resultIP = "IP:"+IP+", PORT:"+PORT;
             if (socketCount < socketInfo.Count)
             {
                 StartThread(socketInfo[socketInfo.Count-1], Recv);
             }
-            this.Text = "SocketClient===State==="+IP+"(Connected)";
+            this.Text = "SocketClient===State==="+resultIP+"(Connected)";
         }
 
         private void btn_disconnect_Click(object sender, EventArgs e)
@@ -162,7 +163,7 @@ namespace TCPSocketCl
                 data = Convert.ToInt32(comboBox1.Text);
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -184,7 +185,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.IP+":"+usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0]) - 1)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -206,7 +207,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0]) - 1)
                     {
                         if (usedSockInfo.conn)
                         {

@@ -13,30 +13,29 @@ namespace TCPSocketCl
     {
         private static string reconnIP = string.Empty;
         private static int reconnPORT = 5000;
-        private static bool reconn = false;
+        //private static bool reconn = false;
         private static Mutex mutex = new Mutex();
-        private void SocketConnect()
+        private void SocketConnect(string in_IP, int in_PORT)
         {
-            // (2) 서버 연결
-            IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4; // 192.168.0.180
+
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), PORT);
             Log("Connect 시도중");
             try
             {
-                foreach(SocketInfo usedSockInfo in socketInfo)
-                {
-                    if(usedSockInfo.IP == IP && usedSockInfo.conn)
-                    {
-                        throw new Exception("이미 연결되어있음");
-                    }
-                }
+                //foreach (SocketInfo usedSockInfo in socketInfo)
+                //{
+                //    if (usedSockInfo.IP == IP && usedSockInfo.conn)
+                //    {
+                //        throw new Exception("이미 연결되어있음");
+                //    }
+                //}
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     sock.ReceiveTimeout = 300000;
                     sock.Connect(ep);
-                    socketInfo.Add(new SocketInfo(sock,IP,PORT,true));
-                    Log2(IP+":"+PORT);
+                    socketInfo.Add(new SocketInfo(sock, IP, PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
+                    Log2(socketInfo.Count+") "+IP + ":" + PORT); // 1이 시작 인덱스
                     Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
                 }
                 catch
@@ -44,9 +43,9 @@ namespace TCPSocketCl
                     Log("======Connect Fail======");
                     MessageBox.Show("서버에 연결할 수 없습니다.");
                 }
-                
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 if (e.Message == "이미 연결되어있음")
                 {
@@ -61,7 +60,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.IP + ":" + usedSockInfo.PORT == listBox_quick.SelectedItem.ToString())
+                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
                     {
                         SocketDisconnect(usedSockInfo);
                         return;
@@ -87,20 +86,11 @@ namespace TCPSocketCl
                     SocketInfo throwSockInfo = (SocketInfo)obj;
                     if (throwSockInfo.conn)
                     {
-                        int i = 0;
-                        foreach(SocketInfo removeSockInfo in socketInfo)
-                        {
-                            if(removeSockInfo.IP == throwSockInfo.IP && removeSockInfo.PORT == throwSockInfo.PORT)
-                            {
-                                break;
-                            }
-                            i++;
-                        }
                         throwSockInfo.conn = false;
                         throwSockInfo.sock.Shutdown(SocketShutdown.Both);
                         throwSockInfo.sock.Close();
-                        listBox_quick.Items.Remove(throwSockInfo.IP + ":" + throwSockInfo.PORT);
-                        socketInfo.RemoveAt(i);
+                        listBox_quick.Items.RemoveAt(throwSockInfo.index);
+                        socketInfo.RemoveAt(throwSockInfo.index);
                         this.Text = "SocketClient===State===(Disconnected)";
                         Log("======= Connect 종료 =======");
                         ListboxFocus();
@@ -175,11 +165,18 @@ namespace TCPSocketCl
                     {
                         byte[] receiverBuff = new byte[16];
                         int n = socketInfo.sock.Receive(receiverBuff);
-                        hex_cksum = string.Empty;
-                        strHexSplit = string.Empty;
+                        // Splitcksum return을 int resultSet 에서 
+                        // (strHexSplit, hex_cksum, resultSet)을 가지는 class ResultSet 으로 바꿈
+                        // 전역변수 지역변수화
+                        string hex_cksum = string.Empty;
+                        string strHexSplit = string.Empty;
                         string log_result = string.Empty;
 
-                        int resultSet = SplitAndCksum(receiverBuff);
+                        ResultSet result = SplitAndCksum(receiverBuff);
+                        strHexSplit = result.strHexSplit;
+                        hex_cksum = result.hex_cksum;
+                        int resultSet = result.resultSet;
+
                         if (resultSet == 0) continue;
                         else if (resultSet == 3)
                         {
@@ -232,11 +229,20 @@ namespace TCPSocketCl
                         {
                             if (MessageBox.Show(this, "서버와의 연결이 끊겼습니다.\n다시 접속하시겠습니까?", "Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                reconn = true;
+                                //reconn = true;
+                                int socketCount = socketInfo.Count;
+                                SocketConnect(reconnIP,reconnPORT);
+                                //ListboxFocus();
+                                if (socketCount < socketInfo.Count)
+                                {
+                                    StartThread(socketInfo[socketInfo.Count - 1], Recv);
+                                }
                             }
                             else
                             {
-                                reconn = false;
+                                //reconn = false;
+                                reconnIP = string.Empty;
+                                reconnPORT = 0;
                             }
                         }
                         ));
@@ -253,13 +259,29 @@ namespace TCPSocketCl
         {
             byte[] msg;
             RTUP rtup = new RTUP();
-            rtup.usys_device_ID = 0x74;
-            rtup.sensor_ID = (byte)sensorID;
+            byte[] receiverBuff = sendSocketInfo.r_Buff;
+            if (receiverBuff != null)
+            {
+                string r_strHex = BitConverter.ToString(receiverBuff);
+                rtup.usys_device_ID = Convert.ToByte(r_strHex.Split('-')[1]);
+                rtup.length = Convert.ToByte(r_strHex.Split('-')[2]);
+                rtup.sensor_ID = Convert.ToByte(r_strHex.Split('-')[3] + 1);
+                rtup.ch_setting = Convert.ToByte(r_strHex.Split('-')[4]);
+                rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
+                rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
+                rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
+                sendSocketInfo.r_Buff = null;
+            }
+            else
+            {
+                rtup.usys_device_ID = 0x74;
+                rtup.sensor_ID = (byte)sensorID;
+            }
             //0 or 1 장비 선택
 
             try
             {
-                if (sensorID == 1)
+                if (rtup.sensor_ID == 1)
                 {
                     // 4~20mA
                     rtup.ch_setting = (byte)aout_ch;
@@ -289,7 +311,7 @@ namespace TCPSocketCl
                     msg[7] = rtup.check_sum[1];
                     msg[8] = rtup.eof;
                 }
-                else if (sensorID == 2)
+                else if (rtup.sensor_ID == 2)
                 {
                     rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
@@ -315,10 +337,18 @@ namespace TCPSocketCl
                     msg[6] = rtup.check_sum[1];
                     msg[7] = rtup.eof;
                 }
-                else if(sensorID == 3)
+                else if(rtup.sensor_ID == 3)
                 {
-                    byte[] recvBuff = sendSocketInfo.r_Buff;
-                    msg = recvBuff;
+                    msg = new byte[9];
+                    msg[0] = rtup.sof;
+                    msg[1] = rtup.usys_device_ID;
+                    msg[2] = rtup.length;
+                    msg[3] = rtup.sensor_ID;
+                    msg[4] = rtup.ch_setting;
+                    msg[5] = rtup.data;
+                    msg[6] = rtup.check_sum[0];
+                    msg[7] = rtup.check_sum[1];
+                    msg[8] = rtup.eof;
                 }
                 else if(sensorID == 4)
                 {
@@ -416,7 +446,7 @@ namespace TCPSocketCl
             return log;
         }
 
-        private int SplitAndCksum(byte[] receiverBuff)
+        private ResultSet SplitAndCksum(byte[] receiverBuff)
         {
             int resultSet = 0;
             int dec_cksum = 0;
@@ -430,13 +460,14 @@ namespace TCPSocketCl
             {
                 dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
             }
-            hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+            string hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+            string strHexSplit = string.Empty;
             if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
             {
                 strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
                 resultSet = Convert.ToInt32(r_strHex.Split('-')[3],16);
             }
-            return resultSet;
+            return new ResultSet(strHexSplit, hex_cksum, resultSet);
         }
 
     }
