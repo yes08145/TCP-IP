@@ -18,6 +18,7 @@ namespace TCPSocketCl
     {
         //bool conn = false;
         public static bool clickFlag = false;
+        private static int SocketNuM = 1;
         private static int IP1 = 0;
         private static int IP2 = 0;
         private static int IP3 = 0;
@@ -36,6 +37,7 @@ namespace TCPSocketCl
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
         private static string strHexSplit = string.Empty;
+        private static string rBuffSplit = string.Empty;
         private static string hex_cksum = string.Empty;
         private static string[] device_judge = new string[2];
         private static string[] logMsg = new string[6] { "전류 출력 설정", "전류 입력 값 요청", "디지털 출력 설정", "전류 출력 응답", "전류 입력 값 응답","디지털 입력 수신" };
@@ -77,7 +79,6 @@ namespace TCPSocketCl
                 MessageBox.Show("IP, PORT를 입력해주세요");
                 return;
             }
-            
             int socketCount = socketInfo.Count;
             SocketConnect();
             ListboxFocus();
@@ -85,9 +86,11 @@ namespace TCPSocketCl
             IP = "IP:"+IP1 + "." + IP2 + "." + IP3 + "." + IP4 +", PORT:"+PORT;
             if (socketCount < socketInfo.Count)
             {
+                SocketNuM++;
+                //this.Text = "SocketClient===State===" + IP + "(Connected)";
                 StartThread(socketInfo[socketInfo.Count-1], Recv);
             }
-            this.Text = "SocketClient===State==="+IP+"(Connected)";
+            
         }
 
         private void btn_disconnect_Click(object sender, EventArgs e)
@@ -327,5 +330,21 @@ namespace TCPSocketCl
             recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
             e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
         }
+
+        private void radioButton1_Click(object sender, EventArgs e)
+        {
+            aout_ch = 0;
+        }
+
+        private void radioButton2_Click(object sender, EventArgs e)
+        {
+            aout_ch = 1;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

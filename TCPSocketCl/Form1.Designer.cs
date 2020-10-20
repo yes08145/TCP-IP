@@ -44,7 +44,6 @@
             this.listbox1 = new System.Windows.Forms.ListBox();
             this.btn_textClear = new System.Windows.Forms.Button();
             this.listBox_quick = new System.Windows.Forms.ListBox();
-            this.btn_quick = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button_AIRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.button_DOSetting = new System.Windows.Forms.Button();
             this.button_Off = new System.Windows.Forms.Button();
             this.button_On = new System.Windows.Forms.Button();
@@ -67,17 +67,21 @@
             this.button_DO2 = new System.Windows.Forms.Button();
             this.button_DO3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
             // 
-            this.textBox_IP1.Location = new System.Drawing.Point(87, 30);
+            this.textBox_IP1.Location = new System.Drawing.Point(76, 33);
             this.textBox_IP1.MaxLength = 3;
             this.textBox_IP1.Name = "textBox_IP1";
             this.textBox_IP1.Size = new System.Drawing.Size(26, 21);
@@ -88,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(26, 32);
+            this.label1.Location = new System.Drawing.Point(15, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 4;
@@ -98,7 +102,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(26, 68);
+            this.label2.Location = new System.Drawing.Point(15, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 5;
@@ -106,16 +110,16 @@
             // 
             // textBox_Port
             // 
-            this.textBox_Port.Location = new System.Drawing.Point(86, 66);
+            this.textBox_Port.Location = new System.Drawing.Point(76, 69);
             this.textBox_Port.MaxLength = 5;
             this.textBox_Port.Name = "textBox_Port";
-            this.textBox_Port.Size = new System.Drawing.Size(123, 21);
+            this.textBox_Port.Size = new System.Drawing.Size(122, 21);
             this.textBox_Port.TabIndex = 4;
             this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Port_KeyPress);
             // 
             // textBox_IP2
             // 
-            this.textBox_IP2.Location = new System.Drawing.Point(119, 30);
+            this.textBox_IP2.Location = new System.Drawing.Point(108, 33);
             this.textBox_IP2.MaxLength = 3;
             this.textBox_IP2.Name = "textBox_IP2";
             this.textBox_IP2.Size = new System.Drawing.Size(26, 21);
@@ -124,7 +128,7 @@
             // 
             // textBox_IP3
             // 
-            this.textBox_IP3.Location = new System.Drawing.Point(151, 30);
+            this.textBox_IP3.Location = new System.Drawing.Point(140, 33);
             this.textBox_IP3.MaxLength = 3;
             this.textBox_IP3.Name = "textBox_IP3";
             this.textBox_IP3.Size = new System.Drawing.Size(26, 21);
@@ -133,7 +137,7 @@
             // 
             // textBox_IP4
             // 
-            this.textBox_IP4.Location = new System.Drawing.Point(183, 30);
+            this.textBox_IP4.Location = new System.Drawing.Point(172, 33);
             this.textBox_IP4.MaxLength = 3;
             this.textBox_IP4.Name = "textBox_IP4";
             this.textBox_IP4.Size = new System.Drawing.Size(26, 21);
@@ -144,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(113, 37);
+            this.label3.Location = new System.Drawing.Point(102, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(9, 12);
             this.label3.TabIndex = 10;
@@ -154,7 +158,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(145, 37);
+            this.label4.Location = new System.Drawing.Point(134, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(9, 12);
             this.label4.TabIndex = 11;
@@ -164,7 +168,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(177, 37);
+            this.label5.Location = new System.Drawing.Point(166, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(9, 12);
             this.label5.TabIndex = 12;
@@ -173,7 +177,7 @@
             // btn_connect
             // 
             this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_connect.Location = new System.Drawing.Point(29, 118);
+            this.btn_connect.Location = new System.Drawing.Point(18, 128);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(180, 26);
             this.btn_connect.TabIndex = 13;
@@ -184,9 +188,9 @@
             // btn_disconnect
             // 
             this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_disconnect.Location = new System.Drawing.Point(29, 150);
+            this.btn_disconnect.Location = new System.Drawing.Point(10, 128);
             this.btn_disconnect.Name = "btn_disconnect";
-            this.btn_disconnect.Size = new System.Drawing.Size(180, 26);
+            this.btn_disconnect.Size = new System.Drawing.Size(133, 26);
             this.btn_disconnect.TabIndex = 14;
             this.btn_disconnect.Text = "Disconnect";
             this.btn_disconnect.UseVisualStyleBackColor = true;
@@ -203,14 +207,14 @@
             this.listbox1.ItemHeight = 15;
             this.listbox1.Location = new System.Drawing.Point(12, 191);
             this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(880, 334);
+            this.listbox1.Size = new System.Drawing.Size(1060, 634);
             this.listbox1.TabIndex = 17;
             // 
             // btn_textClear
             // 
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_textClear.Location = new System.Drawing.Point(808, 162);
+            this.btn_textClear.Location = new System.Drawing.Point(988, 162);
             this.btn_textClear.Name = "btn_textClear";
             this.btn_textClear.Size = new System.Drawing.Size(84, 23);
             this.btn_textClear.TabIndex = 18;
@@ -223,22 +227,11 @@
             this.listBox_quick.DisplayMember = "dd";
             this.listBox_quick.FormattingEnabled = true;
             this.listBox_quick.ItemHeight = 12;
-            this.listBox_quick.Location = new System.Drawing.Point(236, 28);
+            this.listBox_quick.Location = new System.Drawing.Point(10, 20);
             this.listBox_quick.Name = "listBox_quick";
-            this.listBox_quick.Size = new System.Drawing.Size(133, 112);
+            this.listBox_quick.Size = new System.Drawing.Size(133, 100);
             this.listBox_quick.TabIndex = 19;
             this.listBox_quick.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_quick_MouseClick);
-            // 
-            // btn_quick
-            // 
-            this.btn_quick.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_quick.Location = new System.Drawing.Point(236, 150);
-            this.btn_quick.Name = "btn_quick";
-            this.btn_quick.Size = new System.Drawing.Size(133, 26);
-            this.btn_quick.TabIndex = 20;
-            this.btn_quick.Text = "Select IP/PORT";
-            this.btn_quick.UseVisualStyleBackColor = true;
-            this.btn_quick.Click += new System.EventHandler(this.btn_quick_Click);
             // 
             // button1
             // 
@@ -331,7 +324,7 @@
             this.tabControl.Location = new System.Drawing.Point(385, 10);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(417, 175);
+            this.tabControl.Size = new System.Drawing.Size(417, 174);
             this.tabControl.TabIndex = 39;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             // 
@@ -343,7 +336,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(409, 149);
+            this.tabPage1.Size = new System.Drawing.Size(409, 148);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Analog";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -410,13 +403,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(409, 149);
+            this.tabPage2.Size = new System.Drawing.Size(409, 148);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Digital";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.button_DOSetting);
             this.groupBox3.Controls.Add(this.button_Off);
             this.groupBox3.Controls.Add(this.button_On);
@@ -425,19 +419,29 @@
             this.groupBox3.Controls.Add(this.button_DO2);
             this.groupBox3.Controls.Add(this.button_DO3);
             this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(6, 18);
+            this.groupBox3.Location = new System.Drawing.Point(16, 18);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(189, 109);
+            this.groupBox3.Size = new System.Drawing.Size(232, 117);
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "출력설정";
+            this.groupBox3.Text = "신호출력";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(11, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 14);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "SIGNAL :";
             // 
             // button_DOSetting
             // 
             this.button_DOSetting.BackColor = System.Drawing.Color.Transparent;
             this.button_DOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DOSetting.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DOSetting.Location = new System.Drawing.Point(29, 75);
+            this.button_DOSetting.Location = new System.Drawing.Point(52, 77);
             this.button_DOSetting.Name = "button_DOSetting";
             this.button_DOSetting.Size = new System.Drawing.Size(128, 26);
             this.button_DOSetting.TabIndex = 26;
@@ -448,10 +452,11 @@
             // 
             // button_Off
             // 
-            this.button_Off.BackColor = System.Drawing.Color.Transparent;
+            this.button_Off.BackColor = System.Drawing.Color.AliceBlue;
+            this.button_Off.Enabled = false;
             this.button_Off.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_Off.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Off.Location = new System.Drawing.Point(126, 45);
+            this.button_Off.Location = new System.Drawing.Point(92, 45);
             this.button_Off.Name = "button_Off";
             this.button_Off.Size = new System.Drawing.Size(47, 26);
             this.button_Off.TabIndex = 25;
@@ -465,7 +470,7 @@
             this.button_On.BackColor = System.Drawing.Color.Transparent;
             this.button_On.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_On.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_On.Location = new System.Drawing.Point(126, 16);
+            this.button_On.Location = new System.Drawing.Point(145, 45);
             this.button_On.Name = "button_On";
             this.button_On.Size = new System.Drawing.Size(47, 26);
             this.button_On.TabIndex = 24;
@@ -476,12 +481,13 @@
             // 
             // button_DO0
             // 
-            this.button_DO0.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO0.BackColor = System.Drawing.Color.AliceBlue;
+            this.button_DO0.Enabled = false;
             this.button_DO0.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO0.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO0.Location = new System.Drawing.Point(22, 16);
+            this.button_DO0.Location = new System.Drawing.Point(11, 16);
             this.button_DO0.Name = "button_DO0";
-            this.button_DO0.Size = new System.Drawing.Size(23, 55);
+            this.button_DO0.Size = new System.Drawing.Size(47, 26);
             this.button_DO0.TabIndex = 23;
             this.button_DO0.TabStop = false;
             this.button_DO0.Text = "ch 0";
@@ -493,9 +499,9 @@
             this.button_DO1.BackColor = System.Drawing.Color.Transparent;
             this.button_DO1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO1.Location = new System.Drawing.Point(48, 16);
+            this.button_DO1.Location = new System.Drawing.Point(64, 16);
             this.button_DO1.Name = "button_DO1";
-            this.button_DO1.Size = new System.Drawing.Size(23, 55);
+            this.button_DO1.Size = new System.Drawing.Size(47, 26);
             this.button_DO1.TabIndex = 22;
             this.button_DO1.TabStop = false;
             this.button_DO1.Text = "ch 1";
@@ -507,9 +513,9 @@
             this.button_DO2.BackColor = System.Drawing.Color.Transparent;
             this.button_DO2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO2.Location = new System.Drawing.Point(74, 16);
+            this.button_DO2.Location = new System.Drawing.Point(117, 16);
             this.button_DO2.Name = "button_DO2";
-            this.button_DO2.Size = new System.Drawing.Size(23, 55);
+            this.button_DO2.Size = new System.Drawing.Size(47, 26);
             this.button_DO2.TabIndex = 21;
             this.button_DO2.TabStop = false;
             this.button_DO2.Text = "ch 2";
@@ -519,9 +525,9 @@
             // button_DO3
             // 
             this.button_DO3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO3.Location = new System.Drawing.Point(100, 16);
+            this.button_DO3.Location = new System.Drawing.Point(170, 16);
             this.button_DO3.Name = "button_DO3";
-            this.button_DO3.Size = new System.Drawing.Size(23, 55);
+            this.button_DO3.Size = new System.Drawing.Size(47, 26);
             this.button_DO3.TabIndex = 21;
             this.button_DO3.TabStop = false;
             this.button_DO3.Text = "ch 3";
@@ -532,37 +538,59 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(409, 149);
+            this.tabPage3.Size = new System.Drawing.Size(409, 148);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "RS232";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox4.Controls.Add(this.listBox_quick);
+            this.groupBox4.Controls.Add(this.btn_disconnect);
+            this.groupBox4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox4.Location = new System.Drawing.Point(227, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(152, 160);
+            this.groupBox4.TabIndex = 40;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Connected";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox5.Controls.Add(this.textBox_IP1);
+            this.groupBox5.Controls.Add(this.textBox_IP2);
+            this.groupBox5.Controls.Add(this.textBox_IP3);
+            this.groupBox5.Controls.Add(this.textBox_IP4);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.btn_connect);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.textBox_Port);
+            this.groupBox5.Location = new System.Drawing.Point(12, 25);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(213, 160);
+            this.groupBox5.TabIndex = 20;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Network Setting";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 561);
+            this.ClientSize = new System.Drawing.Size(1084, 861);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.btn_quick);
-            this.Controls.Add(this.listBox_quick);
             this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.listbox1);
-            this.Controls.Add(this.btn_disconnect);
-            this.Controls.Add(this.btn_connect);
-            this.Controls.Add(this.textBox_IP4);
-            this.Controls.Add(this.textBox_IP3);
-            this.Controls.Add(this.textBox_IP2);
-            this.Controls.Add(this.textBox_Port);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_IP1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(920, 600);
             this.Name = "Form1";
-            this.Text = "SocketClient===State===(Disconnected)";
+            this.Text = "Socket Client Program";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -571,8 +599,11 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -593,7 +624,6 @@
         private System.Windows.Forms.ListBox listbox1;
         private System.Windows.Forms.Button btn_textClear;
         private System.Windows.Forms.ListBox listBox_quick;
-        private System.Windows.Forms.Button btn_quick;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_AIRequest;
         private System.Windows.Forms.Label label7;
@@ -616,5 +646,8 @@
         private System.Windows.Forms.Button button_Off;
         private System.Windows.Forms.Button button_On;
         private System.Windows.Forms.Button button_DOSetting;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
