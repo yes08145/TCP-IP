@@ -77,7 +77,6 @@ namespace TCPSocketCl
                 MessageBox.Show("IP, PORT를 입력해주세요");
                 return;
             }
-            
             int socketCount = socketInfo.Count;
             IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4;
             SocketConnect(IP,PORT);
@@ -88,7 +87,7 @@ namespace TCPSocketCl
             {
                 StartThread(socketInfo[socketInfo.Count-1], Recv);
             }
-            this.Text = "SocketClient===State==="+resultIP+"(Connected)";
+            
         }
 
         private void btn_disconnect_Click(object sender, EventArgs e)
