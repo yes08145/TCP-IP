@@ -32,7 +32,7 @@ namespace TCPSocketCl
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    sock.ReceiveTimeout = 300000;
+                    sock.ReceiveTimeout = 600000;
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, IP, PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
                     Log2(socketInfo.Count+") "+IP + ":" + PORT); // 1이 시작 인덱스
@@ -91,6 +91,15 @@ namespace TCPSocketCl
                         throwSockInfo.sock.Close();
                         listBox_quick.Items.RemoveAt(throwSockInfo.index);
                         socketInfo.RemoveAt(throwSockInfo.index);
+                        int i = 0;
+                        foreach(SocketInfo list in socketInfo)
+                        {
+                            
+                            string listBox_text = listBox_quick.Items[i].ToString().Split(')')[1];
+                            list.index = i;
+                            listBox_quick.Items[i] = (list.index+1)+")"+listBox_text;
+                            i++;
+                        }
                         this.Text = "SocketClient===State===(Disconnected)";
                         Log("======= Connect 종료 =======");
                         ListboxFocus();
