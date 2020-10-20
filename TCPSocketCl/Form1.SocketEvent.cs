@@ -176,6 +176,10 @@ namespace TCPSocketCl
                         strHexSplit = result.strHexSplit;
                         hex_cksum = result.hex_cksum;
                         int resultSet = result.resultSet;
+                        // 테스트 결과 send가 recv log앞에 있어서 출력창에 recv-send순으로 log가 뜨지않고
+                        // send-recv순으로 뜸
+                        // 따라서 JudgeAction 순서 앞으로 변경
+                        log_result = JudgeAction(strHexSplit, hex_cksum);
 
                         if (resultSet == 0) continue;
                         else if (resultSet == 3)
@@ -183,10 +187,14 @@ namespace TCPSocketCl
                             if (socketInfo.conn)
                             {
                                     socketInfo.r_Buff = receiverBuff;
+                                // sensorID가 3에서 4로 변하면서 cksum이 1증가함
+                                //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
                                     StartThread(socketInfo, Send);
+                                //recv log에 띄울 cksum으로 다시 되돌림
+                                //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
                             }
                         }
-                        log_result = JudgeAction(strHexSplit, hex_cksum);
+                        
 
 
                         if (!InvokeRequired)
@@ -263,10 +271,10 @@ namespace TCPSocketCl
             if (receiverBuff != null)
             {
                 string r_strHex = BitConverter.ToString(receiverBuff);
-                rtup.usys_device_ID = Convert.ToByte(r_strHex.Split('-')[1]);
-                rtup.length = Convert.ToByte(r_strHex.Split('-')[2]);
-                rtup.sensor_ID = Convert.ToByte(r_strHex.Split('-')[3] + 1);
-                rtup.ch_setting = Convert.ToByte(r_strHex.Split('-')[4]);
+                rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+r_strHex.Split('-')[1],16));
+                rtup.length = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[2],16));
+                rtup.sensor_ID = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[3],16));
+                rtup.ch_setting = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[4],16));
                 rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
                 rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
                 rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
@@ -289,16 +297,9 @@ namespace TCPSocketCl
                     rtup.length = 0x09;
                     //checksum
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting + rtup.data;
-                    if (checkSum > 255)
-                    {
-                        rtup.check_sum[0] = (byte)(checkSum - 255);
-                        rtup.check_sum[1] = 0xFF;
-                    }
-                    else
-                    {
-                        rtup.check_sum[0] = 0x00;
-                        rtup.check_sum[1] = (byte)checkSum;
-                    }
+
+                    rtup.check_sum[0] = (byte)(checkSum / 256);
+                    rtup.check_sum[1] = (byte)(checkSum % 256);
 
                     msg = new byte[9];
                     msg[0] = rtup.sof;
@@ -316,16 +317,8 @@ namespace TCPSocketCl
                     rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting;
-                    if (checkSum > 255)
-                    {
-                        rtup.check_sum[0] = (byte)(checkSum - 255);
-                        rtup.check_sum[1] = 0xFF;
-                    }
-                    else
-                    {
-                        rtup.check_sum[0] = 0x00;
-                        rtup.check_sum[1] = (byte)checkSum;
-                    }
+                    rtup.check_sum[0] = (byte)(checkSum / 256);
+                    rtup.check_sum[1] = (byte)(checkSum % 256);
 
                     msg = new byte[8];
                     msg[0] = rtup.sof;
@@ -337,20 +330,24 @@ namespace TCPSocketCl
                     msg[6] = rtup.check_sum[1];
                     msg[7] = rtup.eof;
                 }
-                else if(rtup.sensor_ID == 3)
+                else if (rtup.sensor_ID == 3)
                 {
+
+                    int checkSum = rtup.check_sum[0] * 256 + rtup.check_sum[1]+1;
+                    rtup.check_sum[0] = (byte)(checkSum / 256);
+                    rtup.check_sum[1] = (byte)(checkSum % 256);
                     msg = new byte[9];
                     msg[0] = rtup.sof;
                     msg[1] = rtup.usys_device_ID;
                     msg[2] = rtup.length;
-                    msg[3] = rtup.sensor_ID;
+                    msg[3] = Convert.ToByte(rtup.sensor_ID+1);
                     msg[4] = rtup.ch_setting;
                     msg[5] = rtup.data;
                     msg[6] = rtup.check_sum[0];
                     msg[7] = rtup.check_sum[1];
                     msg[8] = rtup.eof;
                 }
-                else if(sensorID == 4)
+                else if(rtup.sensor_ID == 4)
                 {
                     // digit 0/1
                     rtup.ch_setting = (byte)dout_ch;
@@ -362,16 +359,8 @@ namespace TCPSocketCl
                     rtup.length = 0x09;
                     //checksum
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting + rtup.data;
-                    if (checkSum > 255)
-                    {
-                        rtup.check_sum[0] = (byte)(checkSum - 255);
-                        rtup.check_sum[1] = 0xFF;
-                    }
-                    else
-                    {
-                        rtup.check_sum[0] = 0x00;
-                        rtup.check_sum[1] = (byte)checkSum;
-                    }
+                    rtup.check_sum[0] = (byte)(checkSum / 256);
+                    rtup.check_sum[1] = (byte)(checkSum % 256);
 
                     msg = new byte[9];
                     msg[0] = rtup.sof;
