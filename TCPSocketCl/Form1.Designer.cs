@@ -176,6 +176,7 @@
             // 
             // btn_connect
             // 
+            this.btn_connect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_connect.Location = new System.Drawing.Point(18, 128);
             this.btn_connect.Name = "btn_connect";
@@ -187,6 +188,7 @@
             // 
             // btn_disconnect
             // 
+            this.btn_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_disconnect.Location = new System.Drawing.Point(10, 128);
             this.btn_disconnect.Name = "btn_disconnect";
@@ -213,6 +215,7 @@
             // btn_textClear
             // 
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_textClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_textClear.Location = new System.Drawing.Point(988, 162);
             this.btn_textClear.Name = "btn_textClear";
@@ -235,8 +238,8 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.AliceBlue;
-            this.button1.Enabled = false;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button1.Location = new System.Drawing.Point(85, 29);
@@ -250,6 +253,7 @@
             // 
             // button_AIRequest
             // 
+            this.button_AIRequest.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_AIRequest.Location = new System.Drawing.Point(27, 61);
             this.button_AIRequest.Name = "button_AIRequest";
@@ -271,6 +275,7 @@
             // 
             // button_AOSetting
             // 
+            this.button_AOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_AOSetting.Location = new System.Drawing.Point(35, 61);
             this.button_AOSetting.Name = "button_AOSetting";
@@ -282,6 +287,7 @@
             // 
             // button2
             // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button2.Location = new System.Drawing.Point(136, 29);
             this.button2.Name = "button2";
@@ -294,8 +300,8 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.AliceBlue;
-            this.button3.Enabled = false;
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button3.Location = new System.Drawing.Point(41, 29);
             this.button3.Name = "button3";
@@ -307,6 +313,7 @@
             // 
             // button4
             // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button4.Location = new System.Drawing.Point(94, 29);
             this.button4.Name = "button4";
@@ -439,6 +446,7 @@
             // button_DOSetting
             // 
             this.button_DOSetting.BackColor = System.Drawing.Color.Transparent;
+            this.button_DOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DOSetting.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_DOSetting.Location = new System.Drawing.Point(52, 77);
@@ -452,8 +460,8 @@
             // 
             // button_Off
             // 
-            this.button_Off.BackColor = System.Drawing.Color.AliceBlue;
-            this.button_Off.Enabled = false;
+            this.button_Off.BackColor = System.Drawing.Color.Transparent;
+            this.button_Off.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Off.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_Off.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_Off.Location = new System.Drawing.Point(92, 45);
@@ -468,6 +476,7 @@
             // button_On
             // 
             this.button_On.BackColor = System.Drawing.Color.Transparent;
+            this.button_On.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_On.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_On.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_On.Location = new System.Drawing.Point(145, 45);
@@ -481,8 +490,8 @@
             // 
             // button_DO0
             // 
-            this.button_DO0.BackColor = System.Drawing.Color.AliceBlue;
-            this.button_DO0.Enabled = false;
+            this.button_DO0.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DO0.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO0.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_DO0.Location = new System.Drawing.Point(11, 16);
@@ -497,6 +506,7 @@
             // button_DO1
             // 
             this.button_DO1.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DO1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_DO1.Location = new System.Drawing.Point(64, 16);
@@ -511,6 +521,7 @@
             // button_DO2
             // 
             this.button_DO2.BackColor = System.Drawing.Color.Transparent;
+            this.button_DO2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DO2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button_DO2.Location = new System.Drawing.Point(117, 16);
@@ -524,6 +535,7 @@
             // 
             // button_DO3
             // 
+            this.button_DO3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_DO3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_DO3.Location = new System.Drawing.Point(170, 16);
             this.button_DO3.Name = "button_DO3";
