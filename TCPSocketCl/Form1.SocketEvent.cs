@@ -35,7 +35,7 @@ namespace TCPSocketCl
                     sock.ReceiveTimeout = 300000;
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, IP, PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
-                    Log2(socketInfo.Count+") "+IP + ":" + PORT); // 1이 시작 인덱스
+                    Log2(IP + ":" + PORT); // 1이 시작 인덱스
                     Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
                 }
                 catch
@@ -60,7 +60,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
+                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
                     {
                         SocketDisconnect(usedSockInfo);
                         return;
@@ -69,6 +69,10 @@ namespace TCPSocketCl
                 MessageBox.Show("Connect중인 서버가 없습니다.");
             }
             catch (NullReferenceException ex)
+            {
+                MessageBox.Show("Disconnect할 서버를 선택해주십시오.");
+            }
+            catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("Disconnect할 서버를 선택해주십시오.");
             }
@@ -89,24 +93,26 @@ namespace TCPSocketCl
                         throwSockInfo.conn = false;
                         throwSockInfo.sock.Shutdown(SocketShutdown.Both);
                         throwSockInfo.sock.Close();
-                        listBox_quick.Items.RemoveAt(throwSockInfo.index);
+                        ipList.RemoveAt(throwSockInfo.index);
                         socketInfo.RemoveAt(throwSockInfo.index);
                         int i = 0;
                         foreach(SocketInfo list in socketInfo)
                         {
-                            
-                            string listBox_text = listBox_quick.Items[i].ToString().Split(')')[1];
+
+                            //string listBox_text = listBox_quick.Items[i].ToString().Split(')')[1];
                             list.index = i;
-                            listBox_quick.Items[i] = (list.index+1)+")"+listBox_text;
+
+                            //listBox_quick.Items[i] = (list.index+1)+")"+listBox_text;
                             i++;
                         }
-                        
+                        dataGridView1.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
                         Log("======= Connect 종료 =======");
                         ListboxFocus();
                     }
                 }
             }
             catch(Exception e)
+
             {
 
             }
@@ -133,20 +139,20 @@ namespace TCPSocketCl
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
-                    if(sensorID == 4)
+                    if (sendBuff[3] == 4)
                     {
-                        sensorID = 3;
+                        sendBuff[3] = 3;
                     }
                     //#
                     if (!InvokeRequired)
                     {
-                        Log(logMsg[sensorID - 1]);
+                        Log(logMsg[sendBuff[3]- 1]);
                         Log(strHex);
                         ListboxFocus();
                     }
                     else
                     {
-                        this.Invoke(new LogDelegate(Log), logMsg[sensorID - 1]);
+                        this.Invoke(new LogDelegate(Log), logMsg[sendBuff[3] - 1]);
                         this.Invoke(new LogDelegate(Log), strHex);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
@@ -247,7 +253,7 @@ namespace TCPSocketCl
                                 //reconn = true;
                                 int socketCount = socketInfo.Count;
                                 SocketConnect(reconnIP,reconnPORT);
-                                //ListboxFocus();
+                                ListboxFocus();
                                 if (socketCount < socketInfo.Count)
                                 {
                                     StartThread(socketInfo[socketInfo.Count - 1], Recv);

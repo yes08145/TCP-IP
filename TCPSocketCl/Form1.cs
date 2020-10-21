@@ -47,6 +47,7 @@ namespace TCPSocketCl
         public delegate void SocketDelegate(object obj);
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
+        private static List<string> ipList = new List<string>();
 
 
         public Form1()
@@ -137,11 +138,13 @@ namespace TCPSocketCl
 
         public void Log2(string msg)
         {
-            listBox_quick.Items.Add(string.Format(
+            //listBox_quick.Items.Add(string.Format(
 
-            "{0}", msg
+            //"{0}", msg
 
-            ));
+            //));
+            ipList.Add(msg);
+            dataGridView1.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -162,7 +165,7 @@ namespace TCPSocketCl
                 data = Convert.ToInt32(comboBox1.Text);
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
+                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)//Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -175,7 +178,11 @@ namespace TCPSocketCl
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-           
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+
         }
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
@@ -184,7 +191,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0]) - 1)
+                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -206,7 +213,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0]) - 1)
+                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -326,6 +333,15 @@ namespace TCPSocketCl
             Rectangle recTab = e.Bounds;
             recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
             e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
+        }
+        private void DgvRowHeaderPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                StringFormat sf = new StringFormat();
+                sf.Alignment = StringAlignment.Near;
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X+2, e.RowBounds.Location.Y+6, sf);
+            }
         }
     }
 }
