@@ -147,19 +147,12 @@ namespace TCPSocketCl
             dataGridView1.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            aout_ch = 0;
-            Button_State(button1,1);
-        }
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            aout_ch = 1;
-            Button_State(button2,1);
-        }
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 1;
+            if (button1.BackColor == Color.LightBlue) aout_ch = 0;
+            else if (button2.BackColor == Color.LightBlue) aout_ch = 1;
+            else aout_ch = 404;
             try
             {
                 data = Convert.ToInt32(comboBox1.Text);
@@ -187,6 +180,10 @@ namespace TCPSocketCl
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
+            if (button3.BackColor == Color.LightBlue) ain_ch = 0;
+            else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
+            else ain_ch = 404;
+
             try
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
@@ -209,6 +206,16 @@ namespace TCPSocketCl
         private void Button_DOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 4;
+            if (button_DO0.BackColor == Color.LightBlue) dout_ch = 0;
+            else if (button_DO1.BackColor == Color.LightBlue) dout_ch = 1;
+            else if (button_DO2.BackColor == Color.LightBlue) dout_ch = 2;
+            else if (button_DO3.BackColor == Color.LightBlue) dout_ch = 3;
+            else dout_ch = 404;
+
+            if (button_Off.BackColor == Color.LightBlue) data = 0;
+            else if (button_On.BackColor == Color.LightBlue) data = 1;
+            else data = 404;
+
             try
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
@@ -229,85 +236,85 @@ namespace TCPSocketCl
         }
         private void Button_State(System.Windows.Forms.Button button, int state)
         {
-            if(state == 1)
+            int btn_color = 1;
+            if (button.BackColor == Color.LightBlue)
             {
-                button1.Enabled = true;
-                button2.Enabled = true;
+                btn_color = 0;
+            }
+            if (state == 1)
+            {
                 button1.BackColor = System.Drawing.Color.Transparent;
                 button2.BackColor = System.Drawing.Color.Transparent;
                 this.ActiveControl = button_AOSetting;
             }
-            else if(state == 2)
+            else if (state == 2)
             {
-                button3.Enabled = true;
-                button4.Enabled = true;
                 button3.BackColor = System.Drawing.Color.Transparent;
                 button4.BackColor = System.Drawing.Color.Transparent;
                 this.ActiveControl = button_AIRequest;
             }
-            else if(state == 3)
+            else if (state == 3)
             {
-                button_DO0.Enabled = true;
-                button_DO1.Enabled = true;
-                button_DO2.Enabled = true;
-                button_DO3.Enabled = true;
                 button_DO0.BackColor = System.Drawing.Color.Transparent;
                 button_DO1.BackColor = System.Drawing.Color.Transparent;
                 button_DO2.BackColor = System.Drawing.Color.Transparent;
                 button_DO3.BackColor = System.Drawing.Color.Transparent;
+                this.ActiveControl = button_DOSetting;
             }
             else if(state == 4)
             {
-                button_On.Enabled = true;
-                button_Off.Enabled = true;
-                button_On.BackColor = System.Drawing.Color.Transparent;
                 button_Off.BackColor = System.Drawing.Color.Transparent;
+                button_On.BackColor = System.Drawing.Color.Transparent;
+                this.ActiveControl = button_DOSetting;
             }
-            button.Enabled = false;
-            button.BackColor = Color.AliceBlue;
+            if(btn_color == 1)
+            {
+                button.BackColor = Color.LightBlue;
+            }
+            
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Button_State(button1, 1);
+        }
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Button_State(button2, 1);
+        }
         private void Button3_Click(object sender, EventArgs e)
         {
-            ain_ch = 0;
             Button_State(button3,2);
         }
-
         private void Button4_Click(object sender, EventArgs e)
         {
-            ain_ch = 1;
             Button_State(button4,2);
         }
         private void Button_DO0_Click(object sender, EventArgs e)
         {
-            dout_ch = 0;
             Button_State(button_DO0, 3);
         }
         private void Button_DO1_Click(object sender, EventArgs e)
         {
-            dout_ch = 1;
             Button_State(button_DO1, 3);
         }
         private void Button_DO2_Click(object sender, EventArgs e)
         {
-            dout_ch = 2;
             Button_State(button_DO2, 3);
         }
         private void Button_DO3_Click(object sender, EventArgs e)
         {
-            dout_ch = 3;
             Button_State(button_DO3, 3);
-        }
-        private void Button_On_Click(object sender, EventArgs e)
-        {
-            data = 1;
-            Button_State(button_On, 4);
         }
         private void Button_Off_Click(object sender, EventArgs e)
         {
-            data = 0;
             Button_State(button_Off, 4);
         }
+        private void Button_On_Click(object sender, EventArgs e)
+        {
+            Button_State(button_On, 4);
+        }
+        
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             Font fntTab;

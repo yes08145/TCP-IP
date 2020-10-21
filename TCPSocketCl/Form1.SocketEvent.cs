@@ -136,6 +136,9 @@ namespace TCPSocketCl
                     SocketInfo socketInfo = (SocketInfo)obj;
                     socketInfo.sock.Send(sendBuff);
                     strHex = BitConverter.ToString(sendBuff);
+                    ResultSet result = SplitAndCksum(sendBuff);
+                    string hex_cksum = result.hex_cksum;
+                    string log_result = JudgeAction(strHex, hex_cksum);
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
@@ -146,13 +149,13 @@ namespace TCPSocketCl
                     //#
                     if (!InvokeRequired)
                     {
-                        Log(logMsg[sendBuff[3]- 1]);
+                        Log(log_result);
                         Log(strHex);
                         ListboxFocus();
                     }
                     else
                     {
-                        this.Invoke(new LogDelegate(Log), logMsg[sendBuff[3] - 1]);
+                        this.Invoke(new LogDelegate(Log), log_result);
                         this.Invoke(new LogDelegate(Log), strHex);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
@@ -160,9 +163,14 @@ namespace TCPSocketCl
                 }
                 
             }
+            //catch(FormatException ee)
+            //{
+            //    MessageBox.Show("채널 또는 값을 선택해주세요");
+            //    //throw ee;
+            //}
             catch(Exception e)
             {
-
+                
             }
         }
         public void Recv(object obj)
@@ -253,7 +261,7 @@ namespace TCPSocketCl
                                 //reconn = true;
                                 int socketCount = socketInfo.Count;
                                 SocketConnect(reconnIP,reconnPORT);
-                                ListboxFocus();
+                                //ListboxFocus();
                                 if (socketCount < socketInfo.Count)
                                 {
                                     StartThread(socketInfo[socketInfo.Count - 1], Recv);
@@ -299,11 +307,12 @@ namespace TCPSocketCl
                 rtup.sensor_ID = (byte)sensorID;
             }
             //0 or 1 장비 선택
-
+            
             try
             {
                 if (rtup.sensor_ID == 1)
                 {
+                    if(data == 404 || aout_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     // 4~20mA
                     rtup.ch_setting = (byte)aout_ch;
                     rtup.data = (byte)data;
@@ -327,6 +336,7 @@ namespace TCPSocketCl
                 }
                 else if (rtup.sensor_ID == 2)
                 {
+                    if (ain_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting;
@@ -362,6 +372,7 @@ namespace TCPSocketCl
                 }
                 else if(rtup.sensor_ID == 4)
                 {
+                    if (dout_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     // digit 0/1
                     rtup.ch_setting = (byte)dout_ch;
                     if(data != 0 && data != 1)
@@ -388,10 +399,15 @@ namespace TCPSocketCl
                 }
                 else
                 {
-                    throw new Exception("잘못된 요청명령");
+                    throw new NullReferenceException("잘못된 요청명령");
                 }
             }
-            catch (Exception e)
+            catch (FormatException ee)
+            {
+                MessageBox.Show("채널 또는 data가 올바르지 않습니다.");
+                throw ee;
+            }
+            catch (NullReferenceException e)
             {
                 throw e;
             }
@@ -431,16 +447,19 @@ namespace TCPSocketCl
             {
                 if(rtup.sensor_ID == 1)
                 {
-                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    if(rtup.length == 8) log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    else log  = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
                 }
                 else if(rtup.sensor_ID == 2)
                 {
-                    log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 2];
+                    if(rtup.length == 9) log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 2];
+                    else log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
                 }
-                else
+                else if (rtup.sensor_ID == 3)
                 {
                     log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
                 }
+                else log = "Device" + device_judge[74 - rtup.usys_device_ID] + "의 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
             }
             //로그를 띄워주자 (체크섬 오류)
             else log = "CheckSum 오류";
@@ -454,7 +473,7 @@ namespace TCPSocketCl
             int dec_cksum = 0;
             string r_strHex = BitConverter.ToString(receiverBuff);
             int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
-            if (r_strHex.Split('-')[3] == "1")
+            if (p_length == 8)
             {
                 dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
             }
