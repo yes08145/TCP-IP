@@ -18,25 +18,18 @@ namespace TCPSocketCl
         private void SocketConnect(string in_IP, int in_PORT)
         {
 
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(IP), PORT);
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(in_IP), in_PORT);
             Log("Connect 시도중");
             try
             {
-                //foreach (SocketInfo usedSockInfo in socketInfo)
-                //{
-                //    if (usedSockInfo.IP == IP && usedSockInfo.conn)
-                //    {
-                //        throw new Exception("이미 연결되어있음");
-                //    }
-                //}
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     sock.ReceiveTimeout = 300000;
                     sock.Connect(ep);
-                    socketInfo.Add(new SocketInfo(sock, IP, PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
-                    Log2(IP + ":" + PORT); // 1이 시작 인덱스
-                    Log("========= IP: " + IP + ", PORT: " + PORT + " Connect 완료 =========");
+                    socketInfo.Add(new SocketInfo(sock, in_IP, in_PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
+                    Log2(in_IP + ":" + in_PORT); // 1이 시작 인덱스
+                    Log("========= IP: " + in_IP + ", PORT: " + in_PORT + " Connect 완료 =========");
                 }
                 catch
                 {

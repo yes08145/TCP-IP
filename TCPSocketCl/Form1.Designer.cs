@@ -46,7 +46,6 @@
             this.btn_disconnect = new System.Windows.Forms.Button();
             this.listbox1 = new System.Windows.Forms.ListBox();
             this.btn_textClear = new System.Windows.Forms.Button();
-            this.listBox_quick = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button_AIRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -73,6 +72,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -229,17 +229,6 @@
             this.btn_textClear.Text = "Text Clear";
             this.btn_textClear.UseVisualStyleBackColor = true;
             this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
-            // 
-            // listBox_quick
-            // 
-            this.listBox_quick.DisplayMember = "dd";
-            this.listBox_quick.FormattingEnabled = true;
-            this.listBox_quick.ItemHeight = 12;
-            this.listBox_quick.Location = new System.Drawing.Point(10, 20);
-            this.listBox_quick.Name = "listBox_quick";
-            this.listBox_quick.Size = new System.Drawing.Size(133, 100);
-            this.listBox_quick.TabIndex = 19;
-            this.listBox_quick.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox_quick_MouseClick);
             // 
             // button1
             // 
@@ -563,9 +552,9 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Controls.Add(this.listBox_quick);
+            this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.btn_disconnect);
+            this.groupBox4.Controls.Add(this.dataGridView1);
             this.groupBox4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(227, 25);
             this.groupBox4.Name = "groupBox4";
@@ -579,6 +568,7 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -598,6 +588,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.Location = new System.Drawing.Point(10, 20);
             this.dataGridView1.MultiSelect = false;
@@ -605,23 +596,22 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ScrollBar;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 12;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Empty;
-            this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Empty;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(133, 100);
             this.dataGridView1.TabIndex = 41;
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvRowHeaderPaint);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
             // 
             // groupBox5
             // 
@@ -643,6 +633,15 @@
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Network Setting";
+            // 
+            // label8
+            // 
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(23, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(2, 100);
+            this.label8.TabIndex = 42;
             // 
             // Form1
             // 
@@ -691,7 +690,6 @@
         private System.Windows.Forms.Button btn_disconnect;
         private System.Windows.Forms.ListBox listbox1;
         private System.Windows.Forms.Button btn_textClear;
-        private System.Windows.Forms.ListBox listBox_quick;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_AIRequest;
         private System.Windows.Forms.Label label7;
@@ -718,5 +716,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label8;
     }
 }

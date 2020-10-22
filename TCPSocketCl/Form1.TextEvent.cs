@@ -82,35 +82,5 @@ namespace TCPSocketCl
         {
             listbox1.Items.Clear();
         }
-
-        private void listBox_quick_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (listBox_quick.SelectedItem != null)
-            {
-                q_ip1 = listBox_quick.SelectedItem.ToString().Split('.')[0];
-                q_ip2 = listBox_quick.SelectedItem.ToString().Split('.')[1];
-                q_ip3 = listBox_quick.SelectedItem.ToString().Split('.')[2];
-                q_ip4 = listBox_quick.SelectedItem.ToString().Split('.')[3].Split(':')[0];
-                q_port = listBox_quick.SelectedItem.ToString().Split(':')[1];
-            }
-        }
-
-        private void btn_quick_Click(object sender, EventArgs e)
-        {
-            if (listBox_quick.SelectedItem != null)
-            {
-                textBox_IP1.Text = q_ip1;
-                textBox_IP2.Text = q_ip2;
-                textBox_IP3.Text = q_ip3;
-                textBox_IP4.Text = q_ip4;
-                textBox_Port.Text = q_port;
-                listBox_quick.SelectedItem = null;
-            }
-            else
-            {
-                MessageBox.Show("선택된 IP가 없습니다.");
-                //MessageBox.Show(filePath);
-            }
-        }
     }
 }

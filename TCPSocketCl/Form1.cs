@@ -65,6 +65,8 @@ namespace TCPSocketCl
             device_judge[1] = "SmartPoE";
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             comboBox1.SelectedIndex = 0;
+            //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
+
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -347,8 +349,12 @@ namespace TCPSocketCl
             {
                 StringFormat sf = new StringFormat();
                 sf.Alignment = StringAlignment.Near;
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X+2, e.RowBounds.Location.Y+6, sf);
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 2, e.RowBounds.Location.Y + 6, sf);
             }
+        }
+        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dataGridView1.Rows[e.RowIndex].Selected = !(this.dataGridView1.Rows[e.RowIndex].Selected);
         }
     }
 }
