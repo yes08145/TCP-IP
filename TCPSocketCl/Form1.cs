@@ -88,7 +88,7 @@ namespace TCPSocketCl
             String resultIP = "IP:"+IP+", PORT:"+PORT;
             if (socketCount < socketInfo.Count)
             {
-                StartThread(socketInfo[socketInfo.Count-1], Recv);
+                StartThread(socketInfo[socketInfo.Count-1], Recv, "recv");
             }
             
         }
@@ -132,8 +132,9 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
+                
             }
 
         }
@@ -154,7 +155,8 @@ namespace TCPSocketCl
             sensorID = 1;
             if (button1.BackColor == Color.LightBlue) aout_ch = 0;
             else if (button2.BackColor == Color.LightBlue) aout_ch = 1;
-            else aout_ch = 404;
+            //else aout_ch = 404;
+            else sensorID = 100;
             try
             {
                 data = Convert.ToInt32(comboBox1.Text);
@@ -164,7 +166,7 @@ namespace TCPSocketCl
                     {
                         if (usedSockInfo.conn)
                         {
-                            StartThread(usedSockInfo, Send);
+                            StartThread(usedSockInfo, Send, "send");
                         }
                     }
                 }
@@ -184,8 +186,8 @@ namespace TCPSocketCl
             sensorID = 2;
             if (button3.BackColor == Color.LightBlue) ain_ch = 0;
             else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
-            else ain_ch = 404;
-
+            //else ain_ch = 404;
+            else sensorID = 100;
             try
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
@@ -194,7 +196,7 @@ namespace TCPSocketCl
                     {
                         if (usedSockInfo.conn)
                         {
-                            StartThread(usedSockInfo, Send);
+                            StartThread(usedSockInfo, Send, "send");
                         }
                     }
                 }
@@ -212,11 +214,13 @@ namespace TCPSocketCl
             else if (button_DO1.BackColor == Color.LightBlue) dout_ch = 1;
             else if (button_DO2.BackColor == Color.LightBlue) dout_ch = 2;
             else if (button_DO3.BackColor == Color.LightBlue) dout_ch = 3;
-            else dout_ch = 404;
+            //else dout_ch = 404;
+            else sensorID = 100;
 
             if (button_Off.BackColor == Color.LightBlue) data = 0;
             else if (button_On.BackColor == Color.LightBlue) data = 1;
-            else data = 404;
+            //else data = 404;
+            else sensorID = 100;
 
             try
             {
@@ -226,7 +230,7 @@ namespace TCPSocketCl
                     {
                         if (usedSockInfo.conn)
                         {
-                            StartThread(usedSockInfo, Send);
+                            StartThread(usedSockInfo, Send, "send");
                         }
                     }
                 }

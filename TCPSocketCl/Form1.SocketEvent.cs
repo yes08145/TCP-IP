@@ -107,12 +107,14 @@ namespace TCPSocketCl
             catch(Exception e)
 
             {
-
+                
             }
         }
-        private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate)
+        private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate, string str)
         {
             Thread thread = new Thread(new ParameterizedThreadStart(socketDelegate));
+            if (str == "recv") thread.Priority = ThreadPriority.Highest;
+            else if(str == "send") thread.Priority = ThreadPriority.Lowest;
             thread.Start(socketInfo);
         }
         public void Send(object obj)
@@ -137,9 +139,9 @@ namespace TCPSocketCl
                     //# 이로인한 sensorID 손상 인지요망
                     if (sendBuff[3] == 4)
                     {
-                        sendBuff[3] = 3;
+                        //Thread.Sleep(100);
                     }
-                    //#
+
                     if (!InvokeRequired)
                     {
                         Log(log_result);
@@ -148,8 +150,16 @@ namespace TCPSocketCl
                     }
                     else
                     {
-                        this.Invoke(new LogDelegate(Log), log_result);
-                        this.Invoke(new LogDelegate(Log), strHex);
+                        this.Invoke(new Action(() =>
+                        {
+                            Log(log_result);
+                            Log(strHex);
+                            //this.Invoke(new LogDelegate(Log), log_result);
+                            //this.Invoke(new LogDelegate(Log), strHex);
+                            }
+                        ));
+                            
+                        //this.Invoke(new LogDelegate(Log), strHex);
                         this.Invoke(new FocusDelegate(ListboxFocus));
                     }
 
@@ -163,7 +173,7 @@ namespace TCPSocketCl
             //}
             catch(Exception e)
             {
-                
+               
             }
         }
         public void Recv(object obj)
@@ -189,6 +199,7 @@ namespace TCPSocketCl
                         string log_result = string.Empty;
 
                         ResultSet result = SplitAndCksum(receiverBuff);
+                        if(result.strHexSplit == string.Empty) continue; //값을 빠른속도로 받아올 때 오류발생해서 추가(10-22)
                         strHexSplit = result.strHexSplit;
                         hex_cksum = result.hex_cksum;
                         int resultSet = result.resultSet;
@@ -205,7 +216,9 @@ namespace TCPSocketCl
                                     socketInfo.r_Buff = receiverBuff;
                                 // sensorID가 3에서 4로 변하면서 cksum이 1증가함
                                 //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
-                                    StartThread(socketInfo, Send);
+                                    
+                                    StartThread(socketInfo, Send, "send");
+                                    
                                 //recv log에 띄울 cksum으로 다시 되돌림
                                 //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
                             }
@@ -221,8 +234,14 @@ namespace TCPSocketCl
                         }
                         else
                         {
-                            this.Invoke(new LogDelegate(Log), log_result);
-                            this.Invoke(new LogDelegate(Log), strHexSplit);
+                            this.Invoke(new Action(() =>
+                            {
+                                this.Invoke(new LogDelegate(Log), log_result);
+                                this.Invoke(new LogDelegate(Log), strHexSplit);
+                            }
+                            ));
+                            //this.Invoke(new LogDelegate(Log), log_result);
+                            //this.Invoke(new LogDelegate(Log), strHexSplit);
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
                         Thread.Sleep(1000);
@@ -257,7 +276,7 @@ namespace TCPSocketCl
                                 //ListboxFocus();
                                 if (socketCount < socketInfo.Count)
                                 {
-                                    StartThread(socketInfo[socketInfo.Count - 1], Recv);
+                                    StartThread(socketInfo[socketInfo.Count - 1], Recv, "recv");
                                 }
                             }
                             else
@@ -305,7 +324,7 @@ namespace TCPSocketCl
             {
                 if (rtup.sensor_ID == 1)
                 {
-                    if(data == 404 || aout_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
+                    //if(data == 404 || aout_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     // 4~20mA
                     rtup.ch_setting = (byte)aout_ch;
                     rtup.data = (byte)data;
@@ -329,7 +348,6 @@ namespace TCPSocketCl
                 }
                 else if (rtup.sensor_ID == 2)
                 {
-                    if (ain_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     rtup.ch_setting = (byte)ain_ch;
                     rtup.length = 0x08;
                     int checkSum = rtup.sof + rtup.usys_device_ID + rtup.length + rtup.sensor_ID + rtup.ch_setting;
@@ -348,7 +366,6 @@ namespace TCPSocketCl
                 }
                 else if (rtup.sensor_ID == 3)
                 {
-
                     int checkSum = rtup.check_sum[0] * 256 + rtup.check_sum[1]+1;
                     rtup.check_sum[0] = (byte)(checkSum / 256);
                     rtup.check_sum[1] = (byte)(checkSum % 256);
@@ -365,7 +382,6 @@ namespace TCPSocketCl
                 }
                 else if(rtup.sensor_ID == 4)
                 {
-                    if (dout_ch == 404) throw new FormatException("채널 또는 data가 올바르지 않습니다.");
                     // digit 0/1
                     rtup.ch_setting = (byte)dout_ch;
                     if(data != 0 && data != 1)
@@ -397,11 +413,12 @@ namespace TCPSocketCl
             }
             catch (FormatException ee)
             {
-                MessageBox.Show("채널 또는 data가 올바르지 않습니다.");
+                MessageBox.Show("Digitial Output data는 잘못된값입니다.");
                 throw ee;
             }
             catch (NullReferenceException e)
             {
+                MessageBox.Show("채널 또는 data가 올바르지 않습니다.");
                 throw e;
             }
             return msg;
