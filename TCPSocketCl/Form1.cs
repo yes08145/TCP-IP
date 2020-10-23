@@ -35,12 +35,18 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
+        private static bool r_log_text = true;
+        private static bool r_log_realBuff = true;
+        private static bool r_log_splitBuff = true;
+        private static bool s_log_text = true;
+        private static bool s_log_sendBuff = true;
         //private static string strHexSplit = string.Empty;
         //private static string hex_cksum = string.Empty;
-        private static string[] device_judge = new string[2];
+        private static string[] device_judge = new string[3];
         private static string[] logMsg = new string[6] { "전류 출력 설정", "전류 입력 값 요청", "디지털 출력 설정", "전류 출력 응답", "전류 입력 값 응답","디지털 입력 수신" };
-        private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         private static string DirPath = Directory.GetCurrentDirectory() + @"\Logs";
+        //private static string filePath = Directory.GetCurrentDirectory() + @"\Logs\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
+        private static string filePath = DirPath+ @"\" + DateTime.Today.ToString("yyyyMMdd") + ".log";
         // (1) 소켓 객체 생성
         private static List<SocketInfo> socketInfo = new List<SocketInfo>();
         public delegate void FocusDelegate();
@@ -61,8 +67,10 @@ namespace TCPSocketCl
             //Log2("192.168.0.180:5000");
             //Log2("192.168.0.244:5000");
             //Log2("192.168.0.31:4265");
-            device_judge[0] = "RTU";
-            device_judge[1] = "SmartPoE";
+            device_judge[0] = "Device 오류";
+            device_judge[1] = "RTU";
+            device_judge[2] = "SmartPoE";
+            
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             comboBox1.SelectedIndex = 0;
             //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
@@ -359,6 +367,36 @@ namespace TCPSocketCl
         private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dataGridView1.Rows[e.RowIndex].Selected = !(this.dataGridView1.Rows[e.RowIndex].Selected);
+        }
+
+        private void check_text_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_rtext.Checked == true) r_log_text = true;
+            else r_log_text = false;
+        }
+
+        private void check_realbuf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_realbuf.Checked == true) r_log_realBuff = true;
+            else r_log_realBuff = false;
+        }
+
+        private void check_splitbuf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_splitbuf.Checked == true) r_log_splitBuff = true;
+            else r_log_splitBuff = false;
+        }
+
+        private void check_stext_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_stext.Checked == true) s_log_text = true;
+            else s_log_text = false;
+        }
+
+        private void check_sendbuf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_sendbuf.Checked == true) s_log_sendBuff = true;
+            else s_log_sendBuff = false;
         }
     }
 }

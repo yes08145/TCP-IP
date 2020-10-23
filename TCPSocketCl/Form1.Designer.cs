@@ -70,9 +70,16 @@
             this.button_DO3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.check_realbuf = new System.Windows.Forms.CheckBox();
+            this.check_rtext = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.check_sendbuf = new System.Windows.Forms.CheckBox();
+            this.check_stext = new System.Windows.Forms.CheckBox();
+            this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,6 +89,8 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
@@ -563,6 +572,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Connected";
             // 
+            // label8
+            // 
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(23, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(2, 100);
+            this.label8.TabIndex = 42;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -610,8 +628,8 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(133, 100);
             this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvRowHeaderPaint);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvRowHeaderPaint);
             // 
             // groupBox5
             // 
@@ -634,20 +652,105 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Network Setting";
             // 
-            // label8
+            // groupBox6
             // 
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(23, 20);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(2, 100);
-            this.label8.TabIndex = 42;
+            this.groupBox6.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox6.Controls.Add(this.check_splitbuf);
+            this.groupBox6.Controls.Add(this.check_realbuf);
+            this.groupBox6.Controls.Add(this.check_rtext);
+            this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox6.Location = new System.Drawing.Point(808, 94);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(135, 89);
+            this.groupBox6.TabIndex = 41;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Receive Option";
+            // 
+            // check_realbuf
+            // 
+            this.check_realbuf.AutoSize = true;
+            this.check_realbuf.Checked = true;
+            this.check_realbuf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_realbuf.Location = new System.Drawing.Point(3, 39);
+            this.check_realbuf.Name = "check_realbuf";
+            this.check_realbuf.Size = new System.Drawing.Size(101, 16);
+            this.check_realbuf.TabIndex = 1;
+            this.check_realbuf.Text = "ReceiveBuffer";
+            this.check_realbuf.UseVisualStyleBackColor = true;
+            this.check_realbuf.CheckedChanged += new System.EventHandler(this.check_realbuf_CheckedChanged);
+            // 
+            // check_rtext
+            // 
+            this.check_rtext.AutoSize = true;
+            this.check_rtext.Checked = true;
+            this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_rtext.Location = new System.Drawing.Point(3, 17);
+            this.check_rtext.Name = "check_rtext";
+            this.check_rtext.Size = new System.Drawing.Size(84, 16);
+            this.check_rtext.TabIndex = 0;
+            this.check_rtext.Text = "Text result";
+            this.check_rtext.UseVisualStyleBackColor = true;
+            this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox7.Controls.Add(this.check_sendbuf);
+            this.groupBox7.Controls.Add(this.check_stext);
+            this.groupBox7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox7.Location = new System.Drawing.Point(946, 94);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(135, 65);
+            this.groupBox7.TabIndex = 42;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Send Option";
+            // 
+            // check_sendbuf
+            // 
+            this.check_sendbuf.AutoSize = true;
+            this.check_sendbuf.Checked = true;
+            this.check_sendbuf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_sendbuf.Location = new System.Drawing.Point(3, 39);
+            this.check_sendbuf.Name = "check_sendbuf";
+            this.check_sendbuf.Size = new System.Drawing.Size(85, 16);
+            this.check_sendbuf.TabIndex = 1;
+            this.check_sendbuf.Text = "SendBuffer";
+            this.check_sendbuf.UseVisualStyleBackColor = true;
+            this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
+            // 
+            // check_stext
+            // 
+            this.check_stext.AutoSize = true;
+            this.check_stext.Checked = true;
+            this.check_stext.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_stext.Location = new System.Drawing.Point(3, 17);
+            this.check_stext.Name = "check_stext";
+            this.check_stext.Size = new System.Drawing.Size(84, 16);
+            this.check_stext.TabIndex = 0;
+            this.check_stext.Text = "Text result";
+            this.check_stext.UseVisualStyleBackColor = true;
+            this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
+            // 
+            // check_splitbuf
+            // 
+            this.check_splitbuf.AutoSize = true;
+            this.check_splitbuf.Checked = true;
+            this.check_splitbuf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_splitbuf.Location = new System.Drawing.Point(3, 61);
+            this.check_splitbuf.Name = "check_splitbuf";
+            this.check_splitbuf.Size = new System.Drawing.Size(129, 16);
+            this.check_splitbuf.TabIndex = 2;
+            this.check_splitbuf.Text = "Split ReceiveBuffer";
+            this.check_splitbuf.UseVisualStyleBackColor = true;
+            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 861);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl);
@@ -670,6 +773,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -717,5 +824,12 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox check_realbuf;
+        private System.Windows.Forms.CheckBox check_rtext;
+        private System.Windows.Forms.CheckBox check_splitbuf;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox check_sendbuf;
+        private System.Windows.Forms.CheckBox check_stext;
     }
 }
