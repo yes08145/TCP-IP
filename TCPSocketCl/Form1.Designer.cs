@@ -74,12 +74,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.check_realbuf = new System.Windows.Forms.CheckBox();
             this.check_rtext = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.check_sendbuf = new System.Windows.Forms.CheckBox();
             this.check_stext = new System.Windows.Forms.CheckBox();
-            this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -231,9 +231,9 @@
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_textClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_textClear.Location = new System.Drawing.Point(988, 162);
+            this.btn_textClear.Location = new System.Drawing.Point(946, 162);
             this.btn_textClear.Name = "btn_textClear";
-            this.btn_textClear.Size = new System.Drawing.Size(84, 23);
+            this.btn_textClear.Size = new System.Drawing.Size(126, 23);
             this.btn_textClear.TabIndex = 18;
             this.btn_textClear.Text = "Text Clear";
             this.btn_textClear.UseVisualStyleBackColor = true;
@@ -661,10 +661,23 @@
             this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox6.Location = new System.Drawing.Point(808, 94);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(135, 89);
+            this.groupBox6.Size = new System.Drawing.Size(135, 91);
             this.groupBox6.TabIndex = 41;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Receive Option";
+            this.groupBox6.Text = "Receive Text Option";
+            // 
+            // check_splitbuf
+            // 
+            this.check_splitbuf.AutoSize = true;
+            this.check_splitbuf.Checked = true;
+            this.check_splitbuf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_splitbuf.Location = new System.Drawing.Point(3, 61);
+            this.check_splitbuf.Name = "check_splitbuf";
+            this.check_splitbuf.Size = new System.Drawing.Size(98, 16);
+            this.check_splitbuf.TabIndex = 2;
+            this.check_splitbuf.Text = "Divided Hexa";
+            this.check_splitbuf.UseVisualStyleBackColor = true;
+            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
             // check_realbuf
             // 
@@ -673,9 +686,9 @@
             this.check_realbuf.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_realbuf.Location = new System.Drawing.Point(3, 39);
             this.check_realbuf.Name = "check_realbuf";
-            this.check_realbuf.Size = new System.Drawing.Size(101, 16);
+            this.check_realbuf.Size = new System.Drawing.Size(82, 16);
             this.check_realbuf.TabIndex = 1;
-            this.check_realbuf.Text = "ReceiveBuffer";
+            this.check_realbuf.Text = "Real Hexa";
             this.check_realbuf.UseVisualStyleBackColor = true;
             this.check_realbuf.CheckedChanged += new System.EventHandler(this.check_realbuf_CheckedChanged);
             // 
@@ -686,9 +699,9 @@
             this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_rtext.Location = new System.Drawing.Point(3, 17);
             this.check_rtext.Name = "check_rtext";
-            this.check_rtext.Size = new System.Drawing.Size(84, 16);
+            this.check_rtext.Size = new System.Drawing.Size(52, 16);
             this.check_rtext.TabIndex = 0;
-            this.check_rtext.Text = "Text result";
+            this.check_rtext.Text = "State";
             this.check_rtext.UseVisualStyleBackColor = true;
             this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
             // 
@@ -703,7 +716,7 @@
             this.groupBox7.Size = new System.Drawing.Size(135, 65);
             this.groupBox7.TabIndex = 42;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Send Option";
+            this.groupBox7.Text = "Send Text Option";
             // 
             // check_sendbuf
             // 
@@ -712,9 +725,9 @@
             this.check_sendbuf.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_sendbuf.Location = new System.Drawing.Point(3, 39);
             this.check_sendbuf.Name = "check_sendbuf";
-            this.check_sendbuf.Size = new System.Drawing.Size(85, 16);
+            this.check_sendbuf.Size = new System.Drawing.Size(53, 16);
             this.check_sendbuf.TabIndex = 1;
-            this.check_sendbuf.Text = "SendBuffer";
+            this.check_sendbuf.Text = "Hexa";
             this.check_sendbuf.UseVisualStyleBackColor = true;
             this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
             // 
@@ -725,24 +738,11 @@
             this.check_stext.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_stext.Location = new System.Drawing.Point(3, 17);
             this.check_stext.Name = "check_stext";
-            this.check_stext.Size = new System.Drawing.Size(84, 16);
+            this.check_stext.Size = new System.Drawing.Size(52, 16);
             this.check_stext.TabIndex = 0;
-            this.check_stext.Text = "Text result";
+            this.check_stext.Text = "State";
             this.check_stext.UseVisualStyleBackColor = true;
             this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
-            // 
-            // check_splitbuf
-            // 
-            this.check_splitbuf.AutoSize = true;
-            this.check_splitbuf.Checked = true;
-            this.check_splitbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_splitbuf.Location = new System.Drawing.Point(3, 61);
-            this.check_splitbuf.Name = "check_splitbuf";
-            this.check_splitbuf.Size = new System.Drawing.Size(129, 16);
-            this.check_splitbuf.TabIndex = 2;
-            this.check_splitbuf.Text = "Split ReceiveBuffer";
-            this.check_splitbuf.UseVisualStyleBackColor = true;
-            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
             // Form1
             // 
@@ -757,7 +757,7 @@
             this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(920, 600);
+            this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "Form1";
             this.Text = "Socket Client Program";
             this.Load += new System.EventHandler(this.Form1_Load);

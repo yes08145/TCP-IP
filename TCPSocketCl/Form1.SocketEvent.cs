@@ -19,7 +19,7 @@ namespace TCPSocketCl
         {
 
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(in_IP), in_PORT);
-            Log("Connect 시도중");
+            Log("======="+in_IP+":"+in_PORT+ " Connect 시도중=======");
             try
             {
                 try
@@ -33,7 +33,7 @@ namespace TCPSocketCl
                 }
                 catch
                 {
-                    Log("======Connect Fail======");
+                    Log("=======Connect Fail=======");
                     MessageBox.Show("서버에 연결할 수 없습니다.");
                 }
 
@@ -152,8 +152,8 @@ namespace TCPSocketCl
                     {
                         this.Invoke(new Action(() =>
                         {
-                            if(s_log_text) Log(log_result);
-                            if(s_log_sendBuff) Log("SendBuffer   : "+strHex);
+                            if (s_log_text) Log(log_result);
+                            if (s_log_sendBuff) Log("SendBuffer   : " + strHex);
                         }
                         ));
                         //this.Invoke(new LogDelegate(Log), log_result);
@@ -171,7 +171,7 @@ namespace TCPSocketCl
             //}
             catch(Exception e)
             {
-                MessageBox.Show("Function Send Exception Check");
+                //MessageBox.Show("Function Send Exception Check");
             }
         }
         public void Recv(object obj)
@@ -431,7 +431,7 @@ namespace TCPSocketCl
             RTUP rtup = new RTUP();
             string log = string.Empty;
             rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+txt.Split('-')[1], 16));
-            rtup.length = Convert.ToByte(Convert.ToInt32(txt.Split('-')[2]));
+            rtup.length = Convert.ToByte(Convert.ToInt32(txt.Split('-')[2], 16));
             rtup.sensor_ID = Convert.ToByte(txt.Split('-')[3]);
             rtup.response_channel = Convert.ToByte(txt.Split('-')[4]);
             rtup.data = Convert.ToByte(Convert.ToInt32(txt.Split('-')[5],16)); // 나중에 data값으로 문제가 생기면 if안의 지역으로 위치수정
@@ -462,26 +462,44 @@ namespace TCPSocketCl
                     last_cksum = "0" + last_cksum;
                 }
             }
-            if (start_cksum == txt.Split('-')[rtup.length-3] && last_cksum == txt.Split('-')[rtup.length-2])
+            if (start_cksum != txt.Split('-')[rtup.length - 3] || last_cksum != txt.Split('-')[rtup.length - 2])
             {
-                if(rtup.sensor_ID == 1)
-                {
-                    if(rtup.length == 8) log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
-                    else log  = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
-                }
-                else if(rtup.sensor_ID == 2)
-                {
-                    if(rtup.length == 9) log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data+"mA'의 "+logMsg[rtup.sensor_ID + 2];
-                    else log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
-                }
-                else if (rtup.sensor_ID == 3)
-                {
-                    log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
-                }
-                else log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
+                log = "CheckSum 오류";
+                return log;
             }
             //로그를 띄워주자 (체크섬 오류)
-            else log = "CheckSum 오류";
+
+            if (rtup.sensor_ID == 1)
+            {
+                if (rtup.response_channel == 0 || rtup.response_channel == 1)
+                {
+                    if (rtup.length == 8) log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    else log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
+                }
+                else log = "Format 오류";
+            }
+            else if (rtup.sensor_ID == 2)
+            {
+                if ((rtup.response_channel == 0 || rtup.response_channel == 1)&& (rtup.data>=4 && rtup.data<=20))
+                {
+                    if (rtup.length == 9) log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 '" + rtup.data + "mA'의 " + logMsg[rtup.sensor_ID + 2];
+                    else log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
+                }
+                else log = "Format 오류";
+            }
+            else if (rtup.sensor_ID == 3)
+            {
+                if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data <2)
+                log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+                else log = "Format 오류";
+            }
+            else if (rtup.sensor_ID == 4)
+            {
+                if (rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3)
+                log = "Device " + device_judge[device_num] + "의 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
+                else log = "Format 오류";
+            }
+            else log = "SensorID 오류";
 
             return log;
         }
