@@ -11,9 +11,6 @@ namespace TCPSocketCl
 {
     public partial class Form1 : Form
     {
-        private static string reconnIP = string.Empty;
-        private static int reconnPORT = 5000;
-        //private static bool reconn = false;
         private static Mutex mutex = new Mutex();
         private void SocketConnect(string in_IP, int in_PORT)
         {
@@ -24,8 +21,10 @@ namespace TCPSocketCl
             {
                 try
                 {
-                    Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    sock.ReceiveTimeout = 300000;
+                    Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                    {
+                        ReceiveTimeout = 300000
+                    };
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, in_IP, in_PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
                     Log2(in_IP + ":" + in_PORT); // 1이 시작 인덱스
@@ -131,7 +130,8 @@ namespace TCPSocketCl
                     SocketInfo socketInfo = (SocketInfo)obj;
                     socketInfo.sock.Send(sendBuff);
                     strHex = BitConverter.ToString(sendBuff);
-                    ResultSet result = SplitAndCksum(sendBuff);
+                    Queue<byte> sendQueue = new Queue<byte>(sendBuff);
+                    ResultSet result = SplitAndCksum(socketInfo,sendQueue);
                     string hex_cksum = result.hex_cksum;
                     string log_result = JudgeAction(strHex, hex_cksum);
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
@@ -176,6 +176,36 @@ namespace TCPSocketCl
                
             }
         }
+        public byte[] CheckQueue(SocketInfo socketInfo, Queue<byte> recvBuff)
+        {
+            // buffer의 FF값을 최초 초기화값으로 정의한다.
+            // 이와 소켓 recv 패킷과 값 충돌이 나는 경우는 device 장비가 236대 이상일 경우 발생한다.
+            // 이 경우에 체크섬 결과 값이 FF가 나오기 때문이다.
+            // 테스트 용임을 감안하여 이에 대해서 고려하지않는다.
+            // 이를 해결하기 위해서는 SocketEvent 클래스 구조를 전체적으로 수정해야한다.
+            byte[] receiverBuff = new byte[256];
+            for (int i = 0; i < 256; i++)
+            {
+                receiverBuff[i] = 0xFF;
+            }
+            if (recvBuff.Count == 0)
+            {
+                socketInfo.sock.Receive(receiverBuff);
+                for (int i = 0; i < receiverBuff.Length; i++)
+                {
+                    recvBuff.Enqueue(receiverBuff[i]);
+                }
+            }else if(recvBuff.Peek() == 0xFF)
+            {
+                recvBuff.Clear();
+                socketInfo.sock.Receive(receiverBuff);
+                for (int i = 0; i < receiverBuff.Length; i++)
+                {
+                    recvBuff.Enqueue(receiverBuff[i]);
+                }
+            }
+            return receiverBuff;
+        }
         public void Recv(object obj)
         {
             try
@@ -187,18 +217,18 @@ namespace TCPSocketCl
                 else
                 {
                     SocketInfo socketInfo = (SocketInfo)obj;
+                    Queue<byte> recvBuff = new Queue<byte>(1024);
                     while (socketInfo.conn)
                     {
-                        byte[] receiverBuff = new byte[16];
-                        int n = socketInfo.sock.Receive(receiverBuff);
+                        byte[] receiverBuff = CheckQueue(socketInfo, recvBuff);
                         // Splitcksum return을 int resultSet 에서 
                         // (strHexSplit, hex_cksum, resultSet)을 가지는 class ResultSet 으로 바꿈
                         // 전역변수 지역변수화
                         string hex_cksum = string.Empty;
                         string strHexSplit = string.Empty;
                         string log_result = string.Empty;
-
-                        ResultSet result = SplitAndCksum(receiverBuff);
+                        
+                        ResultSet result = SplitAndCksum(socketInfo, recvBuff);
                         if(result.strHexSplit == string.Empty) continue; //값을 빠른속도로 받아올 때 오류발생해서 추가(10-22)
                         strHexSplit = result.strHexSplit;
                         hex_cksum = result.hex_cksum;
@@ -260,15 +290,16 @@ namespace TCPSocketCl
                     SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
                     //뮤텍스: 공유자원 reconnIP-재접속할 IP, reconnPORT-재접속할 PORT
                     //Lock
-                    mutex.WaitOne();
-                    reconnIP = disconnectedSocketInfo.IP;
-                    reconnPORT = disconnectedSocketInfo.PORT;
+                    //mutex.WaitOne();
+                    string reconnIP = disconnectedSocketInfo.IP;
+                    int reconnPORT = disconnectedSocketInfo.PORT;
+                    int reconnIndex = disconnectedSocketInfo.index;
                     if (disconnectedSocketInfo.conn)
                     {
                         this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
                         this.Invoke(new Action(() =>
                         {
-                            if (MessageBox.Show(this, "서버와의 연결이 끊겼습니다.\n다시 접속하시겠습니까?", "Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            if (MessageBox.Show(this, (reconnIndex+1)+"번 서버"+reconnIP+":"+reconnPORT+"와의 연결이 끊겼습니다.\n다시 접속하시겠습니까?", "Error", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
                                 //reconn = true;
                                 int socketCount = socketInfo.Count;
@@ -289,7 +320,7 @@ namespace TCPSocketCl
                         ));
                     }
                     //Unlock
-                    mutex.ReleaseMutex();
+                    //mutex.ReleaseMutex();
                     
                 }
 
@@ -477,28 +508,111 @@ namespace TCPSocketCl
             return log;
         }
 
-        private ResultSet SplitAndCksum(byte[] receiverBuff)
+        private ResultSet SplitAndCksum(SocketInfo socketInfo, Queue<byte> recvBuff)
         {
             int resultSet = 0;
             int dec_cksum = 0;
-            string r_strHex = BitConverter.ToString(receiverBuff);
-            int p_length = Convert.ToInt32(r_strHex.Split('-')[2], 16);
-            if (p_length == 8)
-            {
-                dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4];
-            }
-            else // (r_strHex.Split('-')[3] == "2"
-            {
-                dec_cksum = receiverBuff[0] + receiverBuff[1] + receiverBuff[2] + receiverBuff[3] + receiverBuff[4] + receiverBuff[5];
-            }
-            string hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
             string strHexSplit = string.Empty;
-            if (r_strHex.Split('-')[0] == "02" && r_strHex.Split('-')[p_length - 1] == "03")
+            string hex_cksum = string.Empty;
+            try
             {
-                strHexSplit = r_strHex.Substring(0, (p_length * 2) + (p_length - 1));
-                resultSet = Convert.ToInt32(r_strHex.Split('-')[3],16);
+                for (int i = 0; i < recvBuff.Count; i++)
+                {
+                    // 먼저 sof를 버퍼에서 가져온다.
+                    byte sof_data = recvBuff.Dequeue();
+                    i++;
+                    // 프로토콜 정의 0x02와 맞으면
+                    if (sof_data == 0x02)
+                    {
+                        // 다음 값을 장비ID-길이일 것이라 예상하고 버퍼에서 2바이트를 가져온다.
+                        CheckQueue(socketInfo, recvBuff);
+                        byte device_data = recvBuff.Dequeue();
+                        i++;
+                        CheckQueue(socketInfo, recvBuff);
+                        byte length_data = recvBuff.Dequeue();
+                        i++;
+                        // 길이가 8이면
+                        if (length_data == 0x08)
+                        {
+                            // 그 다음 버퍼 값이 센서ID-채널 값이라 예상하고 버퍼에서 2바이트 더 가져온다.
+                            CheckQueue(socketInfo, recvBuff);
+                            byte sensor_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ch_data = recvBuff.Dequeue();
+                            i++;
+                            // 지금 껏 나온 값들로 프로토콜 체크섬공식에 따라 계산한다.
+                            dec_cksum = sof_data + device_data + length_data + sensor_data + ch_data;
+                            //나머지 체크섬 버퍼 2바이트와 eof버퍼를 가져온다.
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ck1_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ck2_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte eof_data = recvBuff.Dequeue();
+                            //체크섬 뒤에 eof 값이 나와야하므로 3이 아니면 지금까지 읽은 값들은 잘못된 값이다.
+                            if (eof_data == 0x03)
+                            {
+                                strHexSplit = BitConverter.ToString(new byte[8] { sof_data, device_data, length_data, sensor_data, ch_data, ck1_data, ck2_data, eof_data });
+                                hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+                                break;
+                            }
+                        }
+                        // 길이가 9면
+                        else if (length_data == 0x09)
+                        {
+                            // 그 다음 버퍼 값이 센서ID-채널-데이터 값이라 예상하고 버퍼에서 3바이트 더 가져온다.
+                            CheckQueue(socketInfo, recvBuff);
+                            byte sensor_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ch_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte _data = recvBuff.Dequeue();
+                            i++;
+                            // 지금 껏 나온 값들로 프로토콜 체크섬공식에 따라 계산한다.
+                            dec_cksum = sof_data + device_data + length_data + sensor_data + ch_data + _data;
+                            //나머지 체크섬 버퍼 2바이트와 eof버퍼를 가져온다.
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ck1_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte ck2_data = recvBuff.Dequeue();
+                            i++;
+                            CheckQueue(socketInfo, recvBuff);
+                            byte eof_data = recvBuff.Dequeue();
+                            i++;
+                            //체크섬 뒤에 eof 값이 나와야하므로 3이 아니면 지금까지 읽은 값들은 잘못된 값이다.
+                            if (eof_data == 0x03)
+                            {
+                                strHexSplit = BitConverter.ToString(new byte[9] { sof_data, device_data, length_data, sensor_data, ch_data, _data, ck1_data, ck2_data, eof_data });
+                                hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (strHexSplit != string.Empty )
+                {
+                    resultSet = Convert.ToInt32(strHexSplit.Split('-')[3], 16);
+                }
+                else
+                {
+                    throw new FormatException();
+                }
+                if(hex_cksum == string.Empty || resultSet == 0)
+                {
+                    throw new FormatException();
+                }
+                return new ResultSet(strHexSplit, hex_cksum, resultSet);
             }
-            return new ResultSet(strHexSplit, hex_cksum, resultSet);
+            catch(Exception e)
+            {
+                return new ResultSet(string.Empty, string.Empty, 0);
+            }
         }
 
     }
