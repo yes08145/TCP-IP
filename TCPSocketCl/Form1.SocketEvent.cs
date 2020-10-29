@@ -21,10 +21,7 @@ namespace TCPSocketCl
             {
                 try
                 {
-                    Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-                    {
-                        ReceiveTimeout = 300000
-                    };
+                    Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, in_IP, in_PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
                     Log2(in_IP + ":" + in_PORT); // 1이 시작 인덱스
@@ -134,6 +131,7 @@ namespace TCPSocketCl
                     ResultSet result = SplitAndCksum(socketInfo,sendQueue);
                     string hex_cksum = result.hex_cksum;
                     string log_result = JudgeAction(strHex, hex_cksum);
+                    socketInfo.r_Buff = null;
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
@@ -193,7 +191,10 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
-            }else if(recvBuff.Peek() == 0xFF)
+                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+                this.Invoke(new FocusDelegate(ListboxFocus));
+            }
+            else if(recvBuff.Peek() == 0xFF)
             {
                 recvBuff.Clear();
                 socketInfo.sock.Receive(receiverBuff);
@@ -201,6 +202,8 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
+                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+                this.Invoke(new FocusDelegate(ListboxFocus));
             }
             return receiverBuff;
         }
@@ -228,7 +231,7 @@ namespace TCPSocketCl
                         int resultSet = 0;
                         try
                         {
-                            ResultSet result = SplitAndCksum(socketInfo, receiverBuff);
+                            ResultSet result = SplitAndCksum(socketInfo, recvBuff);
                             if (result.strHexSplit == string.Empty) continue; //값을 빠른속도로 받아올 때 오류발생해서 추가(10-22)
                             strHexSplit = result.strHexSplit;
                             hex_cksum = result.hex_cksum;
@@ -248,7 +251,6 @@ namespace TCPSocketCl
                         {
                             if (socketInfo.conn)
                             {
-                                    socketInfo.r_Buff = receiverBuff;
                                 // sensorID가 3에서 4로 변하면서 cksum이 1증가함
                                 //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
                                     
@@ -270,12 +272,13 @@ namespace TCPSocketCl
                             this.Invoke(new Action(() =>
                             {
                                 if (r_log_text) Log(log_result);
-                                if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff));
+                                //if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff));
                                 if (r_log_splitBuff) Log("SplitReceive : " + strHexSplit);
                             }
                             ));
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
+                        socketInfo.r_Buff = null;
                         Thread.Sleep(1000);
                     }
                 }
@@ -582,7 +585,9 @@ namespace TCPSocketCl
                             //체크섬 뒤에 eof 값이 나와야하므로 3이 아니면 지금까지 읽은 값들은 잘못된 값이다.
                             if (eof_data == 0x03)
                             {
-                                strHexSplit = BitConverter.ToString(new byte[8] { sof_data, device_data, length_data, sensor_data, ch_data, ck1_data, ck2_data, eof_data });
+                                byte[] receiveBuff = new byte[8] { sof_data, device_data, length_data, sensor_data, ch_data, ck1_data, ck2_data, eof_data };
+                                socketInfo.r_Buff = receiveBuff;
+                                strHexSplit = BitConverter.ToString(receiveBuff);
                                 hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
                                 break;
                             }
@@ -615,7 +620,9 @@ namespace TCPSocketCl
                             //체크섬 뒤에 eof 값이 나와야하므로 3이 아니면 지금까지 읽은 값들은 잘못된 값이다.
                             if (eof_data == 0x03)
                             {
-                                strHexSplit = BitConverter.ToString(new byte[9] { sof_data, device_data, length_data, sensor_data, ch_data, _data, ck1_data, ck2_data, eof_data });
+                                byte[] receiveBuff = new byte[9] { sof_data, device_data, length_data, sensor_data, ch_data,_data, ck1_data, ck2_data, eof_data };
+                                socketInfo.r_Buff = receiveBuff;
+                                strHexSplit = BitConverter.ToString(receiveBuff);
                                 hex_cksum = String.Format("{0:x2}", dec_cksum).ToUpper();
                                 break;
                             }
