@@ -74,7 +74,7 @@ namespace TCPSocketCl
             tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
             comboBox1.SelectedIndex = 0;
             //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
-
+            this.ActiveControl = textBox_IP1;
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -213,7 +213,11 @@ namespace TCPSocketCl
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-            
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+
         }
         private void Button_DOSetting_Click(object sender, EventArgs e)
         {
@@ -244,6 +248,10 @@ namespace TCPSocketCl
                 }
             }
             catch (NullReferenceException ex)
+            {
+                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+            }
+            catch(ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
