@@ -143,10 +143,6 @@ namespace TCPSocketCl
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
-                    if (sendBuff[3] == 4)
-                    {
-                        //Thread.Sleep(100);
-                    }
 
                     if (!InvokeRequired)
                     {
@@ -268,19 +264,19 @@ namespace TCPSocketCl
                             log_result = "Index 오류 발생";
                         }
                         if (resultSet == 0) continue;
-                        else if (resultSet == 3)
-                        {
-                            if (socketInfo.conn)
-                            {
-                                // sensorID가 3에서 4로 변하면서 cksum이 1증가함
-                                //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
+                        //else if (resultSet == 3)
+                        //{
+                        //    if (socketInfo.conn)
+                        //    {
+                        //        // sensorID가 3에서 4로 변하면서 cksum이 1증가함
+                        //        //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
                                     
-                                    StartThread(socketInfo, Send, "send");
+                        //            StartThread(socketInfo, Send, "send");
                                     
-                                //recv log에 띄울 cksum으로 다시 되돌림
-                                //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
-                            }
-                        }
+                        //        //recv log에 띄울 cksum으로 다시 되돌림
+                        //        //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
+                        //    }
+                        //}
 
                         if (!InvokeRequired)
                         {
