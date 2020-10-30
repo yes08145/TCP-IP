@@ -191,6 +191,7 @@
             // btn_connect
             // 
             this.btn_connect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_connect.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btn_connect.Location = new System.Drawing.Point(18, 128);
             this.btn_connect.Name = "btn_connect";
@@ -682,8 +683,6 @@
             // check_realbuf
             // 
             this.check_realbuf.AutoSize = true;
-            this.check_realbuf.Checked = true;
-            this.check_realbuf.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_realbuf.Location = new System.Drawing.Point(3, 39);
             this.check_realbuf.Name = "check_realbuf";
             this.check_realbuf.Size = new System.Drawing.Size(82, 16);
@@ -748,7 +747,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 861);
+            this.ClientSize = new System.Drawing.Size(1100, 861);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);

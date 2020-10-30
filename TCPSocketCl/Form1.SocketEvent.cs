@@ -110,7 +110,8 @@ namespace TCPSocketCl
             catch(Exception e)
 
             {
-                
+                Log("======= 비정상 Connect 종료 =======");
+                ListboxFocus();
             }
         }
         private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate, string str)
@@ -193,7 +194,12 @@ namespace TCPSocketCl
             }
             if (recvBuff.Count == 0)
             {
-                socketInfo.sock.Receive(receiverBuff);
+
+                int result = socketInfo.sock.Receive(receiverBuff);
+                if(result == 0)
+                {
+                    throw new SocketException();
+                }
                 for (int i = 0; i < receiverBuff.Length; i++)
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
@@ -204,7 +210,11 @@ namespace TCPSocketCl
             else if(recvBuff.Peek() == 0xFF)
             {
                 recvBuff.Clear();
-                socketInfo.sock.Receive(receiverBuff);
+                int result = socketInfo.sock.Receive(receiverBuff);
+                if(result == 0)
+                {
+                    throw new SocketException();
+                }
                 for (int i = 0; i < receiverBuff.Length; i++)
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
@@ -229,10 +239,10 @@ namespace TCPSocketCl
                     while (socketInfo.conn)
                     {
                         byte[] receiverBuff = CheckQueue(socketInfo, recvBuff);
-                        if(IsConnected(socketInfo.sock))
-                        {
-                            throw new Exception("Server Disconnect");
-                        }
+                        //if(IsConnected(socketInfo.sock))
+                        //{
+                        //    throw new Exception("Server Disconnect");
+                        //}
                         // Splitcksum return을 int resultSet 에서 
                         // (strHexSplit, hex_cksum, resultSet)을 가지는 class ResultSet 으로 바꿈
                         // 전역변수 지역변수화
@@ -290,7 +300,7 @@ namespace TCPSocketCl
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
                         socketInfo.r_Buff = null;
-                        Thread.Sleep(1000);
+                        //Thread.Sleep(1000);
                     }
                 }
 
@@ -339,22 +349,22 @@ namespace TCPSocketCl
                     //mutex.ReleaseMutex();
 
                 }
-                else if (e.Message == "Server Disconnect")
-                {
-                    SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
-                    string reconnIP = disconnectedSocketInfo.IP;
-                    int reconnPORT = disconnectedSocketInfo.PORT;
-                    int reconnIndex = disconnectedSocketInfo.index;
-                    if (disconnectedSocketInfo.conn)
-                    {
-                        this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
-                        this.Invoke(new Action(() =>
-                        {
-                            MessageBox.Show((reconnIndex + 1) + "번 서버" + reconnIP + ":" + reconnPORT + " 와의 연결이 끊겼습니다.");
-                        }
-                        ));
-                    }
-                }
+                //else if (e.Message == "Server Disconnect")
+                //{
+                //    SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
+                //    string reconnIP = disconnectedSocketInfo.IP;
+                //    int reconnPORT = disconnectedSocketInfo.PORT;
+                //    int reconnIndex = disconnectedSocketInfo.index;
+                //    if (disconnectedSocketInfo.conn)
+                //    {
+                //        this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
+                //        this.Invoke(new Action(() =>
+                //        {
+                //            MessageBox.Show((reconnIndex + 1) + "번 서버" + reconnIP + ":" + reconnPORT + " 와의 연결이 끊겼습니다.");
+                //        }
+                //        ));
+                //    }
+                //}
             }
         }
 
