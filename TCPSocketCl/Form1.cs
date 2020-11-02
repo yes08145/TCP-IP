@@ -36,7 +36,7 @@ namespace TCPSocketCl
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
         private static bool r_log_text = true;
-        private static bool r_log_realBuff = true;
+        private static bool r_log_realBuff = false;
         private static bool r_log_splitBuff = true;
         private static bool s_log_text = true;
         private static bool s_log_sendBuff = true;

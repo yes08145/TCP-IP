@@ -110,7 +110,8 @@ namespace TCPSocketCl
             catch(Exception e)
 
             {
-                
+                Log("======= 비정상 Connect 종료 =======");
+                ListboxFocus();
             }
         }
         private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate, string str)
@@ -142,10 +143,6 @@ namespace TCPSocketCl
                     //# D I/O 추가에 따라 기존 log 텍스트 불러오는 공식이 깨짐
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
-                    if (sendBuff[3] == 4)
-                    {
-                        //Thread.Sleep(100);
-                    }
 
                     if (!InvokeRequired)
                     {
@@ -193,7 +190,12 @@ namespace TCPSocketCl
             }
             if (recvBuff.Count == 0)
             {
-                socketInfo.sock.Receive(receiverBuff);
+
+                int result = socketInfo.sock.Receive(receiverBuff);
+                if(result == 0)
+                {
+                    throw new SocketException();
+                }
                 for (int i = 0; i < receiverBuff.Length; i++)
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
@@ -204,7 +206,11 @@ namespace TCPSocketCl
             else if(recvBuff.Peek() == 0xFF)
             {
                 recvBuff.Clear();
-                socketInfo.sock.Receive(receiverBuff);
+                int result = socketInfo.sock.Receive(receiverBuff);
+                if(result == 0)
+                {
+                    throw new SocketException();
+                }
                 for (int i = 0; i < receiverBuff.Length; i++)
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
@@ -229,10 +235,10 @@ namespace TCPSocketCl
                     while (socketInfo.conn)
                     {
                         byte[] receiverBuff = CheckQueue(socketInfo, recvBuff);
-                        if(IsConnected(socketInfo.sock))
-                        {
-                            throw new Exception("Server Disconnect");
-                        }
+                        //if(IsConnected(socketInfo.sock))
+                        //{
+                        //    throw new Exception("Server Disconnect");
+                        //}
                         // Splitcksum return을 int resultSet 에서 
                         // (strHexSplit, hex_cksum, resultSet)을 가지는 class ResultSet 으로 바꿈
                         // 전역변수 지역변수화
@@ -265,19 +271,19 @@ namespace TCPSocketCl
                             }
                         }
                         if (resultSet == 0) continue;
-                        else if (resultSet == 3)
-                        {
-                            if (socketInfo.conn)
-                            {
-                                // sensorID가 3에서 4로 변하면서 cksum이 1증가함
-                                //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
+                        //else if (resultSet == 3)
+                        //{
+                        //    if (socketInfo.conn)
+                        //    {
+                        //        // sensorID가 3에서 4로 변하면서 cksum이 1증가함
+                        //        //hex_cksum = (Convert.ToInt32(hex_cksum) + 1).ToString();
                                     
-                                    StartThread(socketInfo, Send, "send");
+                        //            StartThread(socketInfo, Send, "send");
                                     
-                                //recv log에 띄울 cksum으로 다시 되돌림
-                                //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
-                            }
-                        }
+                        //        //recv log에 띄울 cksum으로 다시 되돌림
+                        //        //hex_cksum = (Convert.ToInt32(hex_cksum) - 1).ToString();
+                        //    }
+                        //}
 
                         if (!InvokeRequired)
                         {
@@ -297,7 +303,7 @@ namespace TCPSocketCl
                             this.Invoke(new FocusDelegate(ListboxFocus));
                         }
                         socketInfo.r_Buff = null;
-                        Thread.Sleep(1000);
+                        //Thread.Sleep(1000);
                     }
                 }
 
@@ -346,22 +352,22 @@ namespace TCPSocketCl
                     //mutex.ReleaseMutex();
 
                 }
-                else if (e.Message == "Server Disconnect")
-                {
-                    SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
-                    string reconnIP = disconnectedSocketInfo.IP;
-                    int reconnPORT = disconnectedSocketInfo.PORT;
-                    int reconnIndex = disconnectedSocketInfo.index;
-                    if (disconnectedSocketInfo.conn)
-                    {
-                        this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
-                        this.Invoke(new Action(() =>
-                        {
-                            MessageBox.Show((reconnIndex + 1) + "번 서버" + reconnIP + ":" + reconnPORT + " 와의 연결이 끊겼습니다.");
-                        }
-                        ));
-                    }
-                }
+                //else if (e.Message == "Server Disconnect")
+                //{
+                //    SocketInfo disconnectedSocketInfo = (SocketInfo)obj;
+                //    string reconnIP = disconnectedSocketInfo.IP;
+                //    int reconnPORT = disconnectedSocketInfo.PORT;
+                //    int reconnIndex = disconnectedSocketInfo.index;
+                //    if (disconnectedSocketInfo.conn)
+                //    {
+                //        this.Invoke(new SocketDelegate(SocketDisconnect), disconnectedSocketInfo);
+                //        this.Invoke(new Action(() =>
+                //        {
+                //            MessageBox.Show((reconnIndex + 1) + "번 서버" + reconnIP + ":" + reconnPORT + " 와의 연결이 끊겼습니다.");
+                //        }
+                //        ));
+                //    }
+                //}
             }
         }
 
