@@ -263,6 +263,13 @@ namespace TCPSocketCl
                             resultSet = 5; // resultSet은 SensorID의 값이기 때문에 아래 if문에 걸리지 않게만 즉, resultSet을 0,3이 아닌 다른값으로 지정하면 됨
                             log_result = "Index 오류 발생";
                         }
+                        catch(Exception e)
+                        {
+                            if (e.Message == "continue")
+                            {
+                                continue;
+                            }
+                        }
                         if (resultSet == 0) continue;
                         //else if (resultSet == 3)
                         //{
@@ -540,8 +547,8 @@ namespace TCPSocketCl
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1)
                 {
-                    if (rtup.length == 8) log = "Device '" + device + "'의 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
-                    else log = "Device '" + device + "'의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1]; // device_judge[device_num]
+                    if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    else log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1]; // device_judge[device_num]
                 }
                 else log = "Format 오류";
             }
@@ -549,22 +556,22 @@ namespace TCPSocketCl
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1)
                 {
-                    if (rtup.length == 9 && rtup.data >= 4 && rtup.data <= 20) log = "Device '" + device + "'의 " + rtup.response_channel + "채널에서 '" + rtup.data + "mA'의 " + logMsg[rtup.sensor_ID + 2];
-                    else if (rtup.length == 8) log = "Device '" + device + "'의 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
-                    else log = "Data 범위 오류";
+                    if (rtup.length == 9 && rtup.data >= 4 && rtup.data <= 20) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 '" + rtup.data + "mA'의 " + logMsg[rtup.sensor_ID + 2];
+                    else if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
+                    else throw new Exception("continue");
                 }
                 else log = "Format 오류";
             }
             else if (rtup.sensor_ID == 3)
             {
                 if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data <2)
-                log = "Device '" + device + "'의 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+                log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
                 else log = "Format 오류";
             }
             else if (rtup.sensor_ID == 4)
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3)
-                log = "Device '" + device + "'의 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
+                log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
                 else log = "Format 오류";
             }
             else log = "SensorID 오류";

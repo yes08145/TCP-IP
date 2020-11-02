@@ -68,16 +68,13 @@
             this.button_DO1 = new System.Windows.Forms.Button();
             this.button_DO2 = new System.Windows.Forms.Button();
             this.button_DO3 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.check_realbuf = new System.Windows.Forms.CheckBox();
             this.check_rtext = new System.Windows.Forms.CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.check_sendbuf = new System.Windows.Forms.CheckBox();
             this.check_stext = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
@@ -550,15 +547,6 @@
             this.button_DO3.UseVisualStyleBackColor = true;
             this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(409, 148);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "RS232";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.Window;
@@ -653,20 +641,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Network Setting";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox6.Controls.Add(this.check_splitbuf);
-            this.groupBox6.Controls.Add(this.check_realbuf);
-            this.groupBox6.Controls.Add(this.check_rtext);
-            this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(808, 94);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(135, 91);
-            this.groupBox6.TabIndex = 41;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Receive Text Option";
-            // 
             // check_splitbuf
             // 
             this.check_splitbuf.AutoSize = true;
@@ -703,19 +677,6 @@
             this.check_rtext.Text = "State";
             this.check_rtext.UseVisualStyleBackColor = true;
             this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox7.Controls.Add(this.check_sendbuf);
-            this.groupBox7.Controls.Add(this.check_stext);
-            this.groupBox7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(946, 94);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(135, 65);
-            this.groupBox7.TabIndex = 42;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Send Text Option";
             // 
             // check_sendbuf
             // 
@@ -808,7 +769,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button_DO0;
@@ -823,11 +783,9 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox check_realbuf;
         private System.Windows.Forms.CheckBox check_rtext;
         private System.Windows.Forms.CheckBox check_splitbuf;
-        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox check_sendbuf;
         private System.Windows.Forms.CheckBox check_stext;
     }
