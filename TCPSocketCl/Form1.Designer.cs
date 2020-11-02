@@ -68,18 +68,27 @@
             this.button_DO1 = new System.Windows.Forms.Button();
             this.button_DO2 = new System.Windows.Forms.Button();
             this.button_DO3 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.check_realbuf = new System.Windows.Forms.CheckBox();
             this.check_rtext = new System.Windows.Forms.CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.check_sendbuf = new System.Windows.Forms.CheckBox();
             this.check_stext = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,8 +98,10 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.metroTabControl1.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_IP1
@@ -190,26 +201,35 @@
             // 
             // btn_connect
             // 
+            this.btn_connect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(129)))), ((int)(((byte)(219)))));
             this.btn_connect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_connect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(129)))), ((int)(((byte)(219)))));
+            this.btn_connect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_connect.ForeColor = System.Drawing.Color.White;
             this.btn_connect.Location = new System.Drawing.Point(18, 128);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(180, 26);
             this.btn_connect.TabIndex = 13;
             this.btn_connect.Text = "Connect";
-            this.btn_connect.UseVisualStyleBackColor = true;
+            this.btn_connect.UseVisualStyleBackColor = false;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
             // 
             // btn_disconnect
             // 
+            this.btn_disconnect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(129)))), ((int)(((byte)(219)))));
             this.btn_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_disconnect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(129)))), ((int)(((byte)(219)))));
+            this.btn_disconnect.FlatAppearance.BorderSize = 0;
+            this.btn_disconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btn_disconnect.ForeColor = System.Drawing.Color.White;
             this.btn_disconnect.Location = new System.Drawing.Point(10, 128);
             this.btn_disconnect.Name = "btn_disconnect";
             this.btn_disconnect.Size = new System.Drawing.Size(133, 26);
             this.btn_disconnect.TabIndex = 14;
             this.btn_disconnect.Text = "Disconnect";
-            this.btn_disconnect.UseVisualStyleBackColor = true;
+            this.btn_disconnect.UseVisualStyleBackColor = false;
             this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
             // 
             // listbox1
@@ -217,21 +237,22 @@
             this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listbox1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.listbox1.Font = new System.Drawing.Font("굴림", 11F, System.Drawing.FontStyle.Bold);
             this.listbox1.FormattingEnabled = true;
             this.listbox1.HorizontalScrollbar = true;
             this.listbox1.ItemHeight = 15;
-            this.listbox1.Location = new System.Drawing.Point(12, 191);
+            this.listbox1.Location = new System.Drawing.Point(12, 230);
             this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(1060, 634);
+            this.listbox1.Size = new System.Drawing.Size(810, 619);
             this.listbox1.TabIndex = 17;
             // 
             // btn_textClear
             // 
             this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_textClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_textClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_textClear.Location = new System.Drawing.Point(946, 162);
+            this.btn_textClear.Location = new System.Drawing.Point(696, 202);
             this.btn_textClear.Name = "btn_textClear";
             this.btn_textClear.Size = new System.Drawing.Size(126, 23);
             this.btn_textClear.TabIndex = 18;
@@ -330,11 +351,10 @@
             // 
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Controls.Add(this.tabPage3);
-            this.tabControl.Location = new System.Drawing.Point(385, 10);
+            this.tabControl.Location = new System.Drawing.Point(385, 11);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(417, 174);
+            this.tabControl.Size = new System.Drawing.Size(442, 174);
             this.tabControl.TabIndex = 39;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             // 
@@ -346,7 +366,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(409, 148);
+            this.tabPage1.Size = new System.Drawing.Size(434, 148);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Analog";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -357,7 +377,7 @@
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(214, 18);
+            this.groupBox2.Location = new System.Drawing.Point(230, 18);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(189, 109);
             this.groupBox2.TabIndex = 40;
@@ -372,7 +392,7 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 18);
+            this.groupBox1.Location = new System.Drawing.Point(17, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(189, 109);
             this.groupBox1.TabIndex = 38;
@@ -413,7 +433,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(409, 148);
+            this.tabPage2.Size = new System.Drawing.Size(434, 148);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Digital";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -429,7 +449,7 @@
             this.groupBox3.Controls.Add(this.button_DO2);
             this.groupBox3.Controls.Add(this.button_DO3);
             this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 18);
+            this.groupBox3.Location = new System.Drawing.Point(96, 18);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(232, 117);
             this.groupBox3.TabIndex = 39;
@@ -549,15 +569,6 @@
             this.button_DO3.UseVisualStyleBackColor = true;
             this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(409, 148);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "RS232";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.Window;
@@ -652,30 +663,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Network Setting";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox6.Controls.Add(this.check_splitbuf);
-            this.groupBox6.Controls.Add(this.check_realbuf);
-            this.groupBox6.Controls.Add(this.check_rtext);
-            this.groupBox6.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox6.Location = new System.Drawing.Point(808, 94);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(135, 91);
-            this.groupBox6.TabIndex = 41;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Receive Text Option";
-            // 
             // check_splitbuf
             // 
             this.check_splitbuf.AutoSize = true;
             this.check_splitbuf.Checked = true;
             this.check_splitbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_splitbuf.Location = new System.Drawing.Point(3, 61);
+            this.check_splitbuf.Location = new System.Drawing.Point(144, 16);
             this.check_splitbuf.Name = "check_splitbuf";
             this.check_splitbuf.Size = new System.Drawing.Size(98, 16);
             this.check_splitbuf.TabIndex = 2;
-            this.check_splitbuf.Text = "Divided Hexa";
+            this.check_splitbuf.Text = "Hexadecimal";
             this.check_splitbuf.UseVisualStyleBackColor = true;
             this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
@@ -684,7 +681,7 @@
             this.check_realbuf.AutoSize = true;
             this.check_realbuf.Checked = true;
             this.check_realbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_realbuf.Location = new System.Drawing.Point(3, 39);
+            this.check_realbuf.Location = new System.Drawing.Point(248, 16);
             this.check_realbuf.Name = "check_realbuf";
             this.check_realbuf.Size = new System.Drawing.Size(82, 16);
             this.check_realbuf.TabIndex = 1;
@@ -697,7 +694,7 @@
             this.check_rtext.AutoSize = true;
             this.check_rtext.Checked = true;
             this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_rtext.Location = new System.Drawing.Point(3, 17);
+            this.check_rtext.Location = new System.Drawing.Point(86, 16);
             this.check_rtext.Name = "check_rtext";
             this.check_rtext.Size = new System.Drawing.Size(52, 16);
             this.check_rtext.TabIndex = 0;
@@ -705,29 +702,16 @@
             this.check_rtext.UseVisualStyleBackColor = true;
             this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
             // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox7.Controls.Add(this.check_sendbuf);
-            this.groupBox7.Controls.Add(this.check_stext);
-            this.groupBox7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(946, 94);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(135, 65);
-            this.groupBox7.TabIndex = 42;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Send Text Option";
-            // 
             // check_sendbuf
             // 
             this.check_sendbuf.AutoSize = true;
             this.check_sendbuf.Checked = true;
             this.check_sendbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_sendbuf.Location = new System.Drawing.Point(3, 39);
+            this.check_sendbuf.Location = new System.Drawing.Point(144, 16);
             this.check_sendbuf.Name = "check_sendbuf";
-            this.check_sendbuf.Size = new System.Drawing.Size(53, 16);
+            this.check_sendbuf.Size = new System.Drawing.Size(98, 16);
             this.check_sendbuf.TabIndex = 1;
-            this.check_sendbuf.Text = "Hexa";
+            this.check_sendbuf.Text = "Hexadecimal";
             this.check_sendbuf.UseVisualStyleBackColor = true;
             this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
             // 
@@ -736,7 +720,7 @@
             this.check_stext.AutoSize = true;
             this.check_stext.Checked = true;
             this.check_stext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_stext.Location = new System.Drawing.Point(3, 17);
+            this.check_stext.Location = new System.Drawing.Point(86, 16);
             this.check_stext.Name = "check_stext";
             this.check_stext.Size = new System.Drawing.Size(52, 16);
             this.check_stext.TabIndex = 0;
@@ -744,20 +728,152 @@
             this.check_stext.UseVisualStyleBackColor = true;
             this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.check_splitbuf);
+            this.panel1.Controls.Add(this.check_rtext);
+            this.panel1.Controls.Add(this.check_realbuf);
+            this.panel1.Location = new System.Drawing.Point(34, 185);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(345, 40);
+            this.panel1.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(3, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 12);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "수신 문자열 :";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.check_sendbuf);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.check_stext);
+            this.panel2.Location = new System.Drawing.Point(385, 185);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(250, 40);
+            this.panel2.TabIndex = 43;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(3, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(77, 12);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "송신 문자열 :";
+            // 
+            // metroTabControl1
+            // 
+            this.metroTabControl1.Controls.Add(this.metroTabPage1);
+            this.metroTabControl1.Controls.Add(this.metroTabPage2);
+            this.metroTabControl1.Location = new System.Drawing.Point(271, 315);
+            this.metroTabControl1.Name = "metroTabControl1";
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(395, 181);
+            this.metroTabControl1.TabIndex = 44;
+            this.metroTabControl1.UseSelectable = true;
+            // 
+            // metroTabPage1
+            // 
+            this.metroTabPage1.HorizontalScrollbarBarColor = true;
+            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.HorizontalScrollbarSize = 10;
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage1.Name = "metroTabPage1";
+            this.metroTabPage1.Size = new System.Drawing.Size(402, 182);
+            this.metroTabPage1.TabIndex = 0;
+            this.metroTabPage1.Text = "Analog";
+            this.metroTabPage1.VerticalScrollbarBarColor = true;
+            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // metroTabPage2
+            // 
+            this.metroTabPage2.Controls.Add(this.metroButton3);
+            this.metroTabPage2.Controls.Add(this.metroLabel1);
+            this.metroTabPage2.Controls.Add(this.metroButton2);
+            this.metroTabPage2.Controls.Add(this.metroButton1);
+            this.metroTabPage2.HorizontalScrollbarBarColor = true;
+            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.HorizontalScrollbarSize = 10;
+            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage2.Name = "metroTabPage2";
+            this.metroTabPage2.Size = new System.Drawing.Size(387, 139);
+            this.metroTabPage2.TabIndex = 1;
+            this.metroTabPage2.Text = "Digital";
+            this.metroTabPage2.VerticalScrollbarBarColor = true;
+            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(10, 16);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 2;
+            this.metroButton1.Text = "ch0";
+            this.metroButton1.UseSelectable = true;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(76, 57);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(75, 23);
+            this.metroButton2.TabIndex = 3;
+            this.metroButton2.Text = "ch0";
+            this.metroButton2.UseSelectable = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(10, 57);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel1.TabIndex = 4;
+            this.metroLabel1.Text = "SIGNAL :";
+            // 
+            // metroButton3
+            // 
+            this.metroButton3.Location = new System.Drawing.Point(138, 102);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(75, 23);
+            this.metroButton3.TabIndex = 5;
+            this.metroButton3.Text = "ch0";
+            this.metroButton3.UseSelectable = true;
+            // 
+            // metroCheckBox1
+            // 
+            this.metroCheckBox1.AutoSize = true;
+            this.metroCheckBox1.Location = new System.Drawing.Point(120, 263);
+            this.metroCheckBox1.Name = "metroCheckBox1";
+            this.metroCheckBox1.Size = new System.Drawing.Size(114, 15);
+            this.metroCheckBox1.TabIndex = 43;
+            this.metroCheckBox1.Text = "metroCheckBox1";
+            this.metroCheckBox1.UseSelectable = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 861);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
+            this.ClientSize = new System.Drawing.Size(834, 861);
+            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1100, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.Text = "Socket Client Program";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -773,11 +889,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.metroTabControl1.ResumeLayout(false);
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -809,7 +929,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button_DO0;
@@ -824,12 +943,22 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox check_realbuf;
         private System.Windows.Forms.CheckBox check_rtext;
         private System.Windows.Forms.CheckBox check_splitbuf;
-        private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox check_sendbuf;
         private System.Windows.Forms.CheckBox check_stext;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label10;
+        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage1;
+        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroButton metroButton3;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
     }
 }
