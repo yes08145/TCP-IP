@@ -117,33 +117,33 @@ namespace TCPSocketCl
             listbox1.Items.Add(return_msg);
             //......
             //sc.LogFile(return_msg);       
-            DirectoryInfo di = new DirectoryInfo(DirPath);
-            FileInfo fi = new FileInfo(filePath);
+            //DirectoryInfo di = new DirectoryInfo(DirPath);
+            //FileInfo fi = new FileInfo(filePath);
 
-            try
-            {
-                if (di.Exists != true) Directory.CreateDirectory(DirPath);
-                if (fi.Exists != true)
-                {
-                    using (StreamWriter sw = new StreamWriter(filePath))
-                    {
-                        sw.WriteLine(return_msg);
-                        sw.Close();
-                    }
-                }
-                else
-                {
-                    using (StreamWriter sw = File.AppendText(filePath))
-                    {
-                        sw.WriteLine(return_msg);
-                        sw.Close();
-                    }
-                }
-            }
-            catch(Exception e)
-            {
+            //try
+            //{
+            //    if (di.Exists != true) Directory.CreateDirectory(DirPath);
+            //    if (fi.Exists != true)
+            //    {
+            //        using (StreamWriter sw = new StreamWriter(filePath))
+            //        {
+            //            sw.WriteLine(return_msg);
+            //            sw.Close();
+            //        }
+            //    }
+            //    else
+            //    {
+            //        using (StreamWriter sw = File.AppendText(filePath))
+            //        {
+            //            sw.WriteLine(return_msg);
+            //            sw.Close();
+            //        }
+            //    }
+            //}
+            //catch(Exception e)
+            //{
                 
-            }
+            //}
 
         }
 
@@ -155,7 +155,7 @@ namespace TCPSocketCl
 
             //));
             ipList.Add(msg);
-            dataGridView1.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
+            dgv_constate.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
         }
 
         private void ButtonOSetting_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace TCPSocketCl
                 data = Convert.ToInt32(comboBox1.Text);
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)//Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
+                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)//Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -200,7 +200,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
+                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -238,7 +238,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
+                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
                     {
                         if (usedSockInfo.conn)
                         {
@@ -394,19 +394,19 @@ namespace TCPSocketCl
             else s_log_sendBuff = false;
         }
 
-        private void datagridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_constate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            this.dataGridView1.Rows[e.RowIndex].Selected = !(this.dataGridView1.Rows[e.RowIndex].Selected);
-        }
-
-        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            using (SolidBrush b = new SolidBrush(dgv_constate.RowHeadersDefaultCellStyle.ForeColor))
             {
                 StringFormat sf = new StringFormat();
                 sf.Alignment = StringAlignment.Near;
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 2, e.RowBounds.Location.Y + 6, sf);
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 1, e.RowBounds.Location.Y + 3, sf);
             }
+        }
+
+        private void dgv_constate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dgv_constate.Rows[e.RowIndex].Selected = !(this.dgv_constate.Rows[e.RowIndex].Selected);
         }
     }
 }

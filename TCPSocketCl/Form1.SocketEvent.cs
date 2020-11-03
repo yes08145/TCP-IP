@@ -56,7 +56,7 @@ namespace TCPSocketCl
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
-                    if (usedSockInfo.index == dataGridView1.SelectedRows[0].Index)
+                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
                     {
                         SocketDisconnect(usedSockInfo);
                         return;
@@ -101,7 +101,7 @@ namespace TCPSocketCl
                             //listBox_quick.Items[i] = (list.index+1)+")"+listBox_text;
                             i++;
                         }
-                        dataGridView1.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
+                        dgv_constate.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
                         Log("======= Connect 종료 =======");
                         ListboxFocus();
                     }
