@@ -86,7 +86,6 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox5.SuspendLayout();
-
             this.SuspendLayout();
             // 
             // textBox_IP1
@@ -729,7 +728,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-
             this.ResumeLayout(false);
 
         }
