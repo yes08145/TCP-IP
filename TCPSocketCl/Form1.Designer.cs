@@ -71,18 +71,14 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.check_splitbuf = new System.Windows.Forms.CheckBox();
-            this.check_realbuf = new System.Windows.Forms.CheckBox();
-            this.check_rtext = new System.Windows.Forms.CheckBox();
-            this.check_sendbuf = new System.Windows.Forms.CheckBox();
-            this.check_stext = new System.Windows.Forms.CheckBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
-            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
+            this.check_stext = new MetroFramework.Controls.MetroCheckBox();
+            this.check_sendbuf = new MetroFramework.Controls.MetroCheckBox();
+            this.check_rtext = new MetroFramework.Controls.MetroCheckBox();
+            this.check_splitbuf = new MetroFramework.Controls.MetroCheckBox();
             this.btn_textClear = new MetroFramework.Controls.MetroButton();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,7 +102,7 @@
             this.listbox1.ItemHeight = 15;
             this.listbox1.Location = new System.Drawing.Point(12, 236);
             this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(1060, 589);
+            this.listbox1.Size = new System.Drawing.Size(1075, 589);
             this.listbox1.TabIndex = 17;
             // 
             // button1
@@ -460,7 +456,7 @@
             this.dataGridView1.ColumnHeadersVisible = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("돋움", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -735,130 +731,73 @@
             this.metroLabel6.TabIndex = 51;
             this.metroLabel6.Text = ".";
             // 
-            // check_splitbuf
+            // metroLabel1
             // 
-            this.check_splitbuf.AutoSize = true;
-            this.check_splitbuf.Checked = true;
-            this.check_splitbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_splitbuf.Location = new System.Drawing.Point(3, 61);
-            this.check_splitbuf.Name = "check_splitbuf";
-            this.check_splitbuf.Size = new System.Drawing.Size(98, 16);
-            this.check_splitbuf.TabIndex = 2;
-            this.check_splitbuf.Text = "Divided Hexa";
-            this.check_splitbuf.UseVisualStyleBackColor = true;
-            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
+            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
+            this.metroLabel1.TabIndex = 47;
             // 
-            // check_realbuf
+            // metroLabel2
             // 
-            this.check_realbuf.AutoSize = true;
-            this.check_realbuf.Location = new System.Drawing.Point(3, 39);
-            this.check_realbuf.Name = "check_realbuf";
-            this.check_realbuf.Size = new System.Drawing.Size(82, 16);
-            this.check_realbuf.TabIndex = 1;
-            this.check_realbuf.Text = "Real Hexa";
-            this.check_realbuf.UseVisualStyleBackColor = true;
-            this.check_realbuf.CheckedChanged += new System.EventHandler(this.check_realbuf_CheckedChanged);
-            // 
-            // check_rtext
-            // 
-            this.check_rtext.AutoSize = true;
-            this.check_rtext.Checked = true;
-            this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_rtext.Location = new System.Drawing.Point(3, 17);
-            this.check_rtext.Name = "check_rtext";
-            this.check_rtext.Size = new System.Drawing.Size(52, 16);
-            this.check_rtext.TabIndex = 0;
-            this.check_rtext.Text = "State";
-            this.check_rtext.UseVisualStyleBackColor = true;
-            this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
-            // 
-            // check_sendbuf
-            // 
-            this.check_sendbuf.AutoSize = true;
-            this.check_sendbuf.Checked = true;
-            this.check_sendbuf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_sendbuf.Location = new System.Drawing.Point(3, 39);
-            this.check_sendbuf.Name = "check_sendbuf";
-            this.check_sendbuf.Size = new System.Drawing.Size(53, 16);
-            this.check_sendbuf.TabIndex = 1;
-            this.check_sendbuf.Text = "Hexa";
-            this.check_sendbuf.UseVisualStyleBackColor = true;
-            this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(385, 207);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel2.TabIndex = 42;
+            this.metroLabel2.Text = "수신 문자열 표시 :";
             // 
             // check_stext
             // 
             this.check_stext.AutoSize = true;
             this.check_stext.Checked = true;
             this.check_stext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_stext.Location = new System.Drawing.Point(3, 17);
+            this.check_stext.Location = new System.Drawing.Point(152, 210);
             this.check_stext.Name = "check_stext";
-            this.check_stext.Size = new System.Drawing.Size(52, 16);
-            this.check_stext.TabIndex = 0;
-            this.check_stext.Text = "State";
-            this.check_stext.UseVisualStyleBackColor = true;
+            this.check_stext.Size = new System.Drawing.Size(62, 15);
+            this.check_stext.TabIndex = 43;
+            this.check_stext.Text = "Parsing";
+            this.check_stext.UseSelectable = true;
             this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
             // 
-            // metroLabel1
+            // check_sendbuf
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(17, 200);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel1.TabIndex = 41;
-            this.metroLabel1.Text = "송신 문자열 표시 :";
+            this.check_sendbuf.AutoSize = true;
+            this.check_sendbuf.Location = new System.Drawing.Point(237, 210);
+            this.check_sendbuf.Name = "check_sendbuf";
+            this.check_sendbuf.Size = new System.Drawing.Size(44, 15);
+            this.check_sendbuf.TabIndex = 44;
+            this.check_sendbuf.Text = "Hex";
+            this.check_sendbuf.UseSelectable = true;
+            this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
             // 
-            // metroLabel2
+            // check_rtext
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(385, 200);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel2.TabIndex = 42;
-            this.metroLabel2.Text = "수신 문자열 표시 :";
+            this.check_rtext.AutoSize = true;
+            this.check_rtext.Checked = true;
+            this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.check_rtext.Location = new System.Drawing.Point(522, 210);
+            this.check_rtext.Name = "check_rtext";
+            this.check_rtext.Size = new System.Drawing.Size(62, 15);
+            this.check_rtext.TabIndex = 45;
+            this.check_rtext.Text = "Parsing";
+            this.check_rtext.UseSelectable = true;
+            this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
             // 
-            // metroCheckBox1
+            // check_splitbuf
             // 
-            this.metroCheckBox1.AutoSize = true;
-            this.metroCheckBox1.Location = new System.Drawing.Point(152, 203);
-            this.metroCheckBox1.Name = "metroCheckBox1";
-            this.metroCheckBox1.Size = new System.Drawing.Size(62, 15);
-            this.metroCheckBox1.TabIndex = 43;
-            this.metroCheckBox1.Text = "Parsing";
-            this.metroCheckBox1.UseSelectable = true;
-            // 
-            // metroCheckBox2
-            // 
-            this.metroCheckBox2.AutoSize = true;
-            this.metroCheckBox2.Location = new System.Drawing.Point(237, 203);
-            this.metroCheckBox2.Name = "metroCheckBox2";
-            this.metroCheckBox2.Size = new System.Drawing.Size(44, 15);
-            this.metroCheckBox2.TabIndex = 44;
-            this.metroCheckBox2.Text = "Hex";
-            this.metroCheckBox2.UseSelectable = true;
-            // 
-            // metroCheckBox3
-            // 
-            this.metroCheckBox3.AutoSize = true;
-            this.metroCheckBox3.Location = new System.Drawing.Point(522, 203);
-            this.metroCheckBox3.Name = "metroCheckBox3";
-            this.metroCheckBox3.Size = new System.Drawing.Size(62, 15);
-            this.metroCheckBox3.TabIndex = 45;
-            this.metroCheckBox3.Text = "Parsing";
-            this.metroCheckBox3.UseSelectable = true;
-            // 
-            // metroCheckBox4
-            // 
-            this.metroCheckBox4.AutoSize = true;
-            this.metroCheckBox4.Location = new System.Drawing.Point(603, 203);
-            this.metroCheckBox4.Name = "metroCheckBox4";
-            this.metroCheckBox4.Size = new System.Drawing.Size(44, 15);
-            this.metroCheckBox4.TabIndex = 46;
-            this.metroCheckBox4.Text = "Hex";
-            this.metroCheckBox4.UseSelectable = true;
+            this.check_splitbuf.AutoSize = true;
+            this.check_splitbuf.Location = new System.Drawing.Point(603, 210);
+            this.check_splitbuf.Name = "check_splitbuf";
+            this.check_splitbuf.Size = new System.Drawing.Size(44, 15);
+            this.check_splitbuf.TabIndex = 46;
+            this.check_splitbuf.Text = "Hex";
+            this.check_splitbuf.UseSelectable = true;
+            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
             // btn_textClear
             // 
-            this.btn_textClear.Location = new System.Drawing.Point(956, 203);
+            this.btn_textClear.Location = new System.Drawing.Point(972, 203);
             this.btn_textClear.Name = "btn_textClear";
             this.btn_textClear.Size = new System.Drawing.Size(116, 23);
             this.btn_textClear.TabIndex = 43;
@@ -866,17 +805,27 @@
             this.btn_textClear.UseSelectable = true;
             this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
             // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(12, 207);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel8.TabIndex = 48;
+            this.metroLabel8.Text = "송신 문자열 표시 :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1100, 861);
+            this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.btn_textClear);
-            this.Controls.Add(this.metroCheckBox4);
-            this.Controls.Add(this.metroCheckBox3);
-            this.Controls.Add(this.metroCheckBox2);
-            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.check_splitbuf);
+            this.Controls.Add(this.check_rtext);
+            this.Controls.Add(this.check_sendbuf);
+            this.Controls.Add(this.check_stext);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.groupBox5);
@@ -931,17 +880,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.CheckBox check_realbuf;
-        private System.Windows.Forms.CheckBox check_rtext;
-        private System.Windows.Forms.CheckBox check_splitbuf;
-        private System.Windows.Forms.CheckBox check_sendbuf;
-        private System.Windows.Forms.CheckBox check_stext;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
+        private MetroFramework.Controls.MetroCheckBox check_stext;
+        private MetroFramework.Controls.MetroCheckBox check_sendbuf;
+        private MetroFramework.Controls.MetroCheckBox check_rtext;
+        private MetroFramework.Controls.MetroCheckBox check_splitbuf;
         private MetroFramework.Controls.MetroButton btn_textClear;
         private MetroFramework.Controls.MetroButton btn_disconnect;
         private MetroFramework.Controls.MetroButton btn_connect;
@@ -957,5 +901,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
     }
 }

@@ -37,9 +37,9 @@ namespace TCPSocketCl
         private static string strHex = string.Empty;
         private static bool r_log_text = true;
         private static bool r_log_realBuff = false;
-        private static bool r_log_splitBuff = true;
+        private static bool r_log_splitBuff = false;
         private static bool s_log_text = true;
-        private static bool s_log_sendBuff = true;
+        private static bool s_log_sendBuff = false;
         //private static string strHexSplit = string.Empty;
         //private static string hex_cksum = string.Empty;
         private static string[] device_judge = new string[3];
@@ -370,11 +370,11 @@ namespace TCPSocketCl
             else r_log_text = false;
         }
 
-        private void check_realbuf_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_realbuf.Checked == true) r_log_realBuff = true;
-            else r_log_realBuff = false;
-        }
+        //private void check_realbuf_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (check_realbuf.Checked == true) r_log_realBuff = true;
+        //    else r_log_realBuff = false;
+        //}
 
         private void check_splitbuf_CheckedChanged(object sender, EventArgs e)
         {
