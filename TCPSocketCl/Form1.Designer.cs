@@ -32,20 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.textBox_IP1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox_Port = new System.Windows.Forms.TextBox();
-            this.textBox_IP2 = new System.Windows.Forms.TextBox();
-            this.textBox_IP3 = new System.Windows.Forms.TextBox();
-            this.textBox_IP4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btn_connect = new System.Windows.Forms.Button();
-            this.btn_disconnect = new System.Windows.Forms.Button();
             this.listbox1 = new System.Windows.Forms.ListBox();
-            this.btn_textClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button_AIRequest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,12 +58,31 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btn_disconnect = new MetroFramework.Controls.MetroButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textBox_Port = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_IP4 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_IP3 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_IP2 = new MetroFramework.Controls.MetroTextBox();
+            this.textBox_IP1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.btn_connect = new MetroFramework.Controls.MetroButton();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.check_splitbuf = new System.Windows.Forms.CheckBox();
             this.check_realbuf = new System.Windows.Forms.CheckBox();
             this.check_rtext = new System.Windows.Forms.CheckBox();
             this.check_sendbuf = new System.Windows.Forms.CheckBox();
             this.check_stext = new System.Windows.Forms.CheckBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroCheckBox1 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox2 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox3 = new MetroFramework.Controls.MetroCheckBox();
+            this.metroCheckBox4 = new MetroFramework.Controls.MetroCheckBox();
+            this.btn_textClear = new MetroFramework.Controls.MetroButton();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,152 +94,20 @@
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox_IP1
-            // 
-            this.textBox_IP1.Location = new System.Drawing.Point(76, 33);
-            this.textBox_IP1.MaxLength = 3;
-            this.textBox_IP1.Name = "textBox_IP1";
-            this.textBox_IP1.Size = new System.Drawing.Size(26, 21);
-            this.textBox_IP1.TabIndex = 0;
-            this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP1_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(15, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "IP      :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(15, 71);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "PORT :";
-            // 
-            // textBox_Port
-            // 
-            this.textBox_Port.Location = new System.Drawing.Point(76, 69);
-            this.textBox_Port.MaxLength = 5;
-            this.textBox_Port.Name = "textBox_Port";
-            this.textBox_Port.Size = new System.Drawing.Size(122, 21);
-            this.textBox_Port.TabIndex = 4;
-            this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Port_KeyPress);
-            // 
-            // textBox_IP2
-            // 
-            this.textBox_IP2.Location = new System.Drawing.Point(108, 33);
-            this.textBox_IP2.MaxLength = 3;
-            this.textBox_IP2.Name = "textBox_IP2";
-            this.textBox_IP2.Size = new System.Drawing.Size(26, 21);
-            this.textBox_IP2.TabIndex = 1;
-            this.textBox_IP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP2_KeyPress);
-            // 
-            // textBox_IP3
-            // 
-            this.textBox_IP3.Location = new System.Drawing.Point(140, 33);
-            this.textBox_IP3.MaxLength = 3;
-            this.textBox_IP3.Name = "textBox_IP3";
-            this.textBox_IP3.Size = new System.Drawing.Size(26, 21);
-            this.textBox_IP3.TabIndex = 2;
-            this.textBox_IP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP3_KeyPress);
-            // 
-            // textBox_IP4
-            // 
-            this.textBox_IP4.Location = new System.Drawing.Point(172, 33);
-            this.textBox_IP4.MaxLength = 3;
-            this.textBox_IP4.Name = "textBox_IP4";
-            this.textBox_IP4.Size = new System.Drawing.Size(26, 21);
-            this.textBox_IP4.TabIndex = 3;
-            this.textBox_IP4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP4_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(102, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(9, 12);
-            this.label3.TabIndex = 10;
-            this.label3.Text = ".";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(134, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(9, 12);
-            this.label4.TabIndex = 11;
-            this.label4.Text = ".";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(166, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(9, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = ".";
-            // 
-            // btn_connect
-            // 
-            this.btn_connect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_connect.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btn_connect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_connect.Location = new System.Drawing.Point(18, 128);
-            this.btn_connect.Name = "btn_connect";
-            this.btn_connect.Size = new System.Drawing.Size(180, 26);
-            this.btn_connect.TabIndex = 13;
-            this.btn_connect.Text = "Connect";
-            this.btn_connect.UseVisualStyleBackColor = true;
-            this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
-            // 
-            // btn_disconnect
-            // 
-            this.btn_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_disconnect.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_disconnect.Location = new System.Drawing.Point(10, 128);
-            this.btn_disconnect.Name = "btn_disconnect";
-            this.btn_disconnect.Size = new System.Drawing.Size(133, 26);
-            this.btn_disconnect.TabIndex = 14;
-            this.btn_disconnect.Text = "Disconnect";
-            this.btn_disconnect.UseVisualStyleBackColor = true;
-            this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
-            // 
             // listbox1
             // 
             this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listbox1.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.listbox1.BackColor = System.Drawing.SystemColors.Window;
+            this.listbox1.Font = new System.Drawing.Font("돋움", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.listbox1.FormattingEnabled = true;
             this.listbox1.HorizontalScrollbar = true;
             this.listbox1.ItemHeight = 15;
-            this.listbox1.Location = new System.Drawing.Point(12, 191);
+            this.listbox1.Location = new System.Drawing.Point(12, 236);
             this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(1060, 634);
+            this.listbox1.Size = new System.Drawing.Size(1060, 589);
             this.listbox1.TabIndex = 17;
-            // 
-            // btn_textClear
-            // 
-            this.btn_textClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_textClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_textClear.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btn_textClear.Location = new System.Drawing.Point(946, 162);
-            this.btn_textClear.Name = "btn_textClear";
-            this.btn_textClear.Size = new System.Drawing.Size(126, 23);
-            this.btn_textClear.TabIndex = 18;
-            this.btn_textClear.Text = "Text Clear";
-            this.btn_textClear.UseVisualStyleBackColor = true;
-            this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
             // 
             // button1
             // 
@@ -548,8 +422,8 @@
             // 
             this.groupBox4.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.btn_disconnect);
             this.groupBox4.Controls.Add(this.dataGridView1);
+            this.groupBox4.Controls.Add(this.btn_disconnect);
             this.groupBox4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox4.Location = new System.Drawing.Point(227, 25);
             this.groupBox4.Name = "groupBox4";
@@ -565,7 +439,7 @@
             this.label8.Location = new System.Drawing.Point(23, 20);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(2, 100);
-            this.label8.TabIndex = 42;
+            this.label8.TabIndex = 50;
             // 
             // dataGridView1
             // 
@@ -613,30 +487,253 @@
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(133, 100);
-            this.dataGridView1.TabIndex = 41;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
-            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvRowHeaderPaint);
+            this.dataGridView1.TabIndex = 49;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridView1_CellDoubleClick);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            // 
+            // btn_disconnect
+            // 
+            this.btn_disconnect.Location = new System.Drawing.Point(10, 128);
+            this.btn_disconnect.Name = "btn_disconnect";
+            this.btn_disconnect.Size = new System.Drawing.Size(133, 23);
+            this.btn_disconnect.TabIndex = 48;
+            this.btn_disconnect.Text = "Disconnect";
+            this.btn_disconnect.UseSelectable = true;
+            this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
             // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox5.Controls.Add(this.textBox_IP1);
-            this.groupBox5.Controls.Add(this.textBox_IP2);
-            this.groupBox5.Controls.Add(this.textBox_IP3);
-            this.groupBox5.Controls.Add(this.textBox_IP4);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.btn_connect);
-            this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.textBox_Port);
+            this.groupBox5.Controls.Add(this.textBox_IP4);
+            this.groupBox5.Controls.Add(this.textBox_IP3);
+            this.groupBox5.Controls.Add(this.textBox_IP2);
+            this.groupBox5.Controls.Add(this.textBox_IP1);
+            this.groupBox5.Controls.Add(this.metroLabel4);
+            this.groupBox5.Controls.Add(this.btn_connect);
+            this.groupBox5.Controls.Add(this.metroLabel3);
+            this.groupBox5.Controls.Add(this.metroLabel7);
+            this.groupBox5.Controls.Add(this.metroLabel5);
+            this.groupBox5.Controls.Add(this.metroLabel6);
+            this.groupBox5.Font = new System.Drawing.Font("돋움체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox5.Location = new System.Drawing.Point(12, 25);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(213, 160);
             this.groupBox5.TabIndex = 20;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Network Setting";
+            // 
+            // textBox_Port
+            // 
+            // 
+            // 
+            // 
+            this.textBox_Port.CustomButton.Image = null;
+            this.textBox_Port.CustomButton.Location = new System.Drawing.Point(100, 1);
+            this.textBox_Port.CustomButton.Name = "";
+            this.textBox_Port.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBox_Port.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox_Port.CustomButton.TabIndex = 1;
+            this.textBox_Port.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox_Port.CustomButton.UseSelectable = true;
+            this.textBox_Port.CustomButton.Visible = false;
+            this.textBox_Port.Lines = new string[0];
+            this.textBox_Port.Location = new System.Drawing.Point(76, 71);
+            this.textBox_Port.MaxLength = 5;
+            this.textBox_Port.Name = "textBox_Port";
+            this.textBox_Port.PasswordChar = '\0';
+            this.textBox_Port.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox_Port.SelectedText = "";
+            this.textBox_Port.SelectionLength = 0;
+            this.textBox_Port.SelectionStart = 0;
+            this.textBox_Port.ShortcutsEnabled = true;
+            this.textBox_Port.Size = new System.Drawing.Size(122, 23);
+            this.textBox_Port.TabIndex = 5;
+            this.textBox_Port.UseSelectable = true;
+            this.textBox_Port.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox_Port.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Port_KeyPress);
+            // 
+            // textBox_IP4
+            // 
+            // 
+            // 
+            // 
+            this.textBox_IP4.CustomButton.Image = null;
+            this.textBox_IP4.CustomButton.Location = new System.Drawing.Point(4, 1);
+            this.textBox_IP4.CustomButton.Name = "";
+            this.textBox_IP4.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBox_IP4.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox_IP4.CustomButton.TabIndex = 1;
+            this.textBox_IP4.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox_IP4.CustomButton.UseSelectable = true;
+            this.textBox_IP4.CustomButton.Visible = false;
+            this.textBox_IP4.Lines = new string[0];
+            this.textBox_IP4.Location = new System.Drawing.Point(172, 35);
+            this.textBox_IP4.MaxLength = 3;
+            this.textBox_IP4.Name = "textBox_IP4";
+            this.textBox_IP4.PasswordChar = '\0';
+            this.textBox_IP4.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox_IP4.SelectedText = "";
+            this.textBox_IP4.SelectionLength = 0;
+            this.textBox_IP4.SelectionStart = 0;
+            this.textBox_IP4.ShortcutsEnabled = true;
+            this.textBox_IP4.Size = new System.Drawing.Size(26, 23);
+            this.textBox_IP4.TabIndex = 4;
+            this.textBox_IP4.UseSelectable = true;
+            this.textBox_IP4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox_IP4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBox_IP4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP4_KeyPress);
+            // 
+            // textBox_IP3
+            // 
+            // 
+            // 
+            // 
+            this.textBox_IP3.CustomButton.Image = null;
+            this.textBox_IP3.CustomButton.Location = new System.Drawing.Point(4, 1);
+            this.textBox_IP3.CustomButton.Name = "";
+            this.textBox_IP3.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBox_IP3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox_IP3.CustomButton.TabIndex = 1;
+            this.textBox_IP3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox_IP3.CustomButton.UseSelectable = true;
+            this.textBox_IP3.CustomButton.Visible = false;
+            this.textBox_IP3.Lines = new string[0];
+            this.textBox_IP3.Location = new System.Drawing.Point(140, 35);
+            this.textBox_IP3.MaxLength = 3;
+            this.textBox_IP3.Name = "textBox_IP3";
+            this.textBox_IP3.PasswordChar = '\0';
+            this.textBox_IP3.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox_IP3.SelectedText = "";
+            this.textBox_IP3.SelectionLength = 0;
+            this.textBox_IP3.SelectionStart = 0;
+            this.textBox_IP3.ShortcutsEnabled = true;
+            this.textBox_IP3.Size = new System.Drawing.Size(26, 23);
+            this.textBox_IP3.TabIndex = 3;
+            this.textBox_IP3.UseSelectable = true;
+            this.textBox_IP3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox_IP3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBox_IP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP3_KeyPress);
+            // 
+            // textBox_IP2
+            // 
+            // 
+            // 
+            // 
+            this.textBox_IP2.CustomButton.Image = null;
+            this.textBox_IP2.CustomButton.Location = new System.Drawing.Point(4, 1);
+            this.textBox_IP2.CustomButton.Name = "";
+            this.textBox_IP2.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBox_IP2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox_IP2.CustomButton.TabIndex = 1;
+            this.textBox_IP2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox_IP2.CustomButton.UseSelectable = true;
+            this.textBox_IP2.CustomButton.Visible = false;
+            this.textBox_IP2.Lines = new string[0];
+            this.textBox_IP2.Location = new System.Drawing.Point(108, 35);
+            this.textBox_IP2.MaxLength = 3;
+            this.textBox_IP2.Name = "textBox_IP2";
+            this.textBox_IP2.PasswordChar = '\0';
+            this.textBox_IP2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox_IP2.SelectedText = "";
+            this.textBox_IP2.SelectionLength = 0;
+            this.textBox_IP2.SelectionStart = 0;
+            this.textBox_IP2.ShortcutsEnabled = true;
+            this.textBox_IP2.Size = new System.Drawing.Size(26, 23);
+            this.textBox_IP2.TabIndex = 2;
+            this.textBox_IP2.UseSelectable = true;
+            this.textBox_IP2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox_IP2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBox_IP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP2_KeyPress);
+            // 
+            // textBox_IP1
+            // 
+            // 
+            // 
+            // 
+            this.textBox_IP1.CustomButton.Image = null;
+            this.textBox_IP1.CustomButton.Location = new System.Drawing.Point(4, 1);
+            this.textBox_IP1.CustomButton.Name = "";
+            this.textBox_IP1.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.textBox_IP1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.textBox_IP1.CustomButton.TabIndex = 1;
+            this.textBox_IP1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.textBox_IP1.CustomButton.UseSelectable = true;
+            this.textBox_IP1.CustomButton.Visible = false;
+            this.textBox_IP1.Lines = new string[0];
+            this.textBox_IP1.Location = new System.Drawing.Point(76, 35);
+            this.textBox_IP1.MaxLength = 3;
+            this.textBox_IP1.Name = "textBox_IP1";
+            this.textBox_IP1.PasswordChar = '\0';
+            this.textBox_IP1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.textBox_IP1.SelectedText = "";
+            this.textBox_IP1.SelectionLength = 0;
+            this.textBox_IP1.SelectionStart = 0;
+            this.textBox_IP1.ShortcutsEnabled = true;
+            this.textBox_IP1.Size = new System.Drawing.Size(26, 23);
+            this.textBox_IP1.TabIndex = 1;
+            this.textBox_IP1.UseSelectable = true;
+            this.textBox_IP1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.textBox_IP1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP1_KeyPress);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.Location = new System.Drawing.Point(18, 71);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(49, 19);
+            this.metroLabel4.TabIndex = 48;
+            this.metroLabel4.Text = "PORT :";
+            // 
+            // btn_connect
+            // 
+            this.btn_connect.Location = new System.Drawing.Point(18, 128);
+            this.btn_connect.Name = "btn_connect";
+            this.btn_connect.Size = new System.Drawing.Size(180, 23);
+            this.btn_connect.TabIndex = 48;
+            this.btn_connect.Text = "Connect";
+            this.btn_connect.UseSelectable = true;
+            this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.Location = new System.Drawing.Point(18, 35);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel3.TabIndex = 47;
+            this.metroLabel3.Text = "IP      :";
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(163, 40);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel7.TabIndex = 53;
+            this.metroLabel7.Text = ".";
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(131, 40);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel5.TabIndex = 52;
+            this.metroLabel5.Text = ".";
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(99, 39);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel6.TabIndex = 51;
+            this.metroLabel6.Text = ".";
             // 
             // check_splitbuf
             // 
@@ -701,15 +798,90 @@
             this.check_stext.UseVisualStyleBackColor = true;
             this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(17, 200);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel1.TabIndex = 41;
+            this.metroLabel1.Text = "송신 문자열 표시 :";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(385, 200);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel2.TabIndex = 42;
+            this.metroLabel2.Text = "수신 문자열 표시 :";
+            // 
+            // metroCheckBox1
+            // 
+            this.metroCheckBox1.AutoSize = true;
+            this.metroCheckBox1.Location = new System.Drawing.Point(152, 203);
+            this.metroCheckBox1.Name = "metroCheckBox1";
+            this.metroCheckBox1.Size = new System.Drawing.Size(62, 15);
+            this.metroCheckBox1.TabIndex = 43;
+            this.metroCheckBox1.Text = "Parsing";
+            this.metroCheckBox1.UseSelectable = true;
+            // 
+            // metroCheckBox2
+            // 
+            this.metroCheckBox2.AutoSize = true;
+            this.metroCheckBox2.Location = new System.Drawing.Point(237, 203);
+            this.metroCheckBox2.Name = "metroCheckBox2";
+            this.metroCheckBox2.Size = new System.Drawing.Size(44, 15);
+            this.metroCheckBox2.TabIndex = 44;
+            this.metroCheckBox2.Text = "Hex";
+            this.metroCheckBox2.UseSelectable = true;
+            // 
+            // metroCheckBox3
+            // 
+            this.metroCheckBox3.AutoSize = true;
+            this.metroCheckBox3.Location = new System.Drawing.Point(522, 203);
+            this.metroCheckBox3.Name = "metroCheckBox3";
+            this.metroCheckBox3.Size = new System.Drawing.Size(62, 15);
+            this.metroCheckBox3.TabIndex = 45;
+            this.metroCheckBox3.Text = "Parsing";
+            this.metroCheckBox3.UseSelectable = true;
+            // 
+            // metroCheckBox4
+            // 
+            this.metroCheckBox4.AutoSize = true;
+            this.metroCheckBox4.Location = new System.Drawing.Point(603, 203);
+            this.metroCheckBox4.Name = "metroCheckBox4";
+            this.metroCheckBox4.Size = new System.Drawing.Size(44, 15);
+            this.metroCheckBox4.TabIndex = 46;
+            this.metroCheckBox4.Text = "Hex";
+            this.metroCheckBox4.UseSelectable = true;
+            // 
+            // btn_textClear
+            // 
+            this.btn_textClear.Location = new System.Drawing.Point(956, 203);
+            this.btn_textClear.Name = "btn_textClear";
+            this.btn_textClear.Size = new System.Drawing.Size(116, 23);
+            this.btn_textClear.TabIndex = 43;
+            this.btn_textClear.Text = "Text Clear";
+            this.btn_textClear.UseSelectable = true;
+            this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1100, 861);
+            this.Controls.Add(this.btn_textClear);
+            this.Controls.Add(this.metroCheckBox4);
+            this.Controls.Add(this.metroCheckBox3);
+            this.Controls.Add(this.metroCheckBox2);
+            this.Controls.Add(this.metroCheckBox1);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1100, 600);
@@ -729,25 +901,12 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox_IP1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_Port;
-        private System.Windows.Forms.TextBox textBox_IP2;
-        private System.Windows.Forms.TextBox textBox_IP3;
-        private System.Windows.Forms.TextBox textBox_IP4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_connect;
-        private System.Windows.Forms.Button btn_disconnect;
         private System.Windows.Forms.ListBox listbox1;
-        private System.Windows.Forms.Button btn_textClear;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_AIRequest;
         private System.Windows.Forms.Label label7;
@@ -772,12 +931,31 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox check_realbuf;
         private System.Windows.Forms.CheckBox check_rtext;
         private System.Windows.Forms.CheckBox check_splitbuf;
         private System.Windows.Forms.CheckBox check_sendbuf;
         private System.Windows.Forms.CheckBox check_stext;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox2;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox3;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox4;
+        private MetroFramework.Controls.MetroButton btn_textClear;
+        private MetroFramework.Controls.MetroButton btn_disconnect;
+        private MetroFramework.Controls.MetroButton btn_connect;
+        private MetroFramework.Controls.MetroTextBox textBox_IP4;
+        private MetroFramework.Controls.MetroTextBox textBox_IP3;
+        private MetroFramework.Controls.MetroTextBox textBox_IP2;
+        private MetroFramework.Controls.MetroTextBox textBox_IP1;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroTextBox textBox_Port;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

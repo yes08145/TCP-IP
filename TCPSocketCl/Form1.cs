@@ -363,19 +363,6 @@ namespace TCPSocketCl
             recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
             e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
         }
-        private void DgvRowHeaderPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                StringFormat sf = new StringFormat();
-                sf.Alignment = StringAlignment.Near;
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 2, e.RowBounds.Location.Y + 6, sf);
-            }
-        }
-        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.dataGridView1.Rows[e.RowIndex].Selected = !(this.dataGridView1.Rows[e.RowIndex].Selected);
-        }
 
         private void check_text_CheckedChanged(object sender, EventArgs e)
         {
@@ -405,6 +392,21 @@ namespace TCPSocketCl
         {
             if (check_sendbuf.Checked == true) s_log_sendBuff = true;
             else s_log_sendBuff = false;
+        }
+
+        private void datagridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dataGridView1.Rows[e.RowIndex].Selected = !(this.dataGridView1.Rows[e.RowIndex].Selected);
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                StringFormat sf = new StringFormat();
+                sf.Alignment = StringAlignment.Near;
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 2, e.RowBounds.Location.Y + 6, sf);
+            }
         }
     }
 }
