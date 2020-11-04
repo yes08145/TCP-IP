@@ -202,7 +202,7 @@ namespace TCPSocketCl
         //    //else dout_ch = 404;
         //    else sensorID = 100;
 
-        }
+        //}
         private void Button_DOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 4;
@@ -316,22 +316,7 @@ namespace TCPSocketCl
             
         }
 
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            //Button_State(button1, 1);
-        }
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            //Button_State(button2, 1);
-        }
-        private void Button3_Click(object sender, EventArgs e)
-        {
-            //Button_State(button3,2);
-        }
-        private void Button4_Click(object sender, EventArgs e)
-        {
-            //Button_State(button4,2);
-        }
+       
         private void Btn_ch0_d_Click(object sender, EventArgs e)
         {
             Button_State(btn_ch0_d, 3);
@@ -349,12 +334,7 @@ namespace TCPSocketCl
             Button_State(btn_ch3_d, 3);
         }
 
-        private void check_text_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_rtext.Checked == true) r_log_text = true;
-            else r_log_text = false;
-        }
-
+       
         //private void Button3_Click(object sender, EventArgs e)
         //{
         //    Button_State(button3,2);
