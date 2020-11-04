@@ -32,29 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.listbox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button_AIRequest = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button_AOSetting = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button_DOSetting = new System.Windows.Forms.Button();
-            this.button_Off = new System.Windows.Forms.Button();
-            this.button_On = new System.Windows.Forms.Button();
-            this.button_DO0 = new System.Windows.Forms.Button();
-            this.button_DO1 = new System.Windows.Forms.Button();
-            this.button_DO2 = new System.Windows.Forms.Button();
-            this.button_DO3 = new System.Windows.Forms.Button();
             this.label_grid_division = new System.Windows.Forms.Label();
             this.btn_disconnect = new MetroFramework.Controls.MetroButton();
             this.textBox_Port = new MetroFramework.Controls.MetroTextBox();
@@ -68,354 +45,71 @@
             this.metroLabel_ip3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_ip2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_ip1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel_receive = new MetroFramework.Controls.MetroLabel();
-            this.check_stext = new MetroFramework.Controls.MetroCheckBox();
-            this.check_sendbuf = new MetroFramework.Controls.MetroCheckBox();
-            this.check_rtext = new MetroFramework.Controls.MetroCheckBox();
-            this.check_splitbuf = new MetroFramework.Controls.MetroCheckBox();
-            this.btn_textClear = new MetroFramework.Controls.MetroButton();
-            this.metroLabel_send = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl_nsetting = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage_nsetting = new MetroFramework.Controls.MetroTabPage();
             this.metroTabControl_connected = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage_connected = new MetroFramework.Controls.MetroTabPage();
             this.dgv_constate = new MetroFramework.Controls.MetroGrid();
-            this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.metroPanel_a = new MetroFramework.Controls.MetroPanel();
+            this.metroTabControl_AI_a = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage_AI_a = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel_inputmA_a = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_inputch_a = new MetroFramework.Controls.MetroLabel();
+            this.Btn_ch1_a = new MetroFramework.Controls.MetroButton();
+            this.metroLabel_ch_a = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_mA_a = new MetroFramework.Controls.MetroLabel();
+            this.Btn_ch0_a = new MetroFramework.Controls.MetroButton();
+            this.metroTabControl_AO_a = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage_AO_a = new MetroFramework.Controls.MetroTabPage();
+            this.label_AO_chdiv_a = new System.Windows.Forms.Label();
+            this.metroLabel_outch1_a = new MetroFramework.Controls.MetroLabel();
+            this.Radio_1_13_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_17_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_18_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Btn_output_a = new MetroFramework.Controls.MetroButton();
+            this.Radio_1_20_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_19_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_15_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_16_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_14_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_11_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_12_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_10_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_9_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_8_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_7_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_6_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_5_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_1_4_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_13_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_17_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_18_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_20_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_19_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_15_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_16_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_14_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_11_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_12_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_10_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_9_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_8_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_7_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_6_a = new MetroFramework.Controls.MetroRadioButton();
+            this.Radio_0_5_a = new MetroFramework.Controls.MetroRadioButton();
+            this.metroLabel_outch0_a = new MetroFramework.Controls.MetroLabel();
+            this.Radio_0_4_a = new MetroFramework.Controls.MetroRadioButton();
             this.metroTabControl_nsetting.SuspendLayout();
             this.metroTabPage_nsetting.SuspendLayout();
             this.metroTabControl_connected.SuspendLayout();
             this.metroTabPage_connected.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).BeginInit();
+            this.metroPanel_a.SuspendLayout();
+            this.metroTabControl_AI_a.SuspendLayout();
+            this.metroTabPage_AI_a.SuspendLayout();
+            this.metroTabControl_AO_a.SuspendLayout();
+            this.metroTabPage_AO_a.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listbox1
-            // 
-            this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listbox1.BackColor = System.Drawing.SystemColors.Window;
-            this.listbox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.listbox1.FormattingEnabled = true;
-            this.listbox1.HorizontalScrollbar = true;
-            this.listbox1.ItemHeight = 21;
-            this.listbox1.Location = new System.Drawing.Point(12, 236);
-            this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(1075, 571);
-            this.listbox1.TabIndex = 17;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(85, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 26);
-            this.button1.TabIndex = 21;
-            this.button1.TabStop = false;
-            this.button1.Text = "ch 0";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // button_AIRequest
-            // 
-            this.button_AIRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AIRequest.Location = new System.Drawing.Point(27, 61);
-            this.button_AIRequest.Name = "button_AIRequest";
-            this.button_AIRequest.Size = new System.Drawing.Size(128, 26);
-            this.button_AIRequest.TabIndex = 37;
-            this.button_AIRequest.Text = "전류 입력 값 요청";
-            this.button_AIRequest.UseVisualStyleBackColor = true;
-            this.button_AIRequest.Click += new System.EventHandler(this.Button_AIRequest_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(48, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "mA";
-            // 
-            // button_AOSetting
-            // 
-            this.button_AOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AOSetting.Location = new System.Drawing.Point(35, 61);
-            this.button_AOSetting.Name = "button_AOSetting";
-            this.button_AOSetting.Size = new System.Drawing.Size(128, 26);
-            this.button_AOSetting.TabIndex = 0;
-            this.button_AOSetting.Text = "전류 출력 설정";
-            this.button_AOSetting.UseVisualStyleBackColor = true;
-            this.button_AOSetting.Click += new System.EventHandler(this.ButtonOSetting_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(136, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 26);
-            this.button2.TabIndex = 21;
-            this.button2.TabStop = false;
-            this.button2.Text = "ch 1";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(41, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 26);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "ch 0";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(94, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 26);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "ch 1";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(385, 10);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(417, 174);
-            this.tabControl.TabIndex = 39;
-            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(409, 148);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Analog";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button_AIRequest);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(214, 18);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(189, 109);
-            this.groupBox2.TabIndex = 40;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "전류입력";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.button_AOSetting);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(189, 109);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "전류출력";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(44, 21);
-            this.comboBox1.TabIndex = 40;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(409, 148);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Digital";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.button_DOSetting);
-            this.groupBox3.Controls.Add(this.button_Off);
-            this.groupBox3.Controls.Add(this.button_On);
-            this.groupBox3.Controls.Add(this.button_DO0);
-            this.groupBox3.Controls.Add(this.button_DO1);
-            this.groupBox3.Controls.Add(this.button_DO2);
-            this.groupBox3.Controls.Add(this.button_DO3);
-            this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 18);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 117);
-            this.groupBox3.TabIndex = 39;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "신호출력";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("굴림", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(11, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 14);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "SIGNAL :";
-            // 
-            // button_DOSetting
-            // 
-            this.button_DOSetting.BackColor = System.Drawing.Color.Transparent;
-            this.button_DOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DOSetting.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DOSetting.Location = new System.Drawing.Point(52, 77);
-            this.button_DOSetting.Name = "button_DOSetting";
-            this.button_DOSetting.Size = new System.Drawing.Size(128, 26);
-            this.button_DOSetting.TabIndex = 26;
-            this.button_DOSetting.TabStop = false;
-            this.button_DOSetting.Text = "디지털 출력 설정";
-            this.button_DOSetting.UseVisualStyleBackColor = false;
-            this.button_DOSetting.Click += new System.EventHandler(this.Button_DOSetting_Click);
-            // 
-            // button_Off
-            // 
-            this.button_Off.BackColor = System.Drawing.Color.Transparent;
-            this.button_Off.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_Off.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_Off.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Off.Location = new System.Drawing.Point(92, 45);
-            this.button_Off.Name = "button_Off";
-            this.button_Off.Size = new System.Drawing.Size(47, 26);
-            this.button_Off.TabIndex = 25;
-            this.button_Off.TabStop = false;
-            this.button_Off.Text = "Off";
-            this.button_Off.UseVisualStyleBackColor = false;
-            this.button_Off.Click += new System.EventHandler(this.Button_Off_Click);
-            // 
-            // button_On
-            // 
-            this.button_On.BackColor = System.Drawing.Color.Transparent;
-            this.button_On.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_On.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_On.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_On.Location = new System.Drawing.Point(145, 45);
-            this.button_On.Name = "button_On";
-            this.button_On.Size = new System.Drawing.Size(47, 26);
-            this.button_On.TabIndex = 24;
-            this.button_On.TabStop = false;
-            this.button_On.Text = "On";
-            this.button_On.UseVisualStyleBackColor = false;
-            this.button_On.Click += new System.EventHandler(this.Button_On_Click);
-            // 
-            // button_DO0
-            // 
-            this.button_DO0.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO0.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO0.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO0.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO0.Location = new System.Drawing.Point(11, 16);
-            this.button_DO0.Name = "button_DO0";
-            this.button_DO0.Size = new System.Drawing.Size(47, 26);
-            this.button_DO0.TabIndex = 23;
-            this.button_DO0.TabStop = false;
-            this.button_DO0.Text = "ch 0";
-            this.button_DO0.UseVisualStyleBackColor = false;
-            this.button_DO0.Click += new System.EventHandler(this.Button_DO0_Click);
-            // 
-            // button_DO1
-            // 
-            this.button_DO1.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO1.Location = new System.Drawing.Point(64, 16);
-            this.button_DO1.Name = "button_DO1";
-            this.button_DO1.Size = new System.Drawing.Size(47, 26);
-            this.button_DO1.TabIndex = 22;
-            this.button_DO1.TabStop = false;
-            this.button_DO1.Text = "ch 1";
-            this.button_DO1.UseVisualStyleBackColor = false;
-            this.button_DO1.Click += new System.EventHandler(this.Button_DO1_Click);
-            // 
-            // button_DO2
-            // 
-            this.button_DO2.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO2.Location = new System.Drawing.Point(117, 16);
-            this.button_DO2.Name = "button_DO2";
-            this.button_DO2.Size = new System.Drawing.Size(47, 26);
-            this.button_DO2.TabIndex = 21;
-            this.button_DO2.TabStop = false;
-            this.button_DO2.Text = "ch 2";
-            this.button_DO2.UseVisualStyleBackColor = false;
-            this.button_DO2.Click += new System.EventHandler(this.Button_DO2_Click);
-            // 
-            // button_DO3
-            // 
-            this.button_DO3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO3.Location = new System.Drawing.Point(170, 16);
-            this.button_DO3.Name = "button_DO3";
-            this.button_DO3.Size = new System.Drawing.Size(47, 26);
-            this.button_DO3.TabIndex = 21;
-            this.button_DO3.TabStop = false;
-            this.button_DO3.Text = "ch 3";
-            this.button_DO3.UseVisualStyleBackColor = true;
-            this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
             // label_grid_division
             // 
@@ -428,6 +122,8 @@
             // 
             // btn_disconnect
             // 
+            this.btn_disconnect.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btn_disconnect.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btn_disconnect.Location = new System.Drawing.Point(3, 106);
             this.btn_disconnect.Name = "btn_disconnect";
             this.btn_disconnect.Size = new System.Drawing.Size(133, 23);
@@ -604,6 +300,8 @@
             // btn_connect
             // 
             this.btn_connect.BackColor = System.Drawing.Color.White;
+            this.btn_connect.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.btn_connect.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btn_connect.ForeColor = System.Drawing.Color.Black;
             this.btn_connect.Location = new System.Drawing.Point(3, 106);
             this.btn_connect.Name = "btn_connect";
@@ -650,89 +348,13 @@
             this.metroLabel_ip1.TabIndex = 51;
             this.metroLabel_ip1.Text = ".";
             // 
-            // metroLabel_receive
-            // 
-            this.metroLabel_receive.AutoSize = true;
-            this.metroLabel_receive.Location = new System.Drawing.Point(385, 207);
-            this.metroLabel_receive.Name = "metroLabel_receive";
-            this.metroLabel_receive.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel_receive.TabIndex = 42;
-            this.metroLabel_receive.Text = "수신 문자열 표시 :";
-            // 
-            // check_stext
-            // 
-            this.check_stext.AutoSize = true;
-            this.check_stext.Checked = true;
-            this.check_stext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_stext.Location = new System.Drawing.Point(152, 210);
-            this.check_stext.Name = "check_stext";
-            this.check_stext.Size = new System.Drawing.Size(62, 15);
-            this.check_stext.TabIndex = 43;
-            this.check_stext.Text = "Parsing";
-            this.check_stext.UseSelectable = true;
-            this.check_stext.CheckedChanged += new System.EventHandler(this.check_stext_CheckedChanged);
-            // 
-            // check_sendbuf
-            // 
-            this.check_sendbuf.AutoSize = true;
-            this.check_sendbuf.Location = new System.Drawing.Point(237, 210);
-            this.check_sendbuf.Name = "check_sendbuf";
-            this.check_sendbuf.Size = new System.Drawing.Size(44, 15);
-            this.check_sendbuf.TabIndex = 44;
-            this.check_sendbuf.Text = "Hex";
-            this.check_sendbuf.UseSelectable = true;
-            this.check_sendbuf.CheckedChanged += new System.EventHandler(this.check_sendbuf_CheckedChanged);
-            // 
-            // check_rtext
-            // 
-            this.check_rtext.AutoSize = true;
-            this.check_rtext.Checked = true;
-            this.check_rtext.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.check_rtext.Location = new System.Drawing.Point(522, 210);
-            this.check_rtext.Name = "check_rtext";
-            this.check_rtext.Size = new System.Drawing.Size(62, 15);
-            this.check_rtext.TabIndex = 45;
-            this.check_rtext.Text = "Parsing";
-            this.check_rtext.UseSelectable = true;
-            this.check_rtext.CheckedChanged += new System.EventHandler(this.check_text_CheckedChanged);
-            // 
-            // check_splitbuf
-            // 
-            this.check_splitbuf.AutoSize = true;
-            this.check_splitbuf.Location = new System.Drawing.Point(603, 210);
-            this.check_splitbuf.Name = "check_splitbuf";
-            this.check_splitbuf.Size = new System.Drawing.Size(44, 15);
-            this.check_splitbuf.TabIndex = 46;
-            this.check_splitbuf.Text = "Hex";
-            this.check_splitbuf.UseSelectable = true;
-            this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
-            // 
-            // btn_textClear
-            // 
-            this.btn_textClear.Location = new System.Drawing.Point(972, 203);
-            this.btn_textClear.Name = "btn_textClear";
-            this.btn_textClear.Size = new System.Drawing.Size(116, 23);
-            this.btn_textClear.TabIndex = 43;
-            this.btn_textClear.Text = "Text Clear";
-            this.btn_textClear.UseSelectable = true;
-            this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
-            // 
-            // metroLabel_send
-            // 
-            this.metroLabel_send.AutoSize = true;
-            this.metroLabel_send.Location = new System.Drawing.Point(12, 207);
-            this.metroLabel_send.Name = "metroLabel_send";
-            this.metroLabel_send.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel_send.TabIndex = 48;
-            this.metroLabel_send.Text = "송신 문자열 표시 :";
-            // 
             // metroTabControl_nsetting
             // 
             this.metroTabControl_nsetting.Controls.Add(this.metroTabPage_nsetting);
-            this.metroTabControl_nsetting.Location = new System.Drawing.Point(17, 10);
+            this.metroTabControl_nsetting.Location = new System.Drawing.Point(228, 12);
             this.metroTabControl_nsetting.Name = "metroTabControl_nsetting";
             this.metroTabControl_nsetting.SelectedIndex = 0;
-            this.metroTabControl_nsetting.Size = new System.Drawing.Size(204, 185);
+            this.metroTabControl_nsetting.Size = new System.Drawing.Size(200, 185);
             this.metroTabControl_nsetting.TabIndex = 50;
             this.metroTabControl_nsetting.UseSelectable = true;
             // 
@@ -754,7 +376,7 @@
             this.metroTabPage_nsetting.HorizontalScrollbarSize = 10;
             this.metroTabPage_nsetting.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage_nsetting.Name = "metroTabPage_nsetting";
-            this.metroTabPage_nsetting.Size = new System.Drawing.Size(196, 143);
+            this.metroTabPage_nsetting.Size = new System.Drawing.Size(192, 143);
             this.metroTabPage_nsetting.TabIndex = 0;
             this.metroTabPage_nsetting.Text = "Network Setting";
             this.metroTabPage_nsetting.VerticalScrollbarBarColor = true;
@@ -764,10 +386,10 @@
             // metroTabControl_connected
             // 
             this.metroTabControl_connected.Controls.Add(this.metroTabPage_connected);
-            this.metroTabControl_connected.Location = new System.Drawing.Point(227, 10);
+            this.metroTabControl_connected.Location = new System.Drawing.Point(428, 12);
             this.metroTabControl_connected.Name = "metroTabControl_connected";
             this.metroTabControl_connected.SelectedIndex = 0;
-            this.metroTabControl_connected.Size = new System.Drawing.Size(152, 185);
+            this.metroTabControl_connected.Size = new System.Drawing.Size(150, 185);
             this.metroTabControl_connected.TabIndex = 51;
             this.metroTabControl_connected.UseSelectable = true;
             // 
@@ -781,7 +403,7 @@
             this.metroTabPage_connected.HorizontalScrollbarSize = 10;
             this.metroTabPage_connected.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage_connected.Name = "metroTabPage_connected";
-            this.metroTabPage_connected.Size = new System.Drawing.Size(144, 143);
+            this.metroTabPage_connected.Size = new System.Drawing.Size(142, 143);
             this.metroTabPage_connected.TabIndex = 0;
             this.metroTabPage_connected.Text = "Connected";
             this.metroTabPage_connected.VerticalScrollbarBarColor = true;
@@ -840,78 +462,658 @@
             this.dgv_constate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_constate_CellDoubleClick);
             this.dgv_constate.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_constate_RowPostPaint);
             // 
+            // metroPanel_a
+            // 
+            this.metroPanel_a.Controls.Add(this.metroTabControl_AI_a);
+            this.metroPanel_a.Controls.Add(this.metroTabControl_AO_a);
+            this.metroPanel_a.HorizontalScrollbarBarColor = true;
+            this.metroPanel_a.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel_a.HorizontalScrollbarSize = 10;
+            this.metroPanel_a.Location = new System.Drawing.Point(12, 185);
+            this.metroPanel_a.Name = "metroPanel_a";
+            this.metroPanel_a.Size = new System.Drawing.Size(760, 333);
+            this.metroPanel_a.TabIndex = 52;
+            this.metroPanel_a.VerticalScrollbarBarColor = true;
+            this.metroPanel_a.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel_a.VerticalScrollbarSize = 10;
+            // 
+            // metroTabControl_AI_a
+            // 
+            this.metroTabControl_AI_a.Controls.Add(this.metroTabPage_AI_a);
+            this.metroTabControl_AI_a.Location = new System.Drawing.Point(3, 194);
+            this.metroTabControl_AI_a.Name = "metroTabControl_AI_a";
+            this.metroTabControl_AI_a.SelectedIndex = 0;
+            this.metroTabControl_AI_a.Size = new System.Drawing.Size(750, 116);
+            this.metroTabControl_AI_a.TabIndex = 3;
+            this.metroTabControl_AI_a.UseSelectable = true;
+            // 
+            // metroTabPage_AI_a
+            // 
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_inputmA_a);
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_inputch_a);
+            this.metroTabPage_AI_a.Controls.Add(this.Btn_ch1_a);
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_ch_a);
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_mA_a);
+            this.metroTabPage_AI_a.Controls.Add(this.Btn_ch0_a);
+            this.metroTabPage_AI_a.HorizontalScrollbarBarColor = true;
+            this.metroTabPage_AI_a.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_AI_a.HorizontalScrollbarSize = 10;
+            this.metroTabPage_AI_a.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage_AI_a.Name = "metroTabPage_AI_a";
+            this.metroTabPage_AI_a.Size = new System.Drawing.Size(742, 74);
+            this.metroTabPage_AI_a.TabIndex = 0;
+            this.metroTabPage_AI_a.Text = "Analog Input";
+            this.metroTabPage_AI_a.VerticalScrollbarBarColor = true;
+            this.metroTabPage_AI_a.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_AI_a.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel_inputmA_a
+            // 
+            this.metroLabel_inputmA_a.AutoSize = true;
+            this.metroLabel_inputmA_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_inputmA_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_inputmA_a.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel_inputmA_a.Location = new System.Drawing.Point(418, 49);
+            this.metroLabel_inputmA_a.MinimumSize = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputmA_a.Name = "metroLabel_inputmA_a";
+            this.metroLabel_inputmA_a.Size = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputmA_a.TabIndex = 54;
+            this.metroLabel_inputmA_a.Text = " ";
+            this.metroLabel_inputmA_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroLabel_inputmA_a.UseCustomBackColor = true;
+            this.metroLabel_inputmA_a.UseCustomForeColor = true;
+            this.metroLabel_inputmA_a.UseStyleColors = true;
+            // 
+            // metroLabel_inputch_a
+            // 
+            this.metroLabel_inputch_a.AutoSize = true;
+            this.metroLabel_inputch_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_inputch_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_inputch_a.ForeColor = System.Drawing.Color.Black;
+            this.metroLabel_inputch_a.Location = new System.Drawing.Point(288, 49);
+            this.metroLabel_inputch_a.MinimumSize = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputch_a.Name = "metroLabel_inputch_a";
+            this.metroLabel_inputch_a.Size = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputch_a.TabIndex = 53;
+            this.metroLabel_inputch_a.Text = " ";
+            this.metroLabel_inputch_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroLabel_inputch_a.UseCustomBackColor = true;
+            this.metroLabel_inputch_a.UseCustomForeColor = true;
+            this.metroLabel_inputch_a.UseStyleColors = true;
+            // 
+            // Btn_ch1_a
+            // 
+            this.Btn_ch1_a.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Btn_ch1_a.Location = new System.Drawing.Point(370, 14);
+            this.Btn_ch1_a.Name = "Btn_ch1_a";
+            this.Btn_ch1_a.Size = new System.Drawing.Size(123, 26);
+            this.Btn_ch1_a.TabIndex = 62;
+            this.Btn_ch1_a.Text = "CH1";
+            this.Btn_ch1_a.UseCustomBackColor = true;
+            this.Btn_ch1_a.UseCustomForeColor = true;
+            this.Btn_ch1_a.UseSelectable = true;
+            this.Btn_ch1_a.UseStyleColors = true;
+            this.Btn_ch1_a.Click += new System.EventHandler(this.Btn_ch1_a_Click);
+            // 
+            // metroLabel_ch_a
+            // 
+            this.metroLabel_ch_a.AutoSize = true;
+            this.metroLabel_ch_a.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel_ch_a.Location = new System.Drawing.Point(238, 49);
+            this.metroLabel_ch_a.Name = "metroLabel_ch_a";
+            this.metroLabel_ch_a.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel_ch_a.TabIndex = 60;
+            this.metroLabel_ch_a.Text = "채널 :";
+            // 
+            // metroLabel_mA_a
+            // 
+            this.metroLabel_mA_a.AutoSize = true;
+            this.metroLabel_mA_a.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel_mA_a.Location = new System.Drawing.Point(370, 49);
+            this.metroLabel_mA_a.Name = "metroLabel_mA_a";
+            this.metroLabel_mA_a.Size = new System.Drawing.Size(44, 19);
+            this.metroLabel_mA_a.TabIndex = 58;
+            this.metroLabel_mA_a.Text = "전류 :";
+            // 
+            // Btn_ch0_a
+            // 
+            this.Btn_ch0_a.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Btn_ch0_a.Location = new System.Drawing.Point(238, 14);
+            this.Btn_ch0_a.Name = "Btn_ch0_a";
+            this.Btn_ch0_a.Size = new System.Drawing.Size(123, 26);
+            this.Btn_ch0_a.TabIndex = 57;
+            this.Btn_ch0_a.Text = "CH0";
+            this.Btn_ch0_a.UseCustomBackColor = true;
+            this.Btn_ch0_a.UseCustomForeColor = true;
+            this.Btn_ch0_a.UseSelectable = true;
+            this.Btn_ch0_a.UseStyleColors = true;
+            this.Btn_ch0_a.Click += new System.EventHandler(this.Btn_ch0_a_Click);
+            // 
+            // metroTabControl_AO_a
+            // 
+            this.metroTabControl_AO_a.Controls.Add(this.metroTabPage_AO_a);
+            this.metroTabControl_AO_a.Location = new System.Drawing.Point(3, 3);
+            this.metroTabControl_AO_a.Name = "metroTabControl_AO_a";
+            this.metroTabControl_AO_a.SelectedIndex = 0;
+            this.metroTabControl_AO_a.Size = new System.Drawing.Size(750, 189);
+            this.metroTabControl_AO_a.TabIndex = 2;
+            this.metroTabControl_AO_a.UseSelectable = true;
+            // 
+            // metroTabPage_AO_a
+            // 
+            this.metroTabPage_AO_a.Controls.Add(this.label_AO_chdiv_a);
+            this.metroTabPage_AO_a.Controls.Add(this.metroLabel_outch1_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_13_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_17_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_18_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Btn_output_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_20_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_19_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_15_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_16_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_14_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_11_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_12_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_10_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_9_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_8_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_7_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_6_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_5_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_1_4_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_13_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_17_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_18_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_20_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_19_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_15_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_16_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_14_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_11_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_12_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_10_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_9_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_8_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_7_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_6_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_5_a);
+            this.metroTabPage_AO_a.Controls.Add(this.metroLabel_outch0_a);
+            this.metroTabPage_AO_a.Controls.Add(this.Radio_0_4_a);
+            this.metroTabPage_AO_a.HorizontalScrollbarBarColor = true;
+            this.metroTabPage_AO_a.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_AO_a.HorizontalScrollbarSize = 10;
+            this.metroTabPage_AO_a.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage_AO_a.Name = "metroTabPage_AO_a";
+            this.metroTabPage_AO_a.Size = new System.Drawing.Size(742, 147);
+            this.metroTabPage_AO_a.TabIndex = 0;
+            this.metroTabPage_AO_a.Text = "Analog Output";
+            this.metroTabPage_AO_a.VerticalScrollbarBarColor = true;
+            this.metroTabPage_AO_a.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_AO_a.VerticalScrollbarSize = 10;
+            // 
+            // label_AO_chdiv_a
+            // 
+            this.label_AO_chdiv_a.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label_AO_chdiv_a.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_AO_chdiv_a.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_AO_chdiv_a.Location = new System.Drawing.Point(71, 60);
+            this.label_AO_chdiv_a.Name = "label_AO_chdiv_a";
+            this.label_AO_chdiv_a.Size = new System.Drawing.Size(570, 4);
+            this.label_AO_chdiv_a.TabIndex = 51;
+            // 
+            // metroLabel_outch1_a
+            // 
+            this.metroLabel_outch1_a.AutoSize = true;
+            this.metroLabel_outch1_a.BackColor = System.Drawing.Color.Silver;
+            this.metroLabel_outch1_a.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel_outch1_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_outch1_a.ForeColor = System.Drawing.SystemColors.Window;
+            this.metroLabel_outch1_a.Location = new System.Drawing.Point(71, 70);
+            this.metroLabel_outch1_a.Name = "metroLabel_outch1_a";
+            this.metroLabel_outch1_a.Size = new System.Drawing.Size(47, 25);
+            this.metroLabel_outch1_a.TabIndex = 39;
+            this.metroLabel_outch1_a.Text = "CH1";
+            this.metroLabel_outch1_a.UseCustomBackColor = true;
+            this.metroLabel_outch1_a.UseCustomForeColor = true;
+            this.metroLabel_outch1_a.UseStyleColors = true;
+            // 
+            // Radio_1_13_a
+            // 
+            this.Radio_1_13_a.AutoSize = true;
+            this.Radio_1_13_a.Location = new System.Drawing.Point(149, 91);
+            this.Radio_1_13_a.Name = "Radio_1_13_a";
+            this.Radio_1_13_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_13_a.TabIndex = 38;
+            this.Radio_1_13_a.Text = "13mA";
+            this.Radio_1_13_a.UseSelectable = true;
+            this.Radio_1_13_a.Click += new System.EventHandler(this.Radio_1_13_a_Click);
+            // 
+            // Radio_1_17_a
+            // 
+            this.Radio_1_17_a.AutoSize = true;
+            this.Radio_1_17_a.Location = new System.Drawing.Point(389, 91);
+            this.Radio_1_17_a.Name = "Radio_1_17_a";
+            this.Radio_1_17_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_17_a.TabIndex = 37;
+            this.Radio_1_17_a.Text = "17mA";
+            this.Radio_1_17_a.UseSelectable = true;
+            this.Radio_1_17_a.Click += new System.EventHandler(this.Radio_1_17_a_Click);
+            // 
+            // Radio_1_18_a
+            // 
+            this.Radio_1_18_a.AutoSize = true;
+            this.Radio_1_18_a.Location = new System.Drawing.Point(449, 91);
+            this.Radio_1_18_a.Name = "Radio_1_18_a";
+            this.Radio_1_18_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_18_a.TabIndex = 36;
+            this.Radio_1_18_a.Text = "18mA";
+            this.Radio_1_18_a.UseSelectable = true;
+            this.Radio_1_18_a.Click += new System.EventHandler(this.Radio_1_18_a_Click);
+            // 
+            // Btn_output_a
+            // 
+            this.Btn_output_a.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Btn_output_a.Location = new System.Drawing.Point(302, 112);
+            this.Btn_output_a.Name = "Btn_output_a";
+            this.Btn_output_a.Size = new System.Drawing.Size(123, 26);
+            this.Btn_output_a.TabIndex = 52;
+            this.Btn_output_a.Text = "전류 출력 설정";
+            this.Btn_output_a.UseCustomBackColor = true;
+            this.Btn_output_a.UseCustomForeColor = true;
+            this.Btn_output_a.UseSelectable = true;
+            this.Btn_output_a.UseStyleColors = true;
+            this.Btn_output_a.Click += new System.EventHandler(this.Btn_output_a_Click);
+            // 
+            // Radio_1_20_a
+            // 
+            this.Radio_1_20_a.AutoSize = true;
+            this.Radio_1_20_a.Location = new System.Drawing.Point(569, 91);
+            this.Radio_1_20_a.Name = "Radio_1_20_a";
+            this.Radio_1_20_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_20_a.TabIndex = 35;
+            this.Radio_1_20_a.Text = "20mA";
+            this.Radio_1_20_a.UseSelectable = true;
+            this.Radio_1_20_a.Click += new System.EventHandler(this.Radio_1_20_a_Click);
+            // 
+            // Radio_1_19_a
+            // 
+            this.Radio_1_19_a.AutoSize = true;
+            this.Radio_1_19_a.Location = new System.Drawing.Point(509, 91);
+            this.Radio_1_19_a.Name = "Radio_1_19_a";
+            this.Radio_1_19_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_19_a.TabIndex = 34;
+            this.Radio_1_19_a.Text = "19mA";
+            this.Radio_1_19_a.UseSelectable = true;
+            this.Radio_1_19_a.Click += new System.EventHandler(this.Radio_1_19_a_Click);
+            // 
+            // Radio_1_15_a
+            // 
+            this.Radio_1_15_a.AutoSize = true;
+            this.Radio_1_15_a.Location = new System.Drawing.Point(269, 91);
+            this.Radio_1_15_a.Name = "Radio_1_15_a";
+            this.Radio_1_15_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_15_a.TabIndex = 33;
+            this.Radio_1_15_a.Text = "15mA";
+            this.Radio_1_15_a.UseSelectable = true;
+            this.Radio_1_15_a.Click += new System.EventHandler(this.Radio_1_15_a_Click);
+            // 
+            // Radio_1_16_a
+            // 
+            this.Radio_1_16_a.AutoSize = true;
+            this.Radio_1_16_a.Location = new System.Drawing.Point(329, 91);
+            this.Radio_1_16_a.Name = "Radio_1_16_a";
+            this.Radio_1_16_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_16_a.TabIndex = 32;
+            this.Radio_1_16_a.Text = "16mA";
+            this.Radio_1_16_a.UseSelectable = true;
+            this.Radio_1_16_a.Click += new System.EventHandler(this.Radio_1_16_a_Click);
+            // 
+            // Radio_1_14_a
+            // 
+            this.Radio_1_14_a.AutoSize = true;
+            this.Radio_1_14_a.Location = new System.Drawing.Point(209, 91);
+            this.Radio_1_14_a.Name = "Radio_1_14_a";
+            this.Radio_1_14_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_14_a.TabIndex = 31;
+            this.Radio_1_14_a.Text = "14mA";
+            this.Radio_1_14_a.UseSelectable = true;
+            this.Radio_1_14_a.Click += new System.EventHandler(this.Radio_1_14_a_Click);
+            // 
+            // Radio_1_11_a
+            // 
+            this.Radio_1_11_a.AutoSize = true;
+            this.Radio_1_11_a.Location = new System.Drawing.Point(524, 70);
+            this.Radio_1_11_a.Name = "Radio_1_11_a";
+            this.Radio_1_11_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_11_a.TabIndex = 30;
+            this.Radio_1_11_a.Text = "11mA";
+            this.Radio_1_11_a.UseSelectable = true;
+            this.Radio_1_11_a.Click += new System.EventHandler(this.Radio_1_11_a_Click);
+            // 
+            // Radio_1_12_a
+            // 
+            this.Radio_1_12_a.AutoSize = true;
+            this.Radio_1_12_a.Location = new System.Drawing.Point(584, 70);
+            this.Radio_1_12_a.Name = "Radio_1_12_a";
+            this.Radio_1_12_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_12_a.TabIndex = 29;
+            this.Radio_1_12_a.Text = "12mA";
+            this.Radio_1_12_a.UseSelectable = true;
+            this.Radio_1_12_a.Click += new System.EventHandler(this.Radio_1_12_a_Click);
+            // 
+            // Radio_1_10_a
+            // 
+            this.Radio_1_10_a.AutoSize = true;
+            this.Radio_1_10_a.Location = new System.Drawing.Point(464, 70);
+            this.Radio_1_10_a.Name = "Radio_1_10_a";
+            this.Radio_1_10_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_1_10_a.TabIndex = 28;
+            this.Radio_1_10_a.Text = "10mA";
+            this.Radio_1_10_a.UseSelectable = true;
+            this.Radio_1_10_a.Click += new System.EventHandler(this.Radio_1_10_a_Click);
+            // 
+            // Radio_1_9_a
+            // 
+            this.Radio_1_9_a.AutoSize = true;
+            this.Radio_1_9_a.Location = new System.Drawing.Point(410, 70);
+            this.Radio_1_9_a.Name = "Radio_1_9_a";
+            this.Radio_1_9_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_9_a.TabIndex = 27;
+            this.Radio_1_9_a.Text = "9mA";
+            this.Radio_1_9_a.UseSelectable = true;
+            this.Radio_1_9_a.Click += new System.EventHandler(this.Radio_1_9_a_Click);
+            // 
+            // Radio_1_8_a
+            // 
+            this.Radio_1_8_a.AutoSize = true;
+            this.Radio_1_8_a.Location = new System.Drawing.Point(356, 70);
+            this.Radio_1_8_a.Name = "Radio_1_8_a";
+            this.Radio_1_8_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_8_a.TabIndex = 26;
+            this.Radio_1_8_a.Text = "8mA";
+            this.Radio_1_8_a.UseSelectable = true;
+            this.Radio_1_8_a.Click += new System.EventHandler(this.Radio_1_8_a_Click);
+            // 
+            // Radio_1_7_a
+            // 
+            this.Radio_1_7_a.AutoSize = true;
+            this.Radio_1_7_a.Location = new System.Drawing.Point(302, 70);
+            this.Radio_1_7_a.Name = "Radio_1_7_a";
+            this.Radio_1_7_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_7_a.TabIndex = 25;
+            this.Radio_1_7_a.Text = "7mA";
+            this.Radio_1_7_a.UseSelectable = true;
+            this.Radio_1_7_a.Click += new System.EventHandler(this.Radio_1_7_a_Click);
+            // 
+            // Radio_1_6_a
+            // 
+            this.Radio_1_6_a.AutoSize = true;
+            this.Radio_1_6_a.Location = new System.Drawing.Point(248, 70);
+            this.Radio_1_6_a.Name = "Radio_1_6_a";
+            this.Radio_1_6_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_6_a.TabIndex = 24;
+            this.Radio_1_6_a.Text = "6mA";
+            this.Radio_1_6_a.UseSelectable = true;
+            this.Radio_1_6_a.Click += new System.EventHandler(this.Radio_1_6_a_Click);
+            // 
+            // Radio_1_5_a
+            // 
+            this.Radio_1_5_a.AutoSize = true;
+            this.Radio_1_5_a.Location = new System.Drawing.Point(194, 70);
+            this.Radio_1_5_a.Name = "Radio_1_5_a";
+            this.Radio_1_5_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_5_a.TabIndex = 23;
+            this.Radio_1_5_a.Text = "5mA";
+            this.Radio_1_5_a.UseSelectable = true;
+            this.Radio_1_5_a.Click += new System.EventHandler(this.Radio_1_5_a_Click);
+            // 
+            // Radio_1_4_a
+            // 
+            this.Radio_1_4_a.AutoSize = true;
+            this.Radio_1_4_a.Location = new System.Drawing.Point(140, 70);
+            this.Radio_1_4_a.Name = "Radio_1_4_a";
+            this.Radio_1_4_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_1_4_a.TabIndex = 22;
+            this.Radio_1_4_a.Text = "4mA";
+            this.Radio_1_4_a.UseSelectable = true;
+            this.Radio_1_4_a.Click += new System.EventHandler(this.Radio_1_4_a_Click);
+            // 
+            // Radio_0_13_a
+            // 
+            this.Radio_0_13_a.AutoSize = true;
+            this.Radio_0_13_a.Location = new System.Drawing.Point(149, 39);
+            this.Radio_0_13_a.Name = "Radio_0_13_a";
+            this.Radio_0_13_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_13_a.TabIndex = 21;
+            this.Radio_0_13_a.Text = "13mA";
+            this.Radio_0_13_a.UseSelectable = true;
+            this.Radio_0_13_a.Click += new System.EventHandler(this.Radio_0_13_a_Click);
+            // 
+            // Radio_0_17_a
+            // 
+            this.Radio_0_17_a.AutoSize = true;
+            this.Radio_0_17_a.Location = new System.Drawing.Point(389, 39);
+            this.Radio_0_17_a.Name = "Radio_0_17_a";
+            this.Radio_0_17_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_17_a.TabIndex = 20;
+            this.Radio_0_17_a.Text = "17mA";
+            this.Radio_0_17_a.UseSelectable = true;
+            this.Radio_0_17_a.Click += new System.EventHandler(this.Radio_0_17_a_Click);
+            // 
+            // Radio_0_18_a
+            // 
+            this.Radio_0_18_a.AutoSize = true;
+            this.Radio_0_18_a.Location = new System.Drawing.Point(449, 39);
+            this.Radio_0_18_a.Name = "Radio_0_18_a";
+            this.Radio_0_18_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_18_a.TabIndex = 19;
+            this.Radio_0_18_a.Text = "18mA";
+            this.Radio_0_18_a.UseSelectable = true;
+            this.Radio_0_18_a.Click += new System.EventHandler(this.Radio_0_18_a_Click);
+            // 
+            // Radio_0_20_a
+            // 
+            this.Radio_0_20_a.AutoSize = true;
+            this.Radio_0_20_a.Location = new System.Drawing.Point(569, 39);
+            this.Radio_0_20_a.Name = "Radio_0_20_a";
+            this.Radio_0_20_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_20_a.TabIndex = 18;
+            this.Radio_0_20_a.Text = "20mA";
+            this.Radio_0_20_a.UseSelectable = true;
+            this.Radio_0_20_a.Click += new System.EventHandler(this.Radio_0_20_a_Click);
+            // 
+            // Radio_0_19_a
+            // 
+            this.Radio_0_19_a.AutoSize = true;
+            this.Radio_0_19_a.Location = new System.Drawing.Point(509, 39);
+            this.Radio_0_19_a.Name = "Radio_0_19_a";
+            this.Radio_0_19_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_19_a.TabIndex = 17;
+            this.Radio_0_19_a.Text = "19mA";
+            this.Radio_0_19_a.UseSelectable = true;
+            this.Radio_0_19_a.Click += new System.EventHandler(this.Radio_0_19_a_Click);
+            // 
+            // Radio_0_15_a
+            // 
+            this.Radio_0_15_a.AutoSize = true;
+            this.Radio_0_15_a.Location = new System.Drawing.Point(269, 39);
+            this.Radio_0_15_a.Name = "Radio_0_15_a";
+            this.Radio_0_15_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_15_a.TabIndex = 16;
+            this.Radio_0_15_a.Text = "15mA";
+            this.Radio_0_15_a.UseSelectable = true;
+            this.Radio_0_15_a.Click += new System.EventHandler(this.Radio_0_15_a_Click);
+            // 
+            // Radio_0_16_a
+            // 
+            this.Radio_0_16_a.AutoSize = true;
+            this.Radio_0_16_a.Location = new System.Drawing.Point(329, 39);
+            this.Radio_0_16_a.Name = "Radio_0_16_a";
+            this.Radio_0_16_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_16_a.TabIndex = 15;
+            this.Radio_0_16_a.Text = "16mA";
+            this.Radio_0_16_a.UseSelectable = true;
+            this.Radio_0_16_a.Click += new System.EventHandler(this.Radio_0_16_a_Click);
+            // 
+            // Radio_0_14_a
+            // 
+            this.Radio_0_14_a.AutoSize = true;
+            this.Radio_0_14_a.Location = new System.Drawing.Point(209, 39);
+            this.Radio_0_14_a.Name = "Radio_0_14_a";
+            this.Radio_0_14_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_14_a.TabIndex = 14;
+            this.Radio_0_14_a.Text = "14mA";
+            this.Radio_0_14_a.UseSelectable = true;
+            this.Radio_0_14_a.Click += new System.EventHandler(this.Radio_0_14_a_Click);
+            // 
+            // Radio_0_11_a
+            // 
+            this.Radio_0_11_a.AutoSize = true;
+            this.Radio_0_11_a.Location = new System.Drawing.Point(524, 18);
+            this.Radio_0_11_a.Name = "Radio_0_11_a";
+            this.Radio_0_11_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_11_a.TabIndex = 13;
+            this.Radio_0_11_a.Text = "11mA";
+            this.Radio_0_11_a.UseSelectable = true;
+            this.Radio_0_11_a.Click += new System.EventHandler(this.Radio_0_11_a_Click);
+            // 
+            // Radio_0_12_a
+            // 
+            this.Radio_0_12_a.AutoSize = true;
+            this.Radio_0_12_a.Location = new System.Drawing.Point(584, 18);
+            this.Radio_0_12_a.Name = "Radio_0_12_a";
+            this.Radio_0_12_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_12_a.TabIndex = 12;
+            this.Radio_0_12_a.Text = "12mA";
+            this.Radio_0_12_a.UseSelectable = true;
+            this.Radio_0_12_a.Click += new System.EventHandler(this.Radio_0_12_a_Click);
+            // 
+            // Radio_0_10_a
+            // 
+            this.Radio_0_10_a.AutoSize = true;
+            this.Radio_0_10_a.Location = new System.Drawing.Point(464, 18);
+            this.Radio_0_10_a.Name = "Radio_0_10_a";
+            this.Radio_0_10_a.Size = new System.Drawing.Size(54, 15);
+            this.Radio_0_10_a.TabIndex = 11;
+            this.Radio_0_10_a.Text = "10mA";
+            this.Radio_0_10_a.UseSelectable = true;
+            this.Radio_0_10_a.Click += new System.EventHandler(this.Radio_0_10_a_Click);
+            // 
+            // Radio_0_9_a
+            // 
+            this.Radio_0_9_a.AutoSize = true;
+            this.Radio_0_9_a.Location = new System.Drawing.Point(410, 18);
+            this.Radio_0_9_a.Name = "Radio_0_9_a";
+            this.Radio_0_9_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_9_a.TabIndex = 10;
+            this.Radio_0_9_a.Text = "9mA";
+            this.Radio_0_9_a.UseSelectable = true;
+            this.Radio_0_9_a.Click += new System.EventHandler(this.Radio_0_9_a_Click);
+            // 
+            // Radio_0_8_a
+            // 
+            this.Radio_0_8_a.AutoSize = true;
+            this.Radio_0_8_a.Location = new System.Drawing.Point(356, 18);
+            this.Radio_0_8_a.Name = "Radio_0_8_a";
+            this.Radio_0_8_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_8_a.TabIndex = 9;
+            this.Radio_0_8_a.Text = "8mA";
+            this.Radio_0_8_a.UseSelectable = true;
+            this.Radio_0_8_a.Click += new System.EventHandler(this.Radio_0_8_a_Click);
+            // 
+            // Radio_0_7_a
+            // 
+            this.Radio_0_7_a.AutoSize = true;
+            this.Radio_0_7_a.Location = new System.Drawing.Point(302, 18);
+            this.Radio_0_7_a.Name = "Radio_0_7_a";
+            this.Radio_0_7_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_7_a.TabIndex = 8;
+            this.Radio_0_7_a.Text = "7mA";
+            this.Radio_0_7_a.UseSelectable = true;
+            this.Radio_0_7_a.Click += new System.EventHandler(this.Radio_0_7_a_Click);
+            // 
+            // Radio_0_6_a
+            // 
+            this.Radio_0_6_a.AutoSize = true;
+            this.Radio_0_6_a.Location = new System.Drawing.Point(248, 18);
+            this.Radio_0_6_a.Name = "Radio_0_6_a";
+            this.Radio_0_6_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_6_a.TabIndex = 7;
+            this.Radio_0_6_a.Text = "6mA";
+            this.Radio_0_6_a.UseSelectable = true;
+            this.Radio_0_6_a.Click += new System.EventHandler(this.Radio_0_6_a_Click);
+            // 
+            // Radio_0_5_a
+            // 
+            this.Radio_0_5_a.AutoSize = true;
+            this.Radio_0_5_a.Location = new System.Drawing.Point(194, 18);
+            this.Radio_0_5_a.Name = "Radio_0_5_a";
+            this.Radio_0_5_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_5_a.TabIndex = 6;
+            this.Radio_0_5_a.Text = "5mA";
+            this.Radio_0_5_a.UseSelectable = true;
+            this.Radio_0_5_a.Click += new System.EventHandler(this.Radio_0_5_a_Click);
+            // 
+            // metroLabel_outch0_a
+            // 
+            this.metroLabel_outch0_a.AutoSize = true;
+            this.metroLabel_outch0_a.BackColor = System.Drawing.Color.Silver;
+            this.metroLabel_outch0_a.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel_outch0_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_outch0_a.ForeColor = System.Drawing.SystemColors.Window;
+            this.metroLabel_outch0_a.Location = new System.Drawing.Point(71, 18);
+            this.metroLabel_outch0_a.Name = "metroLabel_outch0_a";
+            this.metroLabel_outch0_a.Size = new System.Drawing.Size(47, 25);
+            this.metroLabel_outch0_a.TabIndex = 5;
+            this.metroLabel_outch0_a.Text = "CH0";
+            this.metroLabel_outch0_a.UseCustomBackColor = true;
+            this.metroLabel_outch0_a.UseCustomForeColor = true;
+            this.metroLabel_outch0_a.UseStyleColors = true;
+            // 
+            // Radio_0_4_a
+            // 
+            this.Radio_0_4_a.AutoSize = true;
+            this.Radio_0_4_a.Location = new System.Drawing.Point(140, 18);
+            this.Radio_0_4_a.Name = "Radio_0_4_a";
+            this.Radio_0_4_a.Size = new System.Drawing.Size(48, 15);
+            this.Radio_0_4_a.TabIndex = 4;
+            this.Radio_0_4_a.Text = "4mA";
+            this.Radio_0_4_a.UseSelectable = true;
+            this.Radio_0_4_a.Click += new System.EventHandler(this.Radio_0_4_a_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1100, 861);
+            this.ClientSize = new System.Drawing.Size(784, 761);
+            this.Controls.Add(this.metroPanel_a);
             this.Controls.Add(this.metroTabControl_connected);
             this.Controls.Add(this.metroTabControl_nsetting);
-            this.Controls.Add(this.metroLabel_send);
-            this.Controls.Add(this.btn_textClear);
-            this.Controls.Add(this.check_splitbuf);
-            this.Controls.Add(this.check_rtext);
-            this.Controls.Add(this.check_sendbuf);
-            this.Controls.Add(this.check_stext);
-            this.Controls.Add(this.metroLabel_receive);
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1100, 600);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Socket Client Program";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.metroTabControl_nsetting.ResumeLayout(false);
             this.metroTabPage_nsetting.ResumeLayout(false);
             this.metroTabPage_nsetting.PerformLayout();
             this.metroTabControl_connected.ResumeLayout(false);
             this.metroTabPage_connected.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).EndInit();
+            this.metroPanel_a.ResumeLayout(false);
+            this.metroTabControl_AI_a.ResumeLayout(false);
+            this.metroTabPage_AI_a.ResumeLayout(false);
+            this.metroTabPage_AI_a.PerformLayout();
+            this.metroTabControl_AO_a.ResumeLayout(false);
+            this.metroTabPage_AO_a.ResumeLayout(false);
+            this.metroTabPage_AO_a.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ListBox listbox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button_AIRequest;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button_AOSetting;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button_DO0;
-        private System.Windows.Forms.Button button_DO1;
-        private System.Windows.Forms.Button button_DO2;
-        private System.Windows.Forms.Button button_DO3;
-        private System.Windows.Forms.Button button_Off;
-        private System.Windows.Forms.Button button_On;
-        private System.Windows.Forms.Button button_DOSetting;
-        private System.Windows.Forms.Label label6;
-        private MetroFramework.Controls.MetroLabel metroLabel_receive;
-        private MetroFramework.Controls.MetroCheckBox check_stext;
-        private MetroFramework.Controls.MetroCheckBox check_sendbuf;
-        private MetroFramework.Controls.MetroCheckBox check_rtext;
-        private MetroFramework.Controls.MetroCheckBox check_splitbuf;
-        private MetroFramework.Controls.MetroButton btn_textClear;
         private MetroFramework.Controls.MetroButton btn_disconnect;
         private MetroFramework.Controls.MetroButton btn_connect;
         private MetroFramework.Controls.MetroTextBox textBox_IP4;
@@ -925,11 +1127,59 @@
         private MetroFramework.Controls.MetroLabel metroLabel_ip2;
         private MetroFramework.Controls.MetroLabel metroLabel_ip1;
         private System.Windows.Forms.Label label_grid_division;
-        private MetroFramework.Controls.MetroLabel metroLabel_send;
         private MetroFramework.Controls.MetroTabControl metroTabControl_nsetting;
         private MetroFramework.Controls.MetroTabPage metroTabPage_nsetting;
         private MetroFramework.Controls.MetroTabControl metroTabControl_connected;
         private MetroFramework.Controls.MetroTabPage metroTabPage_connected;
         private MetroFramework.Controls.MetroGrid dgv_constate;
+        private MetroFramework.Controls.MetroPanel metroPanel_a;
+        private MetroFramework.Controls.MetroTabControl metroTabControl_AO_a;
+        private MetroFramework.Controls.MetroTabPage metroTabPage_AO_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_4_a;
+        private MetroFramework.Controls.MetroButton Btn_output_a;
+        private System.Windows.Forms.Label label_AO_chdiv_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_outch1_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_13_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_17_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_18_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_20_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_19_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_15_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_16_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_14_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_11_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_12_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_10_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_9_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_8_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_7_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_6_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_5_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_1_4_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_13_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_17_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_18_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_20_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_19_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_15_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_16_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_14_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_11_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_12_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_10_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_9_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_8_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_7_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_6_a;
+        private MetroFramework.Controls.MetroRadioButton Radio_0_5_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_outch0_a;
+        private MetroFramework.Controls.MetroTabControl metroTabControl_AI_a;
+        private MetroFramework.Controls.MetroTabPage metroTabPage_AI_a;
+        private MetroFramework.Controls.MetroButton Btn_ch1_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_ch_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_mA_a;
+        private MetroFramework.Controls.MetroButton Btn_ch0_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_inputch_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_inputmA_a;
     }
 }

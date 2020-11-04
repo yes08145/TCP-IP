@@ -21,18 +21,18 @@ namespace TCPSocketCl
             try
             {
                 IPEndPoint ep = new IPEndPoint(IPAddress.Parse(in_IP), in_PORT);
-                Log("=======" + in_IP + ":" + in_PORT + " Connect 시도중=======");
+                //Log("=======" + in_IP + ":" + in_PORT + " Connect 시도중=======");
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, in_IP, in_PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
                     Log2(in_IP + ":" + in_PORT); // 1이 시작 인덱스
-                    Log("========= IP: " + in_IP + ", PORT: " + in_PORT + " Connect 완료 =========");
+                    //Log("========= IP: " + in_IP + ", PORT: " + in_PORT + " Connect 완료 =========");
                 }
                 catch
                 {
-                    Log("=======Connect Fail=======");
+                    //Log("=======Connect Fail=======");
                     MessageBox.Show("서버에 연결할 수 없습니다.");
                 }
 
@@ -102,16 +102,16 @@ namespace TCPSocketCl
                             i++;
                         }
                         dgv_constate.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
-                        Log("======= Connect 종료 =======");
-                        ListboxFocus();
+                        //Log("======= Connect 종료 =======");
+                        //ListboxFocus();
                     }
                 }
             }
             catch(Exception e)
 
             {
-                Log("======= 비정상 Connect 종료 =======");
-                ListboxFocus();
+                //Log("======= 비정상 Connect 종료 =======");
+                //ListboxFocus();
             }
         }
         private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate, string str)
@@ -144,24 +144,24 @@ namespace TCPSocketCl
                     //# 이를 해결하기 위한 배열 위치조정
                     //# 이로인한 sensorID 손상 인지요망
 
-                    if (!InvokeRequired)
-                    {
-                        Log(log_result);
-                        Log(strHex);
-                        ListboxFocus();
-                    }
-                    else
-                    {
-                        this.Invoke(new Action(() =>
-                        {
-                            if (s_log_text) Log(log_result);
-                            if (s_log_sendBuff) Log("SendBuffer   : " + strHex);
-                        }
-                        ));
-                        //this.Invoke(new LogDelegate(Log), log_result);
-                        //this.Invoke(new LogDelegate(Log), strHex);
-                        this.Invoke(new FocusDelegate(ListboxFocus));
-                    }
+                    //if (!InvokeRequired)
+                    //{
+                    //    Log(log_result);
+                    //    Log(strHex);
+                    //    ListboxFocus();
+                    //}
+                    //else
+                    //{
+                    //    this.Invoke(new Action(() =>
+                    //    {
+                    //        if (s_log_text) Log(log_result);
+                    //        if (s_log_sendBuff) Log("SendBuffer   : " + strHex);
+                    //    }
+                    //    ));
+                    //    //this.Invoke(new LogDelegate(Log), log_result);
+                    //    //this.Invoke(new LogDelegate(Log), strHex);
+                    //    this.Invoke(new FocusDelegate(ListboxFocus));
+                    //}
 
                 }
                 
@@ -200,8 +200,8 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
-                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
-                this.Invoke(new FocusDelegate(ListboxFocus));
+                //this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+                //this.Invoke(new FocusDelegate(ListboxFocus));
             }
             else if(recvBuff.Peek() == 0xFF)
             {
@@ -215,8 +215,8 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
-                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
-                this.Invoke(new FocusDelegate(ListboxFocus));
+                //this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+                //this.Invoke(new FocusDelegate(ListboxFocus));
             }
             return receiverBuff;
         }
@@ -261,7 +261,7 @@ namespace TCPSocketCl
                         catch (IndexOutOfRangeException e)
                         {
                             resultSet = 5; // resultSet은 SensorID의 값이기 때문에 아래 if문에 걸리지 않게만 즉, resultSet을 0,3이 아닌 다른값으로 지정하면 됨
-                            log_result = "Index 오류 발생";
+                            log_result = string.Empty;
                         }
                         catch(Exception e)
                         {
@@ -270,7 +270,24 @@ namespace TCPSocketCl
                                 continue;
                             }
                         }
-                        if (resultSet == 0) continue;
+                        if (resultSet == 0 || log_result == string.Empty) continue;
+                        if (resultSet == 2)
+                        {
+                            if (!InvokeRequired)
+                            {
+                                metroLabel_inputch_a.Text = log_result.Split(',')[0];
+                                metroLabel_inputmA_a.Text = log_result.Split(',')[1];
+                            }
+                            else
+                            {
+                                this.Invoke(new Action(() =>
+                                {
+                                    metroLabel_inputch_a.Text = log_result.Split(',')[0];
+                                    metroLabel_inputmA_a.Text = log_result.Split(',')[1];
+                                }
+                                ));
+                            }
+                        }
                         //else if (resultSet == 3)
                         //{
                         //    if (socketInfo.conn)
@@ -285,24 +302,24 @@ namespace TCPSocketCl
                         //    }
                         //}
 
-                        if (!InvokeRequired)
-                        {
-                            Log(log_result);
-                            Log(strHexSplit);
-                            ListboxFocus();
-                        }
-                        else
-                        {
-                            this.Invoke(new Action(() =>
-                            {
-                                if (r_log_text) Log(log_result);
-                                //if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff));
-                                if (r_log_splitBuff) Log("SplitReceive : " + strHexSplit);
-                            }
-                            ));
-                            this.Invoke(new FocusDelegate(ListboxFocus));
-                        }
-                        socketInfo.r_Buff = null;
+                        //if (!InvokeRequired)
+                        //{
+                        //    Log(log_result);
+                        //    Log(strHexSplit);
+                        //    ListboxFocus();
+                        //}
+                        //else
+                        //{
+                        //    this.Invoke(new Action(() =>
+                        //    {
+                        //        if (r_log_text) Log(log_result);
+                        //        //if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff));
+                        //        if (r_log_splitBuff) Log("SplitReceive : " + strHexSplit);
+                        //    }
+                        //    ));
+                        //    this.Invoke(new FocusDelegate(ListboxFocus));
+                        //}
+                        //socketInfo.r_Buff = null;
                         //Thread.Sleep(1000);
                     }
                 }
@@ -516,7 +533,7 @@ namespace TCPSocketCl
             if (rtup.usys_device_ID == 0x74) device_num = 1;
             else
             {
-                log = device_judge[device_num];
+                //log = device_judge[device_num];
                 return log;
             }
             if (hex_cksum.Length >= 3)
@@ -539,7 +556,7 @@ namespace TCPSocketCl
             }
             if (start_cksum != txt.Split('-')[rtup.length - 3] || last_cksum != txt.Split('-')[rtup.length - 2])
             {
-                log = "CheckSum 오류";
+                //log = "CheckSum 오류";
                 return log;
             }
             //로그를 띄워주자 (체크섬 오류)
@@ -548,34 +565,35 @@ namespace TCPSocketCl
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1)
                 {
-                    if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    if (rtup.length == 8) ;//log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
                     else log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1]; // device_judge[device_num]
                 }
-                else log = "Format 오류";
+                else;// log = "Format 오류";
             }
             else if (rtup.sensor_ID == 2)
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1)
                 {
-                    if (rtup.length == 9 && rtup.data >= 4 && rtup.data <= 20) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 '" + rtup.data + "mA'의 " + logMsg[rtup.sensor_ID + 2];
+                    //if (rtup.length == 9 && rtup.data >= 4 && rtup.data <= 20) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 '" + rtup.data + "mA'의 " + logMsg[rtup.sensor_ID + 2];
+                    if (rtup.length == 9 && rtup.data >= 4 && rtup.data <= 20) log = "CH" + rtup.response_channel + "," + rtup.data + "mA";
                     else if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
                     else throw new Exception("continue");
                 }
-                else log = "Format 오류";
+                else;// log = "Format 오류";
             }
             else if (rtup.sensor_ID == 3)
             {
-                if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data <2)
-                log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+                if ((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data < 2)
+                    log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
                 else log = "Format 오류";
             }
             else if (rtup.sensor_ID == 4)
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3)
-                log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
+                    log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
                 else log = "Format 오류";
             }
-            else log = "SensorID 오류";
+            else;//log = "SensorID 오류";
 
             return log;
         }
