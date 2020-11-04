@@ -21,18 +21,18 @@ namespace TCPSocketCl
             try
             {
                 IPEndPoint ep = new IPEndPoint(IPAddress.Parse(in_IP), in_PORT);
-                Log("=======" + in_IP + ":" + in_PORT + " Connect 시도중=======");
+                //Log("=======" + in_IP + ":" + in_PORT + " Connect 시도중=======");
                 try
                 {
                     Socket sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     sock.Connect(ep);
                     socketInfo.Add(new SocketInfo(sock, in_IP, in_PORT, true,socketInfo.Count)); // 0부터 시작 인덱스
                     Log2(in_IP + ":" + in_PORT); // 1이 시작 인덱스
-                    Log("========= IP: " + in_IP + ", PORT: " + in_PORT + " Connect 완료 =========");
+                    //Log("========= IP: " + in_IP + ", PORT: " + in_PORT + " Connect 완료 =========");
                 }
                 catch
                 {
-                    Log("=======Connect Fail=======");
+                    //Log("=======Connect Fail=======");
                     MessageBox.Show("서버에 연결할 수 없습니다.");
                 }
 
@@ -102,16 +102,16 @@ namespace TCPSocketCl
                             i++;
                         }
                         dgv_constate.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
-                        Log("======= Connect 종료 =======");
-                        ListboxFocus();
+                       // Log("======= Connect 종료 =======");
+                       // ListboxFocus();
                     }
                 }
             }
             catch(Exception e)
 
             {
-                Log("======= 비정상 Connect 종료 =======");
-                ListboxFocus();
+                //Log("======= 비정상 Connect 종료 =======");
+               // ListboxFocus();
             }
         }
         private void StartThread(SocketInfo socketInfo, SocketDelegate socketDelegate, string str)
@@ -146,21 +146,21 @@ namespace TCPSocketCl
 
                     if (!InvokeRequired)
                     {
-                        Log(log_result);
-                        Log(strHex);
-                        ListboxFocus();
+                       // Log(log_result);
+                       // Log(strHex);
+                       // ListboxFocus();
                     }
                     else
                     {
                         this.Invoke(new Action(() =>
                         {
-                            if (s_log_text) Log(log_result);
-                            if (s_log_sendBuff) Log("SendBuffer   : " + strHex);
+                           // if (s_log_text) Log(log_result);
+                           // if (s_log_sendBuff) Log("SendBuffer   : " + strHex);
                         }
                         ));
                         //this.Invoke(new LogDelegate(Log), log_result);
                         //this.Invoke(new LogDelegate(Log), strHex);
-                        this.Invoke(new FocusDelegate(ListboxFocus));
+                        //this.Invoke(new FocusDelegate(ListboxFocus));
                     }
 
                 }
@@ -200,8 +200,8 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
-                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
-                this.Invoke(new FocusDelegate(ListboxFocus));
+               // this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+               // this.Invoke(new FocusDelegate(ListboxFocus));
             }
             else if(recvBuff.Peek() == 0xFF)
             {
@@ -215,8 +215,8 @@ namespace TCPSocketCl
                 {
                     recvBuff.Enqueue(receiverBuff[i]);
                 }
-                this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
-                this.Invoke(new FocusDelegate(ListboxFocus));
+               // this.Invoke(new Action(() => { if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff)); }));
+               // this.Invoke(new FocusDelegate(ListboxFocus));
             }
             return receiverBuff;
         }
@@ -287,20 +287,20 @@ namespace TCPSocketCl
 
                         if (!InvokeRequired)
                         {
-                            Log(log_result);
-                            Log(strHexSplit);
-                            ListboxFocus();
+                           // Log(log_result);
+                           // Log(strHexSplit);
+                           // ListboxFocus();
                         }
                         else
                         {
                             this.Invoke(new Action(() =>
                             {
-                                if (r_log_text) Log(log_result);
+                               // if (r_log_text) Log(log_result);
                                 //if (r_log_realBuff) Log("ReceiveBuff : " + BitConverter.ToString(receiverBuff));
-                                if (r_log_splitBuff) Log("SplitReceive : " + strHexSplit);
+                               // if (r_log_splitBuff) Log("SplitReceive : " + strHexSplit);
                             }
                             ));
-                            this.Invoke(new FocusDelegate(ListboxFocus));
+                           // this.Invoke(new FocusDelegate(ListboxFocus));
                         }
                         socketInfo.r_Buff = null;
                         //Thread.Sleep(1000);
@@ -376,23 +376,23 @@ namespace TCPSocketCl
             byte[] msg;
             RTUP rtup = new RTUP();
             byte[] receiverBuff = sendSocketInfo.r_Buff;
-            if (receiverBuff != null)
-            {
-                string r_strHex = BitConverter.ToString(receiverBuff);
-                rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+r_strHex.Split('-')[1],16));
-                rtup.length = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[2],16));
-                rtup.sensor_ID = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[3],16));
-                rtup.ch_setting = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[4],16));
-                rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
-                rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
-                rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
-                sendSocketInfo.r_Buff = null;
-            }
-            else
-            {
+            //if (receiverBuff != null)
+            //{
+            //    string r_strHex = BitConverter.ToString(receiverBuff);
+            //    rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+r_strHex.Split('-')[1],16));
+            //    rtup.length = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[2],16));
+            //    rtup.sensor_ID = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[3],16));
+            //    rtup.ch_setting = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[4],16));
+            //    rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
+            //    rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
+            //    rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
+            //    sendSocketInfo.r_Buff = null;
+            //}
+            //else
+            //{
                 rtup.usys_device_ID = 0x74;
                 rtup.sensor_ID = (byte)sensorID;
-            }
+            //}
             //0 or 1 장비 선택
             
             try
@@ -420,7 +420,7 @@ namespace TCPSocketCl
                     msg[6] = rtup.check_sum[0];
                     msg[7] = rtup.check_sum[1];
                     msg[8] = rtup.eof;
-                }
+                } // 497802 01 535143
                 else if (rtup.sensor_ID == 2)
                 {
                     rtup.ch_setting = (byte)ain_ch;
@@ -512,7 +512,10 @@ namespace TCPSocketCl
             string start_cksum = string.Empty;
             string last_cksum = string.Empty;
             int device_num = 0;
-            if (rtup.usys_device_ID == 0x74) device_num = 1;
+            if (rtup.usys_device_ID == 0x74)
+            {
+                device_num = 1;
+            }
             else
             {
                 log = device_judge[device_num];
@@ -564,9 +567,53 @@ namespace TCPSocketCl
             }
             else if (rtup.sensor_ID == 3)
             {
-                if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data <2)
-                log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
-                else log = "Format 오류";
+                if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data < 2)
+                {
+                    log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+
+                    if (rtup.response_channel == 0)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            
+                            timer.Tick += new EventHandler(Timer0_Tick);
+                            timer.Interval = 500;
+                            timer.Start();
+                        }));
+                    }
+                    else if (rtup.response_channel == 1)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            
+                            timer.Tick += new EventHandler(Timer1_Tick);
+                            timer.Interval = 500;
+                            timer.Start();
+                        }));
+                    }
+                    else if (rtup.response_channel == 2)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            
+                            timer.Tick += new EventHandler(Timer2_Tick);
+                            timer.Interval = 500;
+                            timer.Start();
+                        }));
+                    }
+                    else if (rtup.response_channel == 3)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            
+                            timer.Tick += new EventHandler(Timer3_Tick);
+                            timer.Interval = 500;
+                            timer.Start();
+                        }));
+                    }
+                }
+
+                    else { log = "Format 오류"; }
             }
             else if (rtup.sensor_ID == 4)
             {
@@ -578,7 +625,54 @@ namespace TCPSocketCl
 
             return log;
         }
-
+        private void Timer0_Tick(object sender, EventArgs e)
+        {
+            if (!led0)
+            {
+                led_ch0_d.BackColor = customedBlue;
+            }
+            else
+            {
+                led_ch0_d.BackColor = System.Drawing.Color.Transparent;
+            }
+            led0 = !led0;
+        }
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if (!led1)
+            {
+                led_ch1_d.BackColor = customedBlue;
+            }
+            else
+            {
+                led_ch1_d.BackColor = System.Drawing.Color.Transparent;
+            }
+            led1 = !led1;
+        }
+        private void Timer2_Tick(object sender, EventArgs e)
+        {
+            if (!led2)
+            {
+                led_ch2_d.BackColor = customedBlue;
+            }
+            else
+            {
+                led_ch2_d.BackColor = System.Drawing.Color.Transparent;
+            }
+            led2 = !led2;
+        }
+        private void Timer3_Tick(object sender, EventArgs e)
+        {
+            if (!led3)
+            {
+                led_ch3_d.BackColor = customedBlue;
+            }
+            else
+            {
+                led_ch3_d.BackColor = System.Drawing.Color.Transparent;
+            }
+            led3 = !led3;
+        }
         private ResultSet SplitAndCksum(SocketInfo socketInfo, Queue<byte> recvBuff)
         {
             int resultSet = 0;

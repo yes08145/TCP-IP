@@ -80,7 +80,7 @@ namespace TCPSocketCl
         //text Clear
         private void btn_textClear_Click(object sender, EventArgs e)
         {
-            listbox1.Items.Clear();
+            //listbox1.Items.Clear();
         }
     }
 }

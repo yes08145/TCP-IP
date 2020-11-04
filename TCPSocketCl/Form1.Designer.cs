@@ -32,29 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.listbox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button_AIRequest = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button_AOSetting = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button_DOSetting = new System.Windows.Forms.Button();
-            this.button_Off = new System.Windows.Forms.Button();
-            this.button_On = new System.Windows.Forms.Button();
-            this.button_DO0 = new System.Windows.Forms.Button();
-            this.button_DO1 = new System.Windows.Forms.Button();
-            this.button_DO2 = new System.Windows.Forms.Button();
-            this.button_DO3 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_disconnect = new MetroFramework.Controls.MetroButton();
             this.textBox_Port = new MetroFramework.Controls.MetroTextBox();
@@ -74,349 +51,42 @@
             this.check_sendbuf = new MetroFramework.Controls.MetroCheckBox();
             this.check_rtext = new MetroFramework.Controls.MetroCheckBox();
             this.check_splitbuf = new MetroFramework.Controls.MetroCheckBox();
-            this.btn_textClear = new MetroFramework.Controls.MetroButton();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.dgv_constate = new MetroFramework.Controls.MetroGrid();
-            this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.metroTabControl_d = new MetroFramework.Controls.MetroTabControl();
+            this.tabPage_d = new System.Windows.Forms.TabPage();
+            this.btn_send_d = new MetroFramework.Controls.MetroButton();
+            this.toggle_ch3_d = new MetroFramework.Controls.MetroToggle();
+            this.btn_ch3_d = new MetroFramework.Controls.MetroButton();
+            this.toggle_ch2_d = new MetroFramework.Controls.MetroToggle();
+            this.btn_ch2_d = new MetroFramework.Controls.MetroButton();
+            this.toggle_ch1_d = new MetroFramework.Controls.MetroToggle();
+            this.btn_ch1_d = new MetroFramework.Controls.MetroButton();
+            this.toggle_ch0_d = new MetroFramework.Controls.MetroToggle();
+            this.btn_ch0_d = new MetroFramework.Controls.MetroButton();
+            this.label_ch3_d = new MetroFramework.Controls.MetroLabel();
+            this.labal_ch2_d = new MetroFramework.Controls.MetroLabel();
+            this.label_ch1_d = new MetroFramework.Controls.MetroLabel();
+            this.label_ch0_d = new MetroFramework.Controls.MetroLabel();
+            this.led_ch3_d = new MetroFramework.Controls.MetroButton();
+            this.led_ch2_d = new MetroFramework.Controls.MetroButton();
+            this.led_ch1_d = new MetroFramework.Controls.MetroButton();
+            this.led_ch0_d = new MetroFramework.Controls.MetroButton();
+            this.label_input_d = new MetroFramework.Controls.MetroLabel();
+            this.label_output_d = new MetroFramework.Controls.MetroLabel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).BeginInit();
+            this.metroTabControl_d.SuspendLayout();
+            this.tabPage_d.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // listbox1
-            // 
-            this.listbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listbox1.BackColor = System.Drawing.SystemColors.Window;
-            this.listbox1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.listbox1.FormattingEnabled = true;
-            this.listbox1.HorizontalScrollbar = true;
-            this.listbox1.ItemHeight = 21;
-            this.listbox1.Location = new System.Drawing.Point(12, 236);
-            this.listbox1.Name = "listbox1";
-            this.listbox1.Size = new System.Drawing.Size(1075, 571);
-            this.listbox1.TabIndex = 17;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(85, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 26);
-            this.button1.TabIndex = 21;
-            this.button1.TabStop = false;
-            this.button1.Text = "ch 0";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // button_AIRequest
-            // 
-            this.button_AIRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AIRequest.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AIRequest.Location = new System.Drawing.Point(27, 61);
-            this.button_AIRequest.Name = "button_AIRequest";
-            this.button_AIRequest.Size = new System.Drawing.Size(128, 26);
-            this.button_AIRequest.TabIndex = 37;
-            this.button_AIRequest.Text = "전류 입력 값 요청";
-            this.button_AIRequest.UseVisualStyleBackColor = true;
-            this.button_AIRequest.Click += new System.EventHandler(this.Button_AIRequest_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.Location = new System.Drawing.Point(48, 36);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "mA";
-            // 
-            // button_AOSetting
-            // 
-            this.button_AOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_AOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_AOSetting.Location = new System.Drawing.Point(35, 61);
-            this.button_AOSetting.Name = "button_AOSetting";
-            this.button_AOSetting.Size = new System.Drawing.Size(128, 26);
-            this.button_AOSetting.TabIndex = 0;
-            this.button_AOSetting.Text = "전류 출력 설정";
-            this.button_AOSetting.UseVisualStyleBackColor = true;
-            this.button_AOSetting.Click += new System.EventHandler(this.ButtonOSetting_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(136, 29);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 26);
-            this.button2.TabIndex = 21;
-            this.button2.TabStop = false;
-            this.button2.Text = "ch 1";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(41, 29);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(47, 26);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "ch 0";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button4.Location = new System.Drawing.Point(94, 29);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 26);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "ch 1";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
-            // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(385, 10);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(417, 174);
-            this.tabControl.TabIndex = 39;
-            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(409, 148);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Analog";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button_AIRequest);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(214, 18);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(189, 109);
-            this.groupBox2.TabIndex = 40;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "전류입력";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.button_AOSetting);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 18);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(189, 109);
-            this.groupBox1.TabIndex = 38;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "전류출력";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.comboBox1.Location = new System.Drawing.Point(6, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(44, 21);
-            this.comboBox1.TabIndex = 40;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(409, 148);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Digital";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.button_DOSetting);
-            this.groupBox3.Controls.Add(this.button_Off);
-            this.groupBox3.Controls.Add(this.button_On);
-            this.groupBox3.Controls.Add(this.button_DO0);
-            this.groupBox3.Controls.Add(this.button_DO1);
-            this.groupBox3.Controls.Add(this.button_DO2);
-            this.groupBox3.Controls.Add(this.button_DO3);
-            this.groupBox3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(16, 18);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(232, 117);
-            this.groupBox3.TabIndex = 39;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "신호출력";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("굴림", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(11, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 14);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "SIGNAL :";
-            // 
-            // button_DOSetting
-            // 
-            this.button_DOSetting.BackColor = System.Drawing.Color.Transparent;
-            this.button_DOSetting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DOSetting.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DOSetting.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DOSetting.Location = new System.Drawing.Point(52, 77);
-            this.button_DOSetting.Name = "button_DOSetting";
-            this.button_DOSetting.Size = new System.Drawing.Size(128, 26);
-            this.button_DOSetting.TabIndex = 26;
-            this.button_DOSetting.TabStop = false;
-            this.button_DOSetting.Text = "디지털 출력 설정";
-            this.button_DOSetting.UseVisualStyleBackColor = false;
-            this.button_DOSetting.Click += new System.EventHandler(this.Button_DOSetting_Click);
-            // 
-            // button_Off
-            // 
-            this.button_Off.BackColor = System.Drawing.Color.Transparent;
-            this.button_Off.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_Off.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_Off.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_Off.Location = new System.Drawing.Point(92, 45);
-            this.button_Off.Name = "button_Off";
-            this.button_Off.Size = new System.Drawing.Size(47, 26);
-            this.button_Off.TabIndex = 25;
-            this.button_Off.TabStop = false;
-            this.button_Off.Text = "Off";
-            this.button_Off.UseVisualStyleBackColor = false;
-            this.button_Off.Click += new System.EventHandler(this.Button_Off_Click);
-            // 
-            // button_On
-            // 
-            this.button_On.BackColor = System.Drawing.Color.Transparent;
-            this.button_On.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_On.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_On.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_On.Location = new System.Drawing.Point(145, 45);
-            this.button_On.Name = "button_On";
-            this.button_On.Size = new System.Drawing.Size(47, 26);
-            this.button_On.TabIndex = 24;
-            this.button_On.TabStop = false;
-            this.button_On.Text = "On";
-            this.button_On.UseVisualStyleBackColor = false;
-            this.button_On.Click += new System.EventHandler(this.Button_On_Click);
-            // 
-            // button_DO0
-            // 
-            this.button_DO0.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO0.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO0.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO0.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO0.Location = new System.Drawing.Point(11, 16);
-            this.button_DO0.Name = "button_DO0";
-            this.button_DO0.Size = new System.Drawing.Size(47, 26);
-            this.button_DO0.TabIndex = 23;
-            this.button_DO0.TabStop = false;
-            this.button_DO0.Text = "ch 0";
-            this.button_DO0.UseVisualStyleBackColor = false;
-            this.button_DO0.Click += new System.EventHandler(this.Button_DO0_Click);
-            // 
-            // button_DO1
-            // 
-            this.button_DO1.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO1.Location = new System.Drawing.Point(64, 16);
-            this.button_DO1.Name = "button_DO1";
-            this.button_DO1.Size = new System.Drawing.Size(47, 26);
-            this.button_DO1.TabIndex = 22;
-            this.button_DO1.TabStop = false;
-            this.button_DO1.Text = "ch 1";
-            this.button_DO1.UseVisualStyleBackColor = false;
-            this.button_DO1.Click += new System.EventHandler(this.Button_DO1_Click);
-            // 
-            // button_DO2
-            // 
-            this.button_DO2.BackColor = System.Drawing.Color.Transparent;
-            this.button_DO2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO2.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button_DO2.Location = new System.Drawing.Point(117, 16);
-            this.button_DO2.Name = "button_DO2";
-            this.button_DO2.Size = new System.Drawing.Size(47, 26);
-            this.button_DO2.TabIndex = 21;
-            this.button_DO2.TabStop = false;
-            this.button_DO2.Text = "ch 2";
-            this.button_DO2.UseVisualStyleBackColor = false;
-            this.button_DO2.Click += new System.EventHandler(this.Button_DO2_Click);
-            // 
-            // button_DO3
-            // 
-            this.button_DO3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_DO3.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button_DO3.Location = new System.Drawing.Point(170, 16);
-            this.button_DO3.Name = "button_DO3";
-            this.button_DO3.Size = new System.Drawing.Size(47, 26);
-            this.button_DO3.TabIndex = 21;
-            this.button_DO3.TabStop = false;
-            this.button_DO3.Text = "ch 3";
-            this.button_DO3.UseVisualStyleBackColor = true;
-            this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
             // label8
             // 
@@ -715,16 +385,6 @@
             this.check_splitbuf.UseSelectable = true;
             this.check_splitbuf.CheckedChanged += new System.EventHandler(this.check_splitbuf_CheckedChanged);
             // 
-            // btn_textClear
-            // 
-            this.btn_textClear.Location = new System.Drawing.Point(972, 203);
-            this.btn_textClear.Name = "btn_textClear";
-            this.btn_textClear.Size = new System.Drawing.Size(116, 23);
-            this.btn_textClear.TabIndex = 43;
-            this.btn_textClear.Text = "Text Clear";
-            this.btn_textClear.UseSelectable = true;
-            this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
-            // 
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
@@ -848,80 +508,284 @@
             this.dgv_constate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_constate_CellDoubleClick);
             this.dgv_constate.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_constate_RowPostPaint);
             // 
+            // metroTabControl_d
+            // 
+            this.metroTabControl_d.Controls.Add(this.tabPage_d);
+            this.metroTabControl_d.Location = new System.Drawing.Point(37, 580);
+            this.metroTabControl_d.Name = "metroTabControl_d";
+            this.metroTabControl_d.SelectedIndex = 0;
+            this.metroTabControl_d.Size = new System.Drawing.Size(700, 250);
+            this.metroTabControl_d.TabIndex = 52;
+            this.metroTabControl_d.UseSelectable = true;
+            // 
+            // tabPage_d
+            // 
+            this.tabPage_d.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage_d.Controls.Add(this.btn_send_d);
+            this.tabPage_d.Controls.Add(this.toggle_ch3_d);
+            this.tabPage_d.Controls.Add(this.btn_ch3_d);
+            this.tabPage_d.Controls.Add(this.toggle_ch2_d);
+            this.tabPage_d.Controls.Add(this.btn_ch2_d);
+            this.tabPage_d.Controls.Add(this.toggle_ch1_d);
+            this.tabPage_d.Controls.Add(this.btn_ch1_d);
+            this.tabPage_d.Controls.Add(this.toggle_ch0_d);
+            this.tabPage_d.Controls.Add(this.btn_ch0_d);
+            this.tabPage_d.Controls.Add(this.label_ch3_d);
+            this.tabPage_d.Controls.Add(this.labal_ch2_d);
+            this.tabPage_d.Controls.Add(this.label_ch1_d);
+            this.tabPage_d.Controls.Add(this.label_ch0_d);
+            this.tabPage_d.Controls.Add(this.led_ch3_d);
+            this.tabPage_d.Controls.Add(this.led_ch2_d);
+            this.tabPage_d.Controls.Add(this.led_ch1_d);
+            this.tabPage_d.Controls.Add(this.led_ch0_d);
+            this.tabPage_d.Controls.Add(this.label_input_d);
+            this.tabPage_d.Controls.Add(this.label_output_d);
+            this.tabPage_d.Controls.Add(this.metroTile1);
+            this.tabPage_d.Location = new System.Drawing.Point(4, 38);
+            this.tabPage_d.Name = "tabPage_d";
+            this.tabPage_d.Size = new System.Drawing.Size(692, 208);
+            this.tabPage_d.TabIndex = 0;
+            this.tabPage_d.Text = "Digital";
+            // 
+            // btn_send_d
+            // 
+            this.btn_send_d.Location = new System.Drawing.Point(293, 171);
+            this.btn_send_d.Name = "btn_send_d";
+            this.btn_send_d.Size = new System.Drawing.Size(115, 26);
+            this.btn_send_d.TabIndex = 19;
+            this.btn_send_d.Text = "Send";
+            this.btn_send_d.UseSelectable = true;
+            this.btn_send_d.Click += new System.EventHandler(this.Button_DOSetting_Click);
+            // 
+            // toggle_ch3_d
+            // 
+            this.toggle_ch3_d.AutoSize = true;
+            this.toggle_ch3_d.Location = new System.Drawing.Point(429, 141);
+            this.toggle_ch3_d.Name = "toggle_ch3_d";
+            this.toggle_ch3_d.Size = new System.Drawing.Size(80, 16);
+            this.toggle_ch3_d.TabIndex = 18;
+            this.toggle_ch3_d.Text = "Off";
+            this.toggle_ch3_d.UseSelectable = true;
+            // 
+            // btn_ch3_d
+            // 
+            this.btn_ch3_d.Location = new System.Drawing.Point(470, 100);
+            this.btn_ch3_d.Name = "btn_ch3_d";
+            this.btn_ch3_d.Size = new System.Drawing.Size(33, 26);
+            this.btn_ch3_d.TabIndex = 17;
+            this.btn_ch3_d.UseCustomBackColor = true;
+            this.btn_ch3_d.UseSelectable = true;
+            this.btn_ch3_d.Click += new System.EventHandler(this.Btn_ch3_d_Click);
+            // 
+            // toggle_ch2_d
+            // 
+            this.toggle_ch2_d.AutoSize = true;
+            this.toggle_ch2_d.Location = new System.Drawing.Point(339, 141);
+            this.toggle_ch2_d.Name = "toggle_ch2_d";
+            this.toggle_ch2_d.Size = new System.Drawing.Size(80, 16);
+            this.toggle_ch2_d.TabIndex = 16;
+            this.toggle_ch2_d.Text = "Off";
+            this.toggle_ch2_d.UseSelectable = true;
+            // 
+            // btn_ch2_d
+            // 
+            this.btn_ch2_d.Location = new System.Drawing.Point(380, 100);
+            this.btn_ch2_d.Name = "btn_ch2_d";
+            this.btn_ch2_d.Size = new System.Drawing.Size(33, 26);
+            this.btn_ch2_d.TabIndex = 15;
+            this.btn_ch2_d.UseCustomBackColor = true;
+            this.btn_ch2_d.UseSelectable = true;
+            this.btn_ch2_d.Click += new System.EventHandler(this.Btn_ch2_d_Click);
+            // 
+            // toggle_ch1_d
+            // 
+            this.toggle_ch1_d.AutoSize = true;
+            this.toggle_ch1_d.Location = new System.Drawing.Point(249, 141);
+            this.toggle_ch1_d.Name = "toggle_ch1_d";
+            this.toggle_ch1_d.Size = new System.Drawing.Size(80, 16);
+            this.toggle_ch1_d.TabIndex = 14;
+            this.toggle_ch1_d.Text = "Off";
+            this.toggle_ch1_d.UseSelectable = true;
+            // 
+            // btn_ch1_d
+            // 
+            this.btn_ch1_d.Location = new System.Drawing.Point(290, 100);
+            this.btn_ch1_d.Name = "btn_ch1_d";
+            this.btn_ch1_d.Size = new System.Drawing.Size(33, 26);
+            this.btn_ch1_d.TabIndex = 13;
+            this.btn_ch1_d.UseCustomBackColor = true;
+            this.btn_ch1_d.UseSelectable = true;
+            this.btn_ch1_d.Click += new System.EventHandler(this.Btn_ch1_d_Click);
+            // 
+            // toggle_ch0_d
+            // 
+            this.toggle_ch0_d.AutoSize = true;
+            this.toggle_ch0_d.Location = new System.Drawing.Point(159, 141);
+            this.toggle_ch0_d.Name = "toggle_ch0_d";
+            this.toggle_ch0_d.Size = new System.Drawing.Size(80, 16);
+            this.toggle_ch0_d.TabIndex = 12;
+            this.toggle_ch0_d.Text = "Off";
+            this.toggle_ch0_d.UseSelectable = true;
+            // 
+            // btn_ch0_d
+            // 
+            this.btn_ch0_d.Location = new System.Drawing.Point(200, 100);
+            this.btn_ch0_d.Name = "btn_ch0_d";
+            this.btn_ch0_d.Size = new System.Drawing.Size(33, 26);
+            this.btn_ch0_d.TabIndex = 11;
+            this.btn_ch0_d.UseCustomBackColor = true;
+            this.btn_ch0_d.UseSelectable = true;
+            this.btn_ch0_d.Click += new System.EventHandler(this.Btn_ch0_d_Click);
+            // 
+            // label_ch3_d
+            // 
+            this.label_ch3_d.AutoSize = true;
+            this.label_ch3_d.Location = new System.Drawing.Point(470, 50);
+            this.label_ch3_d.Name = "label_ch3_d";
+            this.label_ch3_d.Size = new System.Drawing.Size(33, 19);
+            this.label_ch3_d.TabIndex = 10;
+            this.label_ch3_d.Text = "ch 3";
+            // 
+            // labal_ch2_d
+            // 
+            this.labal_ch2_d.AutoSize = true;
+            this.labal_ch2_d.Location = new System.Drawing.Point(380, 50);
+            this.labal_ch2_d.Name = "labal_ch2_d";
+            this.labal_ch2_d.Size = new System.Drawing.Size(33, 19);
+            this.labal_ch2_d.TabIndex = 9;
+            this.labal_ch2_d.Text = "ch 2";
+            // 
+            // label_ch1_d
+            // 
+            this.label_ch1_d.AutoSize = true;
+            this.label_ch1_d.Location = new System.Drawing.Point(290, 50);
+            this.label_ch1_d.Name = "label_ch1_d";
+            this.label_ch1_d.Size = new System.Drawing.Size(31, 19);
+            this.label_ch1_d.TabIndex = 8;
+            this.label_ch1_d.Text = "ch 1";
+            // 
+            // label_ch0_d
+            // 
+            this.label_ch0_d.AutoSize = true;
+            this.label_ch0_d.Location = new System.Drawing.Point(200, 50);
+            this.label_ch0_d.Name = "label_ch0_d";
+            this.label_ch0_d.Size = new System.Drawing.Size(33, 19);
+            this.label_ch0_d.TabIndex = 7;
+            this.label_ch0_d.Text = "ch 0";
+            // 
+            // led_ch3_d
+            // 
+            this.led_ch3_d.BackColor = System.Drawing.Color.Transparent;
+            this.led_ch3_d.Location = new System.Drawing.Point(460, 33);
+            this.led_ch3_d.Name = "led_ch3_d";
+            this.led_ch3_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch3_d.TabIndex = 6;
+            this.led_ch3_d.UseCustomBackColor = true;
+            this.led_ch3_d.UseSelectable = true;
+            // 
+            // led_ch2_d
+            // 
+            this.led_ch2_d.BackColor = System.Drawing.Color.Transparent;
+            this.led_ch2_d.Location = new System.Drawing.Point(370, 33);
+            this.led_ch2_d.Name = "led_ch2_d";
+            this.led_ch2_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch2_d.TabIndex = 5;
+            this.led_ch2_d.UseCustomBackColor = true;
+            this.led_ch2_d.UseSelectable = true;
+            // 
+            // led_ch1_d
+            // 
+            this.led_ch1_d.BackColor = System.Drawing.Color.Transparent;
+            this.led_ch1_d.Location = new System.Drawing.Point(280, 33);
+            this.led_ch1_d.Name = "led_ch1_d";
+            this.led_ch1_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch1_d.TabIndex = 4;
+            this.led_ch1_d.UseCustomBackColor = true;
+            this.led_ch1_d.UseSelectable = true;
+            // 
+            // led_ch0_d
+            // 
+            this.led_ch0_d.BackColor = System.Drawing.Color.Transparent;
+            this.led_ch0_d.Location = new System.Drawing.Point(190, 33);
+            this.led_ch0_d.Name = "led_ch0_d";
+            this.led_ch0_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch0_d.TabIndex = 3;
+            this.led_ch0_d.UseCustomBackColor = true;
+            this.led_ch0_d.UseSelectable = true;
+            // 
+            // label_input_d
+            // 
+            this.label_input_d.AutoSize = true;
+            this.label_input_d.Location = new System.Drawing.Point(14, 96);
+            this.label_input_d.Name = "label_input_d";
+            this.label_input_d.Size = new System.Drawing.Size(37, 19);
+            this.label_input_d.TabIndex = 2;
+            this.label_input_d.Text = "입력";
+            // 
+            // label_output_d
+            // 
+            this.label_output_d.AutoSize = true;
+            this.label_output_d.Location = new System.Drawing.Point(14, 11);
+            this.label_output_d.Name = "label_output_d";
+            this.label_output_d.Size = new System.Drawing.Size(37, 19);
+            this.label_output_d.TabIndex = 1;
+            this.label_output_d.Text = "출력";
+            // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.metroTile1.Location = new System.Drawing.Point(19, 76);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(651, 2);
+            this.metroTile1.TabIndex = 0;
+            this.metroTile1.Text = "metroTile1";
+            this.metroTile1.UseCustomBackColor = true;
+            this.metroTile1.UseSelectable = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1100, 861);
+            this.ClientSize = new System.Drawing.Size(784, 861);
+            this.Controls.Add(this.metroTabControl_d);
             this.Controls.Add(this.metroTabControl2);
             this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.metroLabel8);
-            this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.check_splitbuf);
             this.Controls.Add(this.check_rtext);
             this.Controls.Add(this.check_sendbuf);
             this.Controls.Add(this.check_stext);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1100, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Socket Client Program";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroTabControl2.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).EndInit();
+            this.metroTabControl_d.ResumeLayout(false);
+            this.tabPage_d.ResumeLayout(false);
+            this.tabPage_d.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ListBox listbox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button_AIRequest;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button_AOSetting;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button_DO0;
-        private System.Windows.Forms.Button button_DO1;
-        private System.Windows.Forms.Button button_DO2;
-        private System.Windows.Forms.Button button_DO3;
-        private System.Windows.Forms.Button button_Off;
-        private System.Windows.Forms.Button button_On;
-        private System.Windows.Forms.Button button_DOSetting;
-        private System.Windows.Forms.Label label6;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroCheckBox check_stext;
         private MetroFramework.Controls.MetroCheckBox check_sendbuf;
         private MetroFramework.Controls.MetroCheckBox check_rtext;
         private MetroFramework.Controls.MetroCheckBox check_splitbuf;
-        private MetroFramework.Controls.MetroButton btn_textClear;
         private MetroFramework.Controls.MetroButton btn_disconnect;
         private MetroFramework.Controls.MetroButton btn_connect;
         private MetroFramework.Controls.MetroTextBox textBox_IP4;
@@ -941,5 +805,27 @@
         private MetroFramework.Controls.MetroTabControl metroTabControl2;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroGrid dgv_constate;
+        private MetroFramework.Controls.MetroTabControl metroTabControl_d;
+        private System.Windows.Forms.TabPage tabPage_d;
+        private MetroFramework.Controls.MetroButton btn_send_d;
+        private MetroFramework.Controls.MetroToggle toggle_ch3_d;
+        private MetroFramework.Controls.MetroButton btn_ch3_d;
+        private MetroFramework.Controls.MetroToggle toggle_ch2_d;
+        private MetroFramework.Controls.MetroButton btn_ch2_d;
+        private MetroFramework.Controls.MetroToggle toggle_ch1_d;
+        private MetroFramework.Controls.MetroButton btn_ch1_d;
+        private MetroFramework.Controls.MetroToggle toggle_ch0_d;
+        private MetroFramework.Controls.MetroButton btn_ch0_d;
+        private MetroFramework.Controls.MetroLabel label_ch3_d;
+        private MetroFramework.Controls.MetroLabel labal_ch2_d;
+        private MetroFramework.Controls.MetroLabel label_ch1_d;
+        private MetroFramework.Controls.MetroLabel label_ch0_d;
+        private MetroFramework.Controls.MetroButton led_ch3_d;
+        private MetroFramework.Controls.MetroButton led_ch2_d;
+        private MetroFramework.Controls.MetroButton led_ch1_d;
+        private MetroFramework.Controls.MetroButton led_ch0_d;
+        private MetroFramework.Controls.MetroLabel label_input_d;
+        private MetroFramework.Controls.MetroLabel label_output_d;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }

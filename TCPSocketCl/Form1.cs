@@ -35,11 +35,16 @@ namespace TCPSocketCl
         private static string q_ip4 = string.Empty;
         private static string q_port = string.Empty;
         private static string strHex = string.Empty;
+        private static bool led0 = false;
+        private static bool led1 = false;
+        private static bool led2 = false;
+        private static bool led3 = false;
         private static bool r_log_text = true;
         private static bool r_log_realBuff = false;
         private static bool r_log_splitBuff = false;
         private static bool s_log_text = true;
         private static bool s_log_sendBuff = false;
+        private static Color customedBlue = Color.FromArgb(0, 174, 219);
         //private static string strHexSplit = string.Empty;
         //private static string hex_cksum = string.Empty;
         private static string[] device_judge = new string[3];
@@ -54,6 +59,7 @@ namespace TCPSocketCl
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
         private static List<string> ipList = new List<string>();
+        private static System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
 
         public Form1()
@@ -63,7 +69,7 @@ namespace TCPSocketCl
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Log("Socket Client Program Start");
+            //Log("Socket Client Program Start");
             //Log2("192.168.0.180:5000");
             //Log2("192.168.0.244:5000");
             //Log2("192.168.0.31:4265");
@@ -71,8 +77,6 @@ namespace TCPSocketCl
             device_judge[1] = "RTU";
             device_judge[2] = "SmartPoE";
             
-            tabControl.DrawMode = TabDrawMode.OwnerDrawFixed;
-            comboBox1.SelectedIndex = 0;
             //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ActiveControl = textBox_IP1;
         }
@@ -91,7 +95,6 @@ namespace TCPSocketCl
             int socketCount = socketInfo.Count;
             IP = IP1 + "." + IP2 + "." + IP3 + "." + IP4;
             SocketConnect(IP,PORT);
-            ListboxFocus();
             TboxClear();
             String resultIP = "IP:"+IP+", PORT:"+PORT;
             if (socketCount < socketInfo.Count)
@@ -105,16 +108,11 @@ namespace TCPSocketCl
         {
             SocketDisconnect();
         }
-        private void ListboxFocus()
-        {
-            listbox1.SelectedIndex = listbox1.Items.Count - 1;
-        }
-
-        public void Log(string msg)
-        {
+        //public void Log(string msg)
+        //{
             //SocketClass sc = new SocketClass();
-            string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
-            listbox1.Items.Add(return_msg);
+            //string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
+            //listbox1.Items.Add(return_msg);
             //......
             //sc.LogFile(return_msg);       
             //DirectoryInfo di = new DirectoryInfo(DirPath);
@@ -145,7 +143,7 @@ namespace TCPSocketCl
                 
             //}
 
-        }
+        //}
 
         public void Log2(string msg)
         {
@@ -160,14 +158,14 @@ namespace TCPSocketCl
 
         private void ButtonOSetting_Click(object sender, EventArgs e)
         {
-            sensorID = 1;
-            if (button1.BackColor == Color.LightBlue) aout_ch = 0;
-            else if (button2.BackColor == Color.LightBlue) aout_ch = 1;
+            //sensorID = 1;
+            //if (button1.BackColor == Color.LightBlue) aout_ch = 0;
+           // else if (button2.BackColor == Color.LightBlue) aout_ch = 1;
             //else aout_ch = 404;
-            else sensorID = 100;
+            //else sensorID = 100;
             try
             {
-                data = Convert.ToInt32(comboBox1.Text);
+                //data = Convert.ToInt32(comboBox1.Text);
                 foreach (SocketInfo usedSockInfo in socketInfo)
                 {
                     if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)//Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
@@ -192,10 +190,10 @@ namespace TCPSocketCl
         private void Button_AIRequest_Click(object sender, EventArgs e)
         {
             sensorID = 2;
-            if (button3.BackColor == Color.LightBlue) ain_ch = 0;
-            else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
+            //if (button3.BackColor == Color.LightBlue) ain_ch = 0;
+            //else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
             //else ain_ch = 404;
-            else sensorID = 100;
+           // else sensorID = 100;
             try
             {
                 foreach (SocketInfo usedSockInfo in socketInfo)
@@ -222,17 +220,59 @@ namespace TCPSocketCl
         private void Button_DOSetting_Click(object sender, EventArgs e)
         {
             sensorID = 4;
-            if (button_DO0.BackColor == Color.LightBlue) dout_ch = 0;
-            else if (button_DO1.BackColor == Color.LightBlue) dout_ch = 1;
-            else if (button_DO2.BackColor == Color.LightBlue) dout_ch = 2;
-            else if (button_DO3.BackColor == Color.LightBlue) dout_ch = 3;
+            if (btn_ch0_d.BackColor == customedBlue)
+            {
+                dout_ch = 0;
+                if (toggle_ch0_d.Checked)
+                {
+                    data = 1;
+                }
+                else
+                {
+                    data = 0;
+                }
+            }
+            else if (btn_ch1_d.BackColor == customedBlue)
+            {
+                dout_ch = 1;
+                if (toggle_ch1_d.Checked)
+                {
+                    data = 1;
+                }
+                else
+                {
+                    data = 0;
+                }
+            }
+            else if (btn_ch2_d.BackColor == customedBlue)
+            {
+                dout_ch = 2;
+                if (toggle_ch2_d.Checked)
+                {
+                    data = 1;
+                }
+                else
+                {
+                    data = 0;
+                }
+            }
+            else if (btn_ch3_d.BackColor == customedBlue)
+            {
+                dout_ch = 3;
+                if (toggle_ch3_d.Checked)
+                {
+                    data = 1;
+                }
+                else
+                {
+                    data = 0;
+                }
+            }
             //else dout_ch = 404;
-            else sensorID = 100;
-
-            if (button_Off.BackColor == Color.LightBlue) data = 0;
-            else if (button_On.BackColor == Color.LightBlue) data = 1;
-            //else data = 404;
-            else sensorID = 100;
+            else
+            {
+                sensorID = 100;
+            }
 
             try
             {
@@ -265,103 +305,62 @@ namespace TCPSocketCl
             }
             if (state == 1)
             {
-                button1.BackColor = System.Drawing.Color.Transparent;
-                button2.BackColor = System.Drawing.Color.Transparent;
-                this.ActiveControl = button_AOSetting;
+                //button1.BackColor = System.Drawing.Color.Transparent;
+                //button2.BackColor = System.Drawing.Color.Transparent;
+                //this.ActiveControl = button_AOSetting;
             }
             else if (state == 2)
             {
-                button3.BackColor = System.Drawing.Color.Transparent;
-                button4.BackColor = System.Drawing.Color.Transparent;
-                this.ActiveControl = button_AIRequest;
+                //button3.BackColor = System.Drawing.Color.Transparent;
+                //button4.BackColor = System.Drawing.Color.Transparent;
+                //this.ActiveControl = button_AIRequest;
             }
             else if (state == 3)
             {
-                button_DO0.BackColor = System.Drawing.Color.Transparent;
-                button_DO1.BackColor = System.Drawing.Color.Transparent;
-                button_DO2.BackColor = System.Drawing.Color.Transparent;
-                button_DO3.BackColor = System.Drawing.Color.Transparent;
-                this.ActiveControl = button_DOSetting;
-            }
-            else if(state == 4)
-            {
-                button_Off.BackColor = System.Drawing.Color.Transparent;
-                button_On.BackColor = System.Drawing.Color.Transparent;
-                this.ActiveControl = button_DOSetting;
+                btn_ch0_d.BackColor = System.Drawing.Color.Transparent;
+                btn_ch1_d.BackColor = System.Drawing.Color.Transparent;
+                btn_ch2_d.BackColor = System.Drawing.Color.Transparent;
+                btn_ch3_d.BackColor = System.Drawing.Color.Transparent;
+                metroTabControl_d.Focus();
             }
             if(btn_color == 1)
             {
-                button.BackColor = Color.LightBlue;
+                button.BackColor = customedBlue;
             }
             
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Button_State(button1, 1);
+            //Button_State(button1, 1);
         }
         private void Button2_Click(object sender, EventArgs e)
         {
-            Button_State(button2, 1);
+            //Button_State(button2, 1);
         }
         private void Button3_Click(object sender, EventArgs e)
         {
-            Button_State(button3,2);
+            //Button_State(button3,2);
         }
         private void Button4_Click(object sender, EventArgs e)
         {
-            Button_State(button4,2);
+            //Button_State(button4,2);
         }
-        private void Button_DO0_Click(object sender, EventArgs e)
+        private void Btn_ch0_d_Click(object sender, EventArgs e)
         {
-            Button_State(button_DO0, 3);
+            Button_State(btn_ch0_d, 3);
         }
-        private void Button_DO1_Click(object sender, EventArgs e)
+        private void Btn_ch1_d_Click(object sender, EventArgs e)
         {
-            Button_State(button_DO1, 3);
+            Button_State(btn_ch1_d, 3);
         }
-        private void Button_DO2_Click(object sender, EventArgs e)
+        private void Btn_ch2_d_Click(object sender, EventArgs e)
         {
-            Button_State(button_DO2, 3);
+            Button_State(btn_ch2_d, 3);
         }
-        private void Button_DO3_Click(object sender, EventArgs e)
+        private void Btn_ch3_d_Click(object sender, EventArgs e)
         {
-            Button_State(button_DO3, 3);
-        }
-        private void Button_Off_Click(object sender, EventArgs e)
-        {
-            Button_State(button_Off, 4);
-        }
-        private void Button_On_Click(object sender, EventArgs e)
-        {
-            Button_State(button_On, 4);
-        }
-        
-        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            Font fntTab;
-            Brush bshBack;
-            Brush bshFore;
-            if (e.Index == tabControl.SelectedIndex)
-            {
-                fntTab = new Font(e.Font, FontStyle.Bold);
-                bshBack = new System.Drawing.Drawing2D.LinearGradientBrush(e.Bounds, SystemColors.Control, SystemColors.Control, System.Drawing.Drawing2D.LinearGradientMode.BackwardDiagonal);
-                bshFore = Brushes.Black;
-            }
-            else
-            {
-                fntTab = e.Font;
-                bshBack = new SolidBrush(SystemColors.Control);
-                bshFore = new SolidBrush(Color.Black);
-            }
-            string tabName = this.tabControl.TabPages[e.Index].Text;
-            StringFormat sftTab = new StringFormat(StringFormatFlags.NoClip);        
-            sftTab.Alignment = StringAlignment.Center;
-            sftTab.LineAlignment = StringAlignment.Center;
-            e.Graphics.FillRectangle(bshBack, e.Bounds);
-            Rectangle recTab = e.Bounds;
-            recTab = new Rectangle(recTab.X, recTab.Y + 4, recTab.Width, recTab.Height - 4);
-            e.Graphics.DrawString(tabName, fntTab, bshFore, recTab, sftTab);
+            Button_State(btn_ch3_d, 3);
         }
 
         private void check_text_CheckedChanged(object sender, EventArgs e)
