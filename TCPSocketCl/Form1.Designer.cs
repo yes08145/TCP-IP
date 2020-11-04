@@ -125,10 +125,6 @@
             this.label_input_d = new MetroFramework.Controls.MetroLabel();
             this.label_output_d = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTabControl1.SuspendLayout();
-            this.metroTabPage1.SuspendLayout();
-            this.metroTabControl2.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).BeginInit();
             this.metroPanel_a.SuspendLayout();
             this.metroTabControl_AI_a.SuspendLayout();
