@@ -28,6 +28,7 @@ namespace TCPSocketCl
         private static int ain_ch = 0;
         private static int dout_ch = 0;
         private static int sensorID = 0;
+        private static int mAdata = 0;
         private static string IP = string.Empty;
         private static string q_ip1 = string.Empty;
         private static string q_ip2 = string.Empty;
@@ -108,40 +109,45 @@ namespace TCPSocketCl
         {
             SocketDisconnect();
         }
+        //private void ListboxFocus()
+        //{
+        //    listbox1.SelectedIndex = listbox1.Items.Count - 1;
+        //}
+
         //public void Log(string msg)
         //{
-            //SocketClass sc = new SocketClass();
-            //string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
-            //listbox1.Items.Add(return_msg);
-            //......
-            //sc.LogFile(return_msg);       
-            //DirectoryInfo di = new DirectoryInfo(DirPath);
-            //FileInfo fi = new FileInfo(filePath);
+        //    //SocketClass sc = new SocketClass();
+        //    string return_msg = string.Format("[{0}] {1}", DateTime.Now.ToString(), msg);
+        //    listbox1.Items.Add(return_msg);
+        //    //......
+        //    //sc.LogFile(return_msg);       
+        //    //DirectoryInfo di = new DirectoryInfo(DirPath);
+        //    //FileInfo fi = new FileInfo(filePath);
 
-            //try
-            //{
-            //    if (di.Exists != true) Directory.CreateDirectory(DirPath);
-            //    if (fi.Exists != true)
-            //    {
-            //        using (StreamWriter sw = new StreamWriter(filePath))
-            //        {
-            //            sw.WriteLine(return_msg);
-            //            sw.Close();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        using (StreamWriter sw = File.AppendText(filePath))
-            //        {
-            //            sw.WriteLine(return_msg);
-            //            sw.Close();
-            //        }
-            //    }
-            //}
-            //catch(Exception e)
-            //{
+        //    //try
+        //    //{
+        //    //    if (di.Exists != true) Directory.CreateDirectory(DirPath);
+        //    //    if (fi.Exists != true)
+        //    //    {
+        //    //        using (StreamWriter sw = new StreamWriter(filePath))
+        //    //        {
+        //    //            sw.WriteLine(return_msg);
+        //    //            sw.Close();
+        //    //        }
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        using (StreamWriter sw = File.AppendText(filePath))
+        //    //        {
+        //    //            sw.WriteLine(return_msg);
+        //    //            sw.Close();
+        //    //        }
+        //    //    }
+        //    //}
+        //    //catch(Exception e)
+        //    //{
                 
-            //}
+        //    //}
 
         //}
 
@@ -156,65 +162,45 @@ namespace TCPSocketCl
             dgv_constate.DataSource = ipList.Select(ip => new { Value = ip }).ToList();
         }
 
-        private void ButtonOSetting_Click(object sender, EventArgs e)
-        {
-            //sensorID = 1;
-            //if (button1.BackColor == Color.LightBlue) aout_ch = 0;
-           // else if (button2.BackColor == Color.LightBlue) aout_ch = 1;
-            //else aout_ch = 404;
-            //else sensorID = 100;
-            try
-            {
-                //data = Convert.ToInt32(comboBox1.Text);
-                foreach (SocketInfo usedSockInfo in socketInfo)
-                {
-                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)//Convert.ToInt32(listBox_quick.SelectedItem.ToString().Split(')')[0])-1)
-                    {
-                        if (usedSockInfo.conn)
-                        {
-                            StartThread(usedSockInfo, Send, "send");
-                        }
-                    }
-                }
-            }
-            catch(NullReferenceException ex)
-            {
-                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
-            }
+        //private void Button_AIRequest_Click(object sender, EventArgs e)
+        //{
+        //    sensorID = 2;
+        //    if (button3.BackColor == Color.LightBlue) ain_ch = 0;
+        //    else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
+        //    //else ain_ch = 404;
+        //    else sensorID = 100;
+        //    try
+        //    {
+        //        foreach (SocketInfo usedSockInfo in socketInfo)
+        //        {
+        //            if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
+        //            {
+        //                if (usedSockInfo.conn)
+        //                {
+        //                    StartThread(usedSockInfo, Send, "send");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch(NullReferenceException ex)
+        //    {
+        //        MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+        //    }
+        //    catch (ArgumentOutOfRangeException ex)
+        //    {
+        //        MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
+        //    }
 
-        }
-        private void Button_AIRequest_Click(object sender, EventArgs e)
-        {
-            sensorID = 2;
-            //if (button3.BackColor == Color.LightBlue) ain_ch = 0;
-            //else if (button4.BackColor == Color.LightBlue) ain_ch = 1;
-            //else ain_ch = 404;
-           // else sensorID = 100;
-            try
-            {
-                foreach (SocketInfo usedSockInfo in socketInfo)
-                {
-                    if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
-                    {
-                        if (usedSockInfo.conn)
-                        {
-                            StartThread(usedSockInfo, Send, "send");
-                        }
-                    }
-                }
-            }
-            catch(NullReferenceException ex)
-            {
-                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
-            }
+        //}
+        //private void Button_DOSetting_Click(object sender, EventArgs e)
+        //{
+        //    sensorID = 4;
+        //    if (button_DO0.BackColor == Color.LightBlue) dout_ch = 0;
+        //    else if (button_DO1.BackColor == Color.LightBlue) dout_ch = 1;
+        //    else if (button_DO2.BackColor == Color.LightBlue) dout_ch = 2;
+        //    else if (button_DO3.BackColor == Color.LightBlue) dout_ch = 3;
+        //    //else dout_ch = 404;
+        //    else sensorID = 100;
 
         }
         private void Button_DOSetting_Click(object sender, EventArgs e)
@@ -369,29 +355,38 @@ namespace TCPSocketCl
             else r_log_text = false;
         }
 
-        //private void check_realbuf_CheckedChanged(object sender, EventArgs e)
+        //private void Button3_Click(object sender, EventArgs e)
         //{
-        //    if (check_realbuf.Checked == true) r_log_realBuff = true;
-        //    else r_log_realBuff = false;
+        //    Button_State(button3,2);
         //}
-
-        private void check_splitbuf_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_splitbuf.Checked == true) r_log_splitBuff = true;
-            else r_log_splitBuff = false;
-        }
-
-        private void check_stext_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_stext.Checked == true) s_log_text = true;
-            else s_log_text = false;
-        }
-
-        private void check_sendbuf_CheckedChanged(object sender, EventArgs e)
-        {
-            if (check_sendbuf.Checked == true) s_log_sendBuff = true;
-            else s_log_sendBuff = false;
-        }
+        //private void Button4_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button4,2);
+        //}
+        //private void Button_DO0_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_DO0, 3);
+        //}
+        //private void Button_DO1_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_DO1, 3);
+        //}
+        //private void Button_DO2_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_DO2, 3);
+        //}
+        //private void Button_DO3_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_DO3, 3);
+        //}
+        //private void Button_Off_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_Off, 4);
+        //}
+        //private void Button_On_Click(object sender, EventArgs e)
+        //{
+        //    Button_State(button_On, 4);
+        //}
 
         private void dgv_constate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
