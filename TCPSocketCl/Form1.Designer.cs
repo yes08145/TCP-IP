@@ -55,31 +55,30 @@
             this.button_DO1 = new System.Windows.Forms.Button();
             this.button_DO2 = new System.Windows.Forms.Button();
             this.button_DO3 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label_grid_division = new System.Windows.Forms.Label();
             this.btn_disconnect = new MetroFramework.Controls.MetroButton();
             this.textBox_Port = new MetroFramework.Controls.MetroTextBox();
             this.textBox_IP4 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_IP3 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_IP2 = new MetroFramework.Controls.MetroTextBox();
             this.textBox_IP1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_port = new MetroFramework.Controls.MetroLabel();
             this.btn_connect = new MetroFramework.Controls.MetroButton();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_ip = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_ip3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_ip2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_ip1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_receive = new MetroFramework.Controls.MetroLabel();
             this.check_stext = new MetroFramework.Controls.MetroCheckBox();
             this.check_sendbuf = new MetroFramework.Controls.MetroCheckBox();
             this.check_rtext = new MetroFramework.Controls.MetroCheckBox();
             this.check_splitbuf = new MetroFramework.Controls.MetroCheckBox();
             this.btn_textClear = new MetroFramework.Controls.MetroButton();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTabControl2 = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel_send = new MetroFramework.Controls.MetroLabel();
+            this.metroTabControl_nsetting = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage_nsetting = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabControl_connected = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage_connected = new MetroFramework.Controls.MetroTabPage();
             this.dgv_constate = new MetroFramework.Controls.MetroGrid();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -87,10 +86,10 @@
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.metroTabControl1.SuspendLayout();
-            this.metroTabPage1.SuspendLayout();
-            this.metroTabControl2.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
+            this.metroTabControl_nsetting.SuspendLayout();
+            this.metroTabPage_nsetting.SuspendLayout();
+            this.metroTabControl_connected.SuspendLayout();
+            this.metroTabPage_connected.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -418,14 +417,14 @@
             this.button_DO3.UseVisualStyleBackColor = true;
             this.button_DO3.Click += new System.EventHandler(this.Button_DO3_Click);
             // 
-            // label8
+            // label_grid_division
             // 
-            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(16, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(2, 86);
-            this.label8.TabIndex = 50;
+            this.label_grid_division.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_grid_division.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_grid_division.Location = new System.Drawing.Point(16, 12);
+            this.label_grid_division.Name = "label_grid_division";
+            this.label_grid_division.Size = new System.Drawing.Size(2, 86);
+            this.label_grid_division.TabIndex = 50;
             // 
             // btn_disconnect
             // 
@@ -592,15 +591,15 @@
             this.textBox_IP1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP1_KeyPress);
             // 
-            // metroLabel4
+            // metroLabel_port
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 48);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(49, 19);
-            this.metroLabel4.TabIndex = 48;
-            this.metroLabel4.Text = "PORT :";
+            this.metroLabel_port.AutoSize = true;
+            this.metroLabel_port.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel_port.Location = new System.Drawing.Point(3, 48);
+            this.metroLabel_port.Name = "metroLabel_port";
+            this.metroLabel_port.Size = new System.Drawing.Size(49, 19);
+            this.metroLabel_port.TabIndex = 48;
+            this.metroLabel_port.Text = "PORT :";
             // 
             // btn_connect
             // 
@@ -614,58 +613,51 @@
             this.btn_connect.UseSelectable = true;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
             // 
-            // metroLabel3
+            // metroLabel_ip
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 12);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(48, 19);
-            this.metroLabel3.TabIndex = 47;
-            this.metroLabel3.Text = "IP      :";
+            this.metroLabel_ip.AutoSize = true;
+            this.metroLabel_ip.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel_ip.Location = new System.Drawing.Point(3, 12);
+            this.metroLabel_ip.Name = "metroLabel_ip";
+            this.metroLabel_ip.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel_ip.TabIndex = 47;
+            this.metroLabel_ip.Text = "IP      :";
             // 
-            // metroLabel7
+            // metroLabel_ip3
             // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(148, 17);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(12, 19);
-            this.metroLabel7.TabIndex = 53;
-            this.metroLabel7.Text = ".";
+            this.metroLabel_ip3.AutoSize = true;
+            this.metroLabel_ip3.Location = new System.Drawing.Point(148, 17);
+            this.metroLabel_ip3.Name = "metroLabel_ip3";
+            this.metroLabel_ip3.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel_ip3.TabIndex = 53;
+            this.metroLabel_ip3.Text = ".";
             // 
-            // metroLabel5
+            // metroLabel_ip2
             // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(116, 17);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(12, 19);
-            this.metroLabel5.TabIndex = 52;
-            this.metroLabel5.Text = ".";
+            this.metroLabel_ip2.AutoSize = true;
+            this.metroLabel_ip2.Location = new System.Drawing.Point(116, 17);
+            this.metroLabel_ip2.Name = "metroLabel_ip2";
+            this.metroLabel_ip2.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel_ip2.TabIndex = 52;
+            this.metroLabel_ip2.Text = ".";
             // 
-            // metroLabel6
+            // metroLabel_ip1
             // 
-            this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(84, 16);
-            this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(12, 19);
-            this.metroLabel6.TabIndex = 51;
-            this.metroLabel6.Text = ".";
+            this.metroLabel_ip1.AutoSize = true;
+            this.metroLabel_ip1.Location = new System.Drawing.Point(84, 16);
+            this.metroLabel_ip1.Name = "metroLabel_ip1";
+            this.metroLabel_ip1.Size = new System.Drawing.Size(12, 19);
+            this.metroLabel_ip1.TabIndex = 51;
+            this.metroLabel_ip1.Text = ".";
             // 
-            // metroLabel1
+            // metroLabel_receive
             // 
-            this.metroLabel1.Location = new System.Drawing.Point(0, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(100, 23);
-            this.metroLabel1.TabIndex = 47;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(385, 207);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel2.TabIndex = 42;
-            this.metroLabel2.Text = "수신 문자열 표시 :";
+            this.metroLabel_receive.AutoSize = true;
+            this.metroLabel_receive.Location = new System.Drawing.Point(385, 207);
+            this.metroLabel_receive.Name = "metroLabel_receive";
+            this.metroLabel_receive.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel_receive.TabIndex = 42;
+            this.metroLabel_receive.Text = "수신 문자열 표시 :";
             // 
             // check_stext
             // 
@@ -725,76 +717,76 @@
             this.btn_textClear.UseSelectable = true;
             this.btn_textClear.Click += new System.EventHandler(this.btn_textClear_Click);
             // 
-            // metroLabel8
+            // metroLabel_send
             // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(12, 207);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(122, 19);
-            this.metroLabel8.TabIndex = 48;
-            this.metroLabel8.Text = "송신 문자열 표시 :";
+            this.metroLabel_send.AutoSize = true;
+            this.metroLabel_send.Location = new System.Drawing.Point(12, 207);
+            this.metroLabel_send.Name = "metroLabel_send";
+            this.metroLabel_send.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel_send.TabIndex = 48;
+            this.metroLabel_send.Text = "송신 문자열 표시 :";
             // 
-            // metroTabControl1
+            // metroTabControl_nsetting
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Location = new System.Drawing.Point(17, 10);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(204, 185);
-            this.metroTabControl1.TabIndex = 50;
-            this.metroTabControl1.UseSelectable = true;
+            this.metroTabControl_nsetting.Controls.Add(this.metroTabPage_nsetting);
+            this.metroTabControl_nsetting.Location = new System.Drawing.Point(17, 10);
+            this.metroTabControl_nsetting.Name = "metroTabControl_nsetting";
+            this.metroTabControl_nsetting.SelectedIndex = 0;
+            this.metroTabControl_nsetting.Size = new System.Drawing.Size(204, 185);
+            this.metroTabControl_nsetting.TabIndex = 50;
+            this.metroTabControl_nsetting.UseSelectable = true;
             // 
-            // metroTabPage1
+            // metroTabPage_nsetting
             // 
-            this.metroTabPage1.Controls.Add(this.textBox_Port);
-            this.metroTabPage1.Controls.Add(this.textBox_IP4);
-            this.metroTabPage1.Controls.Add(this.textBox_IP3);
-            this.metroTabPage1.Controls.Add(this.textBox_IP2);
-            this.metroTabPage1.Controls.Add(this.textBox_IP1);
-            this.metroTabPage1.Controls.Add(this.metroLabel5);
-            this.metroTabPage1.Controls.Add(this.metroLabel4);
-            this.metroTabPage1.Controls.Add(this.metroLabel7);
-            this.metroTabPage1.Controls.Add(this.btn_connect);
-            this.metroTabPage1.Controls.Add(this.metroLabel3);
-            this.metroTabPage1.Controls.Add(this.metroLabel6);
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(196, 143);
-            this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "Network Setting";
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.metroTabPage_nsetting.Controls.Add(this.textBox_Port);
+            this.metroTabPage_nsetting.Controls.Add(this.textBox_IP4);
+            this.metroTabPage_nsetting.Controls.Add(this.textBox_IP3);
+            this.metroTabPage_nsetting.Controls.Add(this.textBox_IP2);
+            this.metroTabPage_nsetting.Controls.Add(this.textBox_IP1);
+            this.metroTabPage_nsetting.Controls.Add(this.metroLabel_ip2);
+            this.metroTabPage_nsetting.Controls.Add(this.metroLabel_port);
+            this.metroTabPage_nsetting.Controls.Add(this.metroLabel_ip3);
+            this.metroTabPage_nsetting.Controls.Add(this.btn_connect);
+            this.metroTabPage_nsetting.Controls.Add(this.metroLabel_ip);
+            this.metroTabPage_nsetting.Controls.Add(this.metroLabel_ip1);
+            this.metroTabPage_nsetting.HorizontalScrollbarBarColor = true;
+            this.metroTabPage_nsetting.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_nsetting.HorizontalScrollbarSize = 10;
+            this.metroTabPage_nsetting.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage_nsetting.Name = "metroTabPage_nsetting";
+            this.metroTabPage_nsetting.Size = new System.Drawing.Size(196, 143);
+            this.metroTabPage_nsetting.TabIndex = 0;
+            this.metroTabPage_nsetting.Text = "Network Setting";
+            this.metroTabPage_nsetting.VerticalScrollbarBarColor = true;
+            this.metroTabPage_nsetting.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_nsetting.VerticalScrollbarSize = 10;
             // 
-            // metroTabControl2
+            // metroTabControl_connected
             // 
-            this.metroTabControl2.Controls.Add(this.metroTabPage2);
-            this.metroTabControl2.Location = new System.Drawing.Point(227, 10);
-            this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
-            this.metroTabControl2.Size = new System.Drawing.Size(152, 185);
-            this.metroTabControl2.TabIndex = 51;
-            this.metroTabControl2.UseSelectable = true;
+            this.metroTabControl_connected.Controls.Add(this.metroTabPage_connected);
+            this.metroTabControl_connected.Location = new System.Drawing.Point(227, 10);
+            this.metroTabControl_connected.Name = "metroTabControl_connected";
+            this.metroTabControl_connected.SelectedIndex = 0;
+            this.metroTabControl_connected.Size = new System.Drawing.Size(152, 185);
+            this.metroTabControl_connected.TabIndex = 51;
+            this.metroTabControl_connected.UseSelectable = true;
             // 
-            // metroTabPage2
+            // metroTabPage_connected
             // 
-            this.metroTabPage2.Controls.Add(this.label8);
-            this.metroTabPage2.Controls.Add(this.btn_disconnect);
-            this.metroTabPage2.Controls.Add(this.dgv_constate);
-            this.metroTabPage2.HorizontalScrollbarBarColor = true;
-            this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.HorizontalScrollbarSize = 10;
-            this.metroTabPage2.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(144, 143);
-            this.metroTabPage2.TabIndex = 0;
-            this.metroTabPage2.Text = "Connected";
-            this.metroTabPage2.VerticalScrollbarBarColor = true;
-            this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage2.VerticalScrollbarSize = 10;
+            this.metroTabPage_connected.Controls.Add(this.label_grid_division);
+            this.metroTabPage_connected.Controls.Add(this.btn_disconnect);
+            this.metroTabPage_connected.Controls.Add(this.dgv_constate);
+            this.metroTabPage_connected.HorizontalScrollbarBarColor = true;
+            this.metroTabPage_connected.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_connected.HorizontalScrollbarSize = 10;
+            this.metroTabPage_connected.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPage_connected.Name = "metroTabPage_connected";
+            this.metroTabPage_connected.Size = new System.Drawing.Size(144, 143);
+            this.metroTabPage_connected.TabIndex = 0;
+            this.metroTabPage_connected.Text = "Connected";
+            this.metroTabPage_connected.VerticalScrollbarBarColor = true;
+            this.metroTabPage_connected.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage_connected.VerticalScrollbarSize = 10;
             // 
             // dgv_constate
             // 
@@ -854,16 +846,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1100, 861);
-            this.Controls.Add(this.metroTabControl2);
-            this.Controls.Add(this.metroTabControl1);
-            this.Controls.Add(this.metroLabel8);
+            this.Controls.Add(this.metroTabControl_connected);
+            this.Controls.Add(this.metroTabControl_nsetting);
+            this.Controls.Add(this.metroLabel_send);
             this.Controls.Add(this.btn_textClear);
             this.Controls.Add(this.check_splitbuf);
             this.Controls.Add(this.check_rtext);
             this.Controls.Add(this.check_sendbuf);
             this.Controls.Add(this.check_stext);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.metroLabel_receive);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.listbox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -880,11 +871,11 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.metroTabControl1.ResumeLayout(false);
-            this.metroTabPage1.ResumeLayout(false);
-            this.metroTabPage1.PerformLayout();
-            this.metroTabControl2.ResumeLayout(false);
-            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabControl_nsetting.ResumeLayout(false);
+            this.metroTabPage_nsetting.ResumeLayout(false);
+            this.metroTabPage_nsetting.PerformLayout();
+            this.metroTabControl_connected.ResumeLayout(false);
+            this.metroTabPage_connected.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -915,8 +906,7 @@
         private System.Windows.Forms.Button button_On;
         private System.Windows.Forms.Button button_DOSetting;
         private System.Windows.Forms.Label label6;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel_receive;
         private MetroFramework.Controls.MetroCheckBox check_stext;
         private MetroFramework.Controls.MetroCheckBox check_sendbuf;
         private MetroFramework.Controls.MetroCheckBox check_rtext;
@@ -928,18 +918,18 @@
         private MetroFramework.Controls.MetroTextBox textBox_IP3;
         private MetroFramework.Controls.MetroTextBox textBox_IP2;
         private MetroFramework.Controls.MetroTextBox textBox_IP1;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel_port;
+        private MetroFramework.Controls.MetroLabel metroLabel_ip;
         private MetroFramework.Controls.MetroTextBox textBox_Port;
-        private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroLabel metroLabel6;
-        private System.Windows.Forms.Label label8;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabControl metroTabControl2;
-        private MetroFramework.Controls.MetroTabPage metroTabPage2;
+        private MetroFramework.Controls.MetroLabel metroLabel_ip3;
+        private MetroFramework.Controls.MetroLabel metroLabel_ip2;
+        private MetroFramework.Controls.MetroLabel metroLabel_ip1;
+        private System.Windows.Forms.Label label_grid_division;
+        private MetroFramework.Controls.MetroLabel metroLabel_send;
+        private MetroFramework.Controls.MetroTabControl metroTabControl_nsetting;
+        private MetroFramework.Controls.MetroTabPage metroTabPage_nsetting;
+        private MetroFramework.Controls.MetroTabControl metroTabControl_connected;
+        private MetroFramework.Controls.MetroTabPage metroTabPage_connected;
         private MetroFramework.Controls.MetroGrid dgv_constate;
     }
 }

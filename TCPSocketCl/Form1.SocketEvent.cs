@@ -376,24 +376,25 @@ namespace TCPSocketCl
             byte[] msg;
             RTUP rtup = new RTUP();
             byte[] receiverBuff = sendSocketInfo.r_Buff;
-            if (receiverBuff != null)
-            {
-                string r_strHex = BitConverter.ToString(receiverBuff);
-                rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+r_strHex.Split('-')[1],16));
-                rtup.length = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[2],16));
-                rtup.sensor_ID = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[3],16));
-                rtup.ch_setting = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[4],16));
-                rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
-                rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
-                rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
-                sendSocketInfo.r_Buff = null;
-            }
-            else
-            {
+            //if (receiverBuff != null)
+            //{
+            //    string r_strHex = BitConverter.ToString(receiverBuff);
+            //    rtup.usys_device_ID = Convert.ToByte(Convert.ToInt32("0x"+r_strHex.Split('-')[1],16));
+            //    rtup.length = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[2],16));
+            //    rtup.sensor_ID = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[3],16));
+            //    rtup.ch_setting = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[4],16));
+            //    rtup.data = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[5], 16));
+            //    rtup.check_sum[0] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[6], 16));
+            //    rtup.check_sum[1] = Convert.ToByte(Convert.ToInt32(r_strHex.Split('-')[7], 16));
+            //    sendSocketInfo.r_Buff = null;
+            //}
+            //else
+            //{
                 rtup.usys_device_ID = 0x74;
                 rtup.sensor_ID = (byte)sensorID;
-            }
+            //}
             //0 or 1 장비 선택
+
             
             try
             {
