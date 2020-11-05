@@ -286,6 +286,7 @@ namespace TCPSocketCl
                             {
                                 metroLabel_inputch_a.Text = log_result.Split(',')[0];
                                 metroLabel_inputmA_a.Text = log_result.Split(',')[1];
+                                metroLabel_time_a.Text = DateTime.Now.ToString();
                             }
                             else
                             {
@@ -293,6 +294,7 @@ namespace TCPSocketCl
                                 {
                                     metroLabel_inputch_a.Text = log_result.Split(',')[0];
                                     metroLabel_inputmA_a.Text = log_result.Split(',')[1];
+                                    metroLabel_time_a.Text = DateTime.Now.ToString();
                                 }
                                 ));
                             }

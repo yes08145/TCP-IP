@@ -53,6 +53,10 @@
             this.metroPanel_a = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl_AI_a = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage_AI_a = new MetroFramework.Controls.MetroTabPage();
+            this.metroLabel_time_a = new MetroFramework.Controls.MetroLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.metroLabel_validation_a = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel_request_a = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_inputmA_a = new MetroFramework.Controls.MetroLabel();
             this.metroLabel_inputch_a = new MetroFramework.Controls.MetroLabel();
             this.Btn_ch1_a = new MetroFramework.Controls.MetroButton();
@@ -150,13 +154,17 @@
             // 
             // btn_disconnect
             // 
+            this.btn_disconnect.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_disconnect.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_disconnect.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.btn_disconnect.ForeColor = System.Drawing.Color.Black;
             this.btn_disconnect.Location = new System.Drawing.Point(3, 106);
             this.btn_disconnect.Name = "btn_disconnect";
             this.btn_disconnect.Size = new System.Drawing.Size(133, 23);
             this.btn_disconnect.TabIndex = 48;
             this.btn_disconnect.Text = "Disconnect";
+            this.btn_disconnect.UseCustomBackColor = true;
+            this.btn_disconnect.UseCustomForeColor = true;
             this.btn_disconnect.UseSelectable = true;
             this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
             // 
@@ -327,15 +335,17 @@
             // 
             // btn_connect
             // 
-            this.btn_connect.BackColor = System.Drawing.Color.White;
+            this.btn_connect.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_connect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_connect.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.btn_connect.FontWeight = MetroFramework.MetroButtonWeight.Regular;
             this.btn_connect.ForeColor = System.Drawing.Color.Black;
             this.btn_connect.Location = new System.Drawing.Point(3, 106);
             this.btn_connect.Name = "btn_connect";
             this.btn_connect.Size = new System.Drawing.Size(180, 23);
             this.btn_connect.TabIndex = 48;
             this.btn_connect.Text = "Connect";
+            this.btn_connect.UseCustomBackColor = true;
+            this.btn_connect.UseCustomForeColor = true;
             this.btn_connect.UseSelectable = true;
             this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
             // 
@@ -379,7 +389,7 @@
             // metroTabControl_nsetting
             // 
             this.metroTabControl_nsetting.Controls.Add(this.metroTabPage_nsetting);
-            this.metroTabControl_nsetting.Location = new System.Drawing.Point(228, 12);
+            this.metroTabControl_nsetting.Location = new System.Drawing.Point(214, -3);
             this.metroTabControl_nsetting.Name = "metroTabControl_nsetting";
             this.metroTabControl_nsetting.SelectedIndex = 0;
             this.metroTabControl_nsetting.Size = new System.Drawing.Size(200, 185);
@@ -414,7 +424,7 @@
             // metroTabControl_connected
             // 
             this.metroTabControl_connected.Controls.Add(this.metroTabPage_connected);
-            this.metroTabControl_connected.Location = new System.Drawing.Point(428, 12);
+            this.metroTabControl_connected.Location = new System.Drawing.Point(414, -3);
             this.metroTabControl_connected.Name = "metroTabControl_connected";
             this.metroTabControl_connected.SelectedIndex = 0;
             this.metroTabControl_connected.Size = new System.Drawing.Size(150, 185);
@@ -497,9 +507,9 @@
             this.metroPanel_a.HorizontalScrollbarBarColor = true;
             this.metroPanel_a.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel_a.HorizontalScrollbarSize = 10;
-            this.metroPanel_a.Location = new System.Drawing.Point(12, 185);
+            this.metroPanel_a.Location = new System.Drawing.Point(12, 170);
             this.metroPanel_a.Name = "metroPanel_a";
-            this.metroPanel_a.Size = new System.Drawing.Size(760, 333);
+            this.metroPanel_a.Size = new System.Drawing.Size(760, 320);
             this.metroPanel_a.TabIndex = 52;
             this.metroPanel_a.VerticalScrollbarBarColor = true;
             this.metroPanel_a.VerticalScrollbarHighlightOnWheel = false;
@@ -508,15 +518,19 @@
             // metroTabControl_AI_a
             // 
             this.metroTabControl_AI_a.Controls.Add(this.metroTabPage_AI_a);
-            this.metroTabControl_AI_a.Location = new System.Drawing.Point(3, 194);
+            this.metroTabControl_AI_a.Location = new System.Drawing.Point(39, 185);
             this.metroTabControl_AI_a.Name = "metroTabControl_AI_a";
             this.metroTabControl_AI_a.SelectedIndex = 0;
-            this.metroTabControl_AI_a.Size = new System.Drawing.Size(750, 116);
+            this.metroTabControl_AI_a.Size = new System.Drawing.Size(692, 132);
             this.metroTabControl_AI_a.TabIndex = 3;
             this.metroTabControl_AI_a.UseSelectable = true;
             // 
             // metroTabPage_AI_a
             // 
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_time_a);
+            this.metroTabPage_AI_a.Controls.Add(this.label1);
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_validation_a);
+            this.metroTabPage_AI_a.Controls.Add(this.metroLabel_request_a);
             this.metroTabPage_AI_a.Controls.Add(this.metroLabel_inputmA_a);
             this.metroTabPage_AI_a.Controls.Add(this.metroLabel_inputch_a);
             this.metroTabPage_AI_a.Controls.Add(this.Btn_ch1_a);
@@ -528,25 +542,80 @@
             this.metroTabPage_AI_a.HorizontalScrollbarSize = 10;
             this.metroTabPage_AI_a.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage_AI_a.Name = "metroTabPage_AI_a";
-            this.metroTabPage_AI_a.Size = new System.Drawing.Size(742, 74);
+            this.metroTabPage_AI_a.Size = new System.Drawing.Size(684, 90);
             this.metroTabPage_AI_a.TabIndex = 0;
             this.metroTabPage_AI_a.Text = "Analog Input";
             this.metroTabPage_AI_a.VerticalScrollbarBarColor = true;
             this.metroTabPage_AI_a.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage_AI_a.VerticalScrollbarSize = 10;
             // 
+            // metroLabel_time_a
+            // 
+            this.metroLabel_time_a.AutoSize = true;
+            this.metroLabel_time_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_time_a.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.metroLabel_time_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_time_a.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.metroLabel_time_a.Location = new System.Drawing.Point(261, 85);
+            this.metroLabel_time_a.Name = "metroLabel_time_a";
+            this.metroLabel_time_a.Size = new System.Drawing.Size(10, 15);
+            this.metroLabel_time_a.TabIndex = 66;
+            this.metroLabel_time_a.Text = " ";
+            this.metroLabel_time_a.UseCustomBackColor = true;
+            this.metroLabel_time_a.UseCustomForeColor = true;
+            this.metroLabel_time_a.UseStyleColors = true;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(49, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(570, 4);
+            this.label1.TabIndex = 53;
+            // 
+            // metroLabel_validation_a
+            // 
+            this.metroLabel_validation_a.AutoSize = true;
+            this.metroLabel_validation_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_validation_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_validation_a.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.metroLabel_validation_a.Location = new System.Drawing.Point(118, 60);
+            this.metroLabel_validation_a.Name = "metroLabel_validation_a";
+            this.metroLabel_validation_a.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel_validation_a.TabIndex = 65;
+            this.metroLabel_validation_a.Text = "확인";
+            this.metroLabel_validation_a.UseCustomBackColor = true;
+            this.metroLabel_validation_a.UseCustomForeColor = true;
+            this.metroLabel_validation_a.UseStyleColors = true;
+            // 
+            // metroLabel_request_a
+            // 
+            this.metroLabel_request_a.AutoSize = true;
+            this.metroLabel_request_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_request_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel_request_a.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.metroLabel_request_a.Location = new System.Drawing.Point(118, 17);
+            this.metroLabel_request_a.Name = "metroLabel_request_a";
+            this.metroLabel_request_a.Size = new System.Drawing.Size(37, 19);
+            this.metroLabel_request_a.TabIndex = 63;
+            this.metroLabel_request_a.Text = "요청";
+            this.metroLabel_request_a.UseCustomBackColor = true;
+            this.metroLabel_request_a.UseCustomForeColor = true;
+            this.metroLabel_request_a.UseStyleColors = true;
+            // 
             // metroLabel_inputmA_a
             // 
-            this.metroLabel_inputmA_a.AutoSize = true;
             this.metroLabel_inputmA_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_inputmA_a.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroLabel_inputmA_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel_inputmA_a.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel_inputmA_a.Location = new System.Drawing.Point(418, 49);
+            this.metroLabel_inputmA_a.Location = new System.Drawing.Point(396, 60);
             this.metroLabel_inputmA_a.MinimumSize = new System.Drawing.Size(49, 20);
             this.metroLabel_inputmA_a.Name = "metroLabel_inputmA_a";
-            this.metroLabel_inputmA_a.Size = new System.Drawing.Size(13, 19);
+            this.metroLabel_inputmA_a.Size = new System.Drawing.Size(51, 21);
             this.metroLabel_inputmA_a.TabIndex = 54;
-            this.metroLabel_inputmA_a.Text = " ";
             this.metroLabel_inputmA_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroLabel_inputmA_a.UseCustomBackColor = true;
             this.metroLabel_inputmA_a.UseCustomForeColor = true;
@@ -554,14 +623,14 @@
             // 
             // metroLabel_inputch_a
             // 
-            this.metroLabel_inputch_a.AutoSize = true;
             this.metroLabel_inputch_a.BackColor = System.Drawing.Color.White;
+            this.metroLabel_inputch_a.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroLabel_inputch_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel_inputch_a.ForeColor = System.Drawing.Color.Black;
-            this.metroLabel_inputch_a.Location = new System.Drawing.Point(288, 49);
+            this.metroLabel_inputch_a.Location = new System.Drawing.Point(286, 60);
             this.metroLabel_inputch_a.MinimumSize = new System.Drawing.Size(49, 20);
             this.metroLabel_inputch_a.Name = "metroLabel_inputch_a";
-            this.metroLabel_inputch_a.Size = new System.Drawing.Size(13, 19);
+            this.metroLabel_inputch_a.Size = new System.Drawing.Size(51, 21);
             this.metroLabel_inputch_a.TabIndex = 53;
             this.metroLabel_inputch_a.Text = " ";
             this.metroLabel_inputch_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -571,8 +640,11 @@
             // 
             // Btn_ch1_a
             // 
+            this.Btn_ch1_a.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn_ch1_a.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_ch1_a.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Btn_ch1_a.Location = new System.Drawing.Point(370, 14);
+            this.Btn_ch1_a.ForeColor = System.Drawing.Color.Black;
+            this.Btn_ch1_a.Location = new System.Drawing.Point(346, 14);
             this.Btn_ch1_a.Name = "Btn_ch1_a";
             this.Btn_ch1_a.Size = new System.Drawing.Size(123, 26);
             this.Btn_ch1_a.TabIndex = 62;
@@ -587,7 +659,7 @@
             // 
             this.metroLabel_ch_a.AutoSize = true;
             this.metroLabel_ch_a.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel_ch_a.Location = new System.Drawing.Point(238, 49);
+            this.metroLabel_ch_a.Location = new System.Drawing.Point(236, 60);
             this.metroLabel_ch_a.Name = "metroLabel_ch_a";
             this.metroLabel_ch_a.Size = new System.Drawing.Size(44, 19);
             this.metroLabel_ch_a.TabIndex = 60;
@@ -597,7 +669,7 @@
             // 
             this.metroLabel_mA_a.AutoSize = true;
             this.metroLabel_mA_a.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel_mA_a.Location = new System.Drawing.Point(370, 49);
+            this.metroLabel_mA_a.Location = new System.Drawing.Point(346, 60);
             this.metroLabel_mA_a.Name = "metroLabel_mA_a";
             this.metroLabel_mA_a.Size = new System.Drawing.Size(44, 19);
             this.metroLabel_mA_a.TabIndex = 58;
@@ -605,8 +677,11 @@
             // 
             // Btn_ch0_a
             // 
+            this.Btn_ch0_a.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn_ch0_a.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_ch0_a.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Btn_ch0_a.Location = new System.Drawing.Point(238, 14);
+            this.Btn_ch0_a.ForeColor = System.Drawing.Color.Black;
+            this.Btn_ch0_a.Location = new System.Drawing.Point(214, 14);
             this.Btn_ch0_a.Name = "Btn_ch0_a";
             this.Btn_ch0_a.Size = new System.Drawing.Size(123, 26);
             this.Btn_ch0_a.TabIndex = 57;
@@ -620,10 +695,10 @@
             // metroTabControl_AO_a
             // 
             this.metroTabControl_AO_a.Controls.Add(this.metroTabPage_AO_a);
-            this.metroTabControl_AO_a.Location = new System.Drawing.Point(3, 3);
+            this.metroTabControl_AO_a.Location = new System.Drawing.Point(43, 3);
             this.metroTabControl_AO_a.Name = "metroTabControl_AO_a";
             this.metroTabControl_AO_a.SelectedIndex = 0;
-            this.metroTabControl_AO_a.Size = new System.Drawing.Size(750, 189);
+            this.metroTabControl_AO_a.Size = new System.Drawing.Size(684, 185);
             this.metroTabControl_AO_a.TabIndex = 2;
             this.metroTabControl_AO_a.UseSelectable = true;
             // 
@@ -672,7 +747,7 @@
             this.metroTabPage_AO_a.HorizontalScrollbarSize = 10;
             this.metroTabPage_AO_a.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage_AO_a.Name = "metroTabPage_AO_a";
-            this.metroTabPage_AO_a.Size = new System.Drawing.Size(742, 147);
+            this.metroTabPage_AO_a.Size = new System.Drawing.Size(676, 143);
             this.metroTabPage_AO_a.TabIndex = 0;
             this.metroTabPage_AO_a.Text = "Analog Output";
             this.metroTabPage_AO_a.VerticalScrollbarBarColor = true;
@@ -684,7 +759,7 @@
             this.label_AO_chdiv_a.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label_AO_chdiv_a.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label_AO_chdiv_a.Font = new System.Drawing.Font("굴림", 2.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label_AO_chdiv_a.Location = new System.Drawing.Point(71, 60);
+            this.label_AO_chdiv_a.Location = new System.Drawing.Point(45, 61);
             this.label_AO_chdiv_a.Name = "label_AO_chdiv_a";
             this.label_AO_chdiv_a.Size = new System.Drawing.Size(570, 4);
             this.label_AO_chdiv_a.TabIndex = 51;
@@ -696,7 +771,7 @@
             this.metroLabel_outch1_a.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel_outch1_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel_outch1_a.ForeColor = System.Drawing.SystemColors.Window;
-            this.metroLabel_outch1_a.Location = new System.Drawing.Point(71, 70);
+            this.metroLabel_outch1_a.Location = new System.Drawing.Point(45, 71);
             this.metroLabel_outch1_a.Name = "metroLabel_outch1_a";
             this.metroLabel_outch1_a.Size = new System.Drawing.Size(47, 25);
             this.metroLabel_outch1_a.TabIndex = 39;
@@ -708,7 +783,7 @@
             // Radio_1_13_a
             // 
             this.Radio_1_13_a.AutoSize = true;
-            this.Radio_1_13_a.Location = new System.Drawing.Point(149, 91);
+            this.Radio_1_13_a.Location = new System.Drawing.Point(123, 92);
             this.Radio_1_13_a.Name = "Radio_1_13_a";
             this.Radio_1_13_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_13_a.TabIndex = 38;
@@ -719,7 +794,7 @@
             // Radio_1_17_a
             // 
             this.Radio_1_17_a.AutoSize = true;
-            this.Radio_1_17_a.Location = new System.Drawing.Point(389, 91);
+            this.Radio_1_17_a.Location = new System.Drawing.Point(363, 92);
             this.Radio_1_17_a.Name = "Radio_1_17_a";
             this.Radio_1_17_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_17_a.TabIndex = 37;
@@ -730,7 +805,7 @@
             // Radio_1_18_a
             // 
             this.Radio_1_18_a.AutoSize = true;
-            this.Radio_1_18_a.Location = new System.Drawing.Point(449, 91);
+            this.Radio_1_18_a.Location = new System.Drawing.Point(423, 92);
             this.Radio_1_18_a.Name = "Radio_1_18_a";
             this.Radio_1_18_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_18_a.TabIndex = 36;
@@ -740,8 +815,11 @@
             // 
             // Btn_output_a
             // 
+            this.Btn_output_a.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn_output_a.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_output_a.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Btn_output_a.Location = new System.Drawing.Point(302, 112);
+            this.Btn_output_a.ForeColor = System.Drawing.Color.Black;
+            this.Btn_output_a.Location = new System.Drawing.Point(282, 112);
             this.Btn_output_a.Name = "Btn_output_a";
             this.Btn_output_a.Size = new System.Drawing.Size(123, 26);
             this.Btn_output_a.TabIndex = 52;
@@ -751,11 +829,14 @@
             this.Btn_output_a.UseSelectable = true;
             this.Btn_output_a.UseStyleColors = true;
             this.Btn_output_a.Click += new System.EventHandler(this.Btn_output_a_Click);
+            this.Btn_output_a.Enter += new System.EventHandler(this.Btn_output_a_Enter);
+            this.Btn_output_a.MouseEnter += new System.EventHandler(this.Btn_output_a_MouseEnter);
+            this.Btn_output_a.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Btn_output_a_MouseUp);
             // 
             // Radio_1_20_a
             // 
             this.Radio_1_20_a.AutoSize = true;
-            this.Radio_1_20_a.Location = new System.Drawing.Point(569, 91);
+            this.Radio_1_20_a.Location = new System.Drawing.Point(543, 92);
             this.Radio_1_20_a.Name = "Radio_1_20_a";
             this.Radio_1_20_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_20_a.TabIndex = 35;
@@ -766,7 +847,7 @@
             // Radio_1_19_a
             // 
             this.Radio_1_19_a.AutoSize = true;
-            this.Radio_1_19_a.Location = new System.Drawing.Point(509, 91);
+            this.Radio_1_19_a.Location = new System.Drawing.Point(483, 92);
             this.Radio_1_19_a.Name = "Radio_1_19_a";
             this.Radio_1_19_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_19_a.TabIndex = 34;
@@ -777,7 +858,7 @@
             // Radio_1_15_a
             // 
             this.Radio_1_15_a.AutoSize = true;
-            this.Radio_1_15_a.Location = new System.Drawing.Point(269, 91);
+            this.Radio_1_15_a.Location = new System.Drawing.Point(243, 92);
             this.Radio_1_15_a.Name = "Radio_1_15_a";
             this.Radio_1_15_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_15_a.TabIndex = 33;
@@ -788,7 +869,7 @@
             // Radio_1_16_a
             // 
             this.Radio_1_16_a.AutoSize = true;
-            this.Radio_1_16_a.Location = new System.Drawing.Point(329, 91);
+            this.Radio_1_16_a.Location = new System.Drawing.Point(303, 92);
             this.Radio_1_16_a.Name = "Radio_1_16_a";
             this.Radio_1_16_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_16_a.TabIndex = 32;
@@ -799,7 +880,7 @@
             // Radio_1_14_a
             // 
             this.Radio_1_14_a.AutoSize = true;
-            this.Radio_1_14_a.Location = new System.Drawing.Point(209, 91);
+            this.Radio_1_14_a.Location = new System.Drawing.Point(183, 92);
             this.Radio_1_14_a.Name = "Radio_1_14_a";
             this.Radio_1_14_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_14_a.TabIndex = 31;
@@ -810,7 +891,7 @@
             // Radio_1_11_a
             // 
             this.Radio_1_11_a.AutoSize = true;
-            this.Radio_1_11_a.Location = new System.Drawing.Point(524, 70);
+            this.Radio_1_11_a.Location = new System.Drawing.Point(498, 71);
             this.Radio_1_11_a.Name = "Radio_1_11_a";
             this.Radio_1_11_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_11_a.TabIndex = 30;
@@ -821,7 +902,7 @@
             // Radio_1_12_a
             // 
             this.Radio_1_12_a.AutoSize = true;
-            this.Radio_1_12_a.Location = new System.Drawing.Point(584, 70);
+            this.Radio_1_12_a.Location = new System.Drawing.Point(558, 71);
             this.Radio_1_12_a.Name = "Radio_1_12_a";
             this.Radio_1_12_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_12_a.TabIndex = 29;
@@ -832,7 +913,7 @@
             // Radio_1_10_a
             // 
             this.Radio_1_10_a.AutoSize = true;
-            this.Radio_1_10_a.Location = new System.Drawing.Point(464, 70);
+            this.Radio_1_10_a.Location = new System.Drawing.Point(438, 71);
             this.Radio_1_10_a.Name = "Radio_1_10_a";
             this.Radio_1_10_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_1_10_a.TabIndex = 28;
@@ -843,7 +924,7 @@
             // Radio_1_9_a
             // 
             this.Radio_1_9_a.AutoSize = true;
-            this.Radio_1_9_a.Location = new System.Drawing.Point(410, 70);
+            this.Radio_1_9_a.Location = new System.Drawing.Point(384, 71);
             this.Radio_1_9_a.Name = "Radio_1_9_a";
             this.Radio_1_9_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_9_a.TabIndex = 27;
@@ -854,7 +935,7 @@
             // Radio_1_8_a
             // 
             this.Radio_1_8_a.AutoSize = true;
-            this.Radio_1_8_a.Location = new System.Drawing.Point(356, 70);
+            this.Radio_1_8_a.Location = new System.Drawing.Point(330, 71);
             this.Radio_1_8_a.Name = "Radio_1_8_a";
             this.Radio_1_8_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_8_a.TabIndex = 26;
@@ -865,7 +946,7 @@
             // Radio_1_7_a
             // 
             this.Radio_1_7_a.AutoSize = true;
-            this.Radio_1_7_a.Location = new System.Drawing.Point(302, 70);
+            this.Radio_1_7_a.Location = new System.Drawing.Point(276, 71);
             this.Radio_1_7_a.Name = "Radio_1_7_a";
             this.Radio_1_7_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_7_a.TabIndex = 25;
@@ -876,7 +957,7 @@
             // Radio_1_6_a
             // 
             this.Radio_1_6_a.AutoSize = true;
-            this.Radio_1_6_a.Location = new System.Drawing.Point(248, 70);
+            this.Radio_1_6_a.Location = new System.Drawing.Point(222, 71);
             this.Radio_1_6_a.Name = "Radio_1_6_a";
             this.Radio_1_6_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_6_a.TabIndex = 24;
@@ -887,7 +968,7 @@
             // Radio_1_5_a
             // 
             this.Radio_1_5_a.AutoSize = true;
-            this.Radio_1_5_a.Location = new System.Drawing.Point(194, 70);
+            this.Radio_1_5_a.Location = new System.Drawing.Point(168, 71);
             this.Radio_1_5_a.Name = "Radio_1_5_a";
             this.Radio_1_5_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_5_a.TabIndex = 23;
@@ -898,7 +979,7 @@
             // Radio_1_4_a
             // 
             this.Radio_1_4_a.AutoSize = true;
-            this.Radio_1_4_a.Location = new System.Drawing.Point(140, 70);
+            this.Radio_1_4_a.Location = new System.Drawing.Point(114, 71);
             this.Radio_1_4_a.Name = "Radio_1_4_a";
             this.Radio_1_4_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_1_4_a.TabIndex = 22;
@@ -909,7 +990,7 @@
             // Radio_0_13_a
             // 
             this.Radio_0_13_a.AutoSize = true;
-            this.Radio_0_13_a.Location = new System.Drawing.Point(149, 39);
+            this.Radio_0_13_a.Location = new System.Drawing.Point(123, 40);
             this.Radio_0_13_a.Name = "Radio_0_13_a";
             this.Radio_0_13_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_13_a.TabIndex = 21;
@@ -920,7 +1001,7 @@
             // Radio_0_17_a
             // 
             this.Radio_0_17_a.AutoSize = true;
-            this.Radio_0_17_a.Location = new System.Drawing.Point(389, 39);
+            this.Radio_0_17_a.Location = new System.Drawing.Point(363, 40);
             this.Radio_0_17_a.Name = "Radio_0_17_a";
             this.Radio_0_17_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_17_a.TabIndex = 20;
@@ -931,7 +1012,7 @@
             // Radio_0_18_a
             // 
             this.Radio_0_18_a.AutoSize = true;
-            this.Radio_0_18_a.Location = new System.Drawing.Point(449, 39);
+            this.Radio_0_18_a.Location = new System.Drawing.Point(423, 40);
             this.Radio_0_18_a.Name = "Radio_0_18_a";
             this.Radio_0_18_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_18_a.TabIndex = 19;
@@ -942,7 +1023,7 @@
             // Radio_0_20_a
             // 
             this.Radio_0_20_a.AutoSize = true;
-            this.Radio_0_20_a.Location = new System.Drawing.Point(569, 39);
+            this.Radio_0_20_a.Location = new System.Drawing.Point(543, 40);
             this.Radio_0_20_a.Name = "Radio_0_20_a";
             this.Radio_0_20_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_20_a.TabIndex = 18;
@@ -953,7 +1034,7 @@
             // Radio_0_19_a
             // 
             this.Radio_0_19_a.AutoSize = true;
-            this.Radio_0_19_a.Location = new System.Drawing.Point(509, 39);
+            this.Radio_0_19_a.Location = new System.Drawing.Point(483, 40);
             this.Radio_0_19_a.Name = "Radio_0_19_a";
             this.Radio_0_19_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_19_a.TabIndex = 17;
@@ -964,7 +1045,7 @@
             // Radio_0_15_a
             // 
             this.Radio_0_15_a.AutoSize = true;
-            this.Radio_0_15_a.Location = new System.Drawing.Point(269, 39);
+            this.Radio_0_15_a.Location = new System.Drawing.Point(243, 40);
             this.Radio_0_15_a.Name = "Radio_0_15_a";
             this.Radio_0_15_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_15_a.TabIndex = 16;
@@ -975,7 +1056,7 @@
             // Radio_0_16_a
             // 
             this.Radio_0_16_a.AutoSize = true;
-            this.Radio_0_16_a.Location = new System.Drawing.Point(329, 39);
+            this.Radio_0_16_a.Location = new System.Drawing.Point(303, 40);
             this.Radio_0_16_a.Name = "Radio_0_16_a";
             this.Radio_0_16_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_16_a.TabIndex = 15;
@@ -986,7 +1067,7 @@
             // Radio_0_14_a
             // 
             this.Radio_0_14_a.AutoSize = true;
-            this.Radio_0_14_a.Location = new System.Drawing.Point(209, 39);
+            this.Radio_0_14_a.Location = new System.Drawing.Point(183, 40);
             this.Radio_0_14_a.Name = "Radio_0_14_a";
             this.Radio_0_14_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_14_a.TabIndex = 14;
@@ -997,7 +1078,7 @@
             // Radio_0_11_a
             // 
             this.Radio_0_11_a.AutoSize = true;
-            this.Radio_0_11_a.Location = new System.Drawing.Point(524, 18);
+            this.Radio_0_11_a.Location = new System.Drawing.Point(498, 19);
             this.Radio_0_11_a.Name = "Radio_0_11_a";
             this.Radio_0_11_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_11_a.TabIndex = 13;
@@ -1008,7 +1089,7 @@
             // Radio_0_12_a
             // 
             this.Radio_0_12_a.AutoSize = true;
-            this.Radio_0_12_a.Location = new System.Drawing.Point(584, 18);
+            this.Radio_0_12_a.Location = new System.Drawing.Point(558, 19);
             this.Radio_0_12_a.Name = "Radio_0_12_a";
             this.Radio_0_12_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_12_a.TabIndex = 12;
@@ -1019,7 +1100,7 @@
             // Radio_0_10_a
             // 
             this.Radio_0_10_a.AutoSize = true;
-            this.Radio_0_10_a.Location = new System.Drawing.Point(464, 18);
+            this.Radio_0_10_a.Location = new System.Drawing.Point(438, 19);
             this.Radio_0_10_a.Name = "Radio_0_10_a";
             this.Radio_0_10_a.Size = new System.Drawing.Size(54, 15);
             this.Radio_0_10_a.TabIndex = 11;
@@ -1030,7 +1111,7 @@
             // Radio_0_9_a
             // 
             this.Radio_0_9_a.AutoSize = true;
-            this.Radio_0_9_a.Location = new System.Drawing.Point(410, 18);
+            this.Radio_0_9_a.Location = new System.Drawing.Point(384, 19);
             this.Radio_0_9_a.Name = "Radio_0_9_a";
             this.Radio_0_9_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_9_a.TabIndex = 10;
@@ -1041,7 +1122,7 @@
             // Radio_0_8_a
             // 
             this.Radio_0_8_a.AutoSize = true;
-            this.Radio_0_8_a.Location = new System.Drawing.Point(356, 18);
+            this.Radio_0_8_a.Location = new System.Drawing.Point(330, 19);
             this.Radio_0_8_a.Name = "Radio_0_8_a";
             this.Radio_0_8_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_8_a.TabIndex = 9;
@@ -1052,7 +1133,7 @@
             // Radio_0_7_a
             // 
             this.Radio_0_7_a.AutoSize = true;
-            this.Radio_0_7_a.Location = new System.Drawing.Point(302, 18);
+            this.Radio_0_7_a.Location = new System.Drawing.Point(276, 19);
             this.Radio_0_7_a.Name = "Radio_0_7_a";
             this.Radio_0_7_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_7_a.TabIndex = 8;
@@ -1063,7 +1144,7 @@
             // Radio_0_6_a
             // 
             this.Radio_0_6_a.AutoSize = true;
-            this.Radio_0_6_a.Location = new System.Drawing.Point(248, 18);
+            this.Radio_0_6_a.Location = new System.Drawing.Point(222, 19);
             this.Radio_0_6_a.Name = "Radio_0_6_a";
             this.Radio_0_6_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_6_a.TabIndex = 7;
@@ -1074,7 +1155,7 @@
             // Radio_0_5_a
             // 
             this.Radio_0_5_a.AutoSize = true;
-            this.Radio_0_5_a.Location = new System.Drawing.Point(194, 18);
+            this.Radio_0_5_a.Location = new System.Drawing.Point(168, 19);
             this.Radio_0_5_a.Name = "Radio_0_5_a";
             this.Radio_0_5_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_5_a.TabIndex = 6;
@@ -1089,7 +1170,7 @@
             this.metroLabel_outch0_a.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel_outch0_a.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel_outch0_a.ForeColor = System.Drawing.SystemColors.Window;
-            this.metroLabel_outch0_a.Location = new System.Drawing.Point(71, 18);
+            this.metroLabel_outch0_a.Location = new System.Drawing.Point(45, 19);
             this.metroLabel_outch0_a.Name = "metroLabel_outch0_a";
             this.metroLabel_outch0_a.Size = new System.Drawing.Size(47, 25);
             this.metroLabel_outch0_a.TabIndex = 5;
@@ -1101,7 +1182,7 @@
             // Radio_0_4_a
             // 
             this.Radio_0_4_a.AutoSize = true;
-            this.Radio_0_4_a.Location = new System.Drawing.Point(140, 18);
+            this.Radio_0_4_a.Location = new System.Drawing.Point(114, 19);
             this.Radio_0_4_a.Name = "Radio_0_4_a";
             this.Radio_0_4_a.Size = new System.Drawing.Size(48, 15);
             this.Radio_0_4_a.TabIndex = 4;
@@ -1112,10 +1193,10 @@
             // metroTabControl_d
             // 
             this.metroTabControl_d.Controls.Add(this.tabPage_d);
-            this.metroTabControl_d.Location = new System.Drawing.Point(14, 509);
+            this.metroTabControl_d.Location = new System.Drawing.Point(47, 503);
             this.metroTabControl_d.Name = "metroTabControl_d";
             this.metroTabControl_d.SelectedIndex = 0;
-            this.metroTabControl_d.Size = new System.Drawing.Size(700, 250);
+            this.metroTabControl_d.Size = new System.Drawing.Size(700, 246);
             this.metroTabControl_d.TabIndex = 52;
             this.metroTabControl_d.UseSelectable = true;
             // 
@@ -1520,5 +1601,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel3_d;
         private MetroFramework.Controls.MetroTile led_ch1_d;
         private MetroFramework.Controls.MetroLabel metroLabel2_d;
+        private MetroFramework.Controls.MetroLabel metroLabel_request_a;
+        private MetroFramework.Controls.MetroLabel metroLabel_validation_a;
+        private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroLabel metroLabel_time_a;
     }
 }

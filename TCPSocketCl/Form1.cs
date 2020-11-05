@@ -358,9 +358,21 @@ namespace TCPSocketCl
             this.dgv_constate.Rows[e.RowIndex].Selected = !(this.dgv_constate.Rows[e.RowIndex].Selected);
         }
 
-        private void Led_Paint(object sender, PaintEventArgs e)
+        private void Btn_output_a_Enter(object sender, EventArgs e)
         {
-            e.Graphics.DrawRectangle(new Pen(Color.LightGray), new Rectangle(0, 0, ((Label)sender).Width, ((Label)sender).Height));
+            // 단추를 누를 때
+            //MessageBox.Show("enter");
+        }
+
+        private void Btn_output_a_MouseEnter(object sender, EventArgs e)
+        {
+            //버튼 위로 마우스를 가져올 때
+        }
+
+        private void Btn_output_a_MouseUp(object sender, MouseEventArgs e)
+        {
+            //단추를 누르고 뗄 때
+            //MessageBox.Show("mup");
         }
     }
 }
