@@ -60,8 +60,10 @@ namespace TCPSocketCl
         public delegate void LogDelegate(string msg);
         //public static SocketClass socketClass = null;
         private static List<string> ipList = new List<string>();
-        private static System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-
+        private static System.Windows.Forms.Timer timer0 = new System.Windows.Forms.Timer();
+        private static System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+        private static System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
+        private static System.Windows.Forms.Timer timer3 = new System.Windows.Forms.Timer();
 
         public Form1()
         {
@@ -70,15 +72,22 @@ namespace TCPSocketCl
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Log("Socket Client Program Start");
-            //Log2("192.168.0.180:5000");
-            //Log2("192.168.0.244:5000");
-            //Log2("192.168.0.31:4265");
             device_judge[0] = "Device 오류";
             device_judge[1] = "RTU";
             device_judge[2] = "SmartPoE";
-            
-            //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
+
+            timer0.Tick += new EventHandler(Timer0_Tick);
+            timer0.Interval = 500;
+
+            timer1.Tick += new EventHandler(Timer1_Tick);
+            timer1.Interval = 500;
+
+            timer2.Tick += new EventHandler(Timer2_Tick);
+            timer2.Interval = 500;
+
+            timer3.Tick += new EventHandler(Timer3_Tick);
+            timer3.Interval = 500;
+
             this.ActiveControl = textBox_IP1;
         }
 
@@ -285,7 +294,7 @@ namespace TCPSocketCl
         private void Button_State(System.Windows.Forms.Button button, int state)
         {
             int btn_color = 1;
-            if (button.BackColor == Color.LightBlue)
+            if (button.BackColor == customedBlue)
             {
                 btn_color = 0;
             }
@@ -303,10 +312,10 @@ namespace TCPSocketCl
             }
             else if (state == 3)
             {
-                btn_ch0_d.BackColor = System.Drawing.Color.Transparent;
-                btn_ch1_d.BackColor = System.Drawing.Color.Transparent;
-                btn_ch2_d.BackColor = System.Drawing.Color.Transparent;
-                btn_ch3_d.BackColor = System.Drawing.Color.Transparent;
+                btn_ch0_d.BackColor = System.Drawing.Color.White;
+                btn_ch1_d.BackColor = System.Drawing.Color.White;
+                btn_ch2_d.BackColor = System.Drawing.Color.White;
+                btn_ch3_d.BackColor = System.Drawing.Color.White;
                 metroTabControl_d.Focus();
             }
             if(btn_color == 1)
@@ -334,40 +343,6 @@ namespace TCPSocketCl
             Button_State(btn_ch3_d, 3);
         }
 
-       
-        //private void Button3_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button3,2);
-        //}
-        //private void Button4_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button4,2);
-        //}
-        //private void Button_DO0_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_DO0, 3);
-        //}
-        //private void Button_DO1_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_DO1, 3);
-        //}
-        //private void Button_DO2_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_DO2, 3);
-        //}
-        //private void Button_DO3_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_DO3, 3);
-        //}
-        //private void Button_Off_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_Off, 4);
-        //}
-        //private void Button_On_Click(object sender, EventArgs e)
-        //{
-        //    Button_State(button_On, 4);
-        //}
-
         private void dgv_constate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgv_constate.RowHeadersDefaultCellStyle.ForeColor))
@@ -381,6 +356,11 @@ namespace TCPSocketCl
         private void dgv_constate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dgv_constate.Rows[e.RowIndex].Selected = !(this.dgv_constate.Rows[e.RowIndex].Selected);
+        }
+
+        private void Led_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.LightGray), new Rectangle(0, 0, ((Label)sender).Width, ((Label)sender).Height));
         }
     }
 }

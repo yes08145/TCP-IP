@@ -59,6 +59,15 @@ namespace TCPSocketCl
                     if (usedSockInfo.index == dgv_constate.SelectedRows[0].Index)
                     {
                         SocketDisconnect(usedSockInfo);
+
+                        timer0.Stop();
+                        led_ch0_d.BackColor = System.Drawing.Color.Transparent;
+                        timer1.Stop();
+                        led_ch1_d.BackColor = System.Drawing.Color.Transparent;
+                        timer2.Stop();
+                        led_ch2_d.BackColor = System.Drawing.Color.Transparent;
+                        timer3.Stop();
+                        led_ch3_d.BackColor = System.Drawing.Color.Transparent;
                         return;
                     }
                 }
@@ -586,52 +595,75 @@ namespace TCPSocketCl
             }
             else if (rtup.sensor_ID == 3)
             {
-                if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data < 2)
+                //if((rtup.response_channel == 0 || rtup.response_channel == 1 || rtup.response_channel == 2 || rtup.response_channel == 3) && rtup.data < 2)
+                //{
+                    //log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
+                if(rtup.data == 1)
                 {
-                    log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID + 2];
-
                     if (rtup.response_channel == 0)
                     {
                         this.Invoke(new Action(() =>
                         {
-                            
-                            timer.Tick += new EventHandler(Timer0_Tick);
-                            timer.Interval = 500;
-                            timer.Start();
+                            timer0.Start();
                         }));
                     }
                     else if (rtup.response_channel == 1)
                     {
                         this.Invoke(new Action(() =>
                         {
-                            
-                            timer.Tick += new EventHandler(Timer1_Tick);
-                            timer.Interval = 500;
-                            timer.Start();
+                            timer1.Start();
                         }));
                     }
                     else if (rtup.response_channel == 2)
                     {
                         this.Invoke(new Action(() =>
                         {
-                            
-                            timer.Tick += new EventHandler(Timer2_Tick);
-                            timer.Interval = 500;
-                            timer.Start();
+                            timer2.Start();
                         }));
                     }
                     else if (rtup.response_channel == 3)
                     {
                         this.Invoke(new Action(() =>
                         {
-                            
-                            timer.Tick += new EventHandler(Timer3_Tick);
-                            timer.Interval = 500;
-                            timer.Start();
+                            timer3.Start();
                         }));
                     }
                 }
-
+                else if(rtup.data == 0)
+                {
+                    if (rtup.response_channel == 0)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            timer0.Stop();
+                            led_ch0_d.BackColor = System.Drawing.Color.White;
+                        }));
+                    }
+                    else if (rtup.response_channel == 1)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            timer1.Stop();
+                            led_ch1_d.BackColor = System.Drawing.Color.White;
+                        }));
+                    }
+                    else if (rtup.response_channel == 2)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            timer2.Stop();
+                            led_ch2_d.BackColor = System.Drawing.Color.White;
+                        }));
+                    }
+                    else if (rtup.response_channel == 3)
+                    {
+                        this.Invoke(new Action(() =>
+                        {
+                            timer3.Stop();
+                            led_ch3_d.BackColor = System.Drawing.Color.White;
+                        }));
+                    }
+                }
                     else { log = "Format 오류"; }
             }
             else if (rtup.sensor_ID == 4)

@@ -99,12 +99,15 @@
             this.Radio_0_5_a = new MetroFramework.Controls.MetroRadioButton();
             this.metroLabel_outch0_a = new MetroFramework.Controls.MetroLabel();
             this.Radio_0_4_a = new MetroFramework.Controls.MetroRadioButton();
-            this.metroTabControl_nsetting.SuspendLayout();
-            this.metroTabPage_nsetting.SuspendLayout();
-            this.metroTabControl_connected.SuspendLayout();
-            this.metroTabPage_connected.SuspendLayout();
             this.metroTabControl_d = new MetroFramework.Controls.MetroTabControl();
             this.tabPage_d = new System.Windows.Forms.TabPage();
+            this.led_ch3_d = new MetroFramework.Controls.MetroTile();
+            this.led_ch2_d = new MetroFramework.Controls.MetroTile();
+            this.metroLabel4_d = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3_d = new MetroFramework.Controls.MetroLabel();
+            this.led_ch1_d = new MetroFramework.Controls.MetroTile();
+            this.led_ch0_d = new MetroFramework.Controls.MetroTile();
+            this.metroLabel1_d = new MetroFramework.Controls.MetroLabel();
             this.btn_send_d = new MetroFramework.Controls.MetroButton();
             this.toggle_ch3_d = new MetroFramework.Controls.MetroToggle();
             this.btn_ch3_d = new MetroFramework.Controls.MetroButton();
@@ -118,13 +121,14 @@
             this.labal_ch2_d = new MetroFramework.Controls.MetroLabel();
             this.label_ch1_d = new MetroFramework.Controls.MetroLabel();
             this.label_ch0_d = new MetroFramework.Controls.MetroLabel();
-            this.led_ch3_d = new MetroFramework.Controls.MetroButton();
-            this.led_ch2_d = new MetroFramework.Controls.MetroButton();
-            this.led_ch1_d = new MetroFramework.Controls.MetroButton();
-            this.led_ch0_d = new MetroFramework.Controls.MetroButton();
             this.label_input_d = new MetroFramework.Controls.MetroLabel();
             this.label_output_d = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroLabel2_d = new MetroFramework.Controls.MetroLabel();
+            this.metroTabControl_nsetting.SuspendLayout();
+            this.metroTabPage_nsetting.SuspendLayout();
+            this.metroTabControl_connected.SuspendLayout();
+            this.metroTabPage_connected.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_constate)).BeginInit();
             this.metroPanel_a.SuspendLayout();
             this.metroTabControl_AI_a.SuspendLayout();
@@ -540,7 +544,7 @@
             this.metroLabel_inputmA_a.Location = new System.Drawing.Point(418, 49);
             this.metroLabel_inputmA_a.MinimumSize = new System.Drawing.Size(49, 20);
             this.metroLabel_inputmA_a.Name = "metroLabel_inputmA_a";
-            this.metroLabel_inputmA_a.Size = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputmA_a.Size = new System.Drawing.Size(13, 19);
             this.metroLabel_inputmA_a.TabIndex = 54;
             this.metroLabel_inputmA_a.Text = " ";
             this.metroLabel_inputmA_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -557,7 +561,7 @@
             this.metroLabel_inputch_a.Location = new System.Drawing.Point(288, 49);
             this.metroLabel_inputch_a.MinimumSize = new System.Drawing.Size(49, 20);
             this.metroLabel_inputch_a.Name = "metroLabel_inputch_a";
-            this.metroLabel_inputch_a.Size = new System.Drawing.Size(49, 20);
+            this.metroLabel_inputch_a.Size = new System.Drawing.Size(13, 19);
             this.metroLabel_inputch_a.TabIndex = 53;
             this.metroLabel_inputch_a.Text = " ";
             this.metroLabel_inputch_a.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1108,7 +1112,7 @@
             // metroTabControl_d
             // 
             this.metroTabControl_d.Controls.Add(this.tabPage_d);
-            this.metroTabControl_d.Location = new System.Drawing.Point(37, 580);
+            this.metroTabControl_d.Location = new System.Drawing.Point(14, 509);
             this.metroTabControl_d.Name = "metroTabControl_d";
             this.metroTabControl_d.SelectedIndex = 0;
             this.metroTabControl_d.Size = new System.Drawing.Size(700, 250);
@@ -1118,6 +1122,13 @@
             // tabPage_d
             // 
             this.tabPage_d.BackColor = System.Drawing.SystemColors.Window;
+            this.tabPage_d.Controls.Add(this.led_ch3_d);
+            this.tabPage_d.Controls.Add(this.led_ch2_d);
+            this.tabPage_d.Controls.Add(this.metroLabel4_d);
+            this.tabPage_d.Controls.Add(this.metroLabel3_d);
+            this.tabPage_d.Controls.Add(this.led_ch1_d);
+            this.tabPage_d.Controls.Add(this.led_ch0_d);
+            this.tabPage_d.Controls.Add(this.metroLabel1_d);
             this.tabPage_d.Controls.Add(this.btn_send_d);
             this.tabPage_d.Controls.Add(this.toggle_ch3_d);
             this.tabPage_d.Controls.Add(this.btn_ch3_d);
@@ -1131,24 +1142,94 @@
             this.tabPage_d.Controls.Add(this.labal_ch2_d);
             this.tabPage_d.Controls.Add(this.label_ch1_d);
             this.tabPage_d.Controls.Add(this.label_ch0_d);
-            this.tabPage_d.Controls.Add(this.led_ch3_d);
-            this.tabPage_d.Controls.Add(this.led_ch2_d);
-            this.tabPage_d.Controls.Add(this.led_ch1_d);
-            this.tabPage_d.Controls.Add(this.led_ch0_d);
             this.tabPage_d.Controls.Add(this.label_input_d);
             this.tabPage_d.Controls.Add(this.label_output_d);
             this.tabPage_d.Controls.Add(this.metroTile1);
+            this.tabPage_d.Controls.Add(this.metroLabel2_d);
             this.tabPage_d.Location = new System.Drawing.Point(4, 38);
             this.tabPage_d.Name = "tabPage_d";
             this.tabPage_d.Size = new System.Drawing.Size(692, 208);
             this.tabPage_d.TabIndex = 0;
             this.tabPage_d.Text = "Digital";
             // 
+            // led_ch3_d
+            // 
+            this.led_ch3_d.ActiveControl = null;
+            this.led_ch3_d.BackColor = System.Drawing.Color.White;
+            this.led_ch3_d.Location = new System.Drawing.Point(469, 33);
+            this.led_ch3_d.Name = "led_ch3_d";
+            this.led_ch3_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch3_d.TabIndex = 28;
+            this.led_ch3_d.Text = "metroTile4";
+            this.led_ch3_d.UseCustomBackColor = true;
+            this.led_ch3_d.UseSelectable = true;
+            // 
+            // led_ch2_d
+            // 
+            this.led_ch2_d.ActiveControl = null;
+            this.led_ch2_d.BackColor = System.Drawing.Color.White;
+            this.led_ch2_d.Location = new System.Drawing.Point(379, 33);
+            this.led_ch2_d.Name = "led_ch2_d";
+            this.led_ch2_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch2_d.TabIndex = 27;
+            this.led_ch2_d.UseCustomBackColor = true;
+            this.led_ch2_d.UseSelectable = true;
+            // 
+            // metroLabel4_d
+            // 
+            this.metroLabel4_d.BackColor = System.Drawing.Color.LightGray;
+            this.metroLabel4_d.Location = new System.Drawing.Point(468, 32);
+            this.metroLabel4_d.Name = "metroLabel4_d";
+            this.metroLabel4_d.Size = new System.Drawing.Size(55, 10);
+            this.metroLabel4_d.TabIndex = 26;
+            this.metroLabel4_d.UseCustomBackColor = true;
+            // 
+            // metroLabel3_d
+            // 
+            this.metroLabel3_d.BackColor = System.Drawing.Color.LightGray;
+            this.metroLabel3_d.Location = new System.Drawing.Point(378, 32);
+            this.metroLabel3_d.Name = "metroLabel3_d";
+            this.metroLabel3_d.Size = new System.Drawing.Size(55, 10);
+            this.metroLabel3_d.TabIndex = 25;
+            this.metroLabel3_d.UseCustomBackColor = true;
+            // 
+            // led_ch1_d
+            // 
+            this.led_ch1_d.ActiveControl = null;
+            this.led_ch1_d.BackColor = System.Drawing.Color.White;
+            this.led_ch1_d.Location = new System.Drawing.Point(289, 33);
+            this.led_ch1_d.Name = "led_ch1_d";
+            this.led_ch1_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch1_d.TabIndex = 24;
+            this.led_ch1_d.UseCustomBackColor = true;
+            this.led_ch1_d.UseSelectable = true;
+            // 
+            // led_ch0_d
+            // 
+            this.led_ch0_d.ActiveControl = null;
+            this.led_ch0_d.BackColor = System.Drawing.Color.White;
+            this.led_ch0_d.Location = new System.Drawing.Point(199, 33);
+            this.led_ch0_d.Name = "led_ch0_d";
+            this.led_ch0_d.Size = new System.Drawing.Size(53, 8);
+            this.led_ch0_d.TabIndex = 21;
+            this.led_ch0_d.UseCustomBackColor = true;
+            this.led_ch0_d.UseSelectable = true;
+            this.led_ch0_d.UseStyleColors = true;
+            // 
+            // metroLabel1_d
+            // 
+            this.metroLabel1_d.BackColor = System.Drawing.Color.LightGray;
+            this.metroLabel1_d.Location = new System.Drawing.Point(198, 32);
+            this.metroLabel1_d.Name = "metroLabel1_d";
+            this.metroLabel1_d.Size = new System.Drawing.Size(55, 10);
+            this.metroLabel1_d.TabIndex = 22;
+            this.metroLabel1_d.UseCustomBackColor = true;
+            // 
             // btn_send_d
             // 
-            this.btn_send_d.Location = new System.Drawing.Point(293, 171);
+            this.btn_send_d.Location = new System.Drawing.Point(302, 171);
             this.btn_send_d.Name = "btn_send_d";
-            this.btn_send_d.Size = new System.Drawing.Size(115, 26);
+            this.btn_send_d.Size = new System.Drawing.Size(123, 26);
             this.btn_send_d.TabIndex = 19;
             this.btn_send_d.Text = "Send";
             this.btn_send_d.UseSelectable = true;
@@ -1157,7 +1238,7 @@
             // toggle_ch3_d
             // 
             this.toggle_ch3_d.AutoSize = true;
-            this.toggle_ch3_d.Location = new System.Drawing.Point(429, 141);
+            this.toggle_ch3_d.Location = new System.Drawing.Point(438, 141);
             this.toggle_ch3_d.Name = "toggle_ch3_d";
             this.toggle_ch3_d.Size = new System.Drawing.Size(80, 16);
             this.toggle_ch3_d.TabIndex = 18;
@@ -1166,7 +1247,7 @@
             // 
             // btn_ch3_d
             // 
-            this.btn_ch3_d.Location = new System.Drawing.Point(470, 100);
+            this.btn_ch3_d.Location = new System.Drawing.Point(479, 100);
             this.btn_ch3_d.Name = "btn_ch3_d";
             this.btn_ch3_d.Size = new System.Drawing.Size(33, 26);
             this.btn_ch3_d.TabIndex = 17;
@@ -1177,7 +1258,7 @@
             // toggle_ch2_d
             // 
             this.toggle_ch2_d.AutoSize = true;
-            this.toggle_ch2_d.Location = new System.Drawing.Point(339, 141);
+            this.toggle_ch2_d.Location = new System.Drawing.Point(348, 141);
             this.toggle_ch2_d.Name = "toggle_ch2_d";
             this.toggle_ch2_d.Size = new System.Drawing.Size(80, 16);
             this.toggle_ch2_d.TabIndex = 16;
@@ -1186,7 +1267,7 @@
             // 
             // btn_ch2_d
             // 
-            this.btn_ch2_d.Location = new System.Drawing.Point(380, 100);
+            this.btn_ch2_d.Location = new System.Drawing.Point(389, 100);
             this.btn_ch2_d.Name = "btn_ch2_d";
             this.btn_ch2_d.Size = new System.Drawing.Size(33, 26);
             this.btn_ch2_d.TabIndex = 15;
@@ -1197,7 +1278,7 @@
             // toggle_ch1_d
             // 
             this.toggle_ch1_d.AutoSize = true;
-            this.toggle_ch1_d.Location = new System.Drawing.Point(249, 141);
+            this.toggle_ch1_d.Location = new System.Drawing.Point(258, 141);
             this.toggle_ch1_d.Name = "toggle_ch1_d";
             this.toggle_ch1_d.Size = new System.Drawing.Size(80, 16);
             this.toggle_ch1_d.TabIndex = 14;
@@ -1206,7 +1287,7 @@
             // 
             // btn_ch1_d
             // 
-            this.btn_ch1_d.Location = new System.Drawing.Point(290, 100);
+            this.btn_ch1_d.Location = new System.Drawing.Point(299, 100);
             this.btn_ch1_d.Name = "btn_ch1_d";
             this.btn_ch1_d.Size = new System.Drawing.Size(33, 26);
             this.btn_ch1_d.TabIndex = 13;
@@ -1217,7 +1298,7 @@
             // toggle_ch0_d
             // 
             this.toggle_ch0_d.AutoSize = true;
-            this.toggle_ch0_d.Location = new System.Drawing.Point(159, 141);
+            this.toggle_ch0_d.Location = new System.Drawing.Point(168, 141);
             this.toggle_ch0_d.Name = "toggle_ch0_d";
             this.toggle_ch0_d.Size = new System.Drawing.Size(80, 16);
             this.toggle_ch0_d.TabIndex = 12;
@@ -1226,7 +1307,7 @@
             // 
             // btn_ch0_d
             // 
-            this.btn_ch0_d.Location = new System.Drawing.Point(200, 100);
+            this.btn_ch0_d.Location = new System.Drawing.Point(209, 100);
             this.btn_ch0_d.Name = "btn_ch0_d";
             this.btn_ch0_d.Size = new System.Drawing.Size(33, 26);
             this.btn_ch0_d.TabIndex = 11;
@@ -1237,7 +1318,7 @@
             // label_ch3_d
             // 
             this.label_ch3_d.AutoSize = true;
-            this.label_ch3_d.Location = new System.Drawing.Point(470, 50);
+            this.label_ch3_d.Location = new System.Drawing.Point(479, 50);
             this.label_ch3_d.Name = "label_ch3_d";
             this.label_ch3_d.Size = new System.Drawing.Size(33, 19);
             this.label_ch3_d.TabIndex = 10;
@@ -1246,7 +1327,7 @@
             // labal_ch2_d
             // 
             this.labal_ch2_d.AutoSize = true;
-            this.labal_ch2_d.Location = new System.Drawing.Point(380, 50);
+            this.labal_ch2_d.Location = new System.Drawing.Point(389, 50);
             this.labal_ch2_d.Name = "labal_ch2_d";
             this.labal_ch2_d.Size = new System.Drawing.Size(33, 19);
             this.labal_ch2_d.TabIndex = 9;
@@ -1255,7 +1336,7 @@
             // label_ch1_d
             // 
             this.label_ch1_d.AutoSize = true;
-            this.label_ch1_d.Location = new System.Drawing.Point(290, 50);
+            this.label_ch1_d.Location = new System.Drawing.Point(299, 50);
             this.label_ch1_d.Name = "label_ch1_d";
             this.label_ch1_d.Size = new System.Drawing.Size(31, 19);
             this.label_ch1_d.TabIndex = 8;
@@ -1264,51 +1345,11 @@
             // label_ch0_d
             // 
             this.label_ch0_d.AutoSize = true;
-            this.label_ch0_d.Location = new System.Drawing.Point(200, 50);
+            this.label_ch0_d.Location = new System.Drawing.Point(209, 50);
             this.label_ch0_d.Name = "label_ch0_d";
             this.label_ch0_d.Size = new System.Drawing.Size(33, 19);
             this.label_ch0_d.TabIndex = 7;
             this.label_ch0_d.Text = "ch 0";
-            // 
-            // led_ch3_d
-            // 
-            this.led_ch3_d.BackColor = System.Drawing.Color.Transparent;
-            this.led_ch3_d.Location = new System.Drawing.Point(460, 33);
-            this.led_ch3_d.Name = "led_ch3_d";
-            this.led_ch3_d.Size = new System.Drawing.Size(53, 8);
-            this.led_ch3_d.TabIndex = 6;
-            this.led_ch3_d.UseCustomBackColor = true;
-            this.led_ch3_d.UseSelectable = true;
-            // 
-            // led_ch2_d
-            // 
-            this.led_ch2_d.BackColor = System.Drawing.Color.Transparent;
-            this.led_ch2_d.Location = new System.Drawing.Point(370, 33);
-            this.led_ch2_d.Name = "led_ch2_d";
-            this.led_ch2_d.Size = new System.Drawing.Size(53, 8);
-            this.led_ch2_d.TabIndex = 5;
-            this.led_ch2_d.UseCustomBackColor = true;
-            this.led_ch2_d.UseSelectable = true;
-            // 
-            // led_ch1_d
-            // 
-            this.led_ch1_d.BackColor = System.Drawing.Color.Transparent;
-            this.led_ch1_d.Location = new System.Drawing.Point(280, 33);
-            this.led_ch1_d.Name = "led_ch1_d";
-            this.led_ch1_d.Size = new System.Drawing.Size(53, 8);
-            this.led_ch1_d.TabIndex = 4;
-            this.led_ch1_d.UseCustomBackColor = true;
-            this.led_ch1_d.UseSelectable = true;
-            // 
-            // led_ch0_d
-            // 
-            this.led_ch0_d.BackColor = System.Drawing.Color.Transparent;
-            this.led_ch0_d.Location = new System.Drawing.Point(190, 33);
-            this.led_ch0_d.Name = "led_ch0_d";
-            this.led_ch0_d.Size = new System.Drawing.Size(53, 8);
-            this.led_ch0_d.TabIndex = 3;
-            this.led_ch0_d.UseCustomBackColor = true;
-            this.led_ch0_d.UseSelectable = true;
             // 
             // label_input_d
             // 
@@ -1339,6 +1380,15 @@
             this.metroTile1.Text = "metroTile1";
             this.metroTile1.UseCustomBackColor = true;
             this.metroTile1.UseSelectable = true;
+            // 
+            // metroLabel2_d
+            // 
+            this.metroLabel2_d.BackColor = System.Drawing.Color.LightGray;
+            this.metroLabel2_d.Location = new System.Drawing.Point(288, 32);
+            this.metroLabel2_d.Name = "metroLabel2_d";
+            this.metroLabel2_d.Size = new System.Drawing.Size(55, 10);
+            this.metroLabel2_d.TabIndex = 23;
+            this.metroLabel2_d.UseCustomBackColor = true;
             // 
             // Form1
             // 
@@ -1459,12 +1509,16 @@
         private MetroFramework.Controls.MetroLabel labal_ch2_d;
         private MetroFramework.Controls.MetroLabel label_ch1_d;
         private MetroFramework.Controls.MetroLabel label_ch0_d;
-        private MetroFramework.Controls.MetroButton led_ch3_d;
-        private MetroFramework.Controls.MetroButton led_ch2_d;
-        private MetroFramework.Controls.MetroButton led_ch1_d;
-        private MetroFramework.Controls.MetroButton led_ch0_d;
         private MetroFramework.Controls.MetroLabel label_input_d;
         private MetroFramework.Controls.MetroLabel label_output_d;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile led_ch0_d;
+        private MetroFramework.Controls.MetroLabel metroLabel1_d;
+        private MetroFramework.Controls.MetroTile led_ch3_d;
+        private MetroFramework.Controls.MetroTile led_ch2_d;
+        private MetroFramework.Controls.MetroLabel metroLabel4_d;
+        private MetroFramework.Controls.MetroLabel metroLabel3_d;
+        private MetroFramework.Controls.MetroTile led_ch1_d;
+        private MetroFramework.Controls.MetroLabel metroLabel2_d;
     }
 }
