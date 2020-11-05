@@ -77,9 +77,9 @@ namespace TCPSocketCl
             device_judge[0] = "Device 오류";
             device_judge[1] = "RTU";
             device_judge[2] = "SmartPoE";
-            
+
             //this.dataGridView1.RowHeadersDefaultCellStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ActiveControl = textBox_IP1;
+            
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -381,6 +381,23 @@ namespace TCPSocketCl
         private void dgv_constate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dgv_constate.Rows[e.RowIndex].Selected = !(this.dgv_constate.Rows[e.RowIndex].Selected);
+        }
+
+        private void Btn_output_a_Enter(object sender, EventArgs e)
+        {
+            // 단추를 누를 때
+            //MessageBox.Show("enter");
+        }
+
+        private void Btn_output_a_MouseEnter(object sender, EventArgs e)
+        {
+            //버튼 위로 마우스를 가져올 때
+        }
+
+        private void Btn_output_a_MouseUp(object sender, MouseEventArgs e)
+        {
+            //단추를 누르고 뗄 때
+            //MessageBox.Show("mup");
         }
     }
 }
