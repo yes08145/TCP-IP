@@ -509,7 +509,7 @@
             this.metroPanel_a.HorizontalScrollbarSize = 10;
             this.metroPanel_a.Location = new System.Drawing.Point(12, 170);
             this.metroPanel_a.Name = "metroPanel_a";
-            this.metroPanel_a.Size = new System.Drawing.Size(760, 320);
+            this.metroPanel_a.Size = new System.Drawing.Size(760, 336);
             this.metroPanel_a.TabIndex = 52;
             this.metroPanel_a.VerticalScrollbarBarColor = true;
             this.metroPanel_a.VerticalScrollbarHighlightOnWheel = false;
@@ -521,7 +521,7 @@
             this.metroTabControl_AI_a.Location = new System.Drawing.Point(39, 185);
             this.metroTabControl_AI_a.Name = "metroTabControl_AI_a";
             this.metroTabControl_AI_a.SelectedIndex = 0;
-            this.metroTabControl_AI_a.Size = new System.Drawing.Size(692, 132);
+            this.metroTabControl_AI_a.Size = new System.Drawing.Size(692, 148);
             this.metroTabControl_AI_a.TabIndex = 3;
             this.metroTabControl_AI_a.UseSelectable = true;
             // 
@@ -542,7 +542,7 @@
             this.metroTabPage_AI_a.HorizontalScrollbarSize = 10;
             this.metroTabPage_AI_a.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage_AI_a.Name = "metroTabPage_AI_a";
-            this.metroTabPage_AI_a.Size = new System.Drawing.Size(684, 90);
+            this.metroTabPage_AI_a.Size = new System.Drawing.Size(684, 106);
             this.metroTabPage_AI_a.TabIndex = 0;
             this.metroTabPage_AI_a.Text = "Analog Input";
             this.metroTabPage_AI_a.VerticalScrollbarBarColor = true;
@@ -558,9 +558,9 @@
             this.metroLabel_time_a.ForeColor = System.Drawing.SystemColors.InfoText;
             this.metroLabel_time_a.Location = new System.Drawing.Point(261, 85);
             this.metroLabel_time_a.Name = "metroLabel_time_a";
-            this.metroLabel_time_a.Size = new System.Drawing.Size(10, 15);
+            this.metroLabel_time_a.Size = new System.Drawing.Size(16, 15);
             this.metroLabel_time_a.TabIndex = 66;
-            this.metroLabel_time_a.Text = " ";
+            this.metroLabel_time_a.Text = "   ";
             this.metroLabel_time_a.UseCustomBackColor = true;
             this.metroLabel_time_a.UseCustomForeColor = true;
             this.metroLabel_time_a.UseStyleColors = true;
@@ -1193,7 +1193,7 @@
             // metroTabControl_d
             // 
             this.metroTabControl_d.Controls.Add(this.tabPage_d);
-            this.metroTabControl_d.Location = new System.Drawing.Point(47, 503);
+            this.metroTabControl_d.Location = new System.Drawing.Point(55, 503);
             this.metroTabControl_d.Name = "metroTabControl_d";
             this.metroTabControl_d.SelectedIndex = 0;
             this.metroTabControl_d.Size = new System.Drawing.Size(700, 246);
@@ -1229,7 +1229,7 @@
             this.tabPage_d.Controls.Add(this.metroLabel2_d);
             this.tabPage_d.Location = new System.Drawing.Point(4, 38);
             this.tabPage_d.Name = "tabPage_d";
-            this.tabPage_d.Size = new System.Drawing.Size(692, 208);
+            this.tabPage_d.Size = new System.Drawing.Size(692, 204);
             this.tabPage_d.TabIndex = 0;
             this.tabPage_d.Text = "Digital";
             // 
