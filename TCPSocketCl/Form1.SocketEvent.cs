@@ -37,7 +37,7 @@ namespace TCPSocketCl
                 }
 
             }
-            catch(FormatException e)
+            catch(FormatException)
             {
                 MessageBox.Show("IP주소의 형식이 잘못됐습니다.");
             }
@@ -73,11 +73,11 @@ namespace TCPSocketCl
                 }
                 MessageBox.Show("Connect중인 서버가 없습니다.");
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("Disconnect할 서버를 선택해주십시오.");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Disconnect할 서버를 선택해주십시오.");
             }
@@ -116,7 +116,7 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch(Exception e)
+            catch(Exception)
 
             {
                 //Log("======= 비정상 Connect 종료 =======");
@@ -180,7 +180,7 @@ namespace TCPSocketCl
             //    MessageBox.Show("채널 또는 값을 선택해주세요");
             //    //throw ee;
             //}
-            catch(Exception e)
+            catch(Exception)
             {
                 //MessageBox.Show("Function Send Exception Check");
             }
@@ -267,7 +267,7 @@ namespace TCPSocketCl
                             // 따라서 JudgeAction 순서 앞으로 변경
                             log_result = JudgeAction(strHexSplit, hex_cksum, socketInfo);
                         }
-                        catch (IndexOutOfRangeException e)
+                        catch (IndexOutOfRangeException)
                         {
                             resultSet = 5; // resultSet은 SensorID의 값이기 때문에 아래 if문에 걸리지 않게만 즉, resultSet을 0,3이 아닌 다른값으로 지정하면 됨
                             log_result = string.Empty;
@@ -547,7 +547,7 @@ namespace TCPSocketCl
             }
             else
             {
-                //log = device_judge[device_num];
+                log = device_judge[device_num];
                 return log;
             }
             if (hex_cksum.Length >= 3)
@@ -570,7 +570,7 @@ namespace TCPSocketCl
             }
             if (start_cksum != txt.Split('-')[rtup.length - 3] || last_cksum != txt.Split('-')[rtup.length - 2])
             {
-                //log = "CheckSum 오류";
+                log = "CheckSum 오류";
                 return log;
             }
             //로그를 띄워주자 (체크섬 오류)
@@ -579,10 +579,10 @@ namespace TCPSocketCl
             {
                 if (rtup.response_channel == 0 || rtup.response_channel == 1)
                 {
-                    if (rtup.length == 8) ;//log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
+                    if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널에서 " + logMsg[rtup.sensor_ID + 2];
                     else log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1]; // device_judge[device_num]
                 }
-                else;// log = "Format 오류";
+                else log = "Format 오류";
             }
             else if (rtup.sensor_ID == 2)
             {
@@ -593,7 +593,7 @@ namespace TCPSocketCl
                     else if (rtup.length == 8) log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 " + logMsg[rtup.sensor_ID - 1];
                     else throw new Exception("continue");
                 }
-                else;// log = "Format 오류";
+                //else log = "Format 오류";
             }
             else if (rtup.sensor_ID == 3)
             {
@@ -674,7 +674,7 @@ namespace TCPSocketCl
                     log = "Device '" + device + "'에서 " + rtup.response_channel + "채널로 시그널'" + rtup.data + "'  " + logMsg[rtup.sensor_ID - 2];
                 else log = "Format 오류";
             }
-            else;//log = "SensorID 오류";
+            //else log = "SensorID 오류";
 
             return log;
         }
@@ -831,7 +831,7 @@ namespace TCPSocketCl
                 }
                 return new ResultSet(strHexSplit, hex_cksum, resultSet);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return new ResultSet(string.Empty, string.Empty, 0);
             }

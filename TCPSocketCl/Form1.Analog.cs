@@ -240,11 +240,11 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
@@ -268,11 +268,11 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
@@ -296,11 +296,11 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }

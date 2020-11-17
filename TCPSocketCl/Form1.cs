@@ -91,13 +91,13 @@ namespace TCPSocketCl
             this.ActiveControl = textBox_IP1;
         }
 
-        private void btn_connect_Click(object sender, EventArgs e)
+        private void Btn_connect_Click(object sender, EventArgs e)
         {
             try
             {
                 TboxValue();
             }
-            catch(FormatException ex)
+            catch(FormatException)
             {
                 MessageBox.Show("IP, PORT를 입력해주세요");
                 return;
@@ -114,7 +114,7 @@ namespace TCPSocketCl
             
         }
 
-        private void btn_disconnect_Click(object sender, EventArgs e)
+        private void Btn_disconnect_Click(object sender, EventArgs e)
         {
             SocketDisconnect();
         }
@@ -282,11 +282,11 @@ namespace TCPSocketCl
                     }
                 }
             }
-            catch (NullReferenceException ex)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
-            catch(ArgumentOutOfRangeException ex)
+            catch(ArgumentOutOfRangeException)
             {
                 MessageBox.Show("설정 값을 보낼 서버를 선택해주십시오.");
             }
@@ -343,17 +343,19 @@ namespace TCPSocketCl
             Button_State(btn_ch3_d, 3);
         }
 
-        private void dgv_constate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void Dgv_constate_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             using (SolidBrush b = new SolidBrush(dgv_constate.RowHeadersDefaultCellStyle.ForeColor))
             {
-                StringFormat sf = new StringFormat();
-                sf.Alignment = StringAlignment.Near;
+                StringFormat sf = new StringFormat
+                {
+                    Alignment = StringAlignment.Near
+                };
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 1, e.RowBounds.Location.Y + 3, sf);
             }
         }
 
-        private void dgv_constate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgv_constate_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dgv_constate.Rows[e.RowIndex].Selected = !(this.dgv_constate.Rows[e.RowIndex].Selected);
         }

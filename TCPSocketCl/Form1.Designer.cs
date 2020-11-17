@@ -166,7 +166,7 @@
             this.btn_disconnect.UseCustomBackColor = true;
             this.btn_disconnect.UseCustomForeColor = true;
             this.btn_disconnect.UseSelectable = true;
-            this.btn_disconnect.Click += new System.EventHandler(this.btn_disconnect_Click);
+            this.btn_disconnect.Click += new System.EventHandler(this.Btn_disconnect_Click);
             // 
             // textBox_Port
             // 
@@ -197,7 +197,7 @@
             this.textBox_Port.UseSelectable = true;
             this.textBox_Port.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox_Port.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Port_KeyPress);
+            this.textBox_Port.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Port_KeyPress);
             // 
             // textBox_IP4
             // 
@@ -228,7 +228,7 @@
             this.textBox_IP4.UseSelectable = true;
             this.textBox_IP4.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox_IP4.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox_IP4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP4_KeyPress);
+            this.textBox_IP4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_IP4_KeyPress);
             // 
             // textBox_IP3
             // 
@@ -259,7 +259,7 @@
             this.textBox_IP3.UseSelectable = true;
             this.textBox_IP3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox_IP3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox_IP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP3_KeyPress);
+            this.textBox_IP3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_IP3_KeyPress);
             // 
             // textBox_IP2
             // 
@@ -290,7 +290,7 @@
             this.textBox_IP2.UseSelectable = true;
             this.textBox_IP2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox_IP2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox_IP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP2_KeyPress);
+            this.textBox_IP2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_IP2_KeyPress);
             // 
             // textBox_IP1
             // 
@@ -321,7 +321,7 @@
             this.textBox_IP1.UseSelectable = true;
             this.textBox_IP1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.textBox_IP1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_IP1_KeyPress);
+            this.textBox_IP1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_IP1_KeyPress);
             // 
             // metroLabel_port
             // 
@@ -347,7 +347,7 @@
             this.btn_connect.UseCustomBackColor = true;
             this.btn_connect.UseCustomForeColor = true;
             this.btn_connect.UseSelectable = true;
-            this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
+            this.btn_connect.Click += new System.EventHandler(this.Btn_connect_Click);
             // 
             // metroLabel_ip
             // 
@@ -497,8 +497,8 @@
             this.dgv_constate.Size = new System.Drawing.Size(133, 86);
             this.dgv_constate.TabIndex = 52;
             this.dgv_constate.UseCustomForeColor = true;
-            this.dgv_constate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_constate_CellDoubleClick);
-            this.dgv_constate.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgv_constate_RowPostPaint);
+            this.dgv_constate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_constate_CellDoubleClick);
+            this.dgv_constate.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.Dgv_constate_RowPostPaint);
             // 
             // metroPanel_a
             // 
